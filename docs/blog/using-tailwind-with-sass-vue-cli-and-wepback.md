@@ -1,8 +1,7 @@
 ---
 title: 'Using Tailwind with SASS, Vue-CLI and Wepback'
 published: true
-date: '18-12-2017 16:18'
-publish_date: '18-12-2017 16:18'
+date: '2017-12-18 16:18'
 layout: BlogPost
 categories:
   - Vue

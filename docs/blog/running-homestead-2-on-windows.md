@@ -1,6 +1,6 @@
 ---
 title: Running Homestead 2.0 on Windows
-date: 19:30 11/17/2014
+date: '2014-11-17 19:30'
 layout: BlogPost
 categories:
     - Laravel

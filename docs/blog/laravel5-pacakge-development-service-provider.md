@@ -1,6 +1,6 @@
 ---
 title: "Laravel 5 Package Development: The Service Provider"
-date: 22:00 1/27/2015
+date: '2015-01-25 22:00'
 layout: BlogPost
 categories:
     - Laravel

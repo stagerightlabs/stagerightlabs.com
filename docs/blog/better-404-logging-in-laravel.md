@@ -1,7 +1,6 @@
 ---
 title: 'Better 404 Logging in Laravel'
-published: true
-date: '17-03-2017 16:14'
+date: '2017-03-17 16:14'
 layout: BlogPost
 categories:
 	- Laravel

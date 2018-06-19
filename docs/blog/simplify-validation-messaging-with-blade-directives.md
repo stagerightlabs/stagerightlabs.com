@@ -1,6 +1,6 @@
 ---
 title: 'Simplify Validation Messaging with Blade Directives'
-date: '15-11-2017 21:23'
+date: '2017-11-15 21:23'
 layout: BlogPost
 categories:
 	- Laravel

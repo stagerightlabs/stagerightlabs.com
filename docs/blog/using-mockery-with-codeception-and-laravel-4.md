@@ -1,6 +1,6 @@
 ---
 title: 'Using Mockery with Codeception and Laravel 4'
-date: '16:00 11/30/2015'
+date: '2015-11-30 16:00'
 layout: BlogPost
 categories:
     - Laravel

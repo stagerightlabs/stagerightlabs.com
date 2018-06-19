@@ -1,6 +1,6 @@
 ---
 title: So you Want a Website
-date: 19:00 08/30/2014
+date: '2014-08-30 19:00'
 layout: BlogPost
 categories:
     - Fundamentals

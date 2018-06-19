@@ -1,7 +1,7 @@
 ---
 title: Translating Custom Error Messages in Laravel Packages
 slug: translating-custom-error-messages-laravel
-date: 19:00 10/04/2014
+date: '2014-10-04 19:00'
 layout: BlogPost
 categories:
     - Laravel

@@ -1,6 +1,6 @@
 ---
 title: Single Table Inheritance
-date: 13:30 1/25/2015
+date: '2015-01-25 13:30'
 layout: BlogPost
 categories:
     - Laravel
