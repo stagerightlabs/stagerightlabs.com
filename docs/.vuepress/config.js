@@ -13,17 +13,13 @@ class TailwindExtractor {
 }
 
 module.exports = {
-  title: "Hello VuePress",
-  description: "Just playing around",
+  title: "Stage Right Labs",
   postcss: {
     plugins: [
       tailwindcss("docs/.vuepress/tailwind.js"),
       require("autoprefixer")
     ]
   },
-  // chainWebpack: (config, isServer) => {
-  //   config.plugin('purgecss').use(PurgecssPlugin, )
-  // }
   configureWebpack: {
     plugins: [
       new PurgecssPlugin({
