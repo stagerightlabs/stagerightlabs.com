@@ -13,7 +13,6 @@
 export default {
   methods: {
     goTo (path) {
-      console.log(path)
       this.$router.push({ path })
     }
   }
