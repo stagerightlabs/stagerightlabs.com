@@ -25,8 +25,8 @@
     <aside class="w-1/5 pl-4 ">
       <h3>Topics</h3>
       <ul class="mt-4 list-reset ">
-        <li v-for="category in categories ">
-          <a href="# ">{{ category }}</a>
+        <li v-for="category in categories" class="mt-2">
+          <a class="cursor-pointer" @click="goToCategory(category)">{{ category }}</a>
         </li>
       </ul>
     </aside>
@@ -54,6 +54,9 @@ export default {
       }
 
       this.$router.push({ query: { page: previousPage } })
+    },
+    goToCategory (category) {
+      this.$router.push({ query: { category } })
     }
   },
   computed: {
@@ -64,7 +67,6 @@ export default {
         .sort((a, b) => a.frontmatter.date < b.frontmatter.date);
 
       if (this.selectedCategory) {
-        console.log(this.selectedCategory)
         posts = posts.filter((post) => {
           return post.frontmatter.categories
             .map((category) => category.toLowerCase())
