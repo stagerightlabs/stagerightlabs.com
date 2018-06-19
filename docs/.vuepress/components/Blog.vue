@@ -22,10 +22,10 @@
       </div>
     </section>
 
-    <aside class="w-1/5 pl-4 ">
+    <aside class="w-1/5 pl-8">
       <h3>Topics</h3>
       <ul class="mt-4 list-reset ">
-        <li v-for="category in categories" class="mt-2">
+        <li v-for="category in categories" class="mt-3">
           <a class="cursor-pointer" @click="goToCategory(category)">{{ category }}</a>
         </li>
       </ul>
