@@ -1,3 +1,5 @@
-# Hello VuePress
+---
+home: true
+---
 
-This is a docs page.
+# Welcome
