@@ -1,3 +1,14 @@
 @tailwind preflight;
 @tailwind components;
+
+body {
+  background-image: url("./images/halftone.png");
+  @apply .font-sans;
+}
+
+a {
+  text-decoration: none;
+  @apply .text-red;
+}
+
 @tailwind utilities;

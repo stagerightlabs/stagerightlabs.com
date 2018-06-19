@@ -45,7 +45,7 @@ View the full documentation at https://tailwindcss.com.
 let colors = {
   transparent: "transparent",
 
-  black: "#22292f",
+  black: "#333333",
   "grey-darkest": "#3d4852",
   "grey-darker": "#606f7b",
   "grey-dark": "#8795a1",
@@ -53,7 +53,9 @@ let colors = {
   "grey-light": "#dae1e7",
   "grey-lighter": "#f1f5f8",
   "grey-lightest": "#f8fafc",
-  white: "#ffffff"
+  white: "#ffffff",
+
+  red: "#ff2e2e"
 };
 
 module.exports = {
@@ -117,7 +119,7 @@ module.exports = {
   */
 
   fonts: {
-    sans: ["sans-serif"],
+    sans: ["'Open Sans'", "sans-serif"],
     serif: ["serif"],
     mono: ["monospace"]
   },
@@ -144,10 +146,10 @@ module.exports = {
   textSizes: {
     // xs: ".75rem", // 12px
     // sm: ".875rem", // 14px
-    base: "1rem" // 16px
+    base: "1rem", // 16px
     // lg: "1.125rem", // 18px
-    // xl: "1.25rem", // 20px
-    // "2xl": "1.5rem", // 24px
+    // xl: "1.25rem" // 20px
+    "2xl": "1.5rem" // 24px
     // "3xl": "1.875rem", // 30px
     // "4xl": "2.25rem", // 36px
     // "5xl": "3rem" // 48px
@@ -281,8 +283,8 @@ module.exports = {
   borderWidths: {
     default: "1px",
     "0": "0",
-    "2": "2px"
-    // "4": "4px",
+    "2": "2px",
+    "4": "4px"
     // "8": "8px"
   },
 
