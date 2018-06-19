@@ -11,4 +11,8 @@ a {
   @apply .text-red;
 }
 
+p {
+  @apply .leading-loose;
+}
+
 @tailwind utilities;

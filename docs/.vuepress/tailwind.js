@@ -197,7 +197,7 @@ module.exports = {
     none: 1,
     tight: 1.25,
     normal: 1.5,
-    loose: 2
+    loose: 1.75
   },
 
   /*
@@ -214,8 +214,8 @@ module.exports = {
 
   tracking: {
     tight: "-0.05em",
-    normal: "0",
-    wide: "0.05em"
+    normal: "0"
+    // wide: "0.05em"
   },
 
   /*

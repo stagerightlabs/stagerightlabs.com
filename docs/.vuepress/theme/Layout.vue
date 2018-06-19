@@ -1,15 +1,16 @@
 <template>
   <div class="container mx-auto">
     <navigation></navigation>
-    <Content/>
+    <blog v-if="$page.path == '/'"></blog>
   </div>
 </template>
 
 <script>
 import Navigation from '../components/Navigation.vue';
+import Blog from '../components/Blog.vue';
 
 export default {
-  components: { Navigation }
+  components: { Navigation, Blog }
 }
 </script>
 
