@@ -1,14 +1,14 @@
 <template>
   <div class="container mx-auto">
     <home v-if="$page.frontmatter.home"></home>
-    <div v-else>
+    <template v-else>
       <navigation></navigation>
       <div class="custom-layout" v-if="$page.frontmatter.layout">
         <component :is="$page.frontmatter.layout" />
       </div>
       <blog v-else-if="$route.path == '/blog/'"></blog>
       <colophon></colophon>
-    </div>
+    </template>
   </div>
 </template>
 

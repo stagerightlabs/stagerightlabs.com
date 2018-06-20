@@ -1,11 +1,13 @@
 <template>
-  <main class="flex mt-8 mx-8">
-    <section class="w-4/5">
+  <main class="block md:flex mt-8 mx-8">
+    <section class="w-full md:w-4/5">
+
       <h2>
         <span v-if="selectedCategory">Cateory: {{ selectedCategory }}</span>
         <span v-else>Blog</span>
       </h2>
-      <article v-for="post in paginatedPosts" class="mt-8 mx-8">
+
+      <article v-for="post in paginatedPosts" class="mt-8 mx-0 lg:mx-8">
         <h2>
           <a :href="post.path">{{ post.title }}</a>
         </h2>
@@ -22,7 +24,7 @@
       </div>
     </section>
 
-    <aside class="w-1/5 pl-8">
+    <aside class="w-full md:w-1/5 md:pl-8 text-center md:text-left">
       <h3>Topics</h3>
       <ul class="mt-4 list-reset ">
         <li v-for="category in categories" class="mt-3">
