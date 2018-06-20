@@ -3,6 +3,10 @@ const tailwindcss = require("tailwindcss");
 module.exports = {
   title: "Stage Right Labs",
   head: [
+    // Theme colors
+    ['meta', { name: 'theme-color', content: '#ff2e2e'}],
+    ['meta', { name: 'msapplication-navbutton-color', content: '#ff2e2e'}],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: '#ff2e2e'}],
     // Favicon
     ["link", { rel: "icon", href: "/favicon-96x96.png" }],
     // Matomo tracking script
