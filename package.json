@@ -11,5 +11,7 @@
     "tailwindcss": "^0.5.3",
     "vuepress": "^0.10.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue-awesome": "^2.3.7"
+  }
 }
