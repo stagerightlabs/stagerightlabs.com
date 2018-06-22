@@ -4,8 +4,8 @@
   "description": "The Stage Right Labs home page and blog",
   "author": "Ryan Durham <ryan@stagerightlabs.com>",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "dev": "vuepress dev content",
+    "build": "vuepress build content"
   },
   "devDependencies": {
     "tailwindcss": "^0.5.3",
