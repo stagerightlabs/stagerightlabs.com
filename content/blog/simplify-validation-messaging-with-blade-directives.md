@@ -27,6 +27,8 @@ This feels messy to me. There is a lot going on there, and having to specify the
 Add this to your `AppServiceProvider` (or any place that is loaded before views are rendered):
 
 ```php
+<?php
+
 Blade::directive('error', function($key) {
 	$key = str_replace(['\'', '"'], '', $key);
 	$errors = session()->get('errors') ?: new \Illuminate\Support\ViewErrorBag;
@@ -35,6 +37,8 @@ Blade::directive('error', function($key) {
 		return "<?php echo '<div class=\"invalid-feedback\">{$message}</div>'; ?>";
 	}
 });
+
+?>
 ```
 
 This allows us to simplify our input like so:
@@ -85,10 +89,12 @@ It is important to note that by using this blade directive we are not actually c
 While we are at it, there is one more custom directive you might find useful:
 
 ```php
+<?php
 Blade::directive('errors', function() {
 	$errors = session()->get('errors') ?: new \Illuminate\Support\ViewErrorBag;
 	return "<?php echo '<pre>" . print_r($errors->getMessages(), true) . "</pre>'; ?>";
 });
+?>
 ```
 
 This is a utility method for quickly echoing all of the currently available error messages to the screen, when used like this:

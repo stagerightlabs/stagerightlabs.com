@@ -19,6 +19,12 @@
 <script>
 import format from 'date-fns/format';
 import Prism from 'prismjs';
+import 'prismjs/components/prism-javascript.min';
+import 'prismjs/components/prism-sass.min';
+import 'prismjs/components/prism-php.min';
+import 'prismjs/components/prism-sql.min';
+import 'prismjs/components/prism-css.min';
+import 'prismjs/components/prism-bash';
 import '../theme/prism.css';
 
 export default {
