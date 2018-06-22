@@ -3,8 +3,8 @@
     <img src="../theme/images/logo-h.png" class="mx-auto md:mx-8 w-64 lg:w-auto" alt="Stage Right Labs logo">
     <nav class="text-center md:text-right mt-2 lg:mt-4 lg:mb-0 text-lg md:text-2xl">
       <a @click="goTo('/blog')" class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6">Blog</a>
-      <a href="#" class="text-black hover:text-red mx-3 lg:mx-6">Projects</a>
-      <a href="#" class="text-black hover:text-red mx-3 lg:mx-6">Contact</a>
+      <a href="#" class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6">Projects</a>
+      <a @click="goTo('/contact')" class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6">Contact</a>
     </nav>
   </header>
 </template>
