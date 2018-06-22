@@ -19,7 +19,7 @@ Here are the steps I took to get my dev setup up and running:
 
 Start by [installing](https://github.com/vuejs/vue-cli) the Vue CLI tool and then using it to generate a new site:
 
-```
+```bash
 $ vue init webpack homepage
 ```
 
