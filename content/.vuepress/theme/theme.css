@@ -17,4 +17,26 @@ p {
   @apply .leading-loose;
 }
 
+.blog-post p {
+  @apply .mb-4;
+}
+
+.blog-post code {
+  @apply .rounded .px-1 .bg-white;
+}
+
+/* .blog-post pre {
+  @apply .bg-white .font-mono .p-1 .mb-4;
+} */
+
+/* .blog-post pre code {
+  background-color: inherit;
+  padding: inherit;
+  border-radius: inherit;
+} */
+
+/* .blog-post .content {
+  @apply .mx-8;
+} */
+
 @tailwind utilities;
