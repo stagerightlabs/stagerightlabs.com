@@ -12,7 +12,7 @@
     "eslint-plugin-vue": "^4.5.0",
     "tailwindcss": "^0.5.3",
     "vue-awesome": "^2.3.7",
-    "vuepress": "^0.10.1"
+    "vuepress": "^0.10.2"
   },
   "dependencies": {
     "date-fns": "^1.29.0",
