@@ -14,4 +14,5 @@ export default ({
   // router.addRoutes([{ path: "/blog/", redirect: "/" }]);
   router.addRoutes([{ path: "/blog", component: Layout }]);
   router.addRoutes([{ path: "/contact", component: Layout }]);
+  router.addRoutes([{ path: "/projects", component: Layout }]);
 };

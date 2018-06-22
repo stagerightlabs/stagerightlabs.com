@@ -8,6 +8,7 @@
       </div>
       <blog v-else-if="$route.path == '/blog/'"></blog>
       <contact v-else-if="$route.path == '/contact/'"></contact>
+      <projects v-else-if="$route.path == '/projects/'"></projects>
       <colophon></colophon>
     </template>
   </div>
@@ -16,12 +17,13 @@
 <script>
 import Navigation from '../components/Navigation.vue';
 import Colophon from '../components/Colophon.vue';
+import Projects from '../components/Projects.vue';
 import Contact from '../components/Contact.vue';
 import Blog from '../components/Blog.vue';
 import Home from '../components/Home.vue';
 
 export default {
-  components: { Navigation, Colophon, Contact, Blog, Home }
+  components: { Navigation, Colophon, Projects, Contact, Blog, Home }
 }
 </script>
 
