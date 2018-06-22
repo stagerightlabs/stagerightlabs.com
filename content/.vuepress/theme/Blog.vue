@@ -9,7 +9,12 @@
 
       <article v-for="post in paginatedPosts" class="mt-8 mx-0 lg:mx-8">
         <h2>
-          <a :href="post.path">{{ post.title }}</a>
+          <a
+            @click="$router.push({path: post.path})"
+            class="cursor-pointer"
+          >
+            {{ post.title }}
+          </a>
         </h2>
         <p class="mt-4" v-html="post.excerpt"></p>
       </article>

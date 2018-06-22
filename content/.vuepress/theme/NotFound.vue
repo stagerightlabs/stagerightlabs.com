@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Navigation from '../components/Navigation.vue'
+import Navigation from './Navigation.vue'
 
 const msgs = [
   `There's nothing here.`,
