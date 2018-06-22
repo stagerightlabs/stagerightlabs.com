@@ -46,7 +46,7 @@ let colors = {
   transparent: "transparent",
   black: "#333333",
   red: "#ff2e2e",
-  white: "#ffffff",
+  white: "#fafaf9",
 };
 
 module.exports = {

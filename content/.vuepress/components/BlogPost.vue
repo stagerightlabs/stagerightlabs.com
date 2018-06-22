@@ -3,7 +3,10 @@
     <article class="blog-post">
       <header class="mb-6">
         <h1 class="mb-3">{{ $page.title }}</h1>
-        <div v-if="$page.frontmatter.categories" class="flex justify-between">
+        <div
+          v-if="$page.frontmatter.categories"
+          class="flex justify-between"
+        >
           <span>{{ publicationDate }}</span>
           <span class="italic">{{ categories }}</span>
         </div>
@@ -16,7 +19,7 @@
 <script>
 import format from 'date-fns/format';
 import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
+import '../theme/prism.css';
 
 export default {
   computed: {
