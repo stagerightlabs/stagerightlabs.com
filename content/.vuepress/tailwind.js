@@ -44,17 +44,7 @@ View the full documentation at https://tailwindcss.com.
 
 let colors = {
   transparent: "transparent",
-
   black: "#333333",
-  // "grey-darkest": "#3d4852",
-  // "grey-darker": "#606f7b",
-  // "grey-dark": "#8795a1",
-  grey: "#b8c2cc",
-  // "grey-light": "#dae1e7",
-  // "grey-lighter": "#f1f5f8",
-  // "grey-lightest": "#f8fafc",
-  white: "#ffffff",
-
   red: "#ff2e2e"
 };
 
@@ -120,7 +110,7 @@ module.exports = {
 
   fonts: {
     sans: ["'Open Sans'", "sans-serif"],
-    serif: ["serif"],
+    // serif: ["serif"],
     mono: ["monospace"]
   },
 
@@ -194,8 +184,8 @@ module.exports = {
   */
 
   leading: {
-    none: 1,
-    tight: 1.25,
+    // none: 1,
+    // tight: 1.25,
     normal: 1.5,
     loose: 1.75
   },
@@ -213,7 +203,7 @@ module.exports = {
   */
 
   tracking: {
-    tight: "-0.05em",
+    // tight: "-0.05em",
     normal: "0"
     // wide: "0.05em"
   },
