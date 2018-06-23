@@ -29,5 +29,9 @@ p {
   @apply .mb-6;
 }
 
+.blog-post ul li {
+  @apply .text-lg .my-4 .ml-4 .leading-normal;
+}
+
 
 @tailwind utilities;
