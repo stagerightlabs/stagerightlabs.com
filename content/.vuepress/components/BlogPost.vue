@@ -22,6 +22,7 @@
 <script>
 import format from 'date-fns/format';
 import Prism from 'prismjs';
+import 'prismjs/components/prism-markup-templating.min';
 import 'prismjs/components/prism-javascript.min';
 import 'prismjs/components/prism-sass.min';
 import 'prismjs/components/prism-php.min';
