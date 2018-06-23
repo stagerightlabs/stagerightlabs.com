@@ -1,14 +1,17 @@
 <template>
   <main class="block mt-8 mx-8 my-8">
     <article class="blog-post">
-      <header class="mb-8">
+      <header class="mb-6">
         <h1 class="mb-4 leading-normal">{{ $page.title }}</h1>
         <div
           v-if="$page.frontmatter.categories"
-          class="flex justify-between"
+          class="block md:flex md:justify-between"
         >
-          <span>{{ publicationDate }}</span>
-          <span v-if="topics.length > 0">
+          <span class="block mb-1">{{ publicationDate }}</span>
+          <span
+            v-if="topics.length > 0"
+            class="block mb-1"
+          >
             <em class="mr-1">Topic<span v-if="topics.length > 1">s</span>:</em>
             {{ topics.join(', ') }}
           </span>

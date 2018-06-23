@@ -17,8 +17,12 @@ p {
   @apply .leading-loose;
 }
 
+.blog-post h2, .blog-post h3, .blog-post h4, .blog-post h5, .blog-post h6 {
+  @apply .mb-2 .leading-normal;
+}
+
 .blog-post p {
-  @apply .mb-6 .text-lg;
+  @apply .mb-6 .text-lg .overflow-auto;
 }
 
 .blog-post code {
