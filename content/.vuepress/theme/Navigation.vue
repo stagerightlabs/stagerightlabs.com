@@ -1,10 +1,35 @@
 <template>
   <header class="block md:flex border-b-4 border-red md:justify-between md:items-center mx-8 md:mx-auto py-8 text-center lg:text-left">
-    <img src="../theme/images/logo-h.png" class="mx-auto md:mx-8 w-64 lg:w-auto" alt="Stage Right Labs logo">
-    <nav class="text-center md:text-right mt-2 lg:mt-4 lg:mb-0 text-lg md:text-2xl">
-      <a @click="goTo('/blog')" class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6">Blog</a>
-      <a @click="goTo('/projects')" class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6">Projects</a>
-      <a @click="goTo('/contact')" class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6">Contact</a>
+    <img
+      src="../theme/images/logo-h.png"
+      class="mx-auto md:mx-8 w-64 lg:w-auto"
+      alt="Stage Right Labs logo"
+    >
+    <nav
+      aria-label="Main Menu"
+      class="text-center md:text-right mt-2 lg:mt-4 lg:mb-0 text-lg md:text-2xl"
+    >
+      <a
+        class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6"
+        aria-label="Goto Blog"
+        @click="goTo('/blog')"
+      >
+        Blog
+      </a>
+      <a
+        class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6"
+        aria-label="Goto Projects"
+        @click="goTo('/projects')"
+      >
+        Projects
+      </a>
+      <a
+        class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6"
+        aria-label="Goto Contact"
+        @click="goTo('/contact')"
+      >
+        Contact
+      </a>
     </nav>
   </header>
 </template>
