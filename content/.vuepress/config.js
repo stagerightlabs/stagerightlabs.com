@@ -1,4 +1,5 @@
 const tailwindcss = require("tailwindcss");
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   title: "Stage Right Labs",
@@ -32,5 +33,16 @@ module.exports = {
       tailwindcss("content/.vuepress/tailwind.js"),
       require("autoprefixer")
     ]
+  },
+  configureWebpack: (config, isServer) => {
+    if (isServer) {
+      config.externals = [
+        // Ensure that webpack knows where to find the vue-awesome icon assets
+        // https://github.com/Justineo/vue-awesome/issues/7#issuecomment-322034039
+        nodeExternals({
+          whitelist: [/\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
+        })
+      ]
+    }
   }
 };

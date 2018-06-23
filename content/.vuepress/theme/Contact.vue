@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import * as Icon from 'vue-awesome';
+import Icon from 'vue-awesome/components/Icon';
 import 'vue-awesome/icons/regular/envelope';
 import 'vue-awesome/icons/brands/github-alt';
 import 'vue-awesome/icons/brands/gitlab';
