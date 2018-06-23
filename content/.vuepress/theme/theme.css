@@ -5,7 +5,7 @@
 
 body {
   background-image: url("./images/halftone.png");
-  @apply .font-sans;
+  @apply .font-sans .text-black;
 }
 
 a {
@@ -25,18 +25,9 @@ p {
   @apply .rounded .px-1 .bg-white;
 }
 
-/* .blog-post pre {
-  @apply .bg-white .font-mono .p-1 .mb-4;
-} */
+.blog-post div pre {
+  @apply .mb-6;
+}
 
-/* .blog-post pre code {
-  background-color: inherit;
-  padding: inherit;
-  border-radius: inherit;
-} */
-
-/* .blog-post .content {
-  @apply .mx-8;
-} */
 
 @tailwind utilities;
