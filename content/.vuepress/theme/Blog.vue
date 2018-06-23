@@ -7,33 +7,75 @@
         <span v-else>Blog</span>
       </h2>
 
-      <article v-for="post in paginatedPosts" class="mt-8 mx-0 lg:mx-8">
+      <article
+        v-for="post in paginatedPosts"
+        :key="post.path"
+        class="mt-8 mx-0 lg:mx-8"
+      >
         <h2>
           <a
-            @click="$router.push({path: post.path})"
             class="cursor-pointer"
+            @click="$router.push({path: post.path})"
           >
             {{ post.title }}
           </a>
         </h2>
-        <p class="mt-4" v-html="post.excerpt"></p>
+        <p
+          class="mt-4"
+          v-html="post.excerpt"/>
       </article>
 
-      <div class="pagination my-8 flex justify-around" v-if="pageCount > 1">
+      <nav
+        v-if="pageCount > 1"
+        class="pagination my-8 pt-8 flex justify-around"
+        aria-label="Pagination Navigation"
+        role="navigation"
+      >
         <span>
-          <a @click="previousPage" :class="[paginationBackwardAllowed ? 'cursor-pointer' : 'cursor-not-allowed']">Newer</a>
+          <a
+            :class="[paginationBackwardAllowed ? 'cursor-pointer' : 'cursor-not-allowed opacity-25']"
+            :aria-label="[paginationBackwardAllowed ? `Goto Page ${pageNumber - 1}` : 'disabled']"
+            class="flex items-center"
+            @click="previousPage"
+          >
+            <icon
+              name="less-than"
+              class="mr-2"
+              scale="2"
+            />
+          </a>
         </span>
         <span>
-          <a @click=" nextPage " :class="[paginationForwardAllowed ? 'cursor-pointer' : 'cursor-not-allowed'] ">Older</a>
+          <a
+            :class="[paginationForwardAllowed ? 'cursor-pointer' : 'cursor-not-allowed opacity-25']"
+            :aria-label="[paginationForwardAllowed ? `Goto Page ${pageNumber + 1}` : 'disabled']"
+            class="flex items-center"
+            @click=" nextPage "
+          >
+            <icon
+              name="greater-than"
+              class="ml-2"
+              scale="2"
+            />
+          </a>
         </span>
-      </div>
+      </nav>
     </section>
 
     <aside class="w-full md:w-1/5 md:pl-8 text-center md:text-left">
       <h3>Topics</h3>
       <ul class="mt-4 list-reset ">
-        <li v-for="category in categories" class="mt-3">
-          <a class="cursor-pointer" @click="goToCategory(category)">{{ category }}</a>
+        <li
+          v-for="category in categories"
+          :key="category"
+          class="mt-3"
+        >
+          <a
+            class="cursor-pointer"
+            @click="goToCategory(category)"
+          >
+            {{ category }}
+          </a>
         </li>
       </ul>
     </aside>
@@ -41,31 +83,12 @@
 </template>
 
 <script>
+import Icon from 'vue-awesome/components/Icon';
+import 'vue-awesome/icons/greater-than';
+import 'vue-awesome/icons/less-than';
+
 export default {
-  methods: {
-    nextPage () {
-      let nextPage = this.pageNumber + 1;
-
-      if (nextPage > this.pageCount) {
-        nextPage = this.pageCount
-      }
-
-      this.$router.push({ query: { page: nextPage } })
-    },
-
-    previousPage () {
-      let previousPage = this.pageNumber - 1;
-
-      if (previousPage < 1) {
-        previousPage = 1;
-      }
-
-      this.$router.push({ query: { page: previousPage } })
-    },
-    goToCategory (category) {
-      this.$router.push({ query: { category } })
-    }
-  },
+  components: { Icon },
   computed: {
     posts () {
       let posts = this.$site.pages.filter(function (page) {
@@ -116,7 +139,31 @@ export default {
     selectedCategory () {
       return this.$route.query.category || null
     }
-  }
+  },
+  methods: {
+    nextPage () {
+      let nextPage = this.pageNumber + 1;
+
+      if (nextPage > this.pageCount) {
+        nextPage = this.pageCount
+      }
+
+      this.$router.push({ query: { page: nextPage } })
+    },
+
+    previousPage () {
+      let previousPage = this.pageNumber - 1;
+
+      if (previousPage < 1) {
+        previousPage = 1;
+      }
+
+      this.$router.push({ query: { page: previousPage } })
+    },
+    goToCategory (category) {
+      this.$router.push({ query: { category } })
+    }
+  },
 }
 </script>
 
