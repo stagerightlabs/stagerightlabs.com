@@ -34,9 +34,7 @@
         </h3>
         <p class="leading-normal">Easy form validation for Laravel 4</p>
       </div>
-      <div class="w-full md:w-1/3 flex flex-col items-center text-center mb-8 text-black">
-
-      </div>
+      <div class="w-full md:w-1/3 flex flex-col items-center text-center mb-8 text-black"/>
     </section>
   </main>
 </template>
