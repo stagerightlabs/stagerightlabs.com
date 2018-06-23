@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <navigation></navigation>
+    <navigation/>
     <div class="mt-8 text-center">
       <h1 class="my-8 text">404</h1>
       <blockquote class="mb-4">{{ getMsg() }}</blockquote>
