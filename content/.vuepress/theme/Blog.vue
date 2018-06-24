@@ -64,13 +64,14 @@
 
     <aside class="w-full md:w-1/5 md:pl-8 text-center md:text-left">
       <h3>Topics</h3>
-      <ul class="mt-4 list-reset ">
+      <ul class="mt-4 list-reset categories">
         <li
           v-for="category in categories"
           :key="category"
           class="mt-3"
         >
           <a
+            :class="{'active': selectedCategory === category}"
             class="cursor-pointer"
             @click="goToCategory(category)"
           >
@@ -161,7 +162,11 @@ export default {
       this.$router.push({ query: { page: previousPage } })
     },
     goToCategory (category) {
-      this.$router.push({ query: { category } })
+      if (category === this.selectedCategory) {
+        this.$router.push({query: { category: ''}})
+      } else {
+        this.$router.push({ query: { category } })
+      }
     }
   },
 }

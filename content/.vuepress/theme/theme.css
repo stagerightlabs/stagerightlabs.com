@@ -37,5 +37,8 @@ p {
   @apply .text-lg .my-4 .ml-4 .leading-normal;
 }
 
+ul.categories li a.active {
+  @apply .bg-red .text-white .px-1 .rounded;
+}
 
 @tailwind utilities;
