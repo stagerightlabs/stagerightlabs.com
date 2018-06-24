@@ -1,7 +1,7 @@
 <template>
   <footer class="text-center my-8">
     <p class="text-sm">
-      &copy; {{ year }} Stage Right Labs
+      &copy;{{ year }} Stage Right Labs
     </p>
   </footer>
 </template>
