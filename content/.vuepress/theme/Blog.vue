@@ -7,6 +7,7 @@
         <span v-else>Blog</span>
       </h2>
 
+      <!-- Blog post list -->
       <article
         v-for="post in paginatedPosts"
         :key="post.path"
@@ -20,11 +21,18 @@
             {{ post.title }}
           </a>
         </h2>
-        <p
-          class="mt-4"
-          v-html="post.excerpt"/>
+        <p class="mt-4">
+          <span v-html="excerpt(post)"/>
+          <a
+            class="cursor-pointer"
+            @click="$router.push({path: post.path})"
+          >
+            <icon name="angle-double-right" />
+          </a>
+        </p>
       </article>
 
+      <!-- Pagination -->
       <nav
         v-if="pageCount > 1"
         class="pagination my-8 pt-8 flex justify-around"
@@ -62,6 +70,7 @@
       </nav>
     </section>
 
+    <!-- Topic List -->
     <aside class="w-full md:w-1/5 md:pl-8 text-center md:text-left">
       <h3>Topics</h3>
       <ul class="mt-4 list-reset categories">
@@ -85,6 +94,7 @@
 
 <script>
 import Icon from 'vue-awesome/components/Icon';
+import 'vue-awesome/icons/angle-double-right';
 import 'vue-awesome/icons/greater-than';
 import 'vue-awesome/icons/less-than';
 
@@ -167,6 +177,9 @@ export default {
       } else {
         this.$router.push({ query: { category } })
       }
+    },
+    excerpt(post) {
+      return post.excerpt.replace(/(<([^>]+)>)/ig,"");
     }
   },
 }
