@@ -145,7 +145,8 @@ export default {
       return this.$site.pages
         .reduce((categories, page) => categories.concat(page.frontmatter.categories), [])
         .filter((element, index, array) => array.indexOf(element) == index)
-        .filter((category) => category);
+        .filter((category) => category)
+        .sort();
     },
     selectedCategory () {
       return this.$route.query.category || null
