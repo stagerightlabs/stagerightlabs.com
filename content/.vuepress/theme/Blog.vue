@@ -133,7 +133,7 @@ export default {
       return pageNumber;
     },
     pageCount () {
-      return Math.floor(this.posts.length / 5);
+      return Math.ceil(this.posts.length / 5);
     },
     paginationForwardAllowed () {
       return this.pageNumber < this.pageCount;
@@ -160,7 +160,13 @@ export default {
         nextPage = this.pageCount
       }
 
-      this.$router.push({ query: { page: nextPage } })
+      let query = { page: nextPage };
+
+      if (this.selectedCategory) {
+        query.category = this.selectedCategory;
+      }
+
+      this.$router.push({query})
     },
 
     previousPage () {
@@ -170,7 +176,13 @@ export default {
         previousPage = 1;
       }
 
-      this.$router.push({ query: { page: previousPage } })
+      let query = { page: previousPage };
+
+      if (this.selectedCategory) {
+        query.category = this.selectedCategory;
+      }
+
+      this.$router.push({query})
     },
     goToCategory (category) {
       if (category === this.selectedCategory) {
