@@ -37,6 +37,10 @@ p {
   @apply .text-lg .my-4 .ml-4 .leading-normal;
 }
 
+.blog-post blockquote {
+  @apply .text-gray .border-l-4 .border-gray .pl-4 .mx-4;
+}
+
 ul.categories li a.active {
   @apply .bg-red .text-white .px-1 .rounded;
 }
