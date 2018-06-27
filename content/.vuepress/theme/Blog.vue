@@ -93,6 +93,7 @@
 </template>
 
 <script>
+import compareDesc from 'date-fns/compare_desc';
 import Icon from 'vue-awesome/components/Icon';
 import 'vue-awesome/icons/angle-double-right';
 import 'vue-awesome/icons/greater-than';
@@ -104,8 +105,7 @@ export default {
     posts () {
       let posts = this.$site.pages.filter(function (page) {
         return page.frontmatter.layout === 'BlogPost'
-      })
-        .sort((a, b) => a.frontmatter.date < b.frontmatter.date);
+      }).sort((a,b) =>  compareDesc(a.frontmatter.date, b.frontmatter.date));
 
       if (this.selectedCategory) {
         posts = posts.filter((post) => {
