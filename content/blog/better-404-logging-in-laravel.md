@@ -16,7 +16,7 @@ Every Laravel 5.\* has an `App/Exceptions/Handler` class that allows us to custo
 
 For now, we are more interested in the `report()` method. This method is specifically intended as a tool for customizing how we log errors. By default, Laravel disables the reporting of Http errors (such as 404) by including `Symfony\Component\HttpKernel\Exception\HttpException::class` in the `$dontReport` list. We could just comment out that line, but that won't acually help us accomplish our goal. When a 404 error is handled to the logger, you get something like this:
 
-```shell
+```verilog
 [2017-03-17 22:51:00] local.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException in /home/vagrant/example.com/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php:161
 Stack trace:
 #0 /home/vagrant/example.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(533): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
