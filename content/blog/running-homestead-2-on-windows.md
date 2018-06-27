@@ -9,7 +9,7 @@ highlight:
     theme: tomorrow
 ---
 
-I know we have just met, but I have a confession to make. I am a windows user. Sure, I have dabled with linux distros in the past, and I have some very good friends who are tried and true Mac enthusiasts, but at the end of the day I have always felt most comfortable using Windows as my primary operating system. Using [Vagrant](https://www.vagrantup.com/) opened up a whole new world of possibilites for me, and adding Laravel's [Homestead](http://laravel.com/docs/4.2/homestead) into the mix has only made my life easier. Now that Homestead 2.0 has been released, I have been eager to make the upgrade.
+I know we have just met, but I have a confession to make. I am a windows user. Sure, I have dabled with linux distros in the past, and I have some very good friends who are tried and true Mac enthusiasts, but at the end of the day I have always felt most comfortable using Windows as my primary operating system. Using [Vagrant](https://www.vagrantup.com/) opened up a whole new world of posibillites for me, and adding Laravel's [Homestead](http://laravel.com/docs/4.2/homestead) into the mix has only made my life easier. Now that Homestead 2.0 has been released, I have been eager to make the upgrade.
 
 <!-- more -->
 
