@@ -5,7 +5,7 @@
       @click="$router.push({path: '/blog/'})"
     >
       <img
-        src="../theme/images/logo-v.png"
+        src="../images/logo-v.png"
         alt="Stage Right Labs"
         class="max-h-screen py-4"
       >

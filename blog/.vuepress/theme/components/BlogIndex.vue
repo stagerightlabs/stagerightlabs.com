@@ -1,10 +1,13 @@
 <template>
   <main class="block md:flex mt-8 mx-8">
     <section class="w-full md:w-4/5">
-
       <h2>
-        <span v-if="selectedCategory">Cateory: {{ selectedCategory }}</span>
-        <span v-else>Blog</span>
+        <span v-if="selectedCategory">
+          Cateory: {{ selectedCategory }}
+        </span>
+        <span v-else>
+          Blog
+        </span>
       </h2>
 
       <!-- Blog post list -->
@@ -22,7 +25,7 @@
           </a>
         </h2>
         <p class="mt-4">
-          <span v-html="excerpt(post)"/>
+          <span v-html="excerpt(post)" />
           <a
             class="cursor-pointer"
             @click="$router.push({path: post.path})"

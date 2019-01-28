@@ -2,7 +2,9 @@
   <main class="block mt-8 mx-8 my-8">
     <article class="blog-post">
       <header class="mb-6">
-        <h1 class="mb-4 leading-normal">{{ $page.title }}</h1>
+        <h1 class="mb-4 leading-normal">
+          {{ $page.title }}
+        </h1>
         <div
           v-if="$page.frontmatter.categories"
           class="block md:flex md:justify-between"
@@ -11,12 +13,18 @@
           <time
             :datetime="publicationTimestamp"
             class="block mb-1"
-          >{{ publicationDate }}</time>
+          >
+            {{ publicationDate }}
+          </time>
           <span
             v-if="topics.length > 0"
             class="block mb-1"
           >
-            <em class="mr-1">Topic<span v-if="topics.length > 1">s</span>:</em>
+            <em class="mr-1">
+              Topic<span v-if="topics.length > 1">
+                s
+              </span>:
+            </em>
             {{ topics.join(', ') }}
           </span>
         </div>
@@ -44,7 +52,7 @@ import 'prismjs/components/prism-php.min';
 import 'prismjs/components/prism-sql.min';
 import 'prismjs/components/prism-css.min';
 import 'prismjs/components/prism-bash';
-import '../theme/prism.css';
+import '../styles/prism.css';
 
 export default {
   computed: {

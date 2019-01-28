@@ -1,7 +1,7 @@
 <template>
   <header class="block md:flex border-b-4 border-red md:justify-between md:items-center mx-8 md:mx-auto py-8 text-center lg:text-left">
     <img
-      src="../theme/images/logo-h.png"
+      src="../images/logo-h.png"
       class="mx-auto md:mx-8 w-64 lg:w-auto"
       alt="Stage Right Labs logo"
     >

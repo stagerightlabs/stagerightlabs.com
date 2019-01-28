@@ -1,31 +1,32 @@
 <template>
   <div class="container mx-auto">
-    <home v-if="$page.frontmatter.home"/>
+    <home v-if="$page.frontmatter.home" />
     <template v-else>
-      <navigation/>
+      <navigation />
       <component
-        v-if="$page.frontmatter.layout"
         :is="$page.frontmatter.layout"
+        v-if="$page.frontmatter.layout"
       />
-      <blog v-else-if="$route.path == '/blog/'"/>
-      <contact v-else-if="$route.path == '/contact/'"/>
-      <projects v-else-if="$route.path == '/projects/'"/>
-      <colophon/>
+      <blog-index v-else-if="$route.path == '/blog/'" />
+      <contact v-else-if="$route.path == '/contact/'" />
+      <projects v-else-if="$route.path == '/projects/'" />
+      <colophon />
     </template>
   </div>
 </template>
 
 <script>
-import Navigation from './Navigation.vue';
-import Colophon from './Colophon.vue';
-import Projects from './Projects.vue';
-import Contact from './Contact.vue';
-import Blog from './Blog.vue';
-import Home from './Home.vue';
+import Home from './components/Home.vue';
+import Contact from './components/Contact.vue';
+import Colophon from './components/Colophon.vue';
+import Projects from './components/Projects.vue';
+import BlogPost from './components/BlogPost.vue';
+import BlogIndex from './components/BlogIndex.vue';
+import Navigation from './components/Navigation.vue';
 
 export default {
-  components: { Navigation, Colophon, Projects, Contact, Blog, Home }
+  components: { Navigation, Colophon, Projects, Contact, BlogIndex, BlogPost, Home }
 }
 </script>
 
-<style src="./theme.css"></style>
+<style src="./styles/theme.css"></style>
