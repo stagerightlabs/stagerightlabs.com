@@ -48,6 +48,7 @@ let colors = {
   gray: "#777777",
   red: "#ff2e2e",
   white: "#fafaf9",
+  cream: "#f4f2e9",
 };
 
 module.exports = {

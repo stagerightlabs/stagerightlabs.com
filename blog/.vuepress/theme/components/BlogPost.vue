@@ -9,7 +9,6 @@
           v-if="$page.frontmatter.categories"
           class="block md:flex md:justify-between"
         >
-          <!-- <span class="block mb-1">{{ publicationDate }}</span> -->
           <time
             :datetime="publicationTimestamp"
             class="block mb-1"
@@ -21,9 +20,12 @@
             class="block mb-1"
           >
             <em class="mr-1">
-              Topic<span v-if="topics.length > 1">
-                s
-              </span>:
+              <span v-if="topics.length > 1">
+                Topics:
+              </span>
+              <span v-else>
+                Topic:
+              </span>
             </em>
             {{ topics.join(', ') }}
           </span>
@@ -31,9 +33,9 @@
       </header>
       <aside
         v-if="ageInMonths > 12"
-        class="border border-red text-gray p-2 my-4 text-sm leading-normal"
+        class="border border-red text-gray-dark bg-cream p-4 my-8 leading-normal text-center"
       >
-        This post was published a while ago and may be out of date. I try to keep these posts updated with accurate information but you may want to consult additional resources.
+        This post is more than a year old. I try to keep this content as up-to-date as possible but you may want to consult additional resources.
       </aside>
       <Content :custom="false" />
     </article>
