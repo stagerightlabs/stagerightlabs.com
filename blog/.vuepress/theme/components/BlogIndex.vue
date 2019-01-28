@@ -1,20 +1,18 @@
 <template>
   <main class="block md:flex mt-8 mx-8">
     <section class="w-full md:w-4/5">
-      <h2>
-        <span v-if="selectedCategory">
-          Cateory: {{ selectedCategory }}
-        </span>
-        <span v-else>
-          Blog
-        </span>
+      <h2
+        v-if="selectedCategory"
+        class="mb-8"
+      >
+        "{{ selectedCategory }}" Blog Posts
       </h2>
 
       <!-- Blog post list -->
       <article
         v-for="post in paginatedPosts"
         :key="post.path"
-        class="mt-8 mx-0 lg:mx-8"
+        class="mb-8 mx-0"
       >
         <h2>
           <a
