@@ -2,9 +2,9 @@
   <div class="container mx-auto">
     <navigation />
     <div class="mt-8 text-center">
-      <h1 class="my-8 text">
+      <p class="my-8 text-5xl">
         404
-      </h1>
+      </p>
       <blockquote class="mb-4">
         {{ getMsg() }}
       </blockquote>
