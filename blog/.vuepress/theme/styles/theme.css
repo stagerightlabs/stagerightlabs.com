@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 
 body {
-  background-image: url("./images/halftone.png");
+  background-image: url("../images/halftone.png");
   @apply .font-sans .text-black;
 }
 
