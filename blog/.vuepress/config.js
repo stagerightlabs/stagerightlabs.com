@@ -30,7 +30,7 @@ module.exports = {
   ],
   postcss: {
     plugins: [
-      tailwindcss("content/.vuepress/tailwind.js"),
+      tailwindcss("blog/.vuepress/tailwind.js"),
       require("autoprefixer")
     ]
   },
