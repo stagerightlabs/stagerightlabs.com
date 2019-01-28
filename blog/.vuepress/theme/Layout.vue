@@ -1,13 +1,12 @@
 <template>
   <div class="container mx-auto">
-    <home v-if="$page.frontmatter.home" />
-    <template v-else>
+    <template>
       <navigation />
       <component
         :is="$page.frontmatter.layout"
         v-if="$page.frontmatter.layout"
       />
-      <blog-index v-else-if="$route.path == '/blog/'" />
+      <blog-index v-else-if="$page.frontmatter.home" />
       <contact v-else-if="$route.path == '/contact/'" />
       <projects v-else-if="$route.path == '/projects/'" />
       <colophon />

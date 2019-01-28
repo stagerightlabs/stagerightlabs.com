@@ -11,8 +11,8 @@
     >
       <a
         class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6"
-        aria-label="Goto Blog"
-        @click="goTo('/blog')"
+        aria-label="Go to Home"
+        @click="goTo('/')"
       >
         Blog
       </a>

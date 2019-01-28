@@ -9,7 +9,6 @@ export default ({
   // Register URL Redirects
   // router.addRoutes([{ path: "/blog/", redirect: "/" }]);
   router.addRoutes([
-    { path: "/blog", component: Layout },
     { path: "/contact", component: Layout },
     { path: "/projects", component: Layout },
     {
