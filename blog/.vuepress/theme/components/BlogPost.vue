@@ -54,6 +54,7 @@ import 'prismjs/components/prism-php.min';
 import 'prismjs/components/prism-sql.min';
 import 'prismjs/components/prism-css.min';
 import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-yaml';
 import '../styles/prism.css';
 
 export default {
