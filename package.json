@@ -8,15 +8,15 @@
     "build": "vuepress build blog"
   },
   "devDependencies": {
-    "eslint": "^5.12.1",
-    "eslint-plugin-vue": "^5.1.0",
+    "eslint": "^5.15.0",
+    "eslint-plugin-vue": "^5.2.2",
     "tailwindcss": "^0.7.4",
-    "vuepress": "^0.14.8",
+    "vuepress": "^0.14.9",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "date-fns": "^1.30.1",
     "prismjs": "^1.15.0",
-    "vue-awesome": "^3.3.1"
+    "vue-awesome": "^3.4.0"
   }
 }
