@@ -8,10 +8,10 @@
     "build": "vuepress build blog"
   },
   "devDependencies": {
-    "eslint": "^5.15.0",
+    "eslint": "^5.15.3",
     "eslint-plugin-vue": "^5.2.2",
     "tailwindcss": "^0.7.4",
-    "vuepress": "^0.14.9",
+    "vuepress": "^0.14.10",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
