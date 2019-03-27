@@ -45,16 +45,6 @@
 <script>
 import format from 'date-fns/format';
 import differenceInMonths from 'date-fns/difference_in_months'
-import Prism from 'prismjs';
-import 'prismjs/components/prism-markup-templating.min';
-import 'prismjs/components/prism-verilog.min';
-import 'prismjs/components/prism-javascript.min';
-import 'prismjs/components/prism-sass.min';
-import 'prismjs/components/prism-php.min';
-import 'prismjs/components/prism-sql.min';
-import 'prismjs/components/prism-css.min';
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-yaml';
 import '../styles/prism.css';
 
 export default {
@@ -71,9 +61,6 @@ export default {
     ageInMonths() {
       return differenceInMonths(new Date(), this.$page.frontmatter.date)
     }
-  },
-  mounted() {
-    Prism.highlightAll();
   }
 }
 </script>

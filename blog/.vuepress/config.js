@@ -28,6 +28,23 @@ module.exports = {
     `
     ]
   ],
+  plugins: [
+    ['@vuepress/nprogress'],
+    ['@vuepress/last-updated'],
+    ['autometa', {
+      site: {
+        name: 'Stage Right Labs',
+        twitter: 'stagerightlabs',
+      },
+      author: {
+        name: 'Ryan C. Durham'
+      },
+      canonical_base: 'https://stagerightlabs.com',
+    }],
+    ['sitemap', {
+      hostname: 'https://stagerightlabs.com'
+    }]
+  ],
   postcss: {
     plugins: [
       tailwindcss("blog/.vuepress/tailwind.js"),
@@ -44,5 +61,13 @@ module.exports = {
         })
       ]
     }
+  },
+  themeConfig: {
+    author: {
+      name: "Ryan C. Durham"
+    }
+  },
+  markdown: {
+    // lineNumbers: true
   }
 };

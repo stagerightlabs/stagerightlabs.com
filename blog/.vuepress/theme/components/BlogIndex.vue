@@ -144,7 +144,7 @@ export default {
     },
     categories () {
       return this.$site.pages
-        .reduce((categories, page) => categories.concat(page.frontmatter.categories), [])
+        .reduce((categories, page) => categories.concat(page.frontmatter.tags), [])
         .filter((element, index, array) => array.indexOf(element) == index)
         .filter((category) => category)
         .sort();

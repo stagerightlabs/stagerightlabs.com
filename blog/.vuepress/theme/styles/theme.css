@@ -26,11 +26,11 @@ p {
 }
 
 .blog-post code {
-  @apply .rounded .bg-white;
+  @apply .rounded;
 }
 
 .blog-post div pre {
-  @apply .mb-6;
+  @apply .mb-6 .bg-white .p-4 .rounded .leading-tight;
 }
 
 .blog-post ul li {
