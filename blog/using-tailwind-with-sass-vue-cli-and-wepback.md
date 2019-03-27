@@ -3,7 +3,7 @@ title: 'Using Tailwind with SASS, Vue-CLI and Wepback'
 published: true
 date: '2017-12-18 16:18'
 layout: BlogPost
-categories:
+tags:
   - Vue
   - Tailwind
   - Webpack

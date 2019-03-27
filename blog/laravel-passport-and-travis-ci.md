@@ -2,7 +2,7 @@
 title: Laravel Passport and Travis CI
 date: '2019-03-02 14:00'
 layout: BlogPost
-categories:
+tags:
     - Laravel
     - Testing
 ---

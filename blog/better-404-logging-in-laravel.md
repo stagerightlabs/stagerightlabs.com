@@ -2,7 +2,7 @@
 title: 'Better 404 Logging in Laravel'
 date: '2017-03-17 16:14'
 layout: BlogPost
-categories:
+tags:
 	- Laravel
 highlight:
     theme: tomorrow

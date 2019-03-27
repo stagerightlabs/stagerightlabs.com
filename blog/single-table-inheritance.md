@@ -2,12 +2,10 @@
 title: Single Table Inheritance
 date: '2015-01-25 13:30'
 layout: BlogPost
-categories:
+tags:
     - Laravel
     - Eloquent
     - PHP
-highlight:
-    theme: tomorrow
 ---
 
 Single Table Inheritance is the practice of using one database table to track multiple types of resources. When designing web applications, more often than not you will use one database table for each type of resource you are managing: One table for users, one table for posts, one for widgets, etcetera. This isn't strictly true but it is a good rule of thumb, especially if you are using an Active Record ORM such as Eloquent. Single Table Inheritance turns this idea on its head - and while it does have certain advantages, it is not a common practice.

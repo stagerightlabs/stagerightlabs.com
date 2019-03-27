@@ -2,7 +2,7 @@
 title: So you Want a Website
 date: '2014-08-30 19:00'
 layout: BlogPost
-categories:
+tags:
     - Fundamentals
 ---
 

@@ -3,7 +3,7 @@ title: Using Lumen and Mandrill to Process Incoming Mail
 slug: using-lumen-and-madrill-to-process-incoming-mail
 date: '2015-05-03 14:00'
 layout: BlogPost
-categories:
+tags:
     - Laravel
     - Lumen
     - E-Mail

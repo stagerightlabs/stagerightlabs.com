@@ -2,12 +2,10 @@
 title: 'Using Mockery with Codeception and Laravel 4'
 date: '2015-11-30 16:00'
 layout: BlogPost
-categories:
+tags:
     - Laravel
     - Testing
     - Codeception
-highlight:
-    theme: tomorrow
 ---
 
 I have a new client who came to me wanting to build out some new features on an existing Laravel 4.2 application. Unfortunately the codebase did not have any tests, wich complicates the process of implementing the new changes. As a sort of stop-gap measure, we have agreed to add some "retro-active" acceptance tests to make sure that the existing functionality isn't inadvertently broken.
