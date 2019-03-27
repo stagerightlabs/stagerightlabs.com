@@ -110,7 +110,7 @@ export default {
 
       if (this.selectedCategory) {
         posts = posts.filter((post) => {
-          return post.frontmatter.categories
+          return post.frontmatter.tags
             .map((category) => category.toLowerCase())
             .includes(this.selectedCategory.toLowerCase());
         });
