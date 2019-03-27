@@ -7,7 +7,7 @@
         v-if="$page.frontmatter.layout"
       />
       <blog-index v-else-if="$page.frontmatter.home" />
-      <contact v-else-if="$route.path == '/contactFix'" />
+      <contact v-else-if="$route.path == '/contact'" />
       <projects v-else-if="$route.path == '/projects'" />
       <colophon />
     </template>
