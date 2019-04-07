@@ -89,7 +89,7 @@ module.exports = (options = {}) =>  {
 
     // Loop through each line and add it to the table as a new row
     lines.forEach((line) => {
-      table += `<tr><td>${lineNumber}</td><td>${escapeHtml(line)}</td></tr>`
+      table += `<tr><td class="line-number">${lineNumber}</td><td class="code-content">${escapeHtml(line)}</td></tr>`
       lineNumber = lineNumber + 1;
     });
 
