@@ -30,23 +30,7 @@ $ npm run serve
 
 The first thing we will do is remove the `HelloWorld.vue` file that came with your new application and we will also remove all references to that file from `App.vue`.  We can also remove the default styles from the bottom of the `App.vue` file and replace them with this:
 
-``` html
-<style>
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-body {
-  margin: 0px;
-}
-
-#app {
-  height: 100%;
-}
-</style>
-```
+~~~ @/snippets/vue-threejs/container-styles.html
 
 Here we are removing the default padding from the html and body tags and making sure that our #app div will fill the entire visible browser window.
 

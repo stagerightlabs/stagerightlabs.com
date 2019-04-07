@@ -29,6 +29,7 @@ module.exports = {
     ]
   ],
   plugins: [
+    [require('./theme/plugins/snippets.js')],
     ['@vuepress/nprogress'],
     ['@vuepress/last-updated'],
     ['autometa', {
