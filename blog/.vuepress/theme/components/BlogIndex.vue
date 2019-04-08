@@ -74,7 +74,7 @@
     <!-- Topic List -->
     <aside class="w-full md:w-1/5 md:pl-8 text-center md:text-left">
       <h3>Topics</h3>
-      <ul class="mt-4 list-reset categories">
+      <ul class="mt-4 categories">
         <li
           v-for="category in categories"
           :key="category"

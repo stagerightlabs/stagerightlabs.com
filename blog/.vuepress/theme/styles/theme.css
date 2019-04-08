@@ -1,4 +1,4 @@
-@tailwind preflight;
+@tailwind base;
 @tailwind components;
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
@@ -15,6 +15,10 @@ a {
 
 p {
   @apply .leading-loose;
+}
+
+.app {
+  @apply .p-0;
 }
 
 .blog-post h2, .blog-post h3, .blog-post h4, .blog-post h5, .blog-post h6 {

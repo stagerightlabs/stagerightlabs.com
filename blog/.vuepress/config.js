@@ -48,7 +48,7 @@ module.exports = {
   ],
   postcss: {
     plugins: [
-      tailwindcss("blog/.vuepress/tailwind.js"),
+      tailwindcss("blog/.vuepress/tailwind.config.js"),
       require("autoprefixer")
     ]
   },
@@ -67,8 +67,5 @@ module.exports = {
     author: {
       name: "Ryan C. Durham"
     }
-  },
-  markdown: {
-    // lineNumbers: true
   }
 };
