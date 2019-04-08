@@ -8,13 +8,13 @@
     "build": "vuepress build blog"
   },
   "devDependencies": {
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.2",
-    "tailwindcss": "^0.7.4",
-    "vuepress": "v1.0.0-alpha.44",
+    "tailwindcss": "^1.0.0-beta.4",
+    "vuepress": "v1.0.0-alpha.47",
     "vuepress-plugin-autometa": "^0.1.10",
-    "vuepress-plugin-sitemap": "^2.1.1",
-    "webpack-node-externals": "^1.7.2"
+    "vuepress-plugin-sitemap": "^2.1.2",
+    "webpack-node-externals": "^1.7.2",
   },
   "dependencies": {
     "date-fns": "^1.30.1",
