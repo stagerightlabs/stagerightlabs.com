@@ -1,9 +1,9 @@
 <template>
-  <main class="block md:flex mt-8 mx-8">
-    <section class="w-full md:w-4/5">
+  <div class="md:flex">
+    <main class="block md:flex-1 my-4 ml-4 mr-2 p-4 bg-white shadow-md">
       <h2
         v-if="selectedCategory"
-        class="mb-8"
+        class="mb-4"
       >
         "{{ selectedCategory }}" Blog Posts
       </h2>
@@ -12,23 +12,24 @@
       <article
         v-for="post in paginatedPosts"
         :key="post.path"
-        class="mb-8 mx-0"
+        class="mb-6 mx-0"
       >
         <h2>
           <a
-            class="cursor-pointer"
+            class="cursor-pointer text-2xl"
             @click="$router.push({path: post.path})"
           >
             {{ post.title }}
           </a>
         </h2>
-        <p class="mt-4">
+        <p>
           <span v-html="excerpt(post)" />
           <a
             class="cursor-pointer"
+            aria-label="Read More"
             @click="$router.push({path: post.path})"
           >
-            <icon name="angle-double-right" />
+            <small>More</small> &raquo;
           </a>
         </p>
       </article>
@@ -43,12 +44,13 @@
         <span>
           <a
             :class="[paginationBackwardAllowed ? 'cursor-pointer' : 'cursor-not-allowed opacity-25']"
-            :aria-label="[paginationBackwardAllowed ? `Goto Page ${pageNumber - 1}` : 'disabled']"
+            :aria-label="[paginationBackwardAllowed ? `Go to page ${pageNumber - 1}` : 'disabled']"
+            :title="[paginationBackwardAllowed ? `Go to page ${pageNumber - 1}` : '']"
             class="flex items-center"
             @click="previousPage"
           >
             <icon
-              name="less-than"
+              name="long-arrow-alt-left"
               class="mr-2"
               scale="2"
             />
@@ -57,51 +59,35 @@
         <span>
           <a
             :class="[paginationForwardAllowed ? 'cursor-pointer' : 'cursor-not-allowed opacity-25']"
-            :aria-label="[paginationForwardAllowed ? `Goto Page ${pageNumber + 1}` : 'disabled']"
+            :aria-label="[paginationForwardAllowed ? `Go to page ${pageNumber + 1}` : 'disabled']"
+            :title="[paginationForwardAllowed ? `Go to page ${pageNumber + 1}` : '']"
             class="flex items-center"
             @click=" nextPage "
           >
             <icon
-              name="greater-than"
+              name="long-arrow-alt-right"
               class="ml-2"
               scale="2"
             />
           </a>
         </span>
       </nav>
-    </section>
 
-    <!-- Topic List -->
-    <aside class="w-full md:w-1/5 md:pl-8 text-center md:text-left">
-      <h3>Topics</h3>
-      <ul class="mt-4 categories">
-        <li
-          v-for="category in categories"
-          :key="category"
-          class="mt-3"
-        >
-          <a
-            :class="{'active': selectedCategory === category}"
-            class="cursor-pointer"
-            @click="goToCategory(category)"
-          >
-            {{ category }}
-          </a>
-        </li>
-      </ul>
-    </aside>
-  </main>
+      <!-- Topic List -->
+    </main>
+    <sidebar />
+  </div>
 </template>
 
 <script>
-import compareDesc from 'date-fns/compare_desc';
+import 'vue-awesome/icons/long-arrow-alt-right';
+import 'vue-awesome/icons/long-arrow-alt-left';
+import Sidebar from './Sidebar.vue';
 import Icon from 'vue-awesome/components/Icon';
-import 'vue-awesome/icons/angle-double-right';
-import 'vue-awesome/icons/greater-than';
-import 'vue-awesome/icons/less-than';
+import compareDesc from 'date-fns/compare_desc';
 
 export default {
-  components: { Icon },
+  components: { Icon, Sidebar },
   computed: {
     posts () {
       let posts = this.$site.pages.filter(function (page) {
@@ -142,13 +128,6 @@ export default {
     paginationBackwardAllowed () {
       return this.pageNumber > 1;
     },
-    categories () {
-      return this.$site.pages
-        .reduce((categories, page) => categories.concat(page.frontmatter.tags), [])
-        .filter((element, index, array) => array.indexOf(element) == index)
-        .filter((category) => category)
-        .sort();
-    },
     selectedCategory () {
       return this.$route.query.category || null
     }
@@ -185,16 +164,15 @@ export default {
 
       this.$router.push({query})
     },
-    goToCategory (category) {
-      if (category === this.selectedCategory) {
-        this.$router.push({query: { category: ''}})
-      } else {
-        this.$router.push({ query: { category } })
-      }
-    },
     excerpt(post) {
       return post.excerpt.replace(/(<([^>]+)>)/ig,"");
     }
   },
 }
 </script>
+
+<style scoped>
+a {
+  @apply .text-red-800;
+}
+</style>

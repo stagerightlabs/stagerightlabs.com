@@ -1,15 +1,14 @@
 @tailwind base;
 @tailwind components;
 
-
 body {
   background-image: url("../images/halftone.png");
-  @apply .font-sans .text-black;
+  @apply .font-sans .text-gray-800;
 }
 
 a {
   text-decoration: none;
-  @apply .text-red-600;
+  @apply .text-red-700;
 }
 
 p {
@@ -45,7 +44,7 @@ p {
 }
 
 ul.categories li a.active {
-  @apply .bg-red-700 .text-white .px-1 .rounded;
+  @apply bg-red-800 text-gray-100  block;
 }
 
 @tailwind utilities;
