@@ -1,11 +1,13 @@
 <template>
   <header>
     <div class="logo">
-      <h1>
-        <span class="text-red-600">S</span>tage
-        <span class="text-red-600">R</span>ight
-        <span class="text-red-600">L</span>abs
-      </h1>
+      <a href="/">
+        <h1>
+          <span class="text-red-700">S</span>tage
+          <span class="text-red-700">R</span>ight
+          <span class="text-red-700">L</span>abs
+        </h1>
+      </a>
     </div>
     <nav aria-label="Main Menu">
       <a
@@ -49,7 +51,7 @@ export default {
 
 <style scoped>
 header {
-  @apply flex items-center justify-between items-center border-b-4 border-red-600 p-2;
+  @apply flex items-center justify-between items-center border-b-4 border-red-700 p-2;
 }
 
 h1 {
@@ -64,17 +66,13 @@ nav a {
   @apply text-gray-500;
 }
 
-@screen sm {
-  header {
-    /* @apply ; */
-  }
-
-
+.logo a {
+  color: inherit;
 }
 
 @screen md {
   header {
-    @apply p-1;
+    @apply p-1 py-0;
   }
 
   nav {
@@ -82,13 +80,7 @@ nav a {
   }
 
   h1 {
-    @apply text-5xl;
+    @apply text-5xl px-4;
   }
 }
-
-@screen lg {
-
-}
-
-
 </style>
