@@ -14,7 +14,7 @@
     "vuepress": "v1.0.0-alpha.47",
     "vuepress-plugin-autometa": "^0.1.10",
     "vuepress-plugin-sitemap": "^2.1.2",
-    "webpack-node-externals": "^1.7.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "date-fns": "^1.30.1",
