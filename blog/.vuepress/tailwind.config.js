@@ -6,8 +6,28 @@ module.exports = {
     colors: {
       transparent: "transparent",
       black: "#333333",
-      gray: "#777777",
-      red: "#ff2e2e",
+      gray: {
+        100: '#f7fafc',
+        200: '#edf2f7',
+        300: '#e2e8f0',
+        400: '#cbd5e0',
+        500: '#a0aec0',
+        600: '#718096',
+        700: '#4a5568',
+        800: '#2d3748',
+        900: '#1a202c',
+      },
+      red: {
+        // 100: '#fff5f5',
+        // 200: '#fed7d7',
+        // 300: '#feb2b2',
+        // 400: '#fc8181',
+        500: '#f56565',
+        600: '#e53e3e',
+        700: '#c53030',
+        800: '#9b2c2c',
+        900: '#742a2a',
+      },
       white: "#fafaf9",
       cream: "#f4f2e9",
     },
@@ -23,15 +43,16 @@ module.exports = {
       mono: ["monospace"]
     },
     fontSize: {
-      // xs: ".75rem", // 12px
-      sm: ".875rem", // 14px
-      base: "1rem", // 16px
-      lg: "1.125rem", // 18px
-      // xl: "1.25rem" // 20px
-      "2xl": "1.5rem", // 24px
-      // "3xl": "1.875rem", // 30px
-      // "4xl": "2.25rem", // 36px
-      "5xl": "3rem" // 48px
+      xs: '.75rem',
+      sm: '.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
     },
     fontWeight: {
       // hairline: 100,
@@ -44,7 +65,6 @@ module.exports = {
       // extrabold: 800,
       // black: 900
     },
-
     textColor: theme => theme('colors'),
     backgroundColor: theme => theme('colors'),
     borderWidth: {
@@ -191,7 +211,7 @@ module.exports = {
     zIndex: ["responsive"]
   },
   corePlugins: {
-
+    container: false,
   },
   plugins: [
   ],
