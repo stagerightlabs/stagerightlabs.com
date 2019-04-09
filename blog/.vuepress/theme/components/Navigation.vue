@@ -1,41 +1,44 @@
 <template>
-  <header class="block md:flex border-b-4 border-red md:justify-between md:items-center mx-8 md:mx-auto py-8 text-center lg:text-left">
-    <img
-      src="../images/logo-h.png"
-      class="mx-auto md:mx-8 w-64 lg:w-auto"
-      alt="Stage Right Labs logo"
-    >
-    <nav
-      aria-label="Main Menu"
-      class="text-center md:text-right mt-2 lg:mt-4 lg:mb-0 text-lg md:text-2xl"
-    >
+  <header>
+    <div class="logo">
+      <h1>
+        <span class="text-red-600">S</span>tage
+        <span class="text-red-600">R</span>ight
+        <span class="text-red-600">L</span>abs
+      </h1>
+    </div>
+    <nav aria-label="Main Menu">
       <a
-        class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6"
-        aria-label="Go to Home"
-        @click="goTo('/')"
+        href="https://github.com/srlabs"
+        title="Github"
       >
-        Blog
+        <icon
+          name="brands/github"
+          scale="2"
+        />
       </a>
       <a
-        class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6"
-        aria-label="Goto Projects"
-        @click="goTo('/projects')"
+        href="https://gitlab.com/stage-right-labs"
+        class="mx-1 md:mx-4"
+        title="Gitlab"
       >
-        Projects
-      </a>
-      <a
-        class="cursor-pointer text-black hover:text-red mx-3 lg:mx-6"
-        aria-label="Goto Contact"
-        @click="goTo('/contact')"
-      >
-        Contact
+        <icon
+          name="brands/gitlab"
+          scale="2"
+        />
       </a>
     </nav>
   </header>
 </template>
 
 <script>
+import Icon from 'vue-awesome/components/Icon';
+import 'vue-awesome/icons/regular/envelope';
+import 'vue-awesome/icons/brands/github';
+import 'vue-awesome/icons/brands/gitlab';
+
 export default {
+  components: { Icon },
   methods: {
     goTo (path) {
       this.$router.push({ path })
@@ -44,5 +47,48 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+header {
+  @apply flex items-center justify-between items-center border-b-4 border-red-600 p-2;
+}
+
+h1 {
+  @apply text-2xl;
+}
+
+nav {
+  @apply text-center;
+}
+
+nav a {
+  @apply text-gray-500;
+}
+
+@screen sm {
+  header {
+    /* @apply ; */
+  }
+
+
+}
+
+@screen md {
+  header {
+    @apply p-1;
+  }
+
+  nav {
+    @apply text-right
+  }
+
+  h1 {
+    @apply text-5xl;
+  }
+}
+
+@screen lg {
+
+}
+
+
 </style>

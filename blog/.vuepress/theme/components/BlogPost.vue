@@ -33,7 +33,7 @@
       </header>
       <aside
         v-if="ageInMonths > 12"
-        class="border border-red text-gray-dark bg-cream p-4 my-8 leading-normal text-center"
+        class="border border-red text-gray-600 bg-cream p-4 my-8 leading-normal text-center"
       >
         This post is more than a year old. I try to keep this content as up-to-date as possible but you may want to consult additional resources.
       </aside>
@@ -45,7 +45,7 @@
 <script>
 import format from 'date-fns/format';
 import differenceInMonths from 'date-fns/difference_in_months'
-import '../styles/prism.css';
+// import '../styles/prism.css';
 
 export default {
   computed: {
