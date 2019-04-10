@@ -29,7 +29,6 @@ module.exports = {
         900: '#742a2a',
       },
       white: "#fafaf9",
-      cream: "#f4f2e9",
     },
     screens: {
       sm: "576px",
@@ -126,6 +125,11 @@ module.exports = {
       "64": "16rem",
       full: "100%",
       screen: "100vh"
+    },
+    inset: {
+      "0": 0,
+      "1": "0.25rem",
+      "2": "0.5rem",
     },
     padding: {
       px: "1px",

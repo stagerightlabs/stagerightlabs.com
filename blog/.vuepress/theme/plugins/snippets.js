@@ -85,7 +85,7 @@ module.exports = (options = {}) =>  {
 
     // Prepare to build our table
     let lineNumber = meta.lineNumber || 1;
-    let table = `<table class="snippet"><tbody>`
+    let table = `<div class="snippet"><table><tbody>`
 
     // Loop through each line and add it to the table as a new row
     lines.forEach((line) => {
@@ -93,17 +93,19 @@ module.exports = (options = {}) =>  {
       lineNumber = lineNumber + 1;
     });
 
+    table += `</tbody></table>`;
+
     // If a file name was provided, we will display it at the bottom of the table
     if (meta.filename) {
-      table += `<tr><td></td><td>`
+      table += `<div class="filename">`
       table += meta.url
         ? `<a href="${meta.url}" target="_blank">${escapeHtml(meta.filename)}</a>`
         : `${escapeHtml(meta.filename)}`
-      table += `</td></tr>`
+      table += `</div>`
     }
 
     // Close our table and return the html string
-    return table += `</tbody></table>`;
+    return table += `</div>`;
   }
 
   // Escape html entities as needed

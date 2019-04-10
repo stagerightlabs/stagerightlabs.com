@@ -76,7 +76,7 @@ Now lets create our controls:
 
 ~~~ @/snippets/vue-threejs-part-one/store-js-mutations-initialize-controls.js
 
-Here we instantiate a new TrackballControls object and set up a default configuration for it.  The exact nature of this configuration is a bit beyond the scope of this tutorial, but you should feel free to play around with these values and see what happens.
+Here we instantiate a new `TrackballControls` object and set up a default configuration for it.  The exact nature of this configuration is a bit beyond the scope of this tutorial, but you should feel free to play around with these values and see what happens.
 
 The most important thing to note here is that we are passing in our canvas element as the second argument to the TrackballControls constructor.  This will limit the controls to listen only for input events that occur on that dom element.  If you don't provide this, it will default to listening to all input events on the entire document which will effectively steal focus away from any other content on the page and translate all input into camera movements in the rendered scene.  By limiting this to just the canvas element we will still be able to interact with other content on the page normally.
 
@@ -102,7 +102,6 @@ Finally, we will now set up two vuex actions that will orchestrate these various
 The init function returns a promise that resolves once all of our various Three.js components have been created and registered.  It also takes care of the initial scene rendering and sets an event listener that will re-render the scene if the controls receive an input trigger.
 
 Finally, we will use an action to set up our animation loop.  This is a recursive function that re-renders the scene (if needed) during every tick of the event loop.   We could use `setTimeout` here, but `requestAnimationFrame` does the same thing except that it will pause the animation loop if the browser looses focus.  See more about animation frames [here](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame).
-
 
 That should cover everything we need to get our 3D scene up and running.  Now lets put it all together in our `ViewPort` component.  The template and the styling of this component are very straight forward:
 

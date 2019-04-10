@@ -6,7 +6,7 @@ tags:
     - Laravel
 ---
 
-Lets now look at upgrading our pacakge service provider to work with Laravel 5. The service provider is intended to inform the application of the package's existance and register its assets. Exactly how this is done will vary depending on the needs of the pacakge, but there are several common items which we will discuss here: Configuration, Language Files, Views and Public Assets. John Hout has a [great write up](http://woodmarks.nl/laravel-5-loading-package-views-language-files/) about this, which I will be expanding on.
+Lets now look at upgrading a package service provider to work with Laravel 5. The service provider is intended to inform the application of the package's existance and register its assets. Exactly how this is done will vary depending on the needs of the pacakge, but there are several common items which we will discuss here: Configuration, Language Files, Views and Public Assets. John Hout has a [great write up](http://woodmarks.nl/laravel-5-loading-package-views-language-files/) about this, which I will be expanding on.
 
 <!-- more -->
 

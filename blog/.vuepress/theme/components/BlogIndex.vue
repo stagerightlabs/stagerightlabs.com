@@ -1,6 +1,6 @@
 <template>
   <div class="md:flex">
-    <main class="block md:flex-1 my-4 ml-4 mr-2 p-4 bg-white shadow-md">
+    <main class="block md:flex-1 my-4 ml-4 mr-2 p-6 bg-white shadow-md">
       <h2
         v-if="selectedCategory"
         class="mb-4"
@@ -16,7 +16,7 @@
       >
         <h2>
           <a
-            class="cursor-pointer text-2xl"
+            class="cursor-pointer text-2xl text-red-800"
             @click="$router.push({path: post.path})"
           >
             {{ post.title }}
@@ -25,7 +25,7 @@
         <p>
           <span v-html="excerpt(post)" />
           <a
-            class="cursor-pointer"
+            class="cursor-pointer text-red-800"
             aria-label="Read More"
             @click="$router.push({path: post.path})"
           >
@@ -170,9 +170,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-a {
-  @apply .text-red-800;
-}
-</style>

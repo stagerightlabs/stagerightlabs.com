@@ -3,48 +3,142 @@
 
 body {
   background-image: url("../images/halftone.png");
-  @apply .font-sans .text-gray-800;
+  @apply text-gray-800;
 }
 
 a {
   text-decoration: none;
-  @apply .text-red-700;
+  @apply text-red-800;
 }
 
 p {
-  @apply .leading-loose;
+  @apply leading-normal;
 }
 
 .app {
-  @apply .p-0;
+  @apply p-0;
 }
 
-.blog-post h2, .blog-post h3, .blog-post h4, .blog-post h5, .blog-post h6 {
-  @apply .mb-2 .leading-normal;
+/* Header */
+header.masthead {
+  @apply flex items-center justify-between items-center border-b-4 border-red-700 p-2;
+}
+
+header.masthead nav {
+  @apply text-center;
+}
+
+header.masthead nav a {
+  @apply text-gray-500;
+}
+
+header.masthead h1 {
+  @apply text-2xl;
+}
+
+header.masthead a {
+  color: inherit;
+}
+
+@screen md {
+  header.masthead {
+    @apply p-1 py-0;
+  }
+
+  header.masthead nav {
+    @apply text-right
+  }
+
+  header.masthead  h1 {
+    @apply text-5xl px-4;
+  }
+}
+
+/* Sidebar */
+ul.categories li a.active {
+  @apply bg-red-800 text-gray-100 block;
+}
+
+/* Blog post */
+.blog-post header {
+  @apply mb-4;
+}
+
+.blog-post .topic {
+  padding: 2px 5px;
+  @apply text-sm ml-2 rounded bg-red-800 text-gray-100;
+}
+
+.blog-post h1 {
+  @apply text-3xl;
+}
+
+.blog-post h2 {
+  @apply text-2xl;
+}
+
+.blog-post h3 {
+  @apply text-xl;
+}
+
+.blog-post h4 {
+  @apply text-lg;
+}
+
+.blog-post h5 {
+  @apply text-base;
+}
+
+.blog-post h6 {
+  @apply text-sm;
 }
 
 .blog-post p {
-  @apply .mb-6 .text-lg .overflow-auto;
+  @apply mb-4 text-lg overflow-auto;
 }
 
 .blog-post code {
-  @apply .rounded;
+  @apply rounded bg-gray-200 px-1 text-base;
 }
 
 .blog-post div pre {
-  @apply .mb-6 .bg-white .p-4 .rounded .leading-tight;
+  @apply mb-6 bg-gray-200 p-1 rounded leading-tight;
+}
+
+.blog-post ul {
+  @apply list-disc;
 }
 
 .blog-post ul li {
-  @apply .text-lg .my-4 .ml-4 .leading-normal;
+  @apply text-lg my-4 ml-4 leading-normal;
 }
 
 .blog-post blockquote {
-  @apply .text-gray-500 .border-l-4 .border-gray-500 .pl-4 .mx-4;
+  @apply text-gray-500 border-l-4 border-gray-500 pl-4 mx-4;
 }
 
-ul.categories li a.active {
-  @apply bg-red-800 text-gray-100  block;
+/* Text Snippets */
+.snippet {
+  @apply border border-gray-400 rounded w-full mb-4 p-1 font-mono overflow-hidden relative;
+}
+
+.snippet table .code-content {
+  @apply whitespace-pre px-2 text-sm;
+}
+
+.snippet table .line-number {
+  @apply text-gray-500 text-right select-none;
+}
+
+.snippet .filename {
+  @apply absolute right-2 bottom-1;
+}
+
+::selection {
+  @apply bg-red-200;
+}
+::-moz-selection {
+  @apply bg-red-200;
 }
 
 @tailwind utilities;
