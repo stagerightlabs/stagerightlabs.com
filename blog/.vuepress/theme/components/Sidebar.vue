@@ -1,5 +1,5 @@
 <template>
-  <aside class="w-full md:w-64 md:flex-no-shrink">
+  <aside class="block w-full lg:w-1/5">
     <section class="m-4 px-2 py-4 bg-white shadow-md">
       <ul class="mb-4 pb-2 border-b border-gray-300">
         <li class="text-xl px-2 py-1">
