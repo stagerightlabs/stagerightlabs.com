@@ -19,109 +19,26 @@ When I switched to using language strings instead of strait text I wasn't quite 
 
 First we need to make sure that the Package's namespace is passed to the Translator. Add this line to the Service Provider's boot function:
 
-```php
-// Package Service Provider
-
-class SentinelServiceProvider extends ServiceProvider {
-
-   // ...
-
-   public function boot()
-   {
-        // ...
-
-        // Add the Translator Namespace
-        $this->app['translator']->addNamespace('Sentinel', __DIR__.'/../lang');
-   }
-
-}
-```
+~~~ @/snippets/translating-custom-error-messages/package-service-provider.php
 
 The `addNamespace` function informs Laravel's translator class of the location of our language files and allows for the use of the 'Sentinel' namespace when translating language strings. We can now reference the Sentinel Package language strings via the `Illuminate\Translation\Translator` class:
 
-```php
- echo Lang::get('Sentinel::users.noaccess')
-
- // Result:
- // You are not allowed to do that.
-```
+~~~ @/snippets/translating-custom-error-messages/translator-usage.php
 
 We can also use `trans()`, which is a helper function that aliases `Lang::get()`.
 
-```php
- echo trans('Sentinel::users.noaccess')
-
- // Result:
- // You are not allowed to do that.
-```
+~~~ @/snippets/translating-custom-error-messages/helper-usage.php
 
 Now we need to feed our custom error message strings to the Validator. This may be different for you, depending on how you handle validation, but the basic idea should remain the same.
-
-```php
 // src/Sentinel/Service/Validation/AbstractLaravelValidator.php
 
-<?php namespace Sentinel\Service\Validation;
-
-use Illuminate\Validation\Factory;
-
-abstract class AbstractLaravelValidator	implements ValidableInterface {
-
-    /**
-     * Validator
-     *
-     * @var \Illuminate\Validation\Factory
-     */
-    protected $validator;
-
-    /**
-     * Custom Validation Messages
-     *
-     * @var Array
-     */
-    protected $messages = array();
-
-    public function __construct(Factory $validator)
-    {
-        $this->validator = $validator;
-
-        // Retrieve Custom Validation Messages & Pass them to the validator.
-        $this->messages = array_dot(trans('Sentinel::validation.custom'));
-    }
-
-    // ...
-}
-```
+~~~ @/snippets/translating-custom-error-messages/validator-example-constructor.php{1,src/Sentinel/Service/Validation/AbstractLaravelValidator.php}
 
 Here we are establishing a `$messages` class member and loading our custom language strings when the abstract validator class is instantiated. The [language files](https://github.com/rydurham/Sentinel/blob/master/src/lang/en/validation.php#L127-L159) use `Sentinel::validaton.custom` to refer to the array of custom error message strings.
 
 Now all that remains is to pass the messages to the validator when we are attempting to validate data:
 
-```php
-// src/Sentinel/Service/Validation/AbstractLaravelValidator.php
-
-abstract class AbstractLaravelValidator	implements ValidableInterface {
-
-    // ...
-
-    /**
-     * Validation passes or fails
-     *
-     * @return boolean
-     */
-    public function passes()
-    {
-        $validator = $this->validator->make($this->data, $this->rules, $this->messages);
-
-        if ($validator->fails() )
-        {
-            $this->errors = $validator->messages();
-            return false;
-        }
-
-        return true;
-    }
-}
-```
+~~~ @/snippets/translating-custom-error-messages/validator-example-usage.php{1,src/Sentinel/Service/Validation/AbstractLaravelValidator.php}
 
 The validator takes three arguments:
 

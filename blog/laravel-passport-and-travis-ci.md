@@ -15,26 +15,7 @@ When using Laravel Passport in a project that uses Travis for continuous integra
 
 After some trial and error, I have come up with a working `.travis.yml` configuration.
 
-```yaml
-language: php
-
-php:
-  - 7.1
-  - 7.2
-
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer install --prefer-source --no-interaction --no-suggest
-  - cp .env.travis .env
-  - php artisan key:generate
-  - php artisan migrate
-  - php artisan passport:keys
-
-script:
-  - vendor/bin/phpunit
-
-sudo: false
-```
+~~~ @/snippets/laravel-passport-and-travis-ci/.travis.yml
 
 The first two sections are self-explanatory.  We are going to be testing a PHP project, and we want Travis to test our code against PHP 7.1 and 7.2.
 
@@ -55,36 +36,7 @@ The last section, `sudo: false`, is how we tell Travis to run our tests in a con
 
 This is the special `.env.travis` file I used to specify application specific testing configuration:
 
-```
-APP_NAME=ExampleLaravelApplication
-APP_ENV=local
-APP_KEY=
-APP_DEBUG=true
-APP_LOG_LEVEL=debug
-APP_URL=http://localhost
-
-DB_CONNECTION=sqlite
-DB_DATABASE=:memory:
-DB_USERNAME=homestead
-DB_PASSWORD=secret
-
-BROADCAST_DRIVER=log
-CACHE_DRIVER=file
-SESSION_DRIVER=file
-SESSION_LIFETIME=120
-QUEUE_DRIVER=sync
-
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-
-MAIL_DRIVER=log
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-```
+~~~ @/snippets/laravel-passport-and-travis-ci/.env
 
 The most important option here is the `DB_DATABASE=:memory:` option.  This tells the application that we want to use an in-memory sqlite database.  Even though the `APP_ENV` is "local" here, it will be over-written by the ENV values specified in the `phpunit.xml` file.  This is where we set the application environment to "testing" for the lifetime of the test run.
 
@@ -92,41 +44,7 @@ The most important option here is the `DB_DATABASE=:memory:` option.  This tells
 
 We also set some importan environment variables in the `phpunit.xml` file:
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
-        </testsuite>
-
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./app</directory>
-        </whitelist>
-    </filter>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_DRIVER" value="sync"/>
-        <env name="DB_CONNECTION" value="testing" />
-        <env name="PASSPORT_CLIENT_SECRET" value="Dtg9myGAIsTUbTck2kxrxeZ5TDnE1qbVvTeYIuPN" />
-    </php>
-</phpunit>
-```
+~~~ @/snippets/laravel-passport-and-travis-ci/phpunit.xml
 
 There are two important things to note about this file:
 

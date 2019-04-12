@@ -6,19 +6,20 @@ tags:
 	- Laravel
 ---
 
+
+
 I am a big fan of templating tools, and Laravel's [Blade](https://laravel.com/docs/5.5/blade) templating system in particular. Given that PHP itself was originally conceived as a templating language you might think that using an additional layer of templating on top of PHP is a bit ironic, but I do think there is a real benefit. We as developers often get caught up in the details of the applications we are building and can sometimes forget that these applications will (hopefully) have a lifespan that goes beyond the work of a single developer. Anything we can do to simplify the cognitive overhead required to bring new developers on-board will go a long way towards keeping our codebase alive and healthy. When used correctly, templating systems like Twig, Mustache or Blade can be a very effective for this purpose.
 
 <!-- more -->
 
+
+
+
+
+
 As you may know, the form data validation provided by Laravel is very powerful and robust. However, it occurred to me the other day that there is one area that still feels a bit messy and overly complicated. When displaying error messages to users, some developers prefer to show all of the error messages at the top of the form - this is very easy to do and Laravel makes it a snap to implement. However, other developers prefer to show the errors within the body of the form, so that each message appears next to its corresponding input. To do that, you have to set up your form inputs to look something like this:
 
-```html
-<div class="form-group">
-    <label for="input-title">Title</label>
-    <input type="text" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" id="input-title" >
-    {!! $errors->has('subtitle') ? $errors->first('subtitle', '<div class="invalid-feedback">:message</div>') : '' !!}
-</div>
-```
+~~~ @/snippets/simplify-validation-messaging-with-blade-directives/default-error-messaging.php
 
 In this example, which makes use of Bootstrap 4, we first check the `$errors` Message Bag to see if this input has any messages available. If so, we add the `is-invalid` class to the input. After that we check the errors again to see if this input has any messages, and then we display that message. By default, the messages are delivered back as plain text, but by passing in a formating method we get back the message as html formatted as indicated. This is very handy when working within a CSS framework that has specific requirements about how validation messages should be displayed.
 

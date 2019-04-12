@@ -1,0 +1,5 @@
+[2017-03-17 22:51:00] local.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException in /home/vagrant/example.com/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php:161
+Stack trace:
+#0 /home/vagrant/example.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(533): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+... lots of other stuff ...
+#14 /home/vagrant/example.com/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))

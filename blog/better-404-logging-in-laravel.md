@@ -16,35 +16,12 @@ Every Laravel 5.\* has an `App/Exceptions/Handler` class that allows us to custo
 
 For now, we are more interested in the `report()` method. This method is specifically intended as a tool for customizing how we log errors. By default, Laravel disables the reporting of Http errors (such as 404) by including `Symfony\Component\HttpKernel\Exception\HttpException::class` in the `$dontReport` list. We could just comment out that line, but that won't acually help us accomplish our goal. When a 404 error is handled to the logger, you get something like this:
 
-```verilog
-[2017-03-17 22:51:00] local.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException in /home/vagrant/example.com/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php:161
-Stack trace:
-#0 /home/vagrant/example.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(533): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
-... lots of other stuff ...
-#14 /home/vagrant/example.com/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
-```
+
+~~~ @/snippets/better-404-logging-in-laravel/default-error-logging.log
 
 Which doesn't actually tell us what url has caused the problem. Instead, lets update our custom `report()` method to give us more details:
 
-```php
-use use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
-/...
-
-public function report(Exception $exception)
-{
-	if ($exception instanceof NotFoundHttpException && $request = request()) {
-		Bugsnag::notifyError('404', 'Page Not Found', function ($report) use ($request) {
-			$report->setSeverity('info');
-			$report->setMetaData([
-				'url' => $request->url()
-			]);
-		});
-	}
-
-	parent::report($exception);
-}
-```
+~~~ @/snippets/better-404-logging-in-laravel/exception-handler.php{1,App/Exception/Handler.php}
 
 Here we check the exception type before handing it off to the parent class report() method. If it is an instance of `NotFoundHttpException` and we have access to a valid request object, we log the url that has caused the problem. I am using Bugsnag in this example, but you could just as easily use another service or the default Monolog logger that Laravel provides. The main benefit to this method is that it allows us to log exactly the information we are looking for in whatever way we want to.
 

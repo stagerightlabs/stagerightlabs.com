@@ -37,31 +37,15 @@ $ ./node_modules/.bin/tailwind init tailwind.js
 
 We also need to update the `.postcssrc.js` file to have Post CSS trigger the tailwind compliation step:
 
-```js
-module.exports = {
-  plugins: [require("tailwindcss")("tailwind.js"), require("autoprefixer")()]
-};
-```
+~~~ @/snippets/tailwind-sass-webpack/webpack-config.js
 
 Now everything has been installed, we just need to get it all working together. Start by creating an `app.scss` file in a new `/src/assets/scss/` directory, and then pasting in the tailwind base directives. In the example below I have removed the comments to save space.
 
-```sass
-// src/assets/scss/app.scss
-
-@tailwind preflight;
-
-/* Custom Sass goes here... */
-
-@tailwind utilities;
-```
+~~~ @/snippets/tailwind-sass-webpack/tailwind-utilities.css
 
 Next, locate the "style" section in the `App.vue` file and replace it with this:
 
-```html
-<style lang="sass">
-    @import "./assets/scss/app.scss"
-</style>
-```
+~~~ @/snippets/tailwind-sass-webpack/app-styles.html
 
 Note that when using Sass with the Vue Style loader (which allows for using Sass in Vue Component files) you have to be specific here about which type of sass files you will be using. If you specify `lang="scss"` the loader will assume you are using the "indentation" style of sass files, whereas `lang="sass"` will indicate the use of bracket style sass files.
 
@@ -69,19 +53,6 @@ At this point, you should be able to run `npm run dev` to compile the assets and
 
 To verify that everything is working, try updating your app.scss file to look like this:
 
-```sass
-// src/assets/scss/app.scss
-
-@tailwind preflight;
-
-#app {
-  @apply .text-center .text-grey-darker .mt-8;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@tailwind utilities;
-```
+~~~ @/snippets/tailwind-sass-webpack/tailwind-example.css
 
 If everything is working correctly, wepback will automatically recompile that file and refresh the dev server content, and you should see that we are now successfully using Tailwind CSS directives to manipulate the content on the home page.
