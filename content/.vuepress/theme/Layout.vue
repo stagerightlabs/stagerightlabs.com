@@ -5,7 +5,7 @@
       :is="$page.frontmatter.layout"
       v-if="$page.frontmatter.layout"
     />
-    <blog-index v-else-if="$page.frontmatter.home" />
+    <blog-index v-else-if="showIndexPage" />
     <colophon />
   </div>
 </template>
@@ -20,6 +20,11 @@ import Navigation from './components/Navigation.vue';
 
 export default {
   components: { Navigation, Colophon, Projects, Contact, BlogIndex, BlogPost },
+  computed: {
+    showIndexPage() {
+      return this.$page.frontmatter.home || this.$route.path == '/blog/' || this.$route.path == '/blog'
+    }
+  }
 }
 </script>
 

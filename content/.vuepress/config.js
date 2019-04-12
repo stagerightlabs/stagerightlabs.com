@@ -30,7 +30,6 @@ module.exports = {
   ],
   plugins: [
     [require('./theme/plugins/snippets.js')],
-    ['@vuepress/nprogress'],
     ['@vuepress/last-updated'],
     ['autometa', {
       site: {
@@ -48,7 +47,7 @@ module.exports = {
   ],
   postcss: {
     plugins: [
-      tailwindcss("blog/.vuepress/tailwind.config.js"),
+      tailwindcss("content/.vuepress/tailwind.config.js"),
       require("autoprefixer")
     ]
   },

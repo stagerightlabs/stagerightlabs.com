@@ -4,8 +4,8 @@
   "description": "The Stage Right Labs home page and blog",
   "author": "Ryan Durham <ryan@stagerightlabs.com>",
   "scripts": {
-    "dev": "vuepress dev blog",
-    "build": "vuepress build blog"
+    "dev": "vuepress dev content",
+    "build": "vuepress build content"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

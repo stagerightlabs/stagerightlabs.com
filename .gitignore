@@ -1,3 +1,3 @@
-blog/.vuepress/dist
+content/.vuepress/dist
 node_modules
 .vscode
