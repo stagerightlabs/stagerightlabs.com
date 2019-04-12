@@ -1,6 +1,6 @@
 <template>
   <div class="lg:flex container mx-auto">
-    <main class="block lg:w-4/5 my-4 ml-4 mr-2 p-6 bg-white shadow-md">
+    <main class="block lg:w-4/5 my-4 ml-4 mr-2 p-6 bg-white shadow-md overflow-x-auto">
       <article class="blog-post">
         <header class="mb-6">
           <h1>

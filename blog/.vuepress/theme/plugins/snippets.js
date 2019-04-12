@@ -88,11 +88,14 @@ module.exports = (options = {}) =>  {
     let table = `<div class="snippet"><table><tbody>`
 
     // Loop through each line and add it to the table as a new row
+    // We use v-pre here to prevent the contents from being
+    // interpreted by the client-side vue instance
     lines.forEach((line) => {
-      table += `<tr><td class="line-number">${lineNumber}</td><td class="code-content">${escapeHtml(line)}</td></tr>`
+      table += `<tr><td class="line-number">${lineNumber}</td><td class="code-content" v-pre>${escapeHtml(line)}</td></tr>`
       lineNumber = lineNumber + 1;
     });
 
+    // Close the table
     table += `</tbody></table>`;
 
     // If a file name was provided, we will display it at the bottom of the table
@@ -116,7 +119,9 @@ module.exports = (options = {}) =>  {
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+      .replace(/'/g, "&#039;")
+      .replace(/{/g, "&lbrace;")
+      .replace(/}/g, "&rbrace;");
   }
 
   // Export an object that describes the functionality of our plugin
