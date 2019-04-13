@@ -11,6 +11,7 @@ export default ({
   router.addRoutes([
     { path: "/contact", component: Layout },
     { path: "/projects", component: Layout },
+    { path: "/about", component: Layout },
     {
       path: "/projects/parley",
       beforeEnter () {
