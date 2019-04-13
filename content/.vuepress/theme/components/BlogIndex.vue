@@ -165,7 +165,9 @@ export default {
       this.$router.push({query})
     },
     excerpt(post) {
-      return post.excerpt.replace(/(<([^>]+)>)/ig,"");
+      return post.excerpt
+        ? post.excerpt.replace(/(<([^>]+)>)/ig,"")
+        : '';
     }
   },
 }
