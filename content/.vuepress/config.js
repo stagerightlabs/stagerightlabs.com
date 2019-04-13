@@ -9,7 +9,7 @@ module.exports = {
     ['meta', { name: 'msapplication-navbutton-color', content: '#ff2e2e'}],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: '#ff2e2e'}],
     // Favicon
-    ["link", { rel: "icon", href: "/favicon-96x96.png" }],
+    ["link", { rel: "icon", href: "/favicon.ico" }],
     // Matomo tracking script
     [
       "script",
