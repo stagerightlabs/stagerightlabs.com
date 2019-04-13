@@ -1,3 +1,3 @@
-# Hello VuePress
+# stagerightlabs.com
 
-This is some content.
+This is the blog and home page for stagerightlabs.com.  Powered by [VuePress](https://vuepress.vuejs.org/)!

@@ -1,0 +1,7 @@
+// src/assets/scss/app.scss
+
+@tailwind preflight;
+
+/* Custom Sass goes here... */
+
+@tailwind utilities;
