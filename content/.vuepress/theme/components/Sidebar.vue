@@ -3,16 +3,16 @@
     <section class="m-4 px-2 py-4 bg-white shadow-md">
       <ul class="mb-4 pb-2 border-b border-gray-300">
         <li class="text-xl px-2 py-1">
-          Home
+          <router-link to="/">Home</router-link>
         </li>
         <li class="text-xl px-2 py-1">
-          About
+          <router-link to="/about">About</router-link>
         </li>
         <li class="text-xl px-2 py-1">
-          Projects
+          <router-link to="/projects">Projects</router-link>
         </li>
         <li class="text-xl px-2 py-1">
-          Contact
+          <router-link to="/contacts">Contact</router-link>
         </li>
       </ul>
 
@@ -55,9 +55,9 @@ export default {
   methods: {
     goToCategory (category) {
       if (category === this.selectedCategory) {
-        this.$router.push({query: { category: ''}})
+        this.$router.push({ path: '/blog' })
       } else {
-        this.$router.push({ query: { category } })
+        this.$router.push({ path: '/blog', query: { category } })
       }
     },
   }
