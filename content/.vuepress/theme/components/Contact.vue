@@ -5,7 +5,7 @@
       <section class="w-full flex flex-wrap mt-8">
         <div class="w-full md:w-1/2 mb-8">
           <a
-            href="https://github.com/srlabs"
+            href="https://github.com/stagerightlabs"
             class="text-black flex flex-col items-center"
           >
             <icon

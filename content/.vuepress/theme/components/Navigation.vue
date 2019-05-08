@@ -11,7 +11,7 @@
     </div>
     <nav aria-label="Main Menu">
       <a
-        href="https://github.com/srlabs"
+        href="https://github.com/stagerightlabs"
         title="Github"
       >
         <icon
