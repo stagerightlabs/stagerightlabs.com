@@ -15,19 +15,19 @@ export default ({
     {
       path: "/projects/parley",
       beforeEnter () {
-        window.location = "https://github.com/SRLabs/parley"
+        window.location = "https://github.com/stagerightlabs/parley"
       }
     },
     {
       path: "/projects/centaur",
       beforeEnter () {
-        window.location = "https://github.com/SRLabs/Centaur"
+        window.location = "https://github.com/stagerightlabs/Centaur"
       }
     },
     {
       path: "/projects/eloquent-sti",
       beforeEnter () {
-        window.location = "https://github.com/SRLabs/eloquent-sti"
+        window.location = "https://github.com/stagerightlabs/eloquent-sti"
       }
     },
     {
@@ -39,7 +39,7 @@ export default ({
     {
       path: "/projects/piwik-plugin",
       beforeEnter () {
-        window.location = "http://octobercms.com/plugin/srlabs-piwik"
+        window.location = "http://octobercms.com/plugin/stagerightlabs-piwik"
       }
     }
   ]);

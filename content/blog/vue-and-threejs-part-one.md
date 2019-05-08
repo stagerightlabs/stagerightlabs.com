@@ -12,7 +12,7 @@ Let's set up a [Vue](https://vuejs.org/) application with a three dimensional us
 
 <!-- more -->
 
-The completed code for this project is [available here](https://github.com/SRLabs/Vue-Three-Demo).  You can also check out a [demo](https://vuethree.stagerightlabs.com/).  Our goal will be to convert this [Three.js Example](https://threejs.org/examples/?q=controls#misc_controls_trackball) into a Vue application, and perhaps add a bit more functionality while we are at it.
+The completed code for this project is [available here](https://github.com/stagerightlabs/Vue-Three-Demo).  You can also check out a [demo](https://vuethree.stagerightlabs.com/).  Our goal will be to convert this [Three.js Example](https://threejs.org/examples/?q=controls#misc_controls_trackball) into a Vue application, and perhaps add a bit more functionality while we are at it.
 
 To start, spin up a new vue application with the Vue CLI tool.  (If you haven't done that before, check out [this great tutorial](https://flaviocopes.com/vue-cli/).)  For the sake of this tutorial you can choose any of the settings that you are comfortable with; just make sure you choose to have Vuex added to the project.
 
