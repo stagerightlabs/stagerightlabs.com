@@ -32,4 +32,4 @@ Presto! That is all there is to it. Now your mock objects can be bound appropria
 
 ~~~ @/snippets/using-mockery-with-codeception/laravel-example.php
 
-I have added my custom module and connector to my [Laravel-Testing-Utilities](https://github.com/SRLabs/laravel-testing-utilities) package if you would like to make use of them in your own Laravel 4.2 application. Currently they are only on the 1.\* branch, but if needed I will add them to the other versions of that package down the road.
+I have added my custom module and connector to my [Laravel-Testing-Utilities](https://github.com/stagerightlabs/laravel-testing-utilities) package if you would like to make use of them in your own Laravel 4.2 application. Currently they are only on the 1.\* branch, but if needed I will add them to the other versions of that package down the road.
