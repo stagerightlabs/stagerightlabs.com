@@ -1,7 +1,8 @@
 <template>
   <header class="masthead">
     <div class="logo">
-      <a href="/">
+      <a href="/" class="flex">
+        <img :src="$withBase('logo_color_50.png')" alt="Logo" class="h-6 mr-2 mt-1 md:h-12 md:ml-4 md:mt-3">
         <h1>
           <span class="text-red-700">S</span>tage
           <span class="text-red-700">R</span>ight
