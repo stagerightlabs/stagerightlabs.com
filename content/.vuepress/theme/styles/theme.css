@@ -21,7 +21,7 @@ p {
 
 /* Header */
 header.masthead {
-  @apply flex items-center justify-between items-center border-b-4 border-red-700 p-2;
+  @apply flex items-center justify-between items-center border-b-4 border-red-800 p-2;
 }
 
 header.masthead nav {
