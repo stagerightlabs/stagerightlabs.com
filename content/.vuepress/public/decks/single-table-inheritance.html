@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Single Table Inheritance in PHP</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/favicon.png?v=2">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="reveal.css">
+    <link rel="stylesheet" href="theme.css">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="highlight.css">
+
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style>
+        .reveal section img {
+            border: 0;
+        }
+
+        .about_me img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Wrap the entire slide show in a div using the "reveal" class. -->
+    <div class="reveal">
+        <!-- Wrap all slides in a single "slides" class -->
+        <div class="slides">
+
+            <section>
+                <h1>Single Table Inheritance in PHP</h1>
+            </section>
+
+             <section class="about_me">
+                 <img src="img/rydurham_avatar_round.png" />
+                 <p>
+                     ryan@stagerightlabs.com<br />
+                     <img src="img/twitter.png" width="50" />stagerightlabs <img src="img/github.png" width="50" />srlabs
+                 </p>
+            </section>
+
+            <section>
+                <h1>What is Single Table Inheritance?</h1>
+            </section>
+
+            <section>
+                <h2><strong>Single Table Inheritance</strong></h2>
+                <p>
+                    <em>"Represents an inheritance hierarchy of classes as a <br />
+                    single table that has columns for all the fields <br />
+                    of the various classes."</em><br />
+                    - <a href="" target="_blank">Martin Fowler, Patterns of <br />
+                    Enterprise Application Architecture</a>
+                </p>
+            </section>
+
+            <section>
+                <h2><b>In Practice:</b></h2>
+                <p class="left">Using one database table to store multiple object types.</p>
+                <p class="fragment left">With <b>Data Mapper:</b> Not much of a mental leap. </p>
+                <p class="fragment left">With <b>Active Record:</b> A very radical and unusual idea.</p>
+            </section>
+
+            <section>
+                <h1>What benefits can STI provide?</h1>
+                <p class="fragment">Let's look at an example.</p>
+            </section>
+
+            <section>
+                <h2><b>Example Scenario</b></h2>
+                <p>Imagine we are building a system to track medical records.</p>
+                <ul class="left">
+                    <li class="fragment">Customers create orders</li>
+                    <li class="fragment">Record retrieval request is sent</li>
+                    <li class="fragment">Nurses review records and create summaries</li>
+                    <li class="fragment">Reports are released to the client</li>
+                    <li class="fragment">Client credit card is billed</li>
+                </ul>
+                <p class="fragment left"><br />The status of the record request dictates the type of actions that can be taken against it.</p>
+            </section>
+
+            <section>
+            <pre><code class="php">&lt;?php foreach($records as $record) ?&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;?php echo $record-&gt;referenceNum; ?&gt;&lt;/td&gt;
+        &lt;td&gt;
+            &lt;?php if ($record-&gt;status == 'new') ?&gt;
+                &lt;a href=&quot;...&quot;&gt;Cancel&lt;/a&gt;
+                &lt;a href=&quot;...&quot;&gt;Assign to Nurse&lt;/a&gt;
+            &lt;?php endif; ?&gt;
+            &lt;?php if ($record-&gt;status == 'acquired') ?&gt;
+                &lt;a href=&quot;...&quot;&gt;Prepare Summary&lt;/a&gt;
+                &lt;a href=&quot;...&quot;&gt;View PDFs&lt;/a&gt;
+            &lt;?php endif; ?&gt;
+            &lt;?php if ($record-&gt;status == 'summarized') ?&gt;
+                &lt;a href=&quot;...&quot;&gt;Review Summary&lt;/a&gt;
+                &lt;a href=&quot;...&quot;&gt;Approve&lt;/a&gt;
+                &lt;a href=&quot;...&quot;&gt;Reject&lt;/a&gt;
+            &lt;?php endif; ?&gt;
+            &lt;?php if ($record-&gt;status == 'approved') ?&gt;
+                &lt;a href=&quot;...&quot;&gt;View&lt;/a&gt;
+                &lt;a href=&quot;...&quot;&gt;Process Payment&lt;/a&gt;
+            &lt;?php endif; ?&gt
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;?php endforeach; ?&gt;</code></pre>
+
+            </section>
+
+            <section>
+                <p>This works, but the view code is very cluttered, and we are not even accounting for different user access levels.<br />Is there a better way?</p>
+                <p class="fragment">Single Table Inheritance provides an excellent alternative.</p>
+            </section>
+
+            <section>
+                <p>By implementing STI we can ask our entity objects to define their own allowable actions.</p>
+            </section>
+
+            <section>
+                <h2><strong>For instance:</strong></h2>
+                <pre><code class="php">
+public function getActions($userLevel)
+{
+    return $this->actions[$userLevel];
+}
+
+protected $actions = [
+'client' => [
+    [
+        'name'    => 'edit',
+        'action'  => 'ClientReportController@edit',
+        'class'   => 'default'
+    ],
+    [
+        'name'    => 'delete',
+        'action'  => 'ClientReportController@delete',
+        'class'   => 'danger'
+    ]
+]
+// Additional User level entries ...
+];
+                </code></pre>
+            </section>
+
+            <section>
+                <h2><strong>Updated Example</strong></h2>
+            <pre><code class="php">&lt;?php foreach($records as $record) ?&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;?php echo $record-&gt;referenceNum; ?&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;?php echo $record-&gt;getActions('client'); ?&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+&lt;?php endforeach; ?&gt;</code></pre>
+
+            </section>
+
+            <section>
+                <h2><strong>Definitions:</strong></h2>
+                <p class="fragment left"><b>Discriminator Column</b> - The table column used to determine the entity type.</p>
+                <p class="fragment left"><b>Inheritance Map</b> - A way to associate discrimination values with php classes.</p>
+            </section>
+
+            <section>
+                <h2><strong>Using STI with Eloquent</strong></h2>
+            </section>
+
+            <section>
+                <h2><strong>Eloquent Model with STI</strong></h2>
+                <pre><code class="php">// app/Epiphyte/Record.php
+class Record extends Illuminate\Database\Eloquent\Model {
+
+    // Eloquent Configuration
+    protected $guarded = ['id'];
+    protected $fillable = ['name', 'description', 'status'];
+
+    // Single Table Inheritance Configuration
+    use SingleTableInheritanceTrait;
+    protected $table = 'records';
+    protected $morphClass = 'Epiphyte\Record';
+    protected $discriminatorColumn = 'status';
+    protected $inheritanceMap = [
+        'new' => 'Epiphyte\Entities\Records\RecordNew',
+        'requested' => 'Epiphyte\Entities\Records\RecordRequested',
+        'retrieved' => 'Epiphyte\Entities\Records\RecordRetrieved',
+        'complete' => 'Epiphyte\Entities\Records\RecordComplete'
+    ];
+
+// ...
+}</code></pre>
+            </section>
+
+            <section>
+                <h2><strong>Child Entity Class</strong></h2>
+                <pre><code class="php">// app/Epiphyte/Entities/Records/RecordNew.php
+class RecordNew extends Epiphyte\Record {
+
+    /**
+     * Limit the query scope if we define a query against
+     * the base table using this class.
+     */
+    public function newQuery($excludeDeleted = true)
+    {
+        return parent::newQuery($excludeDeleted)
+        ->where('status', '=', 'new');
+    }
+
+    // Remaining child entity methods go here...
+
+}
+                </code></pre>
+            </section>
+
+            <section>
+                <h2><strong>STI in Eloquent - Part 1</strong></h2>
+                <pre><code class="php">// Illuminate\Database\Eloquent\Model
+public function mapData(array $attributes)
+{
+    // Determine the entity type
+    $entityType = isset($attributes[$this->discriminatorColumn]) ?
+    $attributes[$this->discriminatorColumn] : null;
+
+    // Throw an exception if this entity type
+    // is not in the inheritance map
+    if (!array_key_exists($entityType, $this->inheritanceMap)) {
+        throw new ModelNotFoundException();
+    }
+
+    // Get the appropriate class name from
+    // the inheritance map
+    $class = $this->inheritanceMap[$entityType];
+
+    // Return a new instance of the specified class
+    return new $class;
+}</code></pre>
+            </section>
+
+            <section>
+                <h2><strong>STI in Eloquent - Part 2</strong></h2>
+                <pre><code class="php">
+// Illuminate\Database\Eloquent\Model
+public function newFromBuilder($attributes = array())
+{
+    // Create a new instance of the Entity Type Class
+    $m = $this->mapData((array)$attributes)
+                    ->newInstance(array(), true);
+
+    // Hydrate the new instance with the table data
+    $m->setRawAttributes((array)$attributes, true);
+
+    // Return the assembled object
+    return $m;
+}
+                </code></pre>
+            </section>
+
+            <section>
+                <h2><strong>What have we gained?</strong></h2>
+                <ul class="left">
+                    <li class="fragment">Eloquent will now automatically resolve entity types based on the discrimination value.</li>
+                    <li class="fragment">Collections will now contain a mix of entity types, dictated by the discrimination value.</li>
+                    <li class="fragment">Facade convenience, if you are in to that sort of thing: <code>RecordNew::all();</code></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2><strong>Using STI with Doctrine</strong></h2>
+            </section>
+
+            <section>
+                <p>The Data Mapper pattern lends itself more easily to Single Table Inheritance</p>
+            </section>
+
+            <section>
+                <h2><strong>Doctrine Example</strong></h2>
+                <pre><code class="php">
+/**
+ * @Entity
+ * @InheritanceType("SINGLE_TABLE")
+ * @DiscriminatorColumn(name="discr", type="string")
+ * @DiscriminatorMap({"person" = "Person", "employee" = "Employee"})
+ */
+class Person
+{
+    // ...
+}
+
+/**
+ * @Entity
+ */
+class Employee extends Person
+{
+    // ...
+}
+                </code></pre>
+            </section>
+
+            <section>
+                <h2><strong>Some important considerations</strong></h2>
+            </section>
+
+            <section>
+                <p>STI is ideal for situations where the child entities all make use of the same table column structure.</p>
+            </section>
+
+            <section>
+                <p class="left"><strong>Good:</strong> Inheriting <code>Ford</code>, <code>Toyota</code> and <code>Mercedes</code> types from an <code>automobiles</code> table.</p>
+            </section>
+
+            <section>
+                <p class="left"><strong>Bad:</strong> Inheriting <code>Car</code>, <code>Motorcyle</code> and <code>Airplane</code> types from a <code>vehicles</code> table.</p>
+            </section>
+
+            <section>
+                <p>Adding table columns that will only be used by specific child entities is a warning sign that Single Table Inheritance may not be a good choice for your situation.</p>
+            </section>
+
+            <section>
+                <p>Questions?</p>
+            </section>
+
+            <section>
+                <h2><strong>Additional Resources</strong></h2>
+                <ul class="left">
+                    <li><a href="https://github.com/SRLabs/eloquent-sti" target="_blank">Eloquent STI</a> Laravel Package</li>
+                    <li><a href="http://stagerightlabs.com/blog/single-table-inheritance" target="_blank">Blog post expanding on these slides</a> at stagerightlabs.com</li>
+                    <li><a href="http://snooptank.com/single-table-inheritance-with-eloquent-laravel-4/" target="_blank">Single Table Inheritance with Eloquent (Laravel 4)</a><br /> by Pallav Kaushish</li>
+                    <li><a href="http://blog.tatedavies.com/2011/09/13/setting-up-class-table-inheritance-with-doctrine-2-0" target="_blank">Setting up Class Table Inheritance with Doctrine 2.0</a> <br />by Chris Tate-Davies</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Thank you!</h2>
+            </section>
+
+
+        </div>
+    </div>
+    <script src="reveal.js"></script>
+
+    <script>
+        // Required, even if empty.
+        Reveal.initialize({
+            controls: true,
+            history: true,
+
+        // Optional libraries used to extend on reveal.js
+            // dependencies: [
+            //     { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            //     { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //     { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //     { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            //     { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            //     { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // ]
+        });
+    </script>
+</body>
+</html>

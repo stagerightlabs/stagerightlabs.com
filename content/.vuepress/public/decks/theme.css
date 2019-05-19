@@ -1,0 +1,182 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+@import url(http://fonts.googleapis.com/css?family=Ek+Mukta);
+@import url(http://fonts.googleapis.com/css?family=Fira+Mono);
+/**
+ * A simple theme for reveal.js presentations, similar
+ * to the default theme. The accent color is #F4645F.
+ *
+ * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
+ * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+body {
+    background: url('halftone.png') repeat;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.reveal {
+  font-family: "Lato", sans-serif;
+  font-size: 36px;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: black; }
+
+::selection {
+  color: white;
+  background: rgba(0, 0, 0, 0.99);
+  text-shadow: none; }
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: black;
+  font-family: 'Ek Mukta',sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: none;
+}
+
+.reveal h1 {
+    font-size: 150%;
+}
+
+.reveal h2 {
+    font-size: 130%;
+}
+
+/*********************************************
+ * CONTENT
+ *********************************************/
+
+.reveal p {
+    font-family: 'Open Sans',sans-serif;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.left {
+    text-align: left;
+}
+
+
+.reveal em {
+    font-style: italic;
+}
+
+.reveal strong, .reveal b {
+    font-weight: bold;
+}
+
+.reveal pre {
+    text-align: left;
+    font-size: 70%;
+}
+
+.reveal code {
+    line-height: 1.1;
+    font-family: "Fira Mono", monospace;
+    padding: 10px;
+}
+
+.reveal ul {
+    margin: 0 20px;
+}
+
+.reveal ul li {
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a:not(.image) {
+  color: #ff2e2e;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease; }
+
+.reveal a:not(.image):hover {
+  color: #ff2e2e;
+  text-shadow: none;
+  border: none; }
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #00003f; }
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  margin: 15px 0;
+  background: rgba(255, 255, 255, 0.12);
+  border: 4px solid black;
+}
+
+.reveal a:hover img {
+ /* background: rgba(255, 255, 255, 0.2);
+  border-color: #F4645F;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); */
+}
+
+.reveal section img.inline-icon {
+    margin: 0;
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #F4645F; }
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #F4645F; }
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #F4645F; }
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #F4645F; }
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #0000f1; }
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #0000f1; }
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #0000f1; }
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #0000f1; }
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2); }
+
+.reveal .progress span {
+  background: #F4645F;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
