@@ -1,6 +1,7 @@
 ---
 title: Presentation Decks
 layout: Decks
+permalink: /decks
 ---
 
 <div class="w-full mb-8">
