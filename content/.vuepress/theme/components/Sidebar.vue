@@ -12,6 +12,9 @@
           <router-link to="/projects">Projects</router-link>
         </li>
         <li class="text-xl px-2 py-1">
+          <router-link to="/decks">Decks</router-link>
+        </li>
+        <li class="text-xl px-2 py-1">
           <router-link to="/contact">Contact</router-link>
         </li>
       </ul>
