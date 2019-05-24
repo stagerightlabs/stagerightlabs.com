@@ -60,6 +60,4 @@ We can now import these methods into our Control Panel:
 
 ~~~ @/snippets/vue-threejs-part-two/control-panel-toggle-scenery.js{91,ControlPanel.vue,https://github.com/stagerightlabs/Vue-Three-Demo/blob/master/src/components/ControlPanel.vue#L91}
 
-We have now finished our
-
 You have now successfully used Vue, Vuex and Three.js to create and manage a three-dimensional scene in your browser. [You can see this code in action here](https://vuethree.stagerightlabs.com/). This demonstration is somewhat simplistic, but the ideas here should provide a solid foundation for building a more realistic application.
