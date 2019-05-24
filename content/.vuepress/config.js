@@ -44,8 +44,8 @@ module.exports = {
     ['sitemap', {
       hostname: 'https://stagerightlabs.com',
       urls: [
-        { url: '/decks/single-table-inheritance.html', changefreq: 'montly' },
-        { url: '/decks/laravel-101.html', changefreq: 'montly' }
+        { url: '/decks/single-table-inheritance.html', changefreq: 'monthly' },
+        { url: '/decks/laravel-101.html', changefreq: 'monthly' }
       ]
     }]
   ],
