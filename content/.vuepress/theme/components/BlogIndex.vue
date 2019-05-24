@@ -88,6 +88,11 @@ import compareDesc from 'date-fns/compare_desc';
 
 export default {
   components: { Icon, Sidebar },
+  data() {
+    return {
+      perPage: 4,
+    }
+  },
   computed: {
     posts () {
       let posts = this.$site.pages.filter(function (page) {
@@ -105,8 +110,8 @@ export default {
       return posts;
     },
     paginatedPosts () {
-      const start = (this.pageNumber - 1) * 5;
-      const end = start + 5;
+      const start = (this.pageNumber - 1) * this.perPage;
+      const end = start + this.perPage;
       return this.posts.slice(start, end);
     },
     pageNumber () {
@@ -120,7 +125,7 @@ export default {
       return pageNumber;
     },
     pageCount () {
-      return Math.ceil(this.posts.length / 5);
+      return Math.ceil(this.posts.length / this.perPage);
     },
     paginationForwardAllowed () {
       return this.pageNumber < this.pageCount;
