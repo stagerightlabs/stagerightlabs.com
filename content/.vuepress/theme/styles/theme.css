@@ -2,7 +2,7 @@
 @tailwind components;
 
 body {
-  background-image: url("../images/halftone.png");
+  background-image: url("../img/halftone.png");
   @apply text-gray-800;
 }
 

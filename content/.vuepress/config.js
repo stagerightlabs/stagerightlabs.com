@@ -70,5 +70,6 @@ module.exports = {
     author: {
       name: "Ryan C. Durham"
     }
-  }
+  },
+  permalink: '/blog/:slug'
 };
