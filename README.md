@@ -1,5 +1,7 @@
 # stagerightlabs.com
 
+The home page for Stage Right Labs, a web consultancy in Portland, Oregon.
+
 ## Powered by [VuePress](https://vuepress.vuejs.org/)
 
 To run locally, clone the repository and then:
