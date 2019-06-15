@@ -1,4 +1,4 @@
-import Layout from "./theme/Layout.vue";
+import Layout from "./theme/layouts/Layout.vue";
 
 export default ({
   //Vue, // the version of Vue being used in the VuePress app
