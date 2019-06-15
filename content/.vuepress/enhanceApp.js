@@ -7,8 +7,8 @@ export default ({
   // siteData // site metadata
 }) => {
   // Register URL Redirects
-  router.addRoutes([{ path: "/blog/", component: Layout }]);
   router.addRoutes([
+    { path: "/blog/", component: Layout },
     { path: "/about", component: Layout },
     { path: "/contact", component: Layout },
     { path: "/decks", component: Layout },
