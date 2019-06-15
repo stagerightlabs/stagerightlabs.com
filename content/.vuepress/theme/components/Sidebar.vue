@@ -1,20 +1,20 @@
 <template>
   <aside class="block w-full lg:w-1/5">
     <section class="m-4 px-2 py-4 bg-white shadow-md">
-      <ul class="mb-4 pb-2 border-b border-gray-300">
-        <li class="text-xl px-2 py-1">
+      <ul class="mb-4 pb-2 border-b border-gray-300 flex justify-around lg:block">
+        <li class="text-xl px-2 py-1 inline-block lg:block">
           <router-link to="/">Home</router-link>
         </li>
-        <li class="text-xl px-2 py-1">
+        <li class="text-xl px-2 py-1 inline-block lg:block">
           <router-link to="/about">About</router-link>
         </li>
-        <li class="text-xl px-2 py-1">
+        <li class="text-xl px-2 py-1 inline-block lg:block">
           <router-link to="/projects">Projects</router-link>
         </li>
-        <li class="text-xl px-2 py-1">
+        <li class="text-xl px-2 py-1 inline-block lg:block">
           <router-link to="/decks">Decks</router-link>
         </li>
-        <li class="text-xl px-2 py-1">
+        <li class="text-xl px-2 py-1 inline-block lg:block">
           <router-link to="/contact">Contact</router-link>
         </li>
       </ul>
@@ -26,7 +26,7 @@
         <li
           v-for="category in categories"
           :key="category"
-          class="m-1"
+          class="m-1 inline-block lg:block"
         >
           <a
             :class="{'active': selectedCategory === category}"
