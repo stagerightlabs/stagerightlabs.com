@@ -208,7 +208,7 @@
         <pre><code class="sh" data-trim>
 $ curl -sS https://getcomposer.org/installer | php
 $ sudo mv composer.phar /usr/local/bin/composer
-                </code></pre>
+        </code></pre>
 
       </section>
 
@@ -262,12 +262,11 @@ Route::controller('users', 'UserController');
 
       <section>
         <h3>Views - Master Layout</h3>
-        <code>app/views/layouts/master.blade.php</code>
+        <p style="font-size:70%">app/views/layouts/master.blade.php</p>
         <pre><code class="html" data-trim>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
     &lt;head&gt;
-        <meta charset="utf-8" />
         <title>
             @section('title')
         </title>
@@ -276,9 +275,7 @@ Route::controller('users', 'UserController');
     &lt;/head&gt;
     &lt;body&gt;
         <div class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-            <!-- .... -->
-          </div>
+          <!-- ... -->
         </div>
         <!-- Container -->
         <div class="container">
@@ -291,7 +288,7 @@ Route::controller('users', 'UserController');
 
       <section>
         <h3>Views - Basic Example</h3>
-        <code>app/views/users/login.blade.php</code>
+        <p style="font-size: 70%">app/views/users/login.blade.php</p>
         <pre><code class="html" data-trim>
 @extends('layouts.master')
 
@@ -314,28 +311,26 @@ Route::controller('users', 'UserController');
 
       <section>
         <h3>Controllers</h3>
-        <code>app/controllers/UserController.php</code>
+        <p style="font-size: 70%">app/controllers/UserController.php</p>
         <pre><code class="php" data-trim>
-&lt;?php
 class UserController extends BaseController {
 
     public function getIndex()
     {
-        $users = User::all();
-        return View::make('users.index')-&gt;with('users', $users);
+        return view('users.index')-&gt;with('users', User::all());
     }
 
-    public function postLogin()
+    public function postLogin(Request $request)
     {
-        $email    = Input::get('email');
-        $password = Input::get('password');
+        $email    = $request->input('email');
+        $password = $request->input('password');
 
-        if (Auth::attempt(array('email' =&gt; $email, 'password' =&gt; $password)))
+        if (Auth::attempt(['email' =&gt; $email, 'password' =&gt; $password]))
         {
-            return Redirect::intended('dashboard');
+            return redirect()->intended('dashboard');
         }
 
-        return Redirect::to('login');
+        return redirect('login');
     }
 }
         </code></pre>

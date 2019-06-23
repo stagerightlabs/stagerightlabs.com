@@ -1,92 +1,71 @@
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-title {
-  color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-attribute,
-.hljs-tag,
-.hljs-regexp,
-.ruby .hljs-constant,
-.xml .hljs-tag .hljs-title,
-.xml .hljs-pi,
-.xml .hljs-doctype,
-.html .hljs-doctype,
-.css .hljs-id,
-.css .hljs-class,
-.css .hljs-pseudo {
-  color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-preprocessor,
-.hljs-pragma,
-.hljs-built_in,
-.hljs-literal,
-.hljs-params,
-.hljs-constant {
-  color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
-  color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-value,
-.hljs-inheritance,
-.hljs-header,
-.ruby .hljs-symbol,
-.xml .hljs-cdata {
-  color: #718c00;
-}
-
-/* Tomorrow Aqua */
-.css .hljs-hexcolor {
-  color: #3e999f;
-}
-
-/* Tomorrow Blue */
-.hljs-function,
-.python .hljs-decorator,
-.python .hljs-title,
-.ruby .hljs-function .hljs-title,
-.ruby .hljs-title .hljs-keyword,
-.perl .hljs-sub,
-.javascript .hljs-title,
-.coffeescript .hljs-title {
-  color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.javascript .hljs-function {
-  color: #8959a8;
-}
+/**
+ * GitHub Gist Theme
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
 
 .hljs {
   display: block;
-  overflow-x: auto;
   background: white;
-  color: #4d4d4c;
   padding: 0.5em;
-  -webkit-text-size-adjust: none;
+  color: #333333;
+  overflow-x: auto;
 }
 
-.coffeescript .javascript,
-.javascript .xml,
-.tex .hljs-formula,
-.xml .javascript,
-.xml .vbscript,
-.xml .css,
-.xml .hljs-cdata {
-  opacity: 0.5;
+.hljs-comment,
+.hljs-meta {
+  color: #969896;
+}
+
+.hljs-string,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-strong,
+.hljs-emphasis,
+.hljs-quote {
+  color: #df5000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+  color: #a71d5d;
+}
+
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-attribute {
+  color: #0086b3;
+}
+
+.hljs-section,
+.hljs-name {
+  color: #63a35c;
+}
+
+.hljs-tag {
+  color: #333333;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #795da3;
+}
+
+.hljs-addition {
+  color: #55a532;
+  background-color: #eaffea;
+}
+
+.hljs-deletion {
+  color: #bd2c00;
+  background-color: #ffecec;
+}
+
+.hljs-link {
+  text-decoration: underline;
 }

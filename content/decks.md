@@ -25,3 +25,14 @@ permalink: /decks
         An introduction to Single Table Inheritance with PHP.  (2015)
     </p>
 </div>
+
+<div class="w-full mb-8">
+    <h2 class="text-2xl">
+        <a :href="$withBase('/decks/the-secret-power-of-renderless-vue-components.html')">
+            The Secret Power of Renderless Vue Components
+        </a>
+    </h2>
+    <p class="leading-normal">
+        Use render functions to create powerful vue component functionality.
+    </p>
+</div>
