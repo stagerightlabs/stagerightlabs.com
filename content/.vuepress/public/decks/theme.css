@@ -165,3 +165,11 @@ table.side-by-side td {
 table.side-by-side pre {
   margin: 0;
 }
+
+blockquote {
+  background-color: #f0eee5;
+  color: #999;
+  border-left: 8px solid #bbb;
+  padding: 10px 0px;
+  line-height: 3rem;
+}

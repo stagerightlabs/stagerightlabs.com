@@ -36,3 +36,14 @@ permalink: /decks
         Use render functions to create powerful vue component functionality.
     </p>
 </div>
+
+<div class="w-full mb-8">
+    <h2 class="text-2xl">
+        <a :href="$withBase('/decks/tailwind-css.html')">
+            An Introduction to Tailwind CSS
+        </a>
+    </h2>
+    <p class="leading-normal">
+        A modern utility framework for CSS.
+    </p>
+</div>
