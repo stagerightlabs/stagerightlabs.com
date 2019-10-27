@@ -62,7 +62,7 @@
         <p style="font-size: 80%;">
           Senior Engineer @ <a href="https://phylos.bio">Phylos</a>
           <br />
-          Owner @ <a href="https://stagerightlabs.com">Stage Right Labs</a>
+          <Owner @ <a href="https://stagerightlabs.com">Stage Right Labs</a>
         </p>
         <p style="font-size: 70%;">
           <svg aria-hidden="true" width="31" height="32" focusable="false"
@@ -112,10 +112,6 @@
   padding: 0.5rem;
   margin: 1rem;
 }</code></pre>
-      </section>
-
-      <section>
-        <h3>Example Usage</h3>
         <pre><code class="html" data-trim>
 <div class="profile">
   <img src="headshot.png" />
@@ -275,8 +271,34 @@
       <!-- PostCSS -->
       <section>
         <h2>PostCSS</h2>
-        <p>A CSS authoring framework for Javascript.</p>
+        <p>"A tool for transforming CSS with JavaScript"</p>
         <p>(Similar to Compass for Ruby, <br />though not exactly the same...)</p>
+      </section>
+
+      <!-- Talk about how PostCSS works and autoprefixer -->
+      <section>
+        <h2>How does it work?</h2>
+        <blockquote>PostCSS takes a CSS file and provides an API to analyze and modify its rules (by transforming them
+        into an Abstract Syntax Tree). This API can then be used by plugins to do a lot of useful things,
+        e.g. to find errors or automatically insert vendor prefixes.</blockquote>
+        <p><a href="https://github.com/postcss/postcss">https://github.com/postcss/postcss</a></p>
+      </section>
+
+      <section>
+        <p>Autoprefixer</p>
+        <p><a href="https://github.com/postcss/autoprefixer">https://github.com/postcss/autoprefixer</a></p>
+      </section>
+
+      <!-- Asset Pipeline -->
+      <section>
+        <p>Add Tailwind to your asset pipeline:</p>
+        <ul>
+          <li>PostCSS Plugin</li>
+          <li>Webpack</li>
+          <li>Gulp</li>
+          <li>Laravel Mix</li>
+        </ul>
+        <p><a href="https://tailwindcss.com/docs/installation#4-process-your-css-with-tailwind">https://tailwindcss.com/docs/installation#4-process-your-css-with-tailwind</a></p>
       </section>
 
       <!-- Talk about config file -->
@@ -293,12 +315,14 @@ module.exports = {
 
       <!-- No problem with the "Bootstrap Effect" -->
       <section>
+        <h2>Everything is Configurable</h2>
         <p>Tailwind is not susceptible to the "Bootstrap" effect.</p>
       </section>
 
       <!-- Downsides -->
       <section>
-        <h2>What are the downsides?</h2>
+        <h2>Is there a catch?</h2>
+        <p>What are the downsides?</p>
       </section>
 
       <!-- Downside #1: Reusable chunks of CSS -->
@@ -351,6 +375,25 @@ module.exports = {
         </p>
       </section>
 
+      <section>
+        <p>PurgeCSS is another PostCSS plugin that can be installed via NPM.</p>
+      </section>
+
+      <section>
+        <p>It scans your HTML and removes <br />unused classes from your CSS file.</p>
+      </section>
+
+      <!-- How does PurgeCSS work? -->
+      <section>
+        <h2>Usage:</h2>
+        <ul>
+          <li>Add PurgeCSS to your asset pipeline <br />(Webpack, Gulp, etc.) </li>
+          <li>Tell PurgeCSS where your HTML templates live.</li>
+          <li>Provide rules for allowable class names.</li>
+        </ul>
+        <p>Example: <a href="https://tailwindcss.com/docs/controlling-file-size/#setting-up-purgecss">https://tailwindcss.com/docs/controlling-file-size/#setting-up-purgecss</a></p>
+      </section>
+
       <!-- Fix: Compression -->
       <section>
         <h2>Solution #3</h2>
@@ -365,10 +408,9 @@ module.exports = {
         <p>You will probably end up using a combination of tactics to manage your production builds.</p>
       </section>
 
-      <!-- Try it; you will like it. -->
+      <!-- Demo -->
       <section>
-        <img src="img/tailwind_logo.svg" style="width: 250px" />
-        <p>Try it.  You will like it.</p>
+        <h2>Live Demo</h2>
       </section>
 
       <!-- Further Resources -->
@@ -379,7 +421,14 @@ module.exports = {
           <li><a href="https://tailwindcss.com/screencasts/">Free Screencasts</a></li>
           <li><a href="https://refactoringui.com/book/">Refactoring UI</a> Book</li>
           <li><a href="https://www.tailwindui.com/">UI Component Library</a> (Coming Soon...)</li>
+          <li><a href="https://github.com/laravel-frontend-presets/tailwindcss">Laravel Frontend Preset</a></li>
         </ul>
+      </section>
+
+      <!-- Try it; you will like it. -->
+      <section>
+        <img src="img/tailwind_logo.svg" style="width: 250px" />
+        <p>Try it. You will like it.</p>
       </section>
 
       <!-- Thank You -->

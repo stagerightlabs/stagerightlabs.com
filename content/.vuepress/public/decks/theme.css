@@ -168,8 +168,9 @@ table.side-by-side pre {
 
 blockquote {
   background-color: #f0eee5;
-  color: #999;
+  color: #777;
   border-left: 8px solid #bbb;
-  padding: 10px 0px;
+  padding: 10px 20px;
   line-height: 3rem;
+  text-align: left;
 }
