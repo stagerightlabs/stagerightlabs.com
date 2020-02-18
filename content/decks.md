@@ -47,3 +47,14 @@ permalink: /decks
         A modern utility framework for CSS.
     </p>
 </div>
+
+<div class="w-full mb-8">
+    <h2 class="text-2xl">
+        <a :href="$withBase('/decks/intro-to-docker.html')">
+            A Gentle Introduction to Docker
+        </a>
+    </h2>
+    <p class="leading-normal">
+        Power up your development workflow with Docker
+    </p>
+</div>
