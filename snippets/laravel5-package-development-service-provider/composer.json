@@ -1,9 +1,0 @@
-"autoload": {
-    "classmap": [
-        "src/seeds",
-        "src/controllers"
-    ],
-    "psr-4": {
-        "Sentinel\\": "src/Sentinel"
-    }
-},
