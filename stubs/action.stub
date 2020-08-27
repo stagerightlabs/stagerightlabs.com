@@ -1,0 +1,33 @@
+<?php
+
+namespace [namespace];
+
+use App\Actions\Complete;
+use App\Actions\Failure;
+use App\Actions\Reaction;
+use App\Utilities\Arr;
+use App\Utilities\Str;
+
+/**
+ * Action Description.
+ *
+ * Expected Input:
+ *  -
+ */
+class [class]
+{
+    /**
+     * Execute the action.
+     *
+     * @param array $data
+     * @return Reaction
+     */
+    public function execute($data = [])
+    {
+        if ($missing = Arr::disclose($data, [])) {
+            return new Failure("Missing expected '{$missing[0]}' value.");
+        }
+
+        //
+    }
+}
