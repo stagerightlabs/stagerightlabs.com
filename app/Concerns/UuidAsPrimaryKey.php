@@ -2,7 +2,7 @@
 
 namespace App\Concerns;
 
-use Illuminate\Support\Str;
+use App\Utilities\Str;
 
 /**
  * Allow a model to use a UUID as its primary key.
