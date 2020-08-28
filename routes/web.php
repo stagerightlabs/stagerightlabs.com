@@ -19,9 +19,6 @@ Route::layout('layouts.auth')->group(function () {
     Route::middleware('guest')->group(function () {
         Route::livewire('login', 'auth.login')
             ->name('login');
-
-        Route::livewire('register', 'auth.register')
-            ->name('register');
     });
 
     Route::livewire('password/reset', 'auth.passwords.email')
