@@ -6,6 +6,21 @@ use Livewire\Component;
 
 class [class] extends Component
 {
+    /**
+     * Mount the component.
+     *
+     * @return void
+     */
+    public function mount()
+    {
+        //
+    }
+
+    /**
+     * Render the component.
+     *
+     * @return \Illuminate\View\View
+     */
     public function render()
     {
         return view('[view]');
