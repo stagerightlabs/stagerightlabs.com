@@ -1,5 +1,5 @@
 @extends('layouts.base')
 
 @section('body')
-    @yield('content')
+  @yield('content')
 @endsection
