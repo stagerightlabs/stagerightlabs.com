@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <x-button.primary type="submit" wrapper="w-full mt-6" class="w-full">
+  <x-button.primary type="submit" wrapper="mt-6" :full="true">
     Confirm Password
   </x-button.primary>
 </form>

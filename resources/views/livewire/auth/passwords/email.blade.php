@@ -30,7 +30,7 @@
   />
 
   <div class="mt-6">
-    <x-button.primary type="submit" wrapper="w-full" class="w-full">
+    <x-button.primary type="submit" :full="true">
       Send password reset link
     </x-button.primary>
   </div>

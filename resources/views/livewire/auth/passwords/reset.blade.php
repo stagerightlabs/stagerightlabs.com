@@ -36,8 +36,7 @@
     <div class="mt-6">
       <x-button.primary
         type="submit"
-        wrapper="w-full"
-        class="w-full"
+        :full="true"
       >Reset Password</x-button.primary>
     </div>
   </form>

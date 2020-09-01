@@ -50,7 +50,7 @@
     </div>
 
     <div class="mt-6">
-      <x-button.primary type="submit" wrapper="w-full" class="w-full">Sign In</x-button.primary>
+      <x-button.primary type="submit" :full="true">Sign In</x-button.primary>
     </div>
   </form>
 </x-card>
