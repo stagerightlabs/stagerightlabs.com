@@ -42,6 +42,6 @@ Route::middleware('auth')->group(function () {
         ->middleware('signed')
         ->name('verification.verify');
 
-    Route::post('logout', 'Auth\LogoutController')
+    Route::any('logout', 'Auth\LogoutController')
         ->name('logout');
 });
