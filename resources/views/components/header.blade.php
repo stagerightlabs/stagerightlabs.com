@@ -1,4 +1,4 @@
-<div x-data="{ mobileMenuVisible: false, profileMenuVisible: false }">
+<div {{ $attributes }} x-data="{ mobileMenuVisible: false, profileMenuVisible: false }">
   <div class="mx-auto px-2 sm:px-4 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex items-center px-2 lg:px-0">
