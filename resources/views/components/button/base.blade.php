@@ -55,8 +55,7 @@
     @endif
     {{ $attributes }}
   >
-  @endif
-  @if ($type == 'link')
+  @else
   <a
     target="{{ $target }}"
     @if($disabled)
@@ -76,8 +75,7 @@
     <span class="text-left">{{ $slot }}</span>
   @if ($type != 'link')
     </button>
-  @endif
-  @if ($type == 'link')
+  @else
     </a>
   @endif
 </span>
