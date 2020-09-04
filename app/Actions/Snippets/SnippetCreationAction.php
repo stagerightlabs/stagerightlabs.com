@@ -2,12 +2,11 @@
 
 namespace App\Actions\Snippets;
 
+use App\Actions\Complete;
+use App\Actions\Failure;
+use App\Actions\Reaction;
 use App\Snippet;
 use App\Utilities\Arr;
-use App\Utilities\Str;
-use App\Actions\Failure;
-use App\Actions\Complete;
-use App\Actions\Reaction;
 
 /**
  * Create a new Snippet.
@@ -45,12 +44,12 @@ class SnippetCreationAction
             'url' => Arr::get($data, 'url'),
         ]);
 
-        if (!$snippet) {
+        if (! $snippet) {
             return new Failure('There was an error creating the snippet');
         }
 
         return new Complete("Snippet {$snippet->reference_id} created", [
-            'snippet' => $snippet
+            'snippet' => $snippet,
         ]);
     }
 }

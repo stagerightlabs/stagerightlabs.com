@@ -3,10 +3,9 @@
 namespace Tests\Feature;
 
 use App\User;
-use Tests\TestCase;
-use Livewire\Livewire;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class SnippetCreationTest extends TestCase
 {
@@ -48,7 +47,7 @@ class SnippetCreationTest extends TestCase
             'content' => "This is two lines\n of content.",
             'name' => 'New Snippet',
             'starting_line' => 22,
-            'url' => 'http://example.com'
+            'url' => 'http://example.com',
         ]);
     }
 

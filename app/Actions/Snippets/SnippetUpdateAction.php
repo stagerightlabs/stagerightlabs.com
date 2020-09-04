@@ -2,12 +2,11 @@
 
 namespace App\Actions\Snippets;
 
+use App\Actions\Complete;
+use App\Actions\Failure;
+use App\Actions\Reaction;
 use App\Snippet;
 use App\Utilities\Arr;
-use App\Utilities\Str;
-use App\Actions\Failure;
-use App\Actions\Complete;
-use App\Actions\Reaction;
 
 /**
  * Modify a Snippet.

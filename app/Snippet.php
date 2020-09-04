@@ -2,12 +2,9 @@
 
 namespace App;
 
-use App\Utilities\Str;
-use App\Concerns\Checksums;
 use App\Concerns\ReferenceIds;
 use App\Concerns\UuidAsPrimaryKey;
-use App\Events\SnippetCreating;
-use App\Events\SnippetUpdating;
+use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Snippet extends Model
@@ -33,8 +30,6 @@ class Snippet extends Model
         });
     }
 
-
-
     /**
      * The table associated with the model.
      *
@@ -56,7 +51,7 @@ class Snippet extends Model
      */
     public static function generateReferenceId()
     {
-        return 'SN' . Str::safeRandom(6);
+        return 'SN'.Str::safeRandom(6);
     }
 
     /**

@@ -41,7 +41,7 @@ class ActionMakeCommand extends Command
     {
         $stub = base_path('stubs/action.stub');
 
-        if (!File::exists($stub)) {
+        if (! File::exists($stub)) {
             $this->error('The action stub is not available.');
 
             return 1;
@@ -73,7 +73,7 @@ class ActionMakeCommand extends Command
             return $name;
         }
 
-        return $name . 'Action';
+        return $name.'Action';
     }
 
     /**
@@ -90,7 +90,7 @@ class ActionMakeCommand extends Command
             return 'App\Actions';
         }
 
-        return 'App\Actions\\' . collect($directories)
+        return 'App\Actions\\'.collect($directories)
             ->map([Str::class, 'studly'])
             ->implode('\\');
     }
@@ -103,11 +103,11 @@ class ActionMakeCommand extends Command
     protected function path()
     {
         $path = app_path('Actions/')
-            . collect(preg_split('/[.\/]+/', $this->argument('name')))
+            .collect(preg_split('/[.\/]+/', $this->argument('name')))
             ->map([Str::class, 'studly'])
             ->implode('/');
 
-        if (!Str::endsWith($path, 'Action')) {
+        if (! Str::endsWith($path, 'Action')) {
             $path .= 'Action';
         }
 
@@ -151,14 +151,14 @@ class ActionMakeCommand extends Command
      */
     public function makeUnitTestFile()
     {
-        $name = 'Actions/' . $this->argument('name');
+        $name = 'Actions/'.$this->argument('name');
 
-        if (!Str::endsWith($name, 'Action')) {
+        if (! Str::endsWith($name, 'Action')) {
             $name .= 'Action';
         }
 
         $this->call('make:test', [
-            'name' => $name . 'Test',
+            'name' => $name.'Test',
             '--unit' => true,
         ]);
     }

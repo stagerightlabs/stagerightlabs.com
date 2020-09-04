@@ -4,8 +4,8 @@ namespace Tests\Unit\Actions\Snippets;
 
 use App\Actions\Snippets\SnippetUpdateAction;
 use App\Snippet;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class SnippetUpdateActionTest extends TestCase
 {

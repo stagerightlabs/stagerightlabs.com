@@ -4,8 +4,8 @@ namespace Tests\Unit\Actions\Snippets;
 
 use App\Actions\Snippets\SnippetDeletionAction;
 use App\Snippet;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class SnippetDeletionActionTest extends TestCase
 {
@@ -22,7 +22,7 @@ class SnippetDeletionActionTest extends TestCase
 
         $this->assertTrue($action->completed());
         $this->assertDatabaseMissing('snippets', [
-            'reference_id' => $snippet->reference_id
+            'reference_id' => $snippet->reference_id,
         ]);
     }
 

@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Actions;
 
-use Tests\TestCase;
 use App\Actions\Users\UserAccountCreationAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class UserAccountCreationActionTest extends TestCase
 {

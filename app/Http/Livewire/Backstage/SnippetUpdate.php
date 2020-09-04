@@ -70,7 +70,7 @@ class SnippetUpdate extends Component
     {
         $this->snippet = Snippet::findByReferenceId($ref);
 
-        if (!$this->snippet) {
+        if (! $this->snippet) {
             $this->flash('You are trying to view an invalid snippet.', 'error');
         }
 
@@ -122,10 +122,12 @@ class SnippetUpdate extends Component
 
         if ($action->failed()) {
             $this->alert($action->getMessage(), 'error');
+
             return;
         }
 
         $this->flash($action->getMessage(), 'success');
+
         return redirect()->route(
             'backstage.snippets.show',
             $action->snippet->reference_id

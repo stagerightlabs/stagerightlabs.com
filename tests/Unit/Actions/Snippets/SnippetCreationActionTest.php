@@ -3,7 +3,6 @@
 namespace Tests\Unit\Actions\Snippets;
 
 use App\Actions\Snippets\SnippetCreationAction;
-use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -57,7 +56,7 @@ class SnippetCreationActionTest extends TestCase
     public function it_requires_a_snippet_name()
     {
         $action = (new SnippetCreationAction)->execute([
-            'content' => 'This is some content'
+            'content' => 'This is some content',
         ]);
 
         $this->assertFalse($action->completed());

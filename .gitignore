@@ -13,3 +13,5 @@ yarn-error.log
 .vscode
 public/js/app.js
 public/css/app.css
+todo.txt
+.php_cs.cache

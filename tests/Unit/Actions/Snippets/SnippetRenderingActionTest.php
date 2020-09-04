@@ -2,10 +2,9 @@
 
 namespace Tests\Unit\Actions\Snippets;
 
+use App\Actions\Snippets\SnippetRenderingAction;
 use App\Snippet;
 use Tests\TestCase;
-use App\Actions\Snippets\SnippetRenderingAction;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SnippetRenderingActionTest extends TestCase
 {

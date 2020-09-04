@@ -20,7 +20,7 @@ trait UuidAsPrimaryKey
     {
         // Generate a new UUID when creating new models
         static::creating(function ($model) {
-            if (!$model->getKey()) {
+            if (! $model->getKey()) {
                 $model->{$model->getKeyName()} = (string) Str::uuid();
             }
         });

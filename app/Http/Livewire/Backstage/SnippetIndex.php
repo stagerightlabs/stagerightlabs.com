@@ -29,7 +29,7 @@ class SnippetIndex extends Component
     public function render()
     {
         return view('livewire.backstage.snippet-index', [
-            'snippets' => Snippet::orderBy('name')->paginate()
+            'snippets' => Snippet::orderBy('name')->paginate(),
         ]);
     }
 }

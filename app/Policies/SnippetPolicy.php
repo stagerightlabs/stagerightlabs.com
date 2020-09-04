@@ -2,10 +2,10 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Snippet;
-use Illuminate\Support\Facades\Auth;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class SnippetPolicy
 {

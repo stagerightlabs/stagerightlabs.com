@@ -28,7 +28,7 @@ class SnippetShow extends Component
     {
         $this->snippet = Snippet::findByReferenceId($ref);
 
-        if (!$this->snippet) {
+        if (! $this->snippet) {
             $this->flash('You are trying to view an invalid snippet.', 'error');
         }
 
@@ -43,7 +43,7 @@ class SnippetShow extends Component
     public function render()
     {
         return view('livewire.backstage.snippet-show', [
-            'snippet' => $this->snippet
+            'snippet' => $this->snippet,
         ]);
     }
 
@@ -57,15 +57,17 @@ class SnippetShow extends Component
         $this->authorize('delete', $this->snippet);
 
         $action = (new SnippetDeletionAction)->execute([
-            'snippet' => $this->snippet
+            'snippet' => $this->snippet,
         ]);
 
         if ($action->failed()) {
             $this->alert($action->getMessage(), 'error');
+
             return;
         }
 
         $this->flash($action->getMessage(), 'success');
+
         return redirect()->route('backstage.snippets.index');
     }
 }

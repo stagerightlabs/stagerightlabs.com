@@ -6,7 +6,6 @@ use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Reaction;
 use App\Utilities\Arr;
-use App\Utilities\Str;
 
 /**
  * Render the content of a snippet as HTML.
@@ -19,13 +18,12 @@ class SnippetRenderingAction
     const HTML_START = "<div class=\"border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 p-2 font-mono overflow-x-auto relative\"><table><tbody>\n";
     const HTML_END = "</div>\n";
     const TABLE_END = "</tbody></table>\n";
-    const ROW_START = "<tr><td class=\"text-cool-gray-500 text-right select-none\">";
-    const ROW_MIDDLE = "</td><td class=\"text-cool-gray-300 whitespace-pre px-2 text-sm\">";
+    const ROW_START = '<tr><td class="text-cool-gray-500 text-right select-none">';
+    const ROW_MIDDLE = '</td><td class="text-cool-gray-300 whitespace-pre px-2 text-sm">';
     const ROW_END = "</td></tr>\n";
-    const FOOTER_START = "<div class=\"absolute right-2 bottom-1 text-cool-gray-400\">";
+    const FOOTER_START = '<div class="absolute right-2 bottom-1 text-cool-gray-400">';
     const FOOTER_END = "</div>\n";
-    const FALLBACK_FILENAME = "View File";
-
+    const FALLBACK_FILENAME = 'View File';
 
     /**
      * Execute the action.
@@ -43,7 +41,7 @@ class SnippetRenderingAction
 
         // Is there content to be rendered?
         if (empty($snippet->content)) {
-            return new Failure("Snippet has no content to render.");
+            return new Failure('Snippet has no content to render.');
         }
 
         // generate the rendered html
@@ -52,7 +50,7 @@ class SnippetRenderingAction
         // Cache handling would occur here...
 
         // All set
-        return new Complete("Snippet has been rendered", [
+        return new Complete('Snippet has been rendered', [
             'rendered' => $html,
             'snippet' => $snippet,
         ]);
@@ -71,18 +69,17 @@ class SnippetRenderingAction
 
         // Content
         $html = collect(explode("\n", $snippet->content))
-            ->reduce(function($carry, $row) use (&$number) {
-
+            ->reduce(function ($carry, $row) use (&$number) {
                 $carry = $carry .= self::ROW_START
-                    . $number
+                    .$number
                     .self::ROW_MIDDLE
-                    . $row
-                    . self::ROW_END;
+                    .$row
+                    .self::ROW_END;
 
                 $number++;
 
                 return $carry;
-            }, self::HTML_START) . self::TABLE_END;
+            }, self::HTML_START).self::TABLE_END;
 
         // Optional Footer
         $html .= $this->footer($snippet->filename, $snippet->url);
@@ -100,7 +97,7 @@ class SnippetRenderingAction
      */
     protected function footer($filename = null, $url = null)
     {
-        if (!$filename && !$url) {
+        if (! $filename && ! $url) {
             return '';
         }
 
@@ -115,7 +112,7 @@ class SnippetRenderingAction
             : $filename;
 
         if ($url) {
-            $footer .= "</a>";
+            $footer .= '</a>';
         }
 
         return $footer .= self::FOOTER_END;

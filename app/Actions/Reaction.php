@@ -99,7 +99,7 @@ abstract class Reaction
      */
     public function __get($key)
     {
-        if (!array_key_exists($key, $this->payload)) {
+        if (! array_key_exists($key, $this->payload)) {
             return;
         }
 

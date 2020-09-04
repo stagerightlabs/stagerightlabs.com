@@ -23,7 +23,7 @@ class Arr extends IlluminateArr
         $missing = [];
 
         foreach ($keys as $expected) {
-            if (!array_key_exists($expected, $array)) {
+            if (! array_key_exists($expected, $array)) {
                 array_push($missing, $expected);
             }
         }

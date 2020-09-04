@@ -5,8 +5,8 @@ namespace App\Http\Livewire\Backstage;
 use App\Actions\Snippets\SnippetCreationAction;
 use App\Http\Livewire\DisplaysAlerts;
 use App\Snippet;
-use Livewire\Component;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Component;
 
 class SnippetCreate extends Component
 {
@@ -89,10 +89,12 @@ class SnippetCreate extends Component
 
         if ($action->failed()) {
             $this->alert($action->getMessage(), 'error');
+
             return;
         }
 
         $this->flash($action->getMessage(), 'success');
+
         return redirect()->route('backstage.snippets.show', $action->snippet->reference_id);
     }
 }

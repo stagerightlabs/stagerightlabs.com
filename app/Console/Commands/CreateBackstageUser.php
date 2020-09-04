@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Actions\Users\UserAccountCreationAction;
 use App\Utilities\Str;
 use Illuminate\Console\Command;
-use App\Actions\Users\UserAccountCreationAction;
 
 class CreateBackstageUser extends Command
 {

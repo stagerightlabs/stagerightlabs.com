@@ -2,12 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\User;
 use App\Snippet;
-use Tests\TestCase;
-use Livewire\Livewire;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class SnippetRemovalTest extends TestCase
 {
