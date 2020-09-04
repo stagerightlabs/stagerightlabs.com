@@ -12,6 +12,7 @@
         name="email"
         wire:model.lazy="email"
         :error="$errors->first('email')"
+        :autofocus="true"
       />
     </div>
 
