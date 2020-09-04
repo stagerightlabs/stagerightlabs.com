@@ -2,10 +2,14 @@
 
 namespace [namespace];
 
+use App\Http\Livewire\DisplaysAlerts;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class [class] extends Component
 {
+    use AuthorizesRequests, DisplaysAlerts;
+
     /**
      * Mount the component.
      *
