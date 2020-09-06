@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17c90cebf9a47eb6d6f749c624d344ec",
+    "content-hash": "44106212ad60c6c5beef410d04e7985e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7286,6 +7286,67 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "stefanbauer/tailwindcss-breakpoint-detector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stefanbauer/tailwindcss-breakpoint-detector.git",
+                "reference": "c381e340e71a4a9b605a4c5d0ec709a6c86fff83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stefanbauer/tailwindcss-breakpoint-detector/zipball/c381e340e71a4a9b605a4c5d0ec709a6c86fff83",
+                "reference": "c381e340e71a4a9b605a4c5d0ec709a6c86fff83",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "StefanBauer\\TailwindcssBreakpointDetector\\TailwindcssBreakpointDetectorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "StefanBauer\\TailwindcssBreakpointDetector\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stefan Bauer",
+                    "email": "mail@stefanbauer.me",
+                    "homepage": "https://stefanbauer.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to display TailwindCSS breakpoints on the fly",
+            "homepage": "https://github.com/stefanbauer/tailwindcss-breakpoint-detector",
+            "keywords": [
+                "laravel",
+                "stefanbauer",
+                "tailwindcss",
+                "tailwindcss-breakpoint-detector"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/stefanbauer",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-08-30T12:14:01+00:00"
         },
         {
             "name": "symfony/filesystem",
