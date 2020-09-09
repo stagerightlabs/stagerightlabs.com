@@ -4,21 +4,13 @@ namespace App;
 
 use App\Concerns\ReferenceIds;
 use App\Concerns\UuidAsPrimaryKey;
+use App\Post;
 use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
     use ReferenceIds, UuidAsPrimaryKey;
-
-    /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-    }
 
     /**
      * The table associated with the model.
@@ -33,6 +25,16 @@ class Tag extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * The posts associated with this tag.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function posts()
+    {
+        return $this->morphedByMany(Post::class, 'taggable');
+    }
 
     /**
      * Generate a new reference ID for this model type.

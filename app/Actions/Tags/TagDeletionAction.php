@@ -27,9 +27,15 @@ class TagDeletionAction
             return new Failure("Missing expected '{$missing[0]}' value.");
         }
 
+        if ($data['tag']->posts()->exists()) {
+            return new Failure("Tag '{$data['tag']->name}' cannot be removed; it is still in use.", [
+                'tag' => $data['tag'],
+            ]);
+        }
+
         $data['tag']->delete();
 
-        return new Complete("Tag {$data['tag']->name} has been removed.", [
+        return new Complete("Tag '{$data['tag']->name}' has been removed.", [
             'tag' => $data['tag'],
         ]);
     }

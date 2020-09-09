@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Backstage;
 
+use App\Actions\Posts\PostUpdatingAction;
+use App\Post;
 use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,7 +18,6 @@ class TagDeletionTest extends TestCase
     public function users_can_remove_unassigned_tags()
     {
         $this->actingAs(factory(User::class)->create());
-
         $tag = factory(Tag::class)->create();
 
         Livewire::test('backstage.tag-index')
@@ -30,6 +31,22 @@ class TagDeletionTest extends TestCase
     /** @test */
     public function users_cannot_delete_tags_assigned_to_posts()
     {
-        $this->markTestSkipped();
+        $this->actingAs(factory(User::class)->create());
+        $post = factory(Post::class)->create();
+        $tag = factory(Tag::class)->create();
+        (new PostUpdatingAction)->execute([
+            'content' => $post->content,
+            'post' => $post,
+            'tags' => [$tag->slug],
+            'title' => $post->title,
+        ]);
+
+        Livewire::test('backstage.tag-index')
+            ->call('remove', $tag->reference_id)
+            ->assertHasAlertMessage('error');
+
+        $this->assertDatabaseHas('tags', [
+            'reference_id' => $tag->reference_id,
+        ]);
     }
 }
