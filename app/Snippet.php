@@ -61,6 +61,6 @@ class Snippet extends Model
      */
     public function getShortcodeAttribute()
     {
-        return "[Snippet {$this->reference_id}]";
+        return "[[Snippet {$this->reference_id}]]";
     }
 }
