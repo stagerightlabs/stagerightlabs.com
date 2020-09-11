@@ -25,7 +25,6 @@ abstract class TestCase extends BaseTestCase
         });
 
         $this->registerCollectionAssertions();
-        $this->registerSessionAssertions();
         $this->registerLivewireAssertions();
     }
 
@@ -66,36 +65,34 @@ abstract class TestCase extends BaseTestCase
      * @see \Illuminate\Testing\TestResponse
      * @return void
      */
-    public function registerSessionAssertions()
+    public function assertSessionHasAlert($key = null)
     {
-        TestResponse::macro('assertSessionHasAlert', function ($key = null) {
-            if (is_null($key)) {
-                Assert::assertTrue(
-                    $this->session()->has('alerts'),
-                    'Session is missing expected key [alerts].'
-                );
-            } else {
-                $values = array_reduce(
-                    $this->session()->get('alerts', []),
-                    function ($carry, $item) {
-                        if (is_array($item) && isset($item['type'])) {
-                            $carry[] = $item['type'];
-
-                            return $carry;
-                        }
+        if (is_null($key)) {
+            Assert::assertTrue(
+                session()->has('alerts'),
+                'Session is missing expected key [alerts].'
+            );
+        } else {
+            $values = array_reduce(
+                session()->get('alerts', []),
+                function ($carry, $item) {
+                    if (is_array($item) && isset($item['type'])) {
+                        $carry[] = $item['type'];
 
                         return $carry;
-                    },
-                    []
-                );
+                    }
 
-                Assert::assertContains(
-                    $key,
-                    $values,
-                    "Session is missing expected key [alerts.{$key}]"
-                );
-            }
-        });
+                    return $carry;
+                },
+                []
+            );
+
+            Assert::assertContains(
+                $key,
+                $values,
+                "Session is missing expected key [alerts.{$key}]"
+            );
+        }
     }
 
     /**
