@@ -22,3 +22,15 @@ $factory->define(Post::class, function (Faker $faker, $attributes) {
         'title' => $title,
     ];
 });
+
+$factory->state(Post::class, 'published', function($faker) {
+    return [
+        'published_at' => now()->subWeeks(2),
+    ];
+});
+
+$factory->state(Post::class, 'draft', function ($faker) {
+    return [
+        'published_at' => null,
+    ];
+});

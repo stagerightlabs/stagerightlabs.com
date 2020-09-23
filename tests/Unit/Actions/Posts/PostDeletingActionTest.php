@@ -33,4 +33,19 @@ class PostDeletingActionTest extends TestCase
 
         $this->assertFalse($action->completed());
     }
+
+    /** @test */
+    public function published_posts_cannot_be_deleted()
+    {
+        $post = factory(Post::class)->state('published')->create();
+
+        $action = (new PostDeletingAction)->execute([
+            'post' => $post,
+        ]);
+
+        $this->assertFalse($action->completed());
+        $this->assertDatabaseHas('posts', [
+            'reference_id' => $post->reference_id,
+        ]);
+    }
 }

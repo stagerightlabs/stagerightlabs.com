@@ -51,7 +51,8 @@ class Post extends Model
      */
     public function tags()
     {
-        return $this->morphToMany(Tag::class, 'taggable');
+        return $this->morphToMany(Tag::class, 'taggable')
+            ->orderBy('name');
     }
 
     /**
@@ -85,5 +86,15 @@ class Post extends Model
         return $this->shortcodes->contains(function($sc) use ($shortcode) {
             return $sc['original'] == $shortcode;
         });
+    }
+
+    /**
+     * Has this post been published?
+     *
+     * @return boolean
+     */
+    public function hasBeenPublished()
+    {
+        return boolval($this->published_at);
     }
 }

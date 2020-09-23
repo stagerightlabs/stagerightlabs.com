@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Actions\Complete;
 use App\Actions\Failure;
+use App\Actions\Posts\PostTaggingAction;
 use App\Actions\Reaction;
 use App\Post;
 use App\Tag;
@@ -51,7 +52,6 @@ class PostCreatingAction
             $this->applyTags($post, $tags);
         }
 
-
         return new Complete("Post {$post->reference_id} has been created; it has not been published.", [
             'post' => $post,
         ]);
@@ -88,8 +88,9 @@ class PostCreatingAction
      */
     protected function applyTags($post, $slugs)
     {
-        $post->tags()->attach(
-            Tag::whereIn('slug', $slugs)->get()
-        );
+        return (new PostTaggingAction)->execute([
+            'post' => $post,
+            'tags' => $slugs,
+        ]);
     }
 }

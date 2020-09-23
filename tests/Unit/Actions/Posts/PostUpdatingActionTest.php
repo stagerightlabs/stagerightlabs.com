@@ -116,4 +116,48 @@ class PostUpdatingActionTest extends TestCase
 
         $this->assertFalse($action->completed());
     }
+
+    /** @test */
+    public function it_publishes_posts()
+    {
+        $author = factory(User::class)->create();
+        $post = factory(Post::class)->state('draft')->create([
+            'content' => 'Original Content',
+            'title' => 'Original Title',
+            'slug' => 'original-title',
+        ]);
+
+        $action = (new PostUpdatingAction)->execute([
+            'author' => $author,
+            'content' => 'New Content',
+            'post' => $post,
+            'title' => 'New Title',
+            'published_at' => '2020-01-01',
+        ]);
+
+        $this->assertTrue($action->completed());
+        $this->assertNotNull($action->post->published_at);
+    }
+
+    /** @test */
+    public function it_reverts_post_publication()
+    {
+        $author = factory(User::class)->create();
+        $post = factory(Post::class)->state('published')->create([
+            'content' => 'Original Content',
+            'title' => 'Original Title',
+            'slug' => 'original-title',
+        ]);
+
+        $action = (new PostUpdatingAction)->execute([
+            'author' => $author,
+            'content' => 'New Content',
+            'post' => $post,
+            'title' => 'New Title',
+            'published_at' => null,
+        ]);
+
+        $this->assertTrue($action->completed());
+        $this->assertNull($action->post->published_at);
+    }
 }

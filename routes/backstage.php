@@ -19,5 +19,12 @@ Route::livewire('tags', 'backstage.tag-index')->name('backstage.tags.index');
 Route::livewire('tags/create', 'backstage.tag-create')->name('backstage.tags.create');
 Route::livewire('tags/{ref}/edit', 'backstage.tag-update')->name('backstage.tags.update');
 
+// Posts
+Route::livewire('posts', 'backstage.post-index')->name('backstage.posts.index');
+Route::livewire('posts/create', 'backstage.post-create')->name('backstage.posts.create');
+Route::livewire('posts/{ref}', 'backstage.post-show')->name('backstage.posts.show');
+Route::livewire('posts/{ref}/edit', 'backstage.post-update')->name('backstage.posts.update');
+Route::livewire('posts/{ref}/preview', 'backstage.post-preview')->name('backstage.posts.preview');
+
 // Scratch
 Route::view('scratch', 'backstage.scratch');

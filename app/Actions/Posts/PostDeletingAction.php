@@ -28,6 +28,10 @@ class PostDeletingAction
             return new Failure("Missing expected '{$missing[0]}' value.");
         }
 
+        if ($data['post']->hasBeenPublished()) {
+            return new Failure("Post {$data['post']->reference_id} has been published and cannot be deleted.");
+        }
+
         $data['post']->delete();
 
         return new Complete("Post {$data['post']->reference_id} has been deleted.");

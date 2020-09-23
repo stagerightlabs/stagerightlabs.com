@@ -8,6 +8,7 @@ use App\Actions\Reaction;
 use App\Tag;
 use App\Utilities\Arr;
 use App\Utilities\Str;
+use Illuminate\Support\Carbon;
 
 /**
  * Update a post.
@@ -20,6 +21,7 @@ use App\Utilities\Str;
  * Optional Input:
  *  - 'author' (User)
  *  - 'tags' (array)
+ *  - 'published_at' (string) yyyy-mm-dd
  */
 class PostUpdatingAction
 {
@@ -35,6 +37,7 @@ class PostUpdatingAction
             return new Failure("Missing expected '{$missing[0]}' value.");
         }
 
+        // Update Post Attributes
         $post = $data['post'];
         $post->content = $data['content'];
         $post->title = $data['title'];
@@ -43,12 +46,34 @@ class PostUpdatingAction
             ? $data['author']->id
             : $post->author_id;
 
+        // Update Publication Date
+        if (Arr::has($data, 'published_at')) {
+            $post->published_at = empty($data['published_at'])
+                ? null
+                : Carbon::createFromFormat('Y-m-d', $data['published_at'], 'America/Los_Angeles');
+        }
+
+        // Render the markdown into HTML
+        $rendering = (new PostRenderingAction)->execute([
+            'post' => $post,
+        ]);
+
+        if ($rendering->failed()) {
+            return $rendering;
+        }
+
+        $post->rendered = $rendering->rendered;
+
+        // Save the post
+        $post->save();
+
+        // Update the post tags if they have been provided.
         if (Arr::has($data, 'tags')) {
             $this->updateTags($post, $data['tags']);
         }
 
         return new Complete("Post {$post->reference_id} has been updated.", [
-            'post' => $post,
+            'post' => $rendering->post,
         ]);
     }
 
@@ -59,10 +84,11 @@ class PostUpdatingAction
      * @param array $tags
      * @return void
      */
-    protected function updateTags($post, $tags = [])
+    protected function updateTags($post, $slugs = [])
     {
-        $tags = Tag::whereIn('slug', $tags)->get();
-
-        $post->tags()->sync($tags);
+        return (new PostTaggingAction)->execute([
+            'post' => $post,
+            'tags' => $slugs,
+        ]);
     }
 }

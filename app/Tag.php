@@ -45,4 +45,15 @@ class Tag extends Model
     {
         return 'TAG'.Str::safeRandom(5);
     }
+
+    /**
+     * Find a tag by its slug.
+     *
+     * @param string $slug
+     * @return self|null
+     */
+    public static function findBySlug($referenceId)
+    {
+        return self::query()->where('slug', $referenceId)->first();
+    }
 }
