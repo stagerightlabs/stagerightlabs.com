@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Unit\Actions;
+namespace Tests\Unit\Actions\Posts;
 
-use App\Actions\PostCreatingAction;
+use App\Actions\Posts\PostCreatingAction;
 use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;

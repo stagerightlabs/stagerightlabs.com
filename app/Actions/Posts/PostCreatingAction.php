@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Posts;
 
 use App\Actions\Complete;
 use App\Actions\Failure;

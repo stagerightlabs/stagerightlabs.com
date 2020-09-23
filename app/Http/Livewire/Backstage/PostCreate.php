@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Backstage;
 
-use App\Actions\PostCreatingAction;
+use App\Actions\Posts\PostCreatingAction;
 use App\Http\Livewire\DisplaysAlerts;
 use App\Post;
 use App\Tag;
