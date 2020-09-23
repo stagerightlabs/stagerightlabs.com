@@ -30,17 +30,20 @@ class PostUpdatingTest extends TestCase
         $this->actingAs(factory(User::class)->create());
         $post = factory(Post::class)->create([
             'content' => 'Original content',
+            'description' => 'Original description',
             'title' => 'Original Title',
         ]);
 
         Livewire::test(PostUpdate::class, ['ref' => $post->reference_id])
             ->set('content', 'New content')
+            ->set('description', 'New description')
             ->set('title', 'New Title')
             ->call('update');
 
         $this->assertDatabaseHas('posts', [
             'reference_id' => $post->reference_id,
             'content' => 'New content',
+            'description' => 'New description',
             'title' => 'New Title',
         ]);
     }

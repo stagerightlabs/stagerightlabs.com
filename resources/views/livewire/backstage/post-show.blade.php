@@ -33,6 +33,8 @@
         No Tags
         @endforelse
       </x-description>
+      <x-description class="sm:col-span-1" label="Description">{{ $post->description }}
+      </x-description>
       <x-description class="sm:col-span-1" label="Status">
         @if ($post->published_at)
           Published {{ $post->published_at->format('Y-m-d') }}

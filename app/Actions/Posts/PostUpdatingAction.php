@@ -20,6 +20,7 @@ use Illuminate\Support\Carbon;
  *
  * Optional Input:
  *  - 'author' (User)
+ *  - 'description' (string)
  *  - 'tags' (array)
  *  - 'published_at' (string) yyyy-mm-dd
  */
@@ -40,6 +41,7 @@ class PostUpdatingAction
         // Update Post Attributes
         $post = $data['post'];
         $post->content = $data['content'];
+        $post->description = Arr::get($data, 'description');
         $post->title = $data['title'];
         $post->slug = Arr::get($data, 'slug', $post->slug);
         $post->author_id = Arr::has($data, 'author')

@@ -21,11 +21,20 @@
         wire:model.lazy="title"
       />
 
+      <x-form.text
+        class="col-span-1"
+        :error="$errors->first('description')"
+        label="Description"
+        type="text"
+        wire:model.lazy="description"
+        wrapper="mt-4"
+      />
+
       <label class="block text-sm font-medium leading-5 text-cool-gray-300 mt-4">
         Tags
       </label>
       <div class="w-full grid grid-cols-1 sm:grid-cols-4 gap-4 p-4">
-        @foreach($availableTags as $slug => $label)
+        @forelse($availableTags as $slug => $label)
           <div class="col-span-1">
             <input
               id="permissions.{{ $slug }}"
@@ -36,7 +45,9 @@
               value="{{ $slug }}"
             > {{ $label }}
           </div>
-        @endforeach
+        @empty
+          <p class="text-cool-gray-500">There are no tags.</p>
+        @endforelse
       </div>
 
       <x-form.textarea

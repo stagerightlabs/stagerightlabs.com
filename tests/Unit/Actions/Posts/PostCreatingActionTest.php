@@ -20,12 +20,14 @@ class PostCreatingActionTest extends TestCase
         $action = (new PostCreatingAction)->execute([
             'author' => $author,
             'content' => 'Some new content',
+            'description' => 'Some description',
             'title' => 'A New Post',
         ]);
 
         $this->assertTrue($action->completed());
         $this->assertEquals('A New Post', $action->post->title);
         $this->assertEquals('a-new-post', $action->post->slug);
+        $this->assertEquals('Some description', $action->post->description);
         $this->assertNull($action->post->published_at);
         $this->assertEquals($author->id, $action->post->author_id);
     }

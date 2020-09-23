@@ -29,12 +29,14 @@ class PostCreationTest extends TestCase
 
         Livewire::test(PostCreate::class)->dump()
             ->set('content', "This is the new\npost content.")
+            ->set('description', 'This is a post description')
             ->set('title', 'A New Post')
             ->call('store');
 
         $this->assertSessionHasAlert('success');
         $this->assertDatabaseHas('posts', [
             'content' => "This is the new\npost content.",
+            'description' => 'This is a post description',
             'title' => 'A New Post',
         ]);
     }

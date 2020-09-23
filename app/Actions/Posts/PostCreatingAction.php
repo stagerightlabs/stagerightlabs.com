@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\DB;
  *  - 'title' (string)
  *
  * Optional Input:
+ *  - 'description' (string)
  *  - 'tags' (array)
  */
 class PostCreatingAction
@@ -37,9 +38,11 @@ class PostCreatingAction
             return new Failure("Missing expected '{$missing[0]}' value.");
         }
 
+        // Create the new post
         $post = Post::create([
             'title' => $data['title'],
             'content' => $data['content'],
+            'description' => Arr::get($data, 'description'),
             'slug' => $this->generateSlug($data['title']),
             'author_id' => $data['author']->id,
         ]);

@@ -21,11 +21,18 @@ class PostUpdate extends Component
     public $availableTags = [];
 
     /**
-     * The content of the post to be created.
+     * The content of the post to be updated.
      *
      * @var string
      */
     public $content;
+
+    /**
+     * The description of the post to be updated.
+     *
+     * @var string
+     */
+    public $description;
 
     /**
      * The post under review.
@@ -42,14 +49,14 @@ class PostUpdate extends Component
     public $publishedAt;
 
     /**
-     * The tags selected for the post to be created.
+     * The tags selected for the post to be updated.
      *
      * @var array
      */
     public $tags = [];
 
     /**
-     * The title of the post to be created.
+     * The title of the post to be updated.
      *
      * @var string
      */
@@ -73,6 +80,7 @@ class PostUpdate extends Component
 
         $this->availableTags = Tag::pluck('name', 'slug')->toArray();
         $this->content = $this->post->content;
+        $this->description = $this->post->description;
         $this->publishedAt = $this->post->published_at
             ? $this->post->published_at->format('Y-m-d')
             : '';
@@ -104,6 +112,7 @@ class PostUpdate extends Component
 
         $action = (new PostUpdatingAction)->execute([
             'content' => $this->content,
+            'description' => $this->description,
             'post' => $this->post,
             'tags' => $this->tags,
             'title' => $this->title,

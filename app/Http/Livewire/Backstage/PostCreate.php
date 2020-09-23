@@ -28,6 +28,13 @@ class PostCreate extends Component
     public $content;
 
     /**
+     * The description of the new post.
+     *
+     * @var string
+     */
+    public $description;
+
+    /**
      * The tags selected for the post to be created.
      *
      * @var array
@@ -78,6 +85,7 @@ class PostCreate extends Component
         $action = (new PostCreatingAction)->execute([
             'author' => auth()->user(),
             'content' => $this->content,
+            'description' => $this->description,
             'tags' => $this->tags,
             'title' => $this->title,
         ]);

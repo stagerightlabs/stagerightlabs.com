@@ -17,6 +17,7 @@ $factory->define(Post::class, function (Faker $faker, $attributes) {
             return factory(User::class)->create()->id;
         },
         'content' => $faker->paragraph(),
+        'description' => $faker->words(6, true),
         'published_at' => null,
         'slug' => $slug,
         'title' => $title,

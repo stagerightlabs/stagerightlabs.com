@@ -19,6 +19,7 @@ class PostUpdatingActionTest extends TestCase
         $author = factory(User::class)->create();
         $post = factory(Post::class)->create([
             'content' => 'Original Content',
+            'description' => 'Original Description',
             'title' => 'Original Title',
             'slug' => 'original-title',
         ]);
@@ -26,12 +27,14 @@ class PostUpdatingActionTest extends TestCase
         $action = (new PostUpdatingAction)->execute([
             'author' => $author,
             'content' => 'New Content',
+            'description' => 'New Description',
             'post' => $post,
             'title' => 'New Title',
         ]);
 
         $this->assertTrue($action->completed());
         $this->assertEquals('New Content', $action->post->content);
+        $this->assertEquals('New Description', $action->post->description);
         $this->assertEquals('original-title', $action->post->slug);
         $this->assertEquals('New Title', $action->post->title);
     }
