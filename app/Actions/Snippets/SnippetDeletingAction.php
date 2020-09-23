@@ -13,7 +13,7 @@ use App\Utilities\Arr;
  * Expected Input:
  *  - 'snippet' (Snippet)
  */
-class SnippetDeletionAction
+class SnippetDeletingAction
 {
     /**
      * Execute the action.

@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Actions\Snippets;
 
-use App\Actions\Snippets\SnippetDeletionAction;
+use App\Actions\Snippets\SnippetDeletingAction;
 use App\Snippet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class SnippetDeletionActionTest extends TestCase
+class SnippetDeletingActionTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -16,7 +16,7 @@ class SnippetDeletionActionTest extends TestCase
     {
         $snippet = factory(Snippet::class)->create();
 
-        $action = (new SnippetDeletionAction)->execute([
+        $action = (new SnippetDeletingAction)->execute([
             'snippet' => $snippet,
         ]);
 
@@ -29,7 +29,7 @@ class SnippetDeletionActionTest extends TestCase
     /** @test */
     public function it_requires_a_snippet()
     {
-        $action = (new SnippetDeletionAction)->execute();
+        $action = (new SnippetDeletingAction)->execute();
 
         $this->assertFalse($action->completed());
     }

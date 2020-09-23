@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Backstage;
 
-use App\Actions\Snippets\SnippetUpdateAction;
+use App\Actions\Snippets\SnippetUpdatingAction;
 use App\Http\Livewire\DisplaysAlerts;
 use App\Snippet;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -110,7 +110,7 @@ class SnippetUpdate extends Component
             'name' => 'required',
         ]);
 
-        $action = (new SnippetUpdateAction)->execute([
+        $action = (new SnippetUpdatingAction)->execute([
             'content' => $this->content,
             'filename' => $this->filename,
             'language' => $this->language,

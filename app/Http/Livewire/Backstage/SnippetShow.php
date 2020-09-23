@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Backstage;
 
-use App\Actions\Snippets\SnippetDeletionAction;
+use App\Actions\Snippets\SnippetDeletingAction;
 use App\Http\Livewire\DisplaysAlerts;
 use App\Snippet;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -56,7 +56,7 @@ class SnippetShow extends Component
     {
         $this->authorize('delete', $this->snippet);
 
-        $action = (new SnippetDeletionAction)->execute([
+        $action = (new SnippetDeletingAction)->execute([
             'snippet' => $this->snippet,
         ]);
 

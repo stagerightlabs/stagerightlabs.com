@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Actions\Snippets;
 
-use App\Actions\Snippets\SnippetUpdateAction;
+use App\Actions\Snippets\SnippetUpdatingAction;
 use App\Snippet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class SnippetUpdateActionTest extends TestCase
+class SnippetUpdatingActionTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -23,7 +23,7 @@ class SnippetUpdateActionTest extends TestCase
             'url' => 'http://www.example.com',
         ]);
 
-        $action = (new SnippetUpdateAction)->execute([
+        $action = (new SnippetUpdatingAction)->execute([
             'content' => 'Some new content',
             'filename' => 'example.sh',
             'language' => 'shell',
@@ -47,7 +47,7 @@ class SnippetUpdateActionTest extends TestCase
     /** @test */
     public function it_requires_a_snippet()
     {
-        $action = (new SnippetUpdateAction)->execute([
+        $action = (new SnippetUpdatingAction)->execute([
             'content' => 'Some new content',
             'name' => 'Revised Name',
         ]);
@@ -63,7 +63,7 @@ class SnippetUpdateActionTest extends TestCase
             'name' => 'Test Snippet',
         ]);
 
-        $action = (new SnippetUpdateAction)->execute([
+        $action = (new SnippetUpdatingAction)->execute([
             'content' => 'Some new content',
             'snippet' => $snippet,
         ]);
@@ -79,7 +79,7 @@ class SnippetUpdateActionTest extends TestCase
             'name' => 'Test Snippet',
         ]);
 
-        $action = (new SnippetUpdateAction)->execute([
+        $action = (new SnippetUpdatingAction)->execute([
             'name' => 'Test Snippet',
             'snippet' => $snippet,
         ]);

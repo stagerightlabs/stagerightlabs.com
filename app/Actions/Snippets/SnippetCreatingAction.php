@@ -21,7 +21,7 @@ use App\Utilities\Arr;
  *  - 'starting_line' (integer)
  *  - 'url' (string)
  */
-class SnippetCreationAction
+class SnippetCreatingAction
 {
     /**
      * Execute the action.

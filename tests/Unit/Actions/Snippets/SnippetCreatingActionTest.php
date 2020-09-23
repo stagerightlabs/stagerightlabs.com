@@ -2,18 +2,18 @@
 
 namespace Tests\Unit\Actions\Snippets;
 
-use App\Actions\Snippets\SnippetCreationAction;
+use App\Actions\Snippets\SnippetCreatingAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class SnippetCreationActionTest extends TestCase
+class SnippetCreatingActionTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
     public function it_creates_snippets_with_minimal_fields()
     {
-        $action = (new SnippetCreationAction)->execute([
+        $action = (new SnippetCreatingAction)->execute([
             'content' => 'This is some content',
             'name' => 'Snippet Name',
         ]);
@@ -30,7 +30,7 @@ class SnippetCreationActionTest extends TestCase
     /** @test */
     public function it_creates_snippets_with_all_fields()
     {
-        $action = (new SnippetCreationAction)->execute([
+        $action = (new SnippetCreatingAction)->execute([
             'content' => 'This is some content',
             'filename' => 'example.sh',
             'language' => 'bash',
@@ -55,7 +55,7 @@ class SnippetCreationActionTest extends TestCase
     /** @test */
     public function it_requires_a_snippet_name()
     {
-        $action = (new SnippetCreationAction)->execute([
+        $action = (new SnippetCreatingAction)->execute([
             'content' => 'This is some content',
         ]);
 
@@ -65,7 +65,7 @@ class SnippetCreationActionTest extends TestCase
     /** @test */
     public function it_requires_snippet_content()
     {
-        $action = (new SnippetCreationAction)->execute([
+        $action = (new SnippetCreatingAction)->execute([
             'name' => 'Snippet Name',
         ]);
 

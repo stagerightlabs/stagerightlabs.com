@@ -22,7 +22,7 @@ use App\Utilities\Arr;
  *  - 'starting_line' (integer)
  *  - 'url' (string)
  */
-class SnippetUpdateAction
+class SnippetUpdatingAction
 {
     /**
      * Execute the action.

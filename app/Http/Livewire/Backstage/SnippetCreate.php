@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Backstage;
 
-use App\Actions\Snippets\SnippetCreationAction;
+use App\Actions\Snippets\SnippetCreatingAction;
 use App\Http\Livewire\DisplaysAlerts;
 use App\Snippet;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -78,7 +78,7 @@ class SnippetCreate extends Component
 
         $this->authorize('create', Snippet::class);
 
-        $action = (new SnippetCreationAction)->execute([
+        $action = (new SnippetCreatingAction)->execute([
             'content' => $this->content,
             'filename' => $this->filename,
             'language' => $this->language,
