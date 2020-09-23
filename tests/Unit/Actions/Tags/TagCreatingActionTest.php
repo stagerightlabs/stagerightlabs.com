@@ -2,18 +2,18 @@
 
 namespace Tests\Unit\Actions\Tags;
 
-use App\Actions\Tags\TagCreationAction;
+use App\Actions\Tags\TagCreatingAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class TagCreationActionTest extends TestCase
+class TagCreatingActionTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
     public function it_creates_tags()
     {
-        $action = (new TagCreationAction)->execute([
+        $action = (new TagCreatingAction)->execute([
             'name' => 'Post Topic',
         ]);
 
@@ -28,7 +28,7 @@ class TagCreationActionTest extends TestCase
     /** @test */
     public function it_requires_a_tag_name()
     {
-        $action = (new TagCreationAction)->execute();
+        $action = (new TagCreatingAction)->execute();
 
         $this->assertFalse($action->completed());
     }

@@ -13,7 +13,7 @@ use App\Utilities\Arr;
  * Expected Input:
  *  - 'tag' (Tag)
  */
-class TagDeletionAction
+class TagDeletingAction
 {
     /**
      * Execute the action.

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Backstage;
 
-use App\Actions\Tags\TagDeletionAction;
+use App\Actions\Tags\TagDeletingAction;
 use App\Http\Livewire\DisplaysAlerts;
 use App\Tag;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -52,7 +52,7 @@ class TagIndex extends Component
 
         $this->authorize('delete', $tag);
 
-        $action = (new TagDeletionAction)->execute([
+        $action = (new TagDeletingAction)->execute([
             'tag' => $tag,
         ]);
 

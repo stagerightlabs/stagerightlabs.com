@@ -3,13 +3,13 @@
 namespace Tests\Unit\Actions\Tags;
 
 use App\Actions\Posts\PostUpdatingAction;
-use App\Actions\Tags\TagDeletionAction;
+use App\Actions\Tags\TagDeletingAction;
 use App\Post;
 use App\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class TagDeletionActionTest extends TestCase
+class TagDeletingActionTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -18,7 +18,7 @@ class TagDeletionActionTest extends TestCase
     {
         $tag = factory(Tag::class)->create();
 
-        $action = (new TagDeletionAction)->execute([
+        $action = (new TagDeletingAction)->execute([
             'tag' => $tag,
         ]);
 
@@ -40,7 +40,7 @@ class TagDeletionActionTest extends TestCase
             'title' => $post->title,
         ]);
 
-        $action = (new TagDeletionAction)->execute([
+        $action = (new TagDeletingAction)->execute([
             'tag' => $tag,
         ]);
 
@@ -53,7 +53,7 @@ class TagDeletionActionTest extends TestCase
     /** @test */
     public function it_requires_a_tag()
     {
-        $action = (new TagDeletionAction)->execute();
+        $action = (new TagDeletingAction)->execute();
 
         $this->assertFalse($action->completed());
     }

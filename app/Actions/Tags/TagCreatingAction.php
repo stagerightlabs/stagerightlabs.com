@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
  * Expected Input:
  *  - 'name' (string)
  */
-class TagCreationAction
+class TagCreatingAction
 {
     /**
      * Execute the action.

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Backstage;
 
-use App\Actions\Tags\TagCreationAction;
+use App\Actions\Tags\TagCreatingAction;
 use App\Http\Livewire\DisplaysAlerts;
 use App\Tag;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -52,7 +52,7 @@ class TagCreate extends Component
             'name' => 'required',
         ]);
 
-        $action = (new TagCreationAction)->execute([
+        $action = (new TagCreatingAction)->execute([
             'name' => $this->name,
         ]);
 
