@@ -6,6 +6,7 @@ use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Posts\PostTaggingAction;
 use App\Actions\Reaction;
+use App\Jobs\PostRenderingJob;
 use App\Post;
 use App\Tag;
 use App\Utilities\Arr;
@@ -51,6 +52,10 @@ class PostCreatingAction
             return new Failure("There was an error creating this new post.");
         }
 
+        // Render the markdown into HTML
+        PostRenderingJob::dispatch($post);
+
+        // Add Tags to the post
         if ($tags = Arr::get($data, 'tags', null)) {
             $this->applyTags($post, $tags);
         }

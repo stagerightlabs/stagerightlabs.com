@@ -5,6 +5,7 @@ namespace App\Actions\Posts;
 use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Reaction;
+use App\Jobs\PostRenderingJob;
 use App\Tag;
 use App\Utilities\Arr;
 use App\Utilities\Str;
@@ -55,17 +56,6 @@ class PostUpdatingAction
                 : Carbon::createFromFormat('Y-m-d', $data['published_at'], 'America/Los_Angeles');
         }
 
-        // Render the markdown into HTML
-        $rendering = (new PostRenderingAction)->execute([
-            'post' => $post,
-        ]);
-
-        if ($rendering->failed()) {
-            return $rendering;
-        }
-
-        $post->rendered = $rendering->rendered;
-
         // Save the post
         $post->save();
 
@@ -74,8 +64,11 @@ class PostUpdatingAction
             $this->updateTags($post, $data['tags']);
         }
 
+        // Render the markdown into HTML
+        PostRenderingJob::dispatch($post);
+
         return new Complete("Post {$post->reference_id} has been updated.", [
-            'post' => $rendering->post,
+            'post' => $post,
         ]);
     }
 
