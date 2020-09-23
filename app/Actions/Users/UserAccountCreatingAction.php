@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Hash;
  *  - 'email' (string)
  *  - 'password' (string)
  */
-class UserAccountCreationAction implements Action
+class UserAccountCreatingAction implements Action
 {
     /**
      * Execute the action.

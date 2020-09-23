@@ -2,18 +2,18 @@
 
 namespace Tests\Unit\Actions;
 
-use App\Actions\Users\UserAccountCreationAction;
+use App\Actions\Users\UserAccountCreatingAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class UserAccountCreationActionTest extends TestCase
+class UserAccountCreatingActionTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
     public function it_creates_users()
     {
-        $action = (new UserAccountCreationAction)->execute([
+        $action = (new UserAccountCreatingAction)->execute([
             'name' => 'Grace Hopper',
             'email' => 'grace@example.com',
             'password' => 'secret',
@@ -29,7 +29,7 @@ class UserAccountCreationActionTest extends TestCase
     /** @test */
     public function it_requires_a_name()
     {
-        $action = (new UserAccountCreationAction)->execute([
+        $action = (new UserAccountCreatingAction)->execute([
             'email' => 'grace@example.com',
             'password' => 'secret',
         ]);
@@ -43,7 +43,7 @@ class UserAccountCreationActionTest extends TestCase
     /** @test */
     public function it_requires_a_email()
     {
-        $action = (new UserAccountCreationAction)->execute([
+        $action = (new UserAccountCreatingAction)->execute([
             'name' => 'Grace Hopper',
             'password' => 'secret',
         ]);
@@ -57,7 +57,7 @@ class UserAccountCreationActionTest extends TestCase
     /** @test */
     public function it_requires_a_password()
     {
-        $action = (new UserAccountCreationAction)->execute([
+        $action = (new UserAccountCreatingAction)->execute([
             'name' => 'Grace Hopper',
             'email' => 'grace@example.com',
         ]);
@@ -71,7 +71,7 @@ class UserAccountCreationActionTest extends TestCase
     /** @test */
     public function it_converts_email_addresses_to_lowercase()
     {
-        $action = (new UserAccountCreationAction)->execute([
+        $action = (new UserAccountCreatingAction)->execute([
             'name' => 'Grace Hopper',
             'email' => 'GRACE@EXAMPLE.COM',
             'password' => 'secret',

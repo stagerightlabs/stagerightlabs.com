@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Actions\Users\UserAccountCreationAction;
+use App\Actions\Users\UserAccountCreatingAction;
 use App\Utilities\Str;
 use Illuminate\Console\Command;
 
@@ -35,7 +35,7 @@ class CreateBackstageUser extends Command
             ? 'secret'
             : Str::random(16);
 
-        $action = (new UserAccountCreationAction)->execute([
+        $action = (new UserAccountCreatingAction)->execute([
             'email' => $email,
             'name' => 'Backstage User',
             'password' => $password,
