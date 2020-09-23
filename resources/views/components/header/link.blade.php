@@ -1,7 +1,8 @@
 @props([
   'label',
   'url' => '#',
-  'mobile' => false
+  'mobile' => false,
+  'target' => null,
 ])
 
 @php
@@ -37,6 +38,9 @@
 <a
   href="{{ $url }}"
   {{ $attributes }}
+  @if ($target)
+  target="{{ $target }}"
+  @endif
 >
   {{ $slot }}
 </a>
