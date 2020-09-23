@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backstage;
 
+use App\Http\Livewire\Backstage\TagIndex;
 use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,7 +16,7 @@ class TagIndexTest extends TestCase
     /** @test */
     public function guests_cannot_view_the_tag_index()
     {
-        Livewire::test('backstage.tag-index')
+        Livewire::test(TagIndex::class)
             ->assertForbidden();
     }
 
@@ -25,7 +26,7 @@ class TagIndexTest extends TestCase
         $this->actingAs(factory(User::class)->create());
         $tag = factory(Tag::class)->create();
 
-        Livewire::test('backstage.tag-index')
+        Livewire::test(TagIndex::class)
             ->assertSee($tag->name);
     }
 }

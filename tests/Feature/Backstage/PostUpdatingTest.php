@@ -20,7 +20,7 @@ class PostUpdatingTest extends TestCase
     {
         $post = factory(Post::class)->create();
 
-        Livewire::test('backstage.post-update', ['ref' => $post->reference_id])
+        Livewire::test(PostUpdate::class, ['ref' => $post->reference_id])
             ->assertForbidden();
     }
 

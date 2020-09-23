@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backstage;
 
+use App\Http\Livewire\Backstage\TagUpdate;
 use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,7 +18,7 @@ class TagUpdatingTest extends TestCase
     {
         $tag = factory(Tag::class)->create();
 
-        Livewire::test('backstage.tag-update', ['ref' => $tag->reference_id])
+        Livewire::test(TagUpdate::Class, ['ref' => $tag->reference_id])
             ->assertForbidden();
     }
 
@@ -29,7 +30,7 @@ class TagUpdatingTest extends TestCase
             'name' => 'Old Name',
         ]);
 
-        Livewire::test('backstage.tag-update', ['ref' => $tag->reference_id])
+        Livewire::test(TagUpdate::class, ['ref' => $tag->reference_id])
             ->set('name', 'Some New Name')
             ->set('slug', 'some-new-slug')
             ->call('update');
@@ -49,7 +50,7 @@ class TagUpdatingTest extends TestCase
             'name' => 'Old Name',
         ]);
 
-        Livewire::test('backstage.tag-update', ['ref' => $tag->reference_id])
+        Livewire::test(TagUpdate::class, ['ref' => $tag->reference_id])
             ->set('name', '')
             ->call('update')
             ->assertHasErrors('name');

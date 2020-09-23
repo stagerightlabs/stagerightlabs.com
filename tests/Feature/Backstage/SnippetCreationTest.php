@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backstage;
 
+use App\Http\Livewire\Backstage\SnippetCreate;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -16,7 +17,7 @@ class SnippetCreationTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        Livewire::test('backstage.snippet-create')
+        Livewire::test(SnippetCreate::class)
             ->set('content', "This is two lines\n of content.")
             ->set('name', 'New Snippet')
             ->call('store');
@@ -32,7 +33,7 @@ class SnippetCreationTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        Livewire::test('backstage.snippet-create')
+        Livewire::test(SnippetCreate::class)
             ->set('filename', 'example.sh')
             ->set('language', 'bash')
             ->set('content', "This is two lines\n of content.")
@@ -56,7 +57,7 @@ class SnippetCreationTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        Livewire::test('backstage.snippet-create')
+        Livewire::test(SnippetCreate::class)
             ->set('content', "This is two lines\n of content.")
             ->call('store')
             ->assertHasErrors('name');
@@ -71,7 +72,7 @@ class SnippetCreationTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        Livewire::test('backstage.snippet-create')
+        Livewire::test(SnippetCreate::class)
             ->set('name', 'New Snippet')
             ->call('store')
             ->assertHasErrors('content');

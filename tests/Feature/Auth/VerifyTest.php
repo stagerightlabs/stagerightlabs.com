@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Http\Livewire\Auth\Verify;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
@@ -36,7 +37,7 @@ class VerifyTest extends TestCase
 
         Livewire::actingAs($user);
 
-        Livewire::test('auth.verify')
+        Livewire::test(Verify::class)
             ->call('resend')
             ->assertEmitted('resent');
     }

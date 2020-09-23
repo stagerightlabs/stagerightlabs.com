@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backstage;
 
+use App\Http\Livewire\Backstage\SnippetUpdate;
 use App\Snippet;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,7 +18,7 @@ class SnippetUpdatingTest extends TestCase
     {
         $snippet = factory(Snippet::class)->create();
 
-        Livewire::test('backstage.snippet-update', ['ref' => $snippet->reference_id])
+        Livewire::test(SnippetUpdate::class, ['ref' => $snippet->reference_id])
             ->assertForbidden();
     }
 
@@ -30,7 +31,7 @@ class SnippetUpdatingTest extends TestCase
             'name' => 'Test Snippet',
         ]);
 
-        Livewire::test('backstage.snippet-update', ['ref' => $snippet->reference_id])
+        Livewire::test(SnippetUpdate::class, ['ref' => $snippet->reference_id])
             ->set('content', 'Updated snippet content')
             ->set('name', 'New Name')
             ->call('update');
@@ -53,7 +54,7 @@ class SnippetUpdatingTest extends TestCase
             'url' => 'http://example.com',
         ]);
 
-        Livewire::test('backstage.snippet-update', ['ref' => $snippet->reference_id])
+        Livewire::test(SnippetUpdate::class, ['ref' => $snippet->reference_id])
             ->set('filename', 'script.sh')
             ->set('language', 'shell')
             ->set('content', 'Updated snippet content')
@@ -77,7 +78,7 @@ class SnippetUpdatingTest extends TestCase
         $this->actingAs(factory(User::class)->create());
         $snippet = factory(Snippet::class)->create();
 
-        Livewire::test('backstage.snippet-update', ['ref' => $snippet->reference_id])
+        Livewire::test(SnippetUpdate::class, ['ref' => $snippet->reference_id])
             ->set('content', 'Updated snippet content')
             ->set('name', '')
             ->call('update')
@@ -90,7 +91,7 @@ class SnippetUpdatingTest extends TestCase
         $this->actingAs(factory(User::class)->create());
         $snippet = factory(Snippet::class)->create();
 
-        Livewire::test('backstage.snippet-update', ['ref' => $snippet->reference_id])
+        Livewire::test(SnippetUpdate::class, ['ref' => $snippet->reference_id])
             ->set('content', '')
             ->set('name', 'New Name')
             ->call('update')

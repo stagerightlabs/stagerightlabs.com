@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backstage;
 
+use App\Http\Livewire\Backstage\TagCreate;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -14,7 +15,7 @@ class TagCreationTest extends TestCase
     /** @test */
     public function guests_cannot_create_tags()
     {
-        Livewire::test('backstage.tag-create')
+        Livewire::test(TagCreate::class)
             ->assertForbidden();
     }
 
@@ -23,7 +24,7 @@ class TagCreationTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        Livewire::test('backstage.tag-create')
+        Livewire::test(TagCreate::class)
             ->set('name', 'New Tag Name')
             ->call('store');
 
@@ -38,7 +39,7 @@ class TagCreationTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        Livewire::test('backstage.tag-create')
+        Livewire::test(TagCreate::class)
             ->call('store')
             ->assertHasErrors('name');
     }

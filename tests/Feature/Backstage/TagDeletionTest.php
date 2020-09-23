@@ -3,6 +3,7 @@
 namespace Tests\Feature\Backstage;
 
 use App\Actions\Posts\PostUpdatingAction;
+use App\Http\Livewire\Backstage\TagIndex;
 use App\Post;
 use App\Tag;
 use App\User;
@@ -20,7 +21,7 @@ class TagDeletionTest extends TestCase
         $this->actingAs(factory(User::class)->create());
         $tag = factory(Tag::class)->create();
 
-        Livewire::test('backstage.tag-index')
+        Livewire::test(TagIndex::class)
             ->call('remove', $tag->reference_id);
 
         $this->assertDatabaseMissing('tags', [
@@ -41,7 +42,7 @@ class TagDeletionTest extends TestCase
             'title' => $post->title,
         ]);
 
-        Livewire::test('backstage.tag-index')
+        Livewire::test(TagIndex::class)
             ->call('remove', $tag->reference_id)
             ->assertHasAlertMessage('error');
 

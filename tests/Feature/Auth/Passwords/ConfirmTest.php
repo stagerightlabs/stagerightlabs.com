@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth\Passwords;
 
+use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
@@ -39,7 +40,7 @@ class ConfirmTest extends TestCase
     /** @test */
     public function a_user_must_enter_a_password_to_confirm_it()
     {
-        Livewire::test('auth.passwords.confirm')
+        Livewire::test(Confirm::class)
             ->call('confirm')
             ->assertHasErrors(['password' => 'required']);
     }
@@ -51,7 +52,7 @@ class ConfirmTest extends TestCase
             'password' => Hash::make('password'),
         ]);
 
-        Livewire::test('auth.passwords.confirm')
+        Livewire::test(Confirm::class)
             ->set('password', 'not-password')
             ->call('confirm')
             ->assertHasErrors(['password' => 'password']);
@@ -68,7 +69,7 @@ class ConfirmTest extends TestCase
 
         $this->withSession(['url.intended' => '/must-be-confirmed']);
 
-        Livewire::test('auth.passwords.confirm')
+        Livewire::test(Confirm::class)
             ->set('password', 'password')
             ->call('confirm')
             ->assertRedirect('/must-be-confirmed');

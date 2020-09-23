@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth\Passwords;
 
+use App\Http\Livewire\Auth\Passwords\Email;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -22,7 +23,7 @@ class EmailTest extends TestCase
     /** @test */
     public function a_user_must_enter_an_email_address()
     {
-        Livewire::test('auth.passwords.email')
+        Livewire::test(Email::class)
             ->call('sendResetPasswordLink')
             ->assertHasErrors(['email' => 'required']);
     }
@@ -30,7 +31,7 @@ class EmailTest extends TestCase
     /** @test */
     public function a_user_must_enter_a_valid_email_address()
     {
-        Livewire::test('auth.passwords.email')
+        Livewire::test(Email::class)
             ->set('email', 'email')
             ->call('sendResetPasswordLink')
             ->assertHasErrors(['email' => 'email']);
@@ -41,7 +42,7 @@ class EmailTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        Livewire::test('auth.passwords.email')
+        Livewire::test(Email::class)
             ->set('email', $user->email)
             ->call('sendResetPasswordLink')
             ->assertNotSet('emailSentMessage', false);

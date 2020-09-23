@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth\Passwords;
 
+use App\Http\Livewire\Auth\Passwords\Reset;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
@@ -50,7 +51,7 @@ class ResetTest extends TestCase
             'created_at' => Carbon::now(),
         ]);
 
-        Livewire::test('auth.passwords.reset', [
+        Livewire::test(Reset::class, [
             'token' => $token,
         ])
             ->set('email', $user->email)
@@ -67,7 +68,7 @@ class ResetTest extends TestCase
     /** @test */
     public function token_is_required()
     {
-        Livewire::test('auth.passwords.reset', [
+        Livewire::test(Reset::class, [
             'token' => null,
         ])
             ->call('resetPassword')
@@ -77,7 +78,7 @@ class ResetTest extends TestCase
     /** @test */
     public function email_is_required()
     {
-        Livewire::test('auth.passwords.reset', [
+        Livewire::test(Reset::class, [
             'token' => Str::random(16),
         ])
             ->set('email', null)
@@ -88,7 +89,7 @@ class ResetTest extends TestCase
     /** @test */
     public function email_is_valid_email()
     {
-        Livewire::test('auth.passwords.reset', [
+        Livewire::test(Reset::class, [
             'token' => Str::random(16),
         ])
             ->set('email', 'email')
@@ -99,7 +100,7 @@ class ResetTest extends TestCase
     /** @test */
     public function password_is_required()
     {
-        Livewire::test('auth.passwords.reset', [
+        Livewire::test(Reset::class, [
             'token' => Str::random(16),
         ])
             ->set('password', '')
@@ -110,7 +111,7 @@ class ResetTest extends TestCase
     /** @test */
     public function password_is_minimum_of_eight_characters()
     {
-        Livewire::test('auth.passwords.reset', [
+        Livewire::test(Reset::class, [
             'token' => Str::random(16),
         ])
             ->set('password', 'secret')
@@ -121,7 +122,7 @@ class ResetTest extends TestCase
     /** @test */
     public function password_matches_password_confirmation()
     {
-        Livewire::test('auth.passwords.reset', [
+        Livewire::test(Reset::class, [
             'token' => Str::random(16),
         ])
             ->set('password', 'new-password')

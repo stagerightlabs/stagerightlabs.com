@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backstage;
 
+use App\Http\Livewire\Backstage\SnippetShow;
 use App\Snippet;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,7 +18,7 @@ class SnippetViewingTest extends TestCase
     {
         $snippet = factory(Snippet::class)->create();
 
-        Livewire::test('backstage.snippet-show', ['ref' => $snippet->reference_id])
+        Livewire::test(SnippetShow::class, ['ref' => $snippet->reference_id])
             ->assertForbidden();
     }
 
@@ -27,7 +28,7 @@ class SnippetViewingTest extends TestCase
         $this->actingAs(factory(User::class)->create());
         $snippet = factory(Snippet::class)->create();
 
-        Livewire::test('backstage.snippet-show', ['ref' => $snippet->reference_id])
+        Livewire::test(SnippetShow::class, ['ref' => $snippet->reference_id])
             ->assertSee($snippet->reference_id)
             ->assertSee($snippet->name)
             ->assertSee($snippet->shortcode);

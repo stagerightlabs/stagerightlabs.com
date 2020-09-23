@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backstage;
 
+use App\Http\Livewire\Backstage\SnippetIndex;
 use App\Snippet;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,7 +16,7 @@ class SnippetIndexTest extends TestCase
     /** @test */
     public function guests_cannot_view_snippets()
     {
-        Livewire::test('backstage.snippet-index')
+        Livewire::test(SnippetIndex::class)
             ->assertForbidden();
     }
 
@@ -25,7 +26,7 @@ class SnippetIndexTest extends TestCase
         $this->actingAs(factory(User::class)->create());
         $snippet = factory(Snippet::class)->create();
 
-        Livewire::test('backstage.snippet-index')
+        Livewire::test(SnippetIndex::class)
             ->assertSee($snippet->name)
             ->assertSee($snippet->shortcode);
     }
