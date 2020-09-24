@@ -5,8 +5,26 @@
   'target' => null,
 ])
 
+@inject('str', 'Illuminate\Support\Str')
+
 @php
-  $active = \Illuminate\Support\Str::startsWith(request()->url(), $url) && $url != '#';
+  // Generally speaking, we can assume this link is "active" if the first part
+  // of the current URL matches the link's URL.
+  $active = $str->startsWith(request()->url(), $url)
+    && $url != '#'
+    && $url != route('home');
+
+  // However, the base route is a special case. We only want this to be
+  // active when we are actually on the home page.
+  if (request()->url() == $url) {
+    $active = true;
+  }
+
+  // For blog posts, we will consider the "blog" link active
+  // if any part of the request URL contains the word "blog"
+  if ($str->contains(request()->url(), 'blog') && $slot == 'Blog') {
+    $active = true;
+  }
 
   if ($mobile && $active) {
     $attributes = $attributes->merge([
