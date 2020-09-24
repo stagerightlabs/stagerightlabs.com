@@ -23,7 +23,10 @@ class BlogPost extends Component
      */
     public function mount($slug)
     {
-        $this->post = Post::with('tags')->published()->where('slug', $slug)->first();
+        $this->post = Post::with('tags')
+            ->published()
+            ->where('slug', $slug)
+            ->first();
 
         if (!$this->post) {
             abort(404);

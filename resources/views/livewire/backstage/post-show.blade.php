@@ -25,15 +25,15 @@
   <x-alert.tray :messages="$messages" class="mb-4" />
   <x-card class="mb-8">
     <x-description-list class="grid grid-cols-1 col-gap-4 row-gap-8 sm:grid-cols-2">
-      <x-description class="sm:col-span-1" label="Title">{{ $post->title }}</x-description>
+      <x-description class="sm:col-span-1" label="Description">
+        {{ $post->description }}
+      </x-description>
       <x-description class="sm:col-span-1" label="Tags">
         @forelse ($post->tags as $tag)
           <x-tag>{{ $tag->name }}</x-tag>
         @empty
         No Tags
         @endforelse
-      </x-description>
-      <x-description class="sm:col-span-1" label="Description">{{ $post->description }}
       </x-description>
       <x-description class="sm:col-span-1" label="Status">
         @if ($post->published_at)
@@ -42,7 +42,7 @@
           DRAFT
         @endif
       </x-description>
-      <x-description class="sm:col-span-1" label="URL">url</x-description>
+      <x-description class="sm:col-span-1" label="URL">{{ $post->url }}</x-description>
 
     </x-description-list>
   </x-card>
