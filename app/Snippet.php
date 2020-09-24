@@ -63,4 +63,14 @@ class Snippet extends Model
     {
         return "[[Snippet {$this->reference_id}]]";
     }
+
+    /**
+     * Retrieve the blog posts that reference this snippet.
+     *
+     * @return Collection
+     */
+    public function getPostsThatUseThisSnippet()
+    {
+        return Post::where('content', 'LIKE', "%{$this->shortcode}%")->get();
+    }
 }

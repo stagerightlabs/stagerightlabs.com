@@ -50,7 +50,7 @@
       </div>
 
       <x-form.textarea
-        class="resize-y"
+        class="resize-y font-mono"
         label="Content"
         :error="$errors->first('content')"
         rows="10"

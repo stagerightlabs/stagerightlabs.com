@@ -5,6 +5,7 @@ namespace App\Actions\Snippets;
 use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Reaction;
+use App\Jobs\PostRenderingJob;
 use App\Utilities\Arr;
 
 /**
@@ -48,6 +49,12 @@ class SnippetRenderingAction
         $html = $this->render($snippet);
 
         // Cache handling would occur here...
+
+        // We should re-render the posts that make use of this snippet.
+        $snippet->getPostsThatUseThisSnippet()
+            ->each(function($post) {
+                PostRenderingJob::dispatch($post);
+            });
 
         // All set
         return new Complete('Snippet has been rendered', [
