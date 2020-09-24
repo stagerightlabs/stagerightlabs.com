@@ -29,7 +29,7 @@ class Login extends Component
             return;
         }
 
-        redirect()->intended(route('home'));
+        redirect()->intended(route('backstage.posts.index'));
     }
 
     public function render()
