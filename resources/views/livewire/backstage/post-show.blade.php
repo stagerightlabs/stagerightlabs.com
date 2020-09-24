@@ -19,7 +19,7 @@
       <x-button.secondary
         url="{{ route('backstage.posts.index') }}"
         icon="heroicon-s-rewind"
-      >Back</x-button.secondary>
+      >Index</x-button.secondary>
     </x-slot>
   </x-heading>
   <x-alert.tray :messages="$messages" class="mb-4" />
