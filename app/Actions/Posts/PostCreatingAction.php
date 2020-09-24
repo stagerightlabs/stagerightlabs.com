@@ -4,11 +4,9 @@ namespace App\Actions\Posts;
 
 use App\Actions\Complete;
 use App\Actions\Failure;
-use App\Actions\Posts\PostTaggingAction;
 use App\Actions\Reaction;
 use App\Jobs\PostRenderingJob;
 use App\Post;
-use App\Tag;
 use App\Utilities\Arr;
 use App\Utilities\Str;
 use Illuminate\Support\Facades\DB;
@@ -48,8 +46,8 @@ class PostCreatingAction
             'author_id' => $data['author']->id,
         ]);
 
-        if (!$post) {
-            return new Failure("There was an error creating this new post.");
+        if (! $post) {
+            return new Failure('There was an error creating this new post.');
         }
 
         // Render the markdown into HTML

@@ -1,7 +1,6 @@
 <?php
 
 use App\Actions\Tags\TagCreatingAction;
-use App\Tag;
 use Illuminate\Database\Seeder;
 
 class TagSeeder extends Seeder
@@ -28,7 +27,7 @@ class TagSeeder extends Seeder
             'Vuex',
             'Webpack',
         ])
-            ->each(function($name) {
+            ->each(function ($name) {
                 (new TagCreatingAction)->execute([
                     'name' => $name,
                 ]);

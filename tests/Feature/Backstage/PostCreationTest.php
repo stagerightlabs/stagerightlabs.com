@@ -7,7 +7,6 @@ use App\Post;
 use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -54,7 +53,7 @@ class PostCreationTest extends TestCase
             ->call('store');
 
         $post = Post::with('tags')->where('title', 'A New Post')->first();
-        $tags->each(function($tag) use ($post) {
+        $tags->each(function ($tag) use ($post) {
             $post->tags->assertContains($tag);
         });
     }

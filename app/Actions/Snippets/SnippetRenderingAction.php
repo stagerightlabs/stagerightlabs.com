@@ -52,7 +52,7 @@ class SnippetRenderingAction
 
         // We should re-render the posts that make use of this snippet.
         $snippet->getPostsThatUseThisSnippet()
-            ->each(function($post) {
+            ->each(function ($post) {
                 PostRenderingJob::dispatch($post);
             });
 

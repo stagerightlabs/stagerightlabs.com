@@ -13,7 +13,7 @@ $factory->define(Post::class, function (Faker $faker, $attributes) {
     $slug = Arr::get($attributes, 'slug', Str::slug($title));
 
     return [
-        'author_id' => function() {
+        'author_id' => function () {
             return factory(User::class)->create()->id;
         },
         'content' => $faker->paragraph(),
@@ -24,7 +24,7 @@ $factory->define(Post::class, function (Faker $faker, $attributes) {
     ];
 });
 
-$factory->state(Post::class, 'published', function($faker) {
+$factory->state(Post::class, 'published', function ($faker) {
     return [
         'published_at' => now()->subWeeks(2),
     ];

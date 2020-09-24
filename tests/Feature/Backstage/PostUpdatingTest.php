@@ -7,7 +7,6 @@ use App\Post;
 use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -59,7 +58,7 @@ class PostUpdatingTest extends TestCase
         $tags = factory(Tag::class, 2)->create();
 
         Livewire::test(PostUpdate::class, ['ref' => $post->reference_id])->dump()
-            ->set('content', "New content")
+            ->set('content', 'New content')
             ->set('tags', $tags->pluck('slug')->toArray())
             ->set('title', 'New Title')
             ->call('update');

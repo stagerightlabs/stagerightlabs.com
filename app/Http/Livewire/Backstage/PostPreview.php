@@ -27,8 +27,9 @@ class PostPreview extends Component
     {
         $this->post = Post::findByReferenceId($ref);
 
-        if (!$this->post) {
-            $this->flash("You are attempting to view an invalid post.", 'error');
+        if (! $this->post) {
+            $this->flash('You are attempting to view an invalid post.', 'error');
+
             return redirect()->back();
         }
 

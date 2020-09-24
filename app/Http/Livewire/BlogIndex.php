@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\DisplaysAlerts;
 use App\Post;
 use App\Tag;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

@@ -7,7 +7,6 @@ use App\Actions\Failure;
 use App\Actions\Reaction;
 use App\Tag;
 use App\Utilities\Arr;
-use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -42,7 +41,6 @@ class PostTaggingAction
             'post' => $data['post']->fresh(),
             'tags' => $tags,
         ]);
-
     }
 
     /**
@@ -69,7 +67,7 @@ class PostTaggingAction
         }
 
         // Tags may either be models or string slugs; convert them all to models.
-        $tags = $tags->map(function($tag) {
+        $tags = $tags->map(function ($tag) {
             if (is_string($tag)) {
                 return Tag::findBySlug($tag);
             }

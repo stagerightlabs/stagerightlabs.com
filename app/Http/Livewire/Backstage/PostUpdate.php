@@ -71,8 +71,9 @@ class PostUpdate extends Component
     {
         $this->post = Post::findByReferenceId($ref);
 
-        if (!$this->post) {
+        if (! $this->post) {
             $this->flash('You are trying to edit an invalid post.', 'error');
+
             return redirect()->back();
         }
 
@@ -121,10 +122,12 @@ class PostUpdate extends Component
 
         if ($action->failed()) {
             $this->alert($action->getMessage(), 'error');
+
             return;
         }
 
         $this->flash($action->getMessage(), 'success');
+
         return redirect()->route('backstage.posts.show', $this->post->reference_id);
     }
 }

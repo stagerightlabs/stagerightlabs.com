@@ -18,7 +18,7 @@ class TagUpdatingTest extends TestCase
     {
         $tag = factory(Tag::class)->create();
 
-        Livewire::test(TagUpdate::Class, ['ref' => $tag->reference_id])
+        Livewire::test(TagUpdate::class, ['ref' => $tag->reference_id])
             ->assertForbidden();
     }
 

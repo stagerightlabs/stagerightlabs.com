@@ -29,7 +29,8 @@ class PostShow extends Component
         $this->post = Post::findByReferenceId($ref);
 
         if (! $this->post) {
-            $this->flash("You are attempting to view an invalid post.", 'error');
+            $this->flash('You are attempting to view an invalid post.', 'error');
+
             return redirect()->back();
         }
 
@@ -59,10 +60,12 @@ class PostShow extends Component
 
         if ($action->failed()) {
             $this->alert($action->getMessage(), 'error');
+
             return;
         }
 
         $this->flash($action->getMessage(), 'success');
+
         return redirect()->route('backstage.posts.index');
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Livewire\Backstage\PostShow;
 use App\Post;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 

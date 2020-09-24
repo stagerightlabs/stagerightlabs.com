@@ -103,7 +103,7 @@ abstract class TestCase extends BaseTestCase
      */
     public function registerLivewireAssertions()
     {
-        TestableLivewire::macro('assertHasAlertMessage', function($key = null) {
+        TestableLivewire::macro('assertHasAlertMessage', function ($key = null) {
             if (is_null($key)) {
                 Assert::assertNotEmpty(
                     $this->messages,

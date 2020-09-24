@@ -2,9 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\DisplaysAlerts;
 use App\Post;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class BlogPost extends Component
@@ -28,7 +26,7 @@ class BlogPost extends Component
             ->where('slug', $slug)
             ->first();
 
-        if (!$this->post) {
+        if (! $this->post) {
             abort(404);
         }
     }

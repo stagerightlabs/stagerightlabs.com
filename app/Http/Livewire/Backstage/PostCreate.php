@@ -92,10 +92,12 @@ class PostCreate extends Component
 
         if ($action->failed()) {
             $this->alert($action->getMessage(), 'error');
+
             return;
         }
 
         $this->flash($action->getMessage(), 'success');
+
         return redirect()->route('backstage.posts.index');
     }
 }

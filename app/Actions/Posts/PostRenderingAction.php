@@ -57,7 +57,7 @@ class PostRenderingAction
     protected function replaceShortcodes($content, $shortcodes)
     {
         return $this->fetchSnippets($shortcodes)
-            ->reduce(function($content, $snippet) {
+            ->reduce(function ($content, $snippet) {
                 return str_replace(
                     $snippet->shortcode,
                     $snippet->rendered,
@@ -75,9 +75,9 @@ class PostRenderingAction
     protected function fetchSnippets($shortcodes)
     {
         $referenceIds = $shortcodes
-            ->filter(function($shortcode) {
+            ->filter(function ($shortcode) {
                 return Str::startsWith($shortcode['code'], 'Snippet ');
-            })->map(function($shortcode) {
+            })->map(function ($shortcode) {
                 return Str::after($shortcode['code'], 'Snippet ');
             });
 

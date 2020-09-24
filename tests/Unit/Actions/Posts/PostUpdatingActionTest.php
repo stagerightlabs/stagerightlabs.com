@@ -65,7 +65,7 @@ class PostUpdatingActionTest extends TestCase
             'post' => $post,
             'tags' => collect([$tagB, $tagC])->pluck('slug')->toArray(),
             'title' => 'New Title',
-            'slug' => 'new-slug'
+            'slug' => 'new-slug',
         ]);
 
         $this->assertTrue($action->completed());
