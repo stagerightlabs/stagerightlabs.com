@@ -1,0 +1,17 @@
+-- Turn off output for the duration of config initialization
+\set QUIET 1
+
+-- Set the location of the history file(s)
+\set HISTFILE /var/lib/postgresql/data/.psql_history- :DBNAME
+
+-- Duplicate queries will only be saved to history once
+\set HISTCONTROL ignoredups
+
+-- Force autocompletion to use upper case
+\set COMP_KEYWORD_CASE upper
+
+-- Show null values as '(null)' rather than an empty string
+\pset null '(null)'
+
+-- Turn output back on
+\unset QUIET
