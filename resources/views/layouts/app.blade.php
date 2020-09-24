@@ -11,5 +11,9 @@
     @endif
 
     @yield('content')
+
+    <footer class="text-center w-full text-cool-gray-500 mb-4">
+      &copy; {{ date('Y') }} Stage Right Labs
+    </footer>
   </div>
 @endsection
