@@ -3,11 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @hasSection('title')
-      <title>@yield('title') - {{ config('app.name') }}</title>
-    @else
-      <title>{{ config('app.name') }}</title>
-    @endif
+
+  @hasSection('title')
+    <title>@yield('title') - {{ config('app.name') }}</title>
+  @else
+    <title>{{ config('app.name') }}</title>
+  @endif
+
+  @hasSection('meta')
+    <!-- Meta / Open Graph -->
+    @yield('meta')
+  @endif
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url(asset('icon/apple-touch-icon.png')) }}">
