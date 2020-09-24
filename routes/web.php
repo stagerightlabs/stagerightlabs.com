@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::livewire('/', 'blog-index')->name('home');
 Route::livewire('blog/{slug}', 'blog-post')->name('blog.post');
+Route::livewire('about', 'about');
 
 Route::layout('layouts.auth')->group(function () {
     Route::middleware('guest')->group(function () {
