@@ -30,7 +30,7 @@ class PostIndex extends Component
     public function render()
     {
         return view('livewire.backstage.post-index', [
-            'posts' => Post::orderBy('published_at')->paginate(),
+            'posts' => Post::orderBy('created_at')->paginate(),
         ]);
     }
 }
