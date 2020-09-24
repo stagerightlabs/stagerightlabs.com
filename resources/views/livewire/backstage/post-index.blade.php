@@ -33,9 +33,7 @@
         </x-table.tr>
       @endforeach
       <x-slot name="footer">
-        <div class="bg-cool-gray-900">
-          {{ $posts->links() }}
-        </div>
+        {{ $posts->links() }}
       </x-slot>
     </x-table>
   @else

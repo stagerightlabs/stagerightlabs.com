@@ -14,7 +14,9 @@
         </tbody>
       </table>
       @isset($footer)
-        {{ $footer }}
+        <x-table.footer>
+          {{ $footer }}
+        </x-table.footer>
       @endisset
     </div>
   </div>
