@@ -8,7 +8,7 @@ use App\Utilities\Str;
 use Faker\Generator as Faker;
 
 $factory->define(Tag::class, function (Faker $faker, $attributes) {
-    $name = Arr::get($attributes, 'name', $faker->words(3, $asText = true));
+    $name = Arr::get($attributes, 'name', $faker->words(2, $asText = true));
     $slug = Arr::get($attributes, 'slug', Str::slug($name));
 
     return [

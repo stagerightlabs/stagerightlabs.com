@@ -30,13 +30,15 @@ class TagCreatingAction
             return new Failure("Missing expected '{$missing[0]}' value.");
         }
 
+        $name = trim($data['name']);
+
         $tag = Tag::create([
-            'name' => $data['name'],
-            'slug' => $this->generateSlug($data['name']),
+            'name' => $name,
+            'slug' => $this->generateSlug($name),
         ]);
 
         if (! $tag) {
-            return new Failure("The '{$data['name']}' tag could not be created.");
+            return new Failure("The '{$name}' tag could not be created.");
         }
 
         return new Complete("Tag '' has been created.", [
