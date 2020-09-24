@@ -97,4 +97,39 @@ class Post extends Model
     {
         return boolval($this->published_at);
     }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublished($query)
+    {
+        return $query->whereNotNull('published_at');
+    }
+
+    /**
+     * Was this post published more than a year ago?
+     *
+     * @return bool
+     */
+    public function wasPublishedMoreThanAYearAgo()
+    {
+        if (! $this->published_at) {
+            return false;
+        }
+
+        return $this->published_at->lt(now()->subYear(1));
+    }
+
+    /**
+     * The url for this post.
+     *
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        return route('blog.post', $this->slug);
+    }
 }

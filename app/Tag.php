@@ -52,8 +52,8 @@ class Tag extends Model
      * @param string $slug
      * @return self|null
      */
-    public static function findBySlug($referenceId)
+    public static function findBySlug($slug)
     {
-        return self::query()->where('slug', $referenceId)->first();
+        return self::query()->where('slug', $slug)->first();
     }
 }

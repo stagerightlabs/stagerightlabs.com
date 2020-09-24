@@ -1,0 +1,115 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://unpkg.com/tailwindcss/dist/base.css
+ */
+@tailwind base;
+
+/**
+ * Remove the default box-shadow for invalid elements to prevent
+ * inputs in Livewire components showing with a
+ * red border by default in Firefox.
+ *
+ * See: https://github.com/laravel-frontend-presets/tall/issues/7
+ */
+ input:invalid, textarea:invalid, select:invalid {
+    box-shadow: none;
+}
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ */
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ */
+
+[x-cloak] {
+    display: none;
+}
+
+article.post .content h1 {
+    @apply text-3xl;
+}
+
+article.post .content h2 {
+    @apply text-2xl;
+}
+
+article.post .content h3 {
+    @apply text-xl;
+}
+
+article.post .content h4 {
+    @apply text-lg;
+}
+
+article.post .content h5 {
+    @apply text-base;
+}
+
+article.post .content h6 {
+    @apply text-sm;
+}
+
+article.post .content p {
+    @apply mb-4 text-xl;
+}
+
+article.post .content pre {
+    @apply w-full bg-cool-gray-700 p-4 rounded mb-4;
+}
+
+article.post .content a {
+    @apply text-red-700 underline;
+}
+
+article.post .content a:hover {
+    @apply text-red-600;
+}
+
+article.post .content ol {
+    @apply mb-4 list-decimal list-inside;
+}
+
+article.post .content ul {
+    @apply mb-4 list-disc list-inside;
+}
+
+article.post .content ol li, article.post .content ul li {
+    @apply mb-2 text-xl;
+}
+
+article.post .content blockquote {
+    @apply mb-4 my-4 py-1 px-4 border-l-8 border-cool-gray-400 text-cool-gray-400;
+}
+
+article.post .content blockquote p {
+    @apply mb-0;
+}
