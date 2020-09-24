@@ -32,4 +32,5 @@ class [class] extends Component
                 {{-- [quote] --}}
             </div>
         blade;
+    }
 }

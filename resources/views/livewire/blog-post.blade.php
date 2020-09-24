@@ -17,7 +17,9 @@
           </time>
           <div>
             @foreach ($post->tags as $tag)
-              <x-tag>{{ $tag->name }}</x-tag>
+              <a href="{{ route('blog.topic', $tag->slug) }}">
+                <x-tag>{{ $tag->name }}</x-tag>
+              </a>
             @endforeach
           </div>
         </div>

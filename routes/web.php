@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::livewire('/', 'blog-index')->name('home');
+Route::livewire('blog/topic/{topic}', 'blog-topic')->name('blog.topic');
 Route::livewire('blog/{slug}', 'blog-post')->name('blog.post');
 Route::livewire('about', 'about')->name('about');
 
