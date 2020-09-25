@@ -44,4 +44,4 @@ jobs:
 
       - name: Run test suite
         run: vendor/bin/phpunit
-        working-directory: /__w/stagerightlabs.com/stagerightlabs.com
+        working-directory: ${{ github.workspace }}
