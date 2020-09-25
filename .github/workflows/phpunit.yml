@@ -1,0 +1,40 @@
+name: phpunit
+
+on: [pull_request]
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:7.4
+
+    services:
+      postgres:
+      image: postgres:12
+      env:
+        POSTGRES_USER: stagerightlabs
+        POSTGRES_PASSWORD: secret
+        POSTGRES_DB: stagerightlabs_test
+      ports:
+      - 5432:5432
+      options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install front-end dependencies
+        run: |
+          npm install
+          npm run dev
+
+      - name: Install composer dependencies
+        run: |
+          composer install --no-scripts
+
+      - name: Prepare application
+        run: |
+          cp .env.ci .env
+          php artisan key:generate
+
+      - name: Run test suite
+        run: vendor/bin/phpunit
