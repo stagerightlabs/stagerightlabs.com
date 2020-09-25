@@ -1,4 +1,4 @@
-name: phpunit
+name: CI
 
 on: [pull_request]
 
