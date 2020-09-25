@@ -33,17 +33,12 @@ jobs:
           npm run prod
 
       - name: Install composer dependencies
-        run: |
-          composer install --no-scripts --no-dev --no-ansi --no-suggest --no-progress
+        run: composer install --no-scripts --no-ansi --no-suggest --no-progress
 
       - name: Prepare application
         run: |
           cp .env.ci .env
           php artisan key:generate
-          pwd
-          ls -la
 
       - name: Run test suite
-        run: |
-          pwd
-          vendor/bin/phpunit
+        run: vendor/bin/phpunit
