@@ -45,5 +45,5 @@ jobs:
 
       - name: Run test suite
         run: |
-          cd ${{ github.workspace }}
+          pwd
           vendor/bin/phpunit
