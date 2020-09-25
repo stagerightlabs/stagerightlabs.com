@@ -24,12 +24,12 @@ jobs:
 
       - name: Install front-end dependencies
         run: |
-          npm install
-          npm run dev
+          npm ci
+          npm run prod
 
       - name: Install composer dependencies
         run: |
-          composer install --no-scripts
+          composer install --no-scripts --no-dev --no-ansi --no-suggest --no-progress
 
       - name: Prepare application
         run: |
