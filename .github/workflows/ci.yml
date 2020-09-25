@@ -3,6 +3,22 @@ name: CI
 on: [pull_request]
 
 jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install composer dependencies
+        run: composer install --no-scripts --no-ansi --no-suggest --no-progress
+
+      - name: Run php-cs-fixer
+        run: ./vendor/bin/php-cs-fixer fix
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply PHP code formatting
+
   phpunit:
     runs-on: ubuntu-latest
     container:
@@ -41,4 +57,4 @@ jobs:
           php artisan key:generate
 
       - name: Run test suite
-        run: vendor/bin/phpunit
+        run: ./vendor/bin/phpunit
