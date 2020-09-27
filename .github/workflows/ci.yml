@@ -11,54 +11,66 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Cache dependencies installed with composer
+        uses: "actions/cache@v2.0.0"
+        with:
+          path: "./vendor"
+          key: "php-${{ hashFiles('composer.lock') }}"
+
       - name: Install composer dependencies
         run: composer install --no-scripts --no-ansi --no-suggest --no-progress
 
       - name: Run php-cs-fixer
         run: ./vendor/bin/php-cs-fixer fix
 
+      - name: check files
+        run: git status
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: '*.php'
           commit_message: Apply PHP code formatting
 
-  phpunit:
-    runs-on: ubuntu-latest
-    needs: format
-    container:
-      image: kirschbaumdevelopment/laravel-test-runner:7.4
+  # phpunit:
+  #   runs-on: ubuntu-latest
+  #   needs: format
+  #   container:
+  #     image: kirschbaumdevelopment/laravel-test-runner:7.4
 
-    services:
-      postgres:
-        image: postgres:12
-        env:
-          POSTGRES_USER: stagerightlabs
-          POSTGRES_PASSWORD: secret
-          POSTGRES_DB: stagerightlabs_test
-        ports:
-        - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+  #   services:
+  #     postgres:
+  #       image: postgres:12
+  #       env:
+  #         POSTGRES_USER: stagerightlabs
+  #         POSTGRES_PASSWORD: secret
+  #         POSTGRES_DB: stagerightlabs_test
+  #       ports:
+  #       - 5432:5432
+  #       options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
-    steps:
-      - uses: actions/checkout@v2
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12'
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: '12'
 
-      - name: Build javascript assets
-        run: |
-          npm install --no-save --no-package-lock --quiet --no-progress
-          npm run prod
+  #     - name: Build javascript assets
+  #       run: |
+  #         npm install --no-save --no-package-lock --quiet --no-progress
+  #         npm run prod
 
-      - name: Install composer dependencies
-        run: composer install --no-scripts --no-ansi --no-suggest --no-progress
+  #     - name: Install composer dependencies
+  #       run: composer install --no-scripts --no-ansi --no-suggest --no-progress
 
-      - name: Prepare application
-        run: |
-          cp .env.ci .env
-          php artisan key:generate
+  #     - name: Prepare application
+  #       run: |
+  #         cp .env.ci .env
+  #         php artisan key:generate
 
-      - name: Run test suite
-        run: ./vendor/bin/phpunit
+  #     - name: Run test suite
+  #       run: ./vendor/bin/phpunit
