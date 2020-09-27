@@ -63,7 +63,7 @@ jobs:
 
       - name: Build javascript assets
         run: |
-          npm install --no-save --no-package-lock --quiet --no-progress
+          npm ci --quiet --no-progress
           npm run prod
 
       - name: Composer dependency cache
