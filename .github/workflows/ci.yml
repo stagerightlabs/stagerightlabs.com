@@ -59,7 +59,7 @@ jobs:
         uses: "actions/cache@v2.0.0"
         with:
           path: "./node_modules"
-          key: "php-${{ hashFiles('package-lock.json') }}"
+          key: "npm-${{ hashFiles('package-lock.json') }}"
 
       - name: Build javascript assets
         run: |
