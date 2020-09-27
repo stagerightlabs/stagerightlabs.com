@@ -55,30 +55,30 @@ jobs:
         with:
           node-version: '12'
 
-      - name: Cache dependencies installed with NPM
+      - name: NPM Dependency Cache
         uses: "actions/cache@v2.0.0"
         with:
           path: "./node_modules"
           key: "npm-${{ hashFiles('package-lock.json') }}"
 
-      - name: Build javascript assets
+      - name: Build Javascript Assets
         run: |
           npm install --no-save --no-package-lock --quiet --no-progress
           npm run prod
 
-      - name: Cache dependencies installed with composer
+      - name: Composer Dependency Cache
         uses: "actions/cache@v2.0.0"
         with:
           path: "./vendor"
           key: "php-${{ hashFiles('composer.lock') }}"
 
-      - name: Install composer dependencies
+      - name: Install PHP Dependencies
         run: composer install --no-scripts --no-ansi --no-suggest --no-progress
 
-      - name: Prepare application
+      - name: Prepare Application
         run: |
           cp .env.ci .env
           php artisan key:generate
 
-      - name: Run test suite
+      - name: Run Test Suite
         run: ./vendor/bin/phpunit
