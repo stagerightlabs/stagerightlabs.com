@@ -26,12 +26,10 @@ jobs:
       - name: Run php-cs-fixer
         run: ./vendor/bin/php-cs-fixer fix
 
-      - name: check files
-        run: git status
-
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply PHP code formatting
+          commit_user_name: CI Formatting Bot
 
   phpunit:
     runs-on: ubuntu-latest
@@ -61,8 +59,8 @@ jobs:
       - name: Cache dependencies installed with NPM
         uses: "actions/cache@v2.0.0"
         with:
-          path: "./vendor"
-          key: "php-${{ hashFiles('composer.lock') }}"
+          path: "./node_modules"
+          key: "php-${{ hashFiles('package-lock.json') }}"
 
       - name: Build javascript assets
         run: |
