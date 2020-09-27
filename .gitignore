@@ -11,7 +11,10 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .vscode
-public/js/app.js
 public/css/app.css
+public/css/app.css.map
+public/js/app.js
+public/js/app.js.map
+public/mix-manifest.json
 todo.txt
 .php_cs.cache
