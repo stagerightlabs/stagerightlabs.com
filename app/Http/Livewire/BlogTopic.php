@@ -2,10 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\DisplaysAlerts;
-use App\Post;
 use App\Tag;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -36,7 +33,7 @@ class BlogTopic extends Component
     {
         $this->topic = Tag::findBySlug($topic);
 
-        if(! $this->topic) {
+        if (! $this->topic) {
             return redirect()->route('blog.index');
         }
 
