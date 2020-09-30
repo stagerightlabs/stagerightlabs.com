@@ -19,8 +19,6 @@ class PostIndex extends Component
      */
     public function mount()
     {
-        dd(auth()->user()->id);
-
         $this->authorize('viewAny', Post::class);
     }
 
