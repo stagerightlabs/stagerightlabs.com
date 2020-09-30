@@ -23,6 +23,8 @@ Route::livewire('about', 'about')->name('about');
 Route::view('decks', 'decks.index')->name('decks.index');
 Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
 
+Route::view('projects', 'projects')->name('projects.index');
+
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
 
 Route::layout('layouts.auth')->group(function () {
