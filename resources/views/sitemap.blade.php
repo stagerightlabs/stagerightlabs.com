@@ -17,4 +17,19 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
     <changefreq>monthly</changefreq>
   </url>
 @endforeach
+@php
+  $decks = [
+    'laravel-101',
+    'single-table-inheritance',
+    'the-secret-power-of-renderless-vue-components',
+    'tailwind-css',
+    'intro-to-docker'
+  ];
+@endphp
+@foreach($decks as $slug)
+  <url>
+    <loc>{{ route('decks.show', [$slug]) }}</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+@endforeach
 </urlset>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeckController;
 use App\Http\Controllers\SiteMapController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,9 @@ Route::livewire('/', 'blog-index')->name('home');
 Route::livewire('blog/topic/{topic}', 'blog-topic')->name('blog.topic');
 Route::livewire('blog/{slug}', 'blog-post')->name('blog.post');
 Route::livewire('about', 'about')->name('about');
+
+Route::view('decks', 'decks.index')->name('decks.index');
+Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
 
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
 
