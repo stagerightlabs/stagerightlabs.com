@@ -32,4 +32,10 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
     <changefreq>monthly</changefreq>
   </url>
 @endforeach
+<url>
+  <loc>{{ route('decks.index') }}</loc>
+</url>
+<url>
+  <loc>{{ route('projects.index') }}</loc>
+</url>
 </urlset>
