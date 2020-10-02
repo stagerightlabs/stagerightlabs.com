@@ -98,6 +98,6 @@ class PostCreate extends Component
 
         $this->flash($action->getMessage(), 'success');
 
-        return redirect()->route('backstage.posts.index');
+        return redirect()->route('backstage.posts.show', $action->post->reference_id);
     }
 }

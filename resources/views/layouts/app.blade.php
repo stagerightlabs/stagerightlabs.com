@@ -12,7 +12,7 @@
 
     @yield('content')
 
-    <footer class="text-center w-full text-cool-gray-500 mb-4">
+    <footer class="text-center w-full text-cool-gray-500 mb-4 mt-8">
       &copy; {{ date('Y') }} Stage Right Labs
     </footer>
   </div>

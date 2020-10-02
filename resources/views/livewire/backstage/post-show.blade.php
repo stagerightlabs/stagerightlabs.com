@@ -47,6 +47,6 @@
     </x-description-list>
   </x-card>
   <x-card heading="Content">
-    <div class="p-4 whitespace-pre font-mono">{{ $post->content }}</div>
+    <div class="p-4 whitespace-pre-wrap font-mono">{{ $post->content }}</div>
   </x-card>
 </div>

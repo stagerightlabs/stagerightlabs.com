@@ -1,5 +1,11 @@
 <div class="hidden lg:block lg:ml-4">
   <div class="flex items-center">
+    @unless (app()->environment('production'))
+      <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-pink-100 text-pink-800">
+        {{ ucwords(app()->environment())}}
+      </span>
+    @endunless
+
     <!-- Profile dropdown -->
     <div class="ml-4 relative flex-shrink-0">
       <div>
