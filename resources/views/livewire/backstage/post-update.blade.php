@@ -55,7 +55,8 @@
               wire:model="tags"
               name="tags[]"
               value="{{ $slug }}"
-            > {{ $label }}
+            >
+            <label for="permissions.{{ $slug }}">{{ $label }}</label>
           </div>
         @empty
           <p class="text-cool-gray-500">There are no tags.</p>
