@@ -13,12 +13,6 @@
         {{-- Desktop Navigation Menu --}}
         <div class="hidden lg:block lg:ml-6">
           <x-header.menu class="flex" />
-          {{-- <nav class="flex">
-            <a href="#" class="px-3 py-2 rounded-md text-sm leading-5 font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About</a>
-            <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Open Source</a>
-            <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Decks</a>
-            <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Contact</a>
-          </nav> --}}
         </div>
       </div>
       {{-- Search --}}
