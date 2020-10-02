@@ -30,6 +30,13 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Umami -->
+    <script async defer
+      data-website-id="55bf85af-d593-4ee1-aede-d3a887b4a1d5"
+      src="https://umami.stagerightlabs.com/umami.js"
+      data-do-not-track="true"
+    ></script>
   </head>
   <body class="bg-repeat bg-gray-900 text-cool-gray-300" style="background-image: url(/img/stressed-linen.png)">
     @yield('body')
