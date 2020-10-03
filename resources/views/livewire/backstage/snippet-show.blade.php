@@ -1,3 +1,7 @@
+@section('title')
+  Snippet: {{ $snippet->name }}
+@endsection
+
 <div>
   <x-heading>
     Snippet {{ $snippet->reference_id }}

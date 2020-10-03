@@ -1,3 +1,5 @@
+@section('title', 'Create Snippet')
+
 <div>
   <x-heading>
     Create New Snippet

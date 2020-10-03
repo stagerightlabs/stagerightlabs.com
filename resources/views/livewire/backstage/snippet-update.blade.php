@@ -1,6 +1,8 @@
+@section('title', 'Update Snippet')
+
 <div>
   <x-heading>
-    Snippet {{ $snippet->reference_id }}
+    Update Snippet {{ $snippet->reference_id }}
     <x-slot name="options">
       <x-button.secondary
         url="{{ route('backstage.snippets.show', $snippet->reference_id) }}"
