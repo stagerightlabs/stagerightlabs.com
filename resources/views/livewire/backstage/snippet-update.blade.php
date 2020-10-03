@@ -53,7 +53,7 @@
         class="resize-y font-mono"
         label="Content"
         :error="$errors->first('content')"
-        rows="10"
+        rows="20"
         wire:model.lazy="content"
         wrapper="mt-4"
       />
