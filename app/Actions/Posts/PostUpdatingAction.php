@@ -49,9 +49,7 @@ class PostUpdatingAction
 
         // Update Publication Date
         if (Arr::has($data, 'published_at')) {
-            $post->published_at = empty($data['published_at'])
-                ? null
-                : Carbon::createFromFormat('Y-m-d', $data['published_at'], 'America/Los_Angeles');
+            $post->published_at = $this->resolvePublicationDate($data['published_at']);
         }
 
         // Save the post
@@ -83,5 +81,28 @@ class PostUpdatingAction
             'post' => $post,
             'tags' => $slugs,
         ]);
+    }
+
+    /**
+     * Resolve a date string into a carbon instance, if applicable.
+     *
+     * @param string $date
+     * @return Carbon|null
+     */
+    protected function resolvePublicationDate($date)
+    {
+        if (empty($date)) {
+            return null;
+        }
+
+        $carbon = null;
+
+        try {
+            $carbon = Carbon::parse(trim($date), 'America/Los_Angeles');
+        } catch (\Throwable $th) {
+            // ignore the failure and return null
+        }
+
+        return $carbon;
     }
 }

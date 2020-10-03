@@ -109,6 +109,9 @@ class PostUpdate extends Component
         $this->validate([
             'content' => 'required',
             'title' => 'required',
+            'publishedAt' => 'nullable|date_format:Y-m-d'
+        ], [
+            'publishedAt.date_format' => 'Please use the Y-m-d format.'
         ]);
 
         $action = (new PostUpdatingAction)->execute([
