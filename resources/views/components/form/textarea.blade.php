@@ -12,7 +12,7 @@
 
 @php
   $id = $id ?? \App\Utilities\Str::kebab($label) . '-input';
-  $attributes = $attributes->merge(['class' => 'form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 bg-cool-gray-700 border border-cool-gray-600']);
+  $attributes = $attributes->merge(['class' => 'form-input block w-full transition duration-150 ease-in-out sm:leading-5 bg-cool-gray-700 border border-cool-gray-600']);
 
   if ($error) {
     $attributes = $attributes->merge(['class' => 'pr-10 border-red-700 text-red-700 placeholder-red-300 focus:border-red-700 focus:shadow-outline-red']);
