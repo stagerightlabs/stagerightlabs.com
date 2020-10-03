@@ -19,7 +19,9 @@ class BlogIndex extends Component
     public function render()
     {
         return view('livewire.blog-index', [
-            'posts' => Post::published()->orderBy('published_at')->paginate(10),
+            'posts' => Post::published()
+                ->orderByDesc('published_akt')
+                ->paginate(10),
             'tags' => Tag::orderBy('name')->get(),
         ]);
     }

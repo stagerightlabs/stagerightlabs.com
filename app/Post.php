@@ -110,20 +110,6 @@ class Post extends Model
     }
 
     /**
-     * Was this post published more than a year ago?
-     *
-     * @return bool
-     */
-    public function wasPublishedMoreThanAYearAgo()
-    {
-        if (! $this->published_at) {
-            return false;
-        }
-
-        return $this->published_at->lt(now()->subYear(1));
-    }
-
-    /**
      * The url for this post.
      *
      * @return string

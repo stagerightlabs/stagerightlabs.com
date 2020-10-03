@@ -1,6 +1,8 @@
+@section('title', 'Update Snippet')
+
 <div>
   <x-heading>
-    Snippet {{ $snippet->reference_id }}
+    Update Snippet {{ $snippet->reference_id }}
     <x-slot name="options">
       <x-button.secondary
         url="{{ route('backstage.snippets.show', $snippet->reference_id) }}"
@@ -53,7 +55,7 @@
         class="resize-y font-mono"
         label="Content"
         :error="$errors->first('content')"
-        rows="10"
+        rows="20"
         wire:model.lazy="content"
         wrapper="mt-4"
       />
