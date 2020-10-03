@@ -80,7 +80,7 @@ class SnippetRenderingAction
                 $carry = $carry .= self::ROW_START
                     .$number
                     .self::ROW_MIDDLE
-                    .$row
+                    .$this->encode($row)
                     .self::ROW_END;
 
                 $number++;
@@ -123,5 +123,16 @@ class SnippetRenderingAction
         }
 
         return $footer .= self::FOOTER_END;
+    }
+
+    /**
+     * Convert special characters to their HTML safe equivalents.
+     *
+     * @param string $text
+     * @return string
+     */
+    protected function encode($text)
+    {
+        return htmlspecialchars($text, ENT_QUOTES);
     }
 }
