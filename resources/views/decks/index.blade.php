@@ -4,7 +4,8 @@
 
 
 @section('content')
-  <x-card heading="Presentation Decks" class="mb-8">
+  <x-page-header>Presentation Decks</x-page-header>
+  <x-card class="mb-8">
     <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <a href="{{ route('decks.show', ['laravel-101']) }}">
         <li class="col-span-1 flex flex-col text-center bg-cool-gray-700 hover:bg-cool-gray-600 rounded-lg shadow">
