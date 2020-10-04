@@ -57,7 +57,9 @@ class PostCreate extends Component
     {
         $this->authorize('create', Post::class);
 
-        $this->availableTags = Tag::pluck('name', 'slug')->toArray();
+        $this->availableTags = Tag::orderBy('name')
+            ->pluck('name', 'slug')
+            ->toArray();
     }
 
     /**

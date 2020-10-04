@@ -79,7 +79,9 @@ class PostUpdate extends Component
 
         $this->authorize('update', $this->post);
 
-        $this->availableTags = Tag::pluck('name', 'slug')->toArray();
+        $this->availableTags = Tag::orderBy('name')
+            ->pluck('name', 'slug')
+            ->toArray();
         $this->content = $this->post->content;
         $this->description = $this->post->description;
         $this->publishedAt = $this->post->published_at
