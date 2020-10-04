@@ -92,7 +92,7 @@ class PostUpdatingAction
     protected function resolvePublicationDate($date)
     {
         if (empty($date)) {
-            return null;
+            return;
         }
 
         $carbon = null;

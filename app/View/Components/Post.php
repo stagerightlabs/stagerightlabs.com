@@ -4,7 +4,6 @@ namespace App\View\Components;
 
 use App\Post as EloquentPost;
 use App\Utilities\Arr;
-use Carbon\CarbonInterface;
 use Illuminate\View\Component;
 
 class Post extends Component
@@ -43,7 +42,7 @@ class Post extends Component
      */
     public function wasPublishedMoreThanAYearAgo()
     {
-        if (!$this->post->published_at) {
+        if (! $this->post->published_at) {
             return false;
         }
 
@@ -83,6 +82,6 @@ class Post extends Component
             14 => 'fourteen',
         ];
 
-        return  Arr::get($numbers, $yearsOld, $yearsOld) . ' years old;';
+        return  Arr::get($numbers, $yearsOld, $yearsOld).' years old;';
     }
 }
