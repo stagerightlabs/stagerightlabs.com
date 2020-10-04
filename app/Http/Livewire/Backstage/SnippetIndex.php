@@ -6,10 +6,11 @@ use App\Http\Livewire\DisplaysAlerts;
 use App\Snippet;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class SnippetIndex extends Component
 {
-    use AuthorizesRequests, DisplaysAlerts;
+    use AuthorizesRequests, DisplaysAlerts, WithPagination;
 
     /**
      * Mount the component.

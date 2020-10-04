@@ -79,7 +79,9 @@ class PostUpdate extends Component
 
         $this->authorize('update', $this->post);
 
-        $this->availableTags = Tag::pluck('name', 'slug')->toArray();
+        $this->availableTags = Tag::orderBy('name')
+            ->pluck('name', 'slug')
+            ->toArray();
         $this->content = $this->post->content;
         $this->description = $this->post->description;
         $this->publishedAt = $this->post->published_at
@@ -109,9 +111,9 @@ class PostUpdate extends Component
         $this->validate([
             'content' => 'required',
             'title' => 'required',
-            'publishedAt' => 'nullable|date_format:Y-m-d'
+            'publishedAt' => 'nullable|date_format:Y-m-d',
         ], [
-            'publishedAt.date_format' => 'Please use the Y-m-d format.'
+            'publishedAt.date_format' => 'Please use the Y-m-d format.',
         ]);
 
         $action = (new PostUpdatingAction)->execute([
