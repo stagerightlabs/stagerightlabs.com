@@ -7,7 +7,7 @@
       <x-button.secondary
         url="{{ route('backstage.snippets.show', $snippet->reference_id) }}"
         icon="heroicon-s-rewind"
-      >Nevermind...</x-button.secondary>
+      >Cancel</x-button.secondary>
     </x-slot>
   </x-heading>
   <x-card>

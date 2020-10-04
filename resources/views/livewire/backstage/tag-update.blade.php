@@ -7,7 +7,7 @@
       <x-button.secondary
         url="{{ route('backstage.tags.index') }}"
         icon="heroicon-s-rewind"
-      >Nevermind</x-button.primary>
+      >Cancel</x-button.primary>
     </x-slot>
   </x-heading>
   <x-alert.tray :messages="$messages" class="mb-4" />

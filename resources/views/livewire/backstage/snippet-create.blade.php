@@ -6,7 +6,7 @@
     <x-slot name="options">
       <x-button.secondary
         url="{{ route('backstage.snippets.index') }}"
-      >Nevermind...</x-button.primary>
+      >Cancel</x-button.primary>
     </x-slot>
   </x-heading>
   <x-card>

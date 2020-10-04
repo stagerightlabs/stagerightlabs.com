@@ -9,7 +9,7 @@
       <x-button.secondary
         url="{{ route('backstage.posts.show', $post->reference_id) }}"
         icon="heroicon-s-rewind"
-      >Nevermind</x-button.secondary>
+      >Cancel</x-button.secondary>
     </x-slot>
   </x-heading>
   <x-alert.tray :messages="$messages" class="mb-4" />
