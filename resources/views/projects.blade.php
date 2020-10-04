@@ -3,6 +3,7 @@
 @section('title', 'Open Source Projects')
 
 @section('content')
+  <x-page-header>Open Source Projects</x-page-header>
   <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
     <x-card heading="Centaur">
       <p>An opinionated implementation of the Cartalyst Sentinel Authorization framework for Laravel Applications.</p>

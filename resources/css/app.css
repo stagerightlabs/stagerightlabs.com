@@ -55,27 +55,27 @@
 }
 
 article.post .content h1 {
-    @apply text-3xl;
+    @apply text-3xl mb-2;
 }
 
 article.post .content h2 {
-    @apply text-2xl;
+    @apply text-2xl mb-2;
 }
 
 article.post .content h3 {
-    @apply text-xl;
+    @apply text-xl mb-2;
 }
 
 article.post .content h4 {
-    @apply text-lg;
+    @apply text-lg mb-2;
 }
 
 article.post .content h5 {
-    @apply text-base;
+    @apply text-base mb-2;
 }
 
 article.post .content h6 {
-    @apply text-sm;
+    @apply text-sm mb-2;
 }
 
 article.post .content p {
@@ -83,23 +83,28 @@ article.post .content p {
 }
 
 article.post .content pre {
-    @apply w-full bg-cool-gray-700 p-4 rounded mb-4;
+    @apply w-full bg-cool-gray-600 p-4 rounded mb-4 border border-cool-gray-400;
+}
+
+article.post .content code {
+    @apply font-mono bg-cool-gray-900 rounded p-1;
 }
 
 article.post .content a {
-    @apply text-red-700 underline;
+    @apply underline;
+    text-decoration-color: theme('colors.red.800');
 }
 
 article.post .content a:hover {
-    @apply text-red-600;
+    @apply text-cool-gray-100;
 }
 
 article.post .content ol {
-    @apply mb-4 list-decimal list-inside;
+    @apply mb-4 ml-4 list-decimal list-inside;
 }
 
 article.post .content ul {
-    @apply mb-4 list-disc list-inside;
+    @apply mb-4 ml-4 list-disc list-inside;
 }
 
 article.post .content ol li, article.post .content ul li {
@@ -107,7 +112,7 @@ article.post .content ol li, article.post .content ul li {
 }
 
 article.post .content blockquote {
-    @apply mb-4 my-4 py-1 px-4 border-l-8 border-cool-gray-400 text-cool-gray-400;
+    @apply mb-4 my-4 py-1 px-4 border-l-8 border-cool-gray-600 text-cool-gray-400;
 }
 
 article.post .content blockquote p {
