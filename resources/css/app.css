@@ -55,27 +55,27 @@
 }
 
 article.post .content h1 {
-    @apply text-3xl mb-2;
+    @apply text-3xl mb-2 font-bold;
 }
 
 article.post .content h2 {
-    @apply text-2xl mb-2;
+    @apply text-2xl mb-2 font-bold;
 }
 
 article.post .content h3 {
-    @apply text-xl mb-2;
+    @apply text-xl mb-2 font-bold;
 }
 
 article.post .content h4 {
-    @apply text-lg mb-2;
+    @apply text-lg mb-2 font-bold;
 }
 
 article.post .content h5 {
-    @apply text-base mb-2;
+    @apply text-base mb-2 font-bold;
 }
 
 article.post .content h6 {
-    @apply text-sm mb-2;
+    @apply text-sm mb-2 font-bold;
 }
 
 article.post .content p {
@@ -83,16 +83,28 @@ article.post .content p {
 }
 
 article.post .content pre {
-    @apply w-full bg-cool-gray-600 p-4 rounded mb-4 border border-cool-gray-400;
+    @apply w-full bg-cool-gray-600 p-4 rounded mb-4 border border-cool-gray-400 text-sm leading-6;
 }
 
 article.post .content code {
     @apply font-mono bg-cool-gray-900 rounded p-1;
 }
 
+article.post .content pre code {
+    @apply bg-transparent p-0;
+}
+
 article.post .content a {
     @apply underline;
     text-decoration-color: theme('colors.red.800');
+}
+
+article.post .content .snippet a {
+    @apply no-underline;
+}
+
+article.post .content .snippet a:hover {
+    @apply no-underline text-cool-gray-300;
 }
 
 article.post .content a:hover {

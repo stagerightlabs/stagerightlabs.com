@@ -16,7 +16,7 @@ use App\Utilities\Arr;
  */
 class SnippetRenderingAction
 {
-    const HTML_START = "<div class=\"border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 p-2 font-mono overflow-x-auto relative\"><table><tbody>\n";
+    const HTML_START = "<div class=\"snippet border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 p-2 font-mono overflow-x-auto relative\"><table><tbody>\n";
     const HTML_END = "</div>\n";
     const TABLE_END = "</tbody></table>\n";
     const ROW_START = '<tr><td class="text-cool-gray-500 text-right select-none">';
