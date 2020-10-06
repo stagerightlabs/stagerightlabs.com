@@ -42,6 +42,7 @@ class Email extends Component
 
     public function render()
     {
-        return view('livewire.auth.passwords.email');
+        return view('livewire.auth.passwords.email')
+            ->layout('layouts.auth');
     }
 }

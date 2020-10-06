@@ -39,7 +39,7 @@
     ></script>
   </head>
   <body class="bg-repeat bg-gray-900 text-cool-gray-300" style="background-image: url(/img/stressed-linen.png)">
-    @yield('body')
+    {{ $slot }}
     <script src="{{ url(mix('js/app.js')) }}"></script>
     @livewireScripts
   </body>

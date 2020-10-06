@@ -1,6 +1,4 @@
-@extends('layouts.base')
-
-@section('body')
+<x-layouts.base>
   <x-header class="mb-4" />
   <div class="container mx-auto p-4">
 
@@ -12,8 +10,12 @@
 
     @yield('content')
 
+    @isset($slot)
+      {{ $slot }}
+    @endisset
+
     <footer class="text-center w-full text-cool-gray-500 mb-4 mt-8">
       &copy; {{ date('Y') }} Stage Right Labs
     </footer>
   </div>
-@endsection
+</x-layouts.base>

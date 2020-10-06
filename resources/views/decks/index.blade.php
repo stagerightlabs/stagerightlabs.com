@@ -2,7 +2,6 @@
 
 @section('title', 'Decks')
 
-
 @section('content')
   <x-page-header>Presentation Decks</x-page-header>
   <x-card class="mb-8">
