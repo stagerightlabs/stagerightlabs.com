@@ -4,6 +4,19 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\DeckController;
 use App\Http\Controllers\SiteMapController;
+use App\Http\Livewire\ {
+    About,
+    BlogIndex,
+    BlogPost,
+    BlogTopic,
+};
+use App\Http\Livewire\Auth\ {
+    Login,
+    Passwords\Confirm,
+    Passwords\Email,
+    Passwords\Reset,
+    Verify,
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +30,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::livewire('/', 'blog-index')->name('home');
-Route::livewire('blog/topic/{topic}', 'blog-topic')->name('blog.topic');
-Route::livewire('blog/{slug}', 'blog-post')->name('blog.post');
-Route::livewire('about', 'about')->name('about');
+Route::get('/', BlogIndex::class)->name('home');
+Route::get('blog/topic/{topic}', BlogTopic::class)->name('blog.topic');
+Route::get('blog/{slug}', BlogPost::class)->name('blog.post');
+Route::get('about', About::class)->name('about');
 
 Route::view('decks', 'decks.index')->name('decks.index');
 Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
@@ -29,26 +42,23 @@ Route::view('projects', 'projects')->name('projects.index');
 
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
 
-Route::layout('layouts.auth')->group(function () {
-    Route::middleware('guest')->group(function () {
-        Route::livewire('login', 'auth.login')
-            ->name('login');
-    });
+Route::middleware('guest')->group(function () {
+    Route::get('login', Login::class)->name('login');
+});
 
-    Route::livewire('password/reset', 'auth.passwords.email')
-        ->name('password.request');
+Route::get('password/reset', Email::class)
+    ->name('password.request');
 
-    Route::livewire('password/reset/{token}', 'auth.passwords.reset')
-        ->name('password.reset');
+Route::get('password/reset/{token}', Reset::class)
+    ->name('password.reset');
 
-    Route::middleware('auth')->group(function () {
-        Route::livewire('email/verify', 'auth.verify')
-            ->middleware('throttle:6,1')
-            ->name('verification.notice');
+Route::middleware('auth')->group(function () {
+    Route::get('email/verify', Verify::class)
+        ->middleware('throttle:6,1')
+        ->name('verification.notice');
 
-        Route::livewire('password/confirm', 'auth.passwords.confirm')
-            ->name('password.confirm');
-    });
+    Route::get('password/confirm', Confirm::class)
+        ->name('password.confirm');
 });
 
 Route::middleware('auth')->group(function () {

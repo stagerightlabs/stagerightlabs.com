@@ -1,5 +1,19 @@
 <?php
 
+use App\Http\Livewire\Backstage\ {
+    PostCreate,
+    PostIndex,
+    PostPreview,
+    PostShow,
+    PostUpdate,
+    SnippetCreate,
+    SnippetIndex,
+    SnippetShow,
+    SnippetUpdate,
+    TagCreate,
+    TagIndex,
+    TagUpdate,
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -9,22 +23,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Snippets
-Route::livewire('snippets', 'backstage.snippet-index')->name('backstage.snippets.index');
-Route::livewire('snippets/create', 'backstage.snippet-create')->name('backstage.snippets.create');
-Route::livewire('snippets/{ref}', 'backstage.snippet-show')->name('backstage.snippets.show');
-Route::livewire('snippets/{ref}/edit', 'backstage.snippet-update')->name('backstage.snippets.update');
+Route::get('snippets', SnippetIndex::class)->name('backstage.snippets.index');
+Route::get('snippets/create', SnippetCreate::class)->name('backstage.snippets.create');
+Route::get('snippets/{ref}', SnippetShow::class)->name('backstage.snippets.show');
+Route::get('snippets/{ref}/edit', SnippetUpdate::class)->name('backstage.snippets.update');
 
 // Tags
-Route::livewire('tags', 'backstage.tag-index')->name('backstage.tags.index');
-Route::livewire('tags/create', 'backstage.tag-create')->name('backstage.tags.create');
-Route::livewire('tags/{ref}/edit', 'backstage.tag-update')->name('backstage.tags.update');
+Route::get('tags', TagIndex::class)->name('backstage.tags.index');
+Route::get('tags/create', TagCreate::class)->name('backstage.tags.create');
+Route::get('tags/{ref}/edit', TagUpdate::class)->name('backstage.tags.update');
 
 // Posts
-Route::livewire('posts', 'backstage.post-index')->name('backstage.posts.index');
-Route::livewire('posts/create', 'backstage.post-create')->name('backstage.posts.create');
-Route::livewire('posts/{ref}', 'backstage.post-show')->name('backstage.posts.show');
-Route::livewire('posts/{ref}/edit', 'backstage.post-update')->name('backstage.posts.update');
-Route::livewire('posts/{ref}/preview', 'backstage.post-preview')->name('backstage.posts.preview');
+Route::get('posts', PostIndex::class)->name('backstage.posts.index');
+Route::get('posts/create', PostCreate::class)->name('backstage.posts.create');
+Route::get('posts/{ref}', PostShow::class)->name('backstage.posts.show');
+Route::get('posts/{ref}/edit', PostUpdate::class)->name('backstage.posts.update');
+Route::get('posts/{ref}/preview', PostPreview::class)->name('backstage.posts.preview');
 
 // Scratch
 Route::view('scratch', 'backstage.scratch');
