@@ -25,7 +25,7 @@ class LoginTest extends TestCase
     /** @test */
     public function is_redirected_if_already_logged_in()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->be($user);
 
@@ -36,7 +36,7 @@ class LoginTest extends TestCase
     /** @test */
     public function a_user_can_login()
     {
-        $user = factory(User::class)->create(['password' => Hash::make('password')]);
+        $user = User::factory()->create(['password' => Hash::make('password')]);
 
         Livewire::test(Login::class)
             ->set('email', $user->email)
@@ -49,7 +49,7 @@ class LoginTest extends TestCase
     /** @test */
     public function is_redirected_to_the_home_page_after_login()
     {
-        $user = factory(User::class)->create(['password' => Hash::make('password')]);
+        $user = User::factory()->create(['password' => Hash::make('password')]);
 
         Livewire::test(Login::class)
             ->set('email', $user->email)
@@ -61,7 +61,7 @@ class LoginTest extends TestCase
     /** @test */
     public function email_is_required()
     {
-        $user = factory(User::class)->create(['password' => Hash::make('password')]);
+        $user = User::factory()->create(['password' => Hash::make('password')]);
 
         Livewire::test(Login::class)
             ->set('password', 'password')
@@ -72,7 +72,7 @@ class LoginTest extends TestCase
     /** @test */
     public function email_must_be_valid_email()
     {
-        $user = factory(User::class)->create(['password' => Hash::make('password')]);
+        $user = User::factory()->create(['password' => Hash::make('password')]);
 
         Livewire::test(Login::class)
             ->set('email', 'invalid-email')
@@ -84,7 +84,7 @@ class LoginTest extends TestCase
     /** @test */
     public function password_is_required()
     {
-        $user = factory(User::class)->create(['password' => Hash::make('password')]);
+        $user = User::factory()->create(['password' => Hash::make('password')]);
 
         Livewire::test(Login::class)
             ->set('email', $user->email)
@@ -95,7 +95,7 @@ class LoginTest extends TestCase
     /** @test */
     public function bad_login_attempt_shows_message()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         Livewire::test(Login::class)
             ->set('email', $user->email)

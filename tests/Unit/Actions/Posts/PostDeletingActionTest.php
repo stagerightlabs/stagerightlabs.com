@@ -14,7 +14,7 @@ class PostDeletingActionTest extends TestCase
     /** @test */
     public function it_deletes_a_post()
     {
-        $post = factory(Post::class)->create();
+        $post = Post::factory()->create();
 
         $action = (new PostDeletingAction)->execute([
             'post' => $post,
@@ -37,7 +37,7 @@ class PostDeletingActionTest extends TestCase
     /** @test */
     public function published_posts_cannot_be_deleted()
     {
-        $post = factory(Post::class)->state('published')->create();
+        $post = Post::factory()->published()->create();
 
         $action = (new PostDeletingAction)->execute([
             'post' => $post,

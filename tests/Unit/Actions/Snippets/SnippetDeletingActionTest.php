@@ -14,7 +14,7 @@ class SnippetDeletingActionTest extends TestCase
     /** @test */
     public function it_removes_snippets_from_the_database()
     {
-        $snippet = factory(Snippet::class)->create();
+        $snippet = Snippet::factory()->create();
 
         $action = (new SnippetDeletingAction)->execute([
             'snippet' => $snippet,

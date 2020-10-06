@@ -16,7 +16,7 @@ class PostViewingTest extends TestCase
     /** @test */
     public function guests_cannot_view_posts_backstage()
     {
-        $post = factory(Post::class)->create();
+        $post = Post::factory()->create();
 
         Livewire::test(PostShow::class, ['ref' => $post->reference_id])
             ->assertForbidden();
@@ -25,8 +25,8 @@ class PostViewingTest extends TestCase
     /** @test */
     public function users_can_view_posts_backstage()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->create();
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->create();
 
         Livewire::test(PostShow::class, ['ref' => $post->reference_id])
             ->assertSee($post->title);

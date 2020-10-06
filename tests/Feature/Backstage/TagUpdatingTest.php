@@ -16,7 +16,7 @@ class TagUpdatingTest extends TestCase
     /** @test */
     public function a_guest_cannot_update_a_tag()
     {
-        $tag = factory(Tag::class)->create();
+        $tag = Tag::factory()->create();
 
         Livewire::test(TagUpdate::class, ['ref' => $tag->reference_id])
             ->assertForbidden();
@@ -25,8 +25,8 @@ class TagUpdatingTest extends TestCase
     /** @test */
     public function a_user_can_update_a_tag()
     {
-        $this->actingAs(factory(User::class)->create());
-        $tag = factory(Tag::class)->create([
+        $this->actingAs(User::factory()->create());
+        $tag = Tag::factory()->create([
             'name' => 'Old Name',
         ]);
 
@@ -45,8 +45,8 @@ class TagUpdatingTest extends TestCase
     /** @test */
     public function it_requires_a_tag_name()
     {
-        $this->actingAs(factory(User::class)->create());
-        $tag = factory(Tag::class)->create([
+        $this->actingAs(User::factory()->create());
+        $tag = Tag::factory()->create([
             'name' => 'Old Name',
         ]);
 

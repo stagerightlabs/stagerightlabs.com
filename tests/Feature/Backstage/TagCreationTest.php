@@ -22,7 +22,7 @@ class TagCreationTest extends TestCase
     /** @test */
     public function users_can_create_tags()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(TagCreate::class)
             ->set('name', 'New Tag Name')
@@ -37,7 +37,7 @@ class TagCreationTest extends TestCase
     /** @test */
     public function it_requires_a_tag_name()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(TagCreate::class)
             ->call('store')

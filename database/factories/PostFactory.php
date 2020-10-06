@@ -1,37 +1,63 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Post;
 use App\User;
-use App\Utilities\Arr;
 use App\Utilities\Str;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Post::class, function (Faker $faker, $attributes) {
-    $title = Arr::get($attributes, 'name', $faker->sentence());
-    $slug = Arr::get($attributes, 'slug', Str::slug($title));
+class PostFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Post::class;
 
-    return [
-        'author_id' => function () {
-            return factory(User::class)->create()->id;
-        },
-        'content' => $faker->paragraph(),
-        'description' => $faker->words(6, true),
-        'published_at' => null,
-        'slug' => $slug,
-        'title' => $title,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'author_id' => User::factory(),
+            'content' => $this->faker->paragraph(),
+            'description' => $this->faker->words(6, true),
+            'published_at' => null,
+            'slug' => Str::slug($this->faker->sentence()),
+            'title' => $this->faker->sentence(),
+        ];
+    }
 
-$factory->state(Post::class, 'published', function ($faker) {
-    return [
-        'published_at' => now()->subWeeks(2),
-    ];
-});
+    /**
+     * Indicate that the post has been published.
+     *
+     * @return void
+     */
+    public function published()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'published_at' => now()->subWeeks(2),
+            ];
+        });
+    }
 
-$factory->state(Post::class, 'draft', function ($faker) {
-    return [
-        'published_at' => null,
-    ];
-});
+    /**
+     * Indicate that the post has been published.
+     *
+     * @return void
+     */
+    public function draft()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'published_at' => null,
+            ];
+        });
+    }
+}

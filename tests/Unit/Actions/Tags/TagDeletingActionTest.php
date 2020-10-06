@@ -16,7 +16,7 @@ class TagDeletingActionTest extends TestCase
     /** @test */
     public function it_deletes_tags()
     {
-        $tag = factory(Tag::class)->create();
+        $tag = Tag::factory()->create();
 
         $action = (new TagDeletingAction)->execute([
             'tag' => $tag,
@@ -31,8 +31,8 @@ class TagDeletingActionTest extends TestCase
     /** @test */
     public function tags_associated_with_posts_cannot_be_deleted()
     {
-        $post = factory(Post::class)->create();
-        $tag = factory(Tag::class)->create();
+        $post = Post::factory()->create();
+        $tag = Tag::factory()->create();
         (new PostUpdatingAction)->execute([
             'content' => $post->content,
             'post' => $post,

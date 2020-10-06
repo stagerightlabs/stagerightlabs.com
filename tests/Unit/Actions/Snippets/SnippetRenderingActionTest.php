@@ -11,7 +11,7 @@ class SnippetRenderingActionTest extends TestCase
     /** @test */
     public function it_renders_snippet_content_as_html()
     {
-        $snippet = factory(Snippet::class)->make([
+        $snippet = Snippet::factory()->make([
             'name' => 'Test Snippet',
             'content' => "This is some content.\n There are two lines.",
         ]);

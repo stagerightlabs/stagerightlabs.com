@@ -15,7 +15,7 @@ class PostCreatingActionTest extends TestCase
     /** @test */
     public function it_creates_posts()
     {
-        $author = factory(User::class)->create();
+        $author = User::factory()->create();
 
         $action = (new PostCreatingAction)->execute([
             'author' => $author,
@@ -35,11 +35,11 @@ class PostCreatingActionTest extends TestCase
     /** @test */
     public function it_creates_posts_with_tags()
     {
-        $author = factory(User::class)->create();
-        $tagA = factory(Tag::class)->create([
+        $author = User::factory()->create();
+        $tagA = Tag::factory()->create([
             'name' => 'Tag A',
         ]);
-        $tagB = factory(Tag::class)->create([
+        $tagB = Tag::factory()->create([
             'name' => 'Tag B',
         ]);
 

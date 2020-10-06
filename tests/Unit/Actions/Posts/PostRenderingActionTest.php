@@ -15,7 +15,7 @@ class PostRenderingActionTest extends TestCase
     /** @test */
     public function it_converts_post_markdown_to_html()
     {
-        $post = factory(Post::class)->create([
+        $post = Post::factory()->create([
             'content' => '# New Post',
             'title' => 'New Post',
         ]);
@@ -31,14 +31,14 @@ class PostRenderingActionTest extends TestCase
     /** @test */
     public function it_converts_snippet_short_codes_to_html()
     {
-        $snippetA = factory(Snippet::class)->create([
+        $snippetA = Snippet::factory()->create([
             'content' => 'this is the first snippet',
         ]);
-        $snippetB = factory(Snippet::class)->create([
+        $snippetB = Snippet::factory()->create([
             'content' => 'this is the second snippet',
         ]);
 
-        $post = factory(Post::class)->create([
+        $post = Post::factory()->create([
             'content' => "# New Post\n\n {$snippetA->shortcode} \n\n {$snippetB->shortcode}",
             'title' => 'New Post',
         ]);

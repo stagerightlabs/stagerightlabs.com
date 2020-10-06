@@ -17,7 +17,7 @@ class PostUpdatingTest extends TestCase
     /** @test */
     public function guests_cannot_update_posts()
     {
-        $post = factory(Post::class)->create();
+        $post = Post::factory()->create();
 
         Livewire::test(PostUpdate::class, ['ref' => $post->reference_id])
             ->assertForbidden();
@@ -26,8 +26,8 @@ class PostUpdatingTest extends TestCase
     /** @test */
     public function users_can_update_posts()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->create([
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->create([
             'content' => 'Original content',
             'description' => 'Original description',
             'title' => 'Original Title',
@@ -50,12 +50,12 @@ class PostUpdatingTest extends TestCase
     /** @test */
     public function users_can_update_a_post_with_tags()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->create([
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->create([
             'content' => 'Original content',
             'title' => 'Original Title',
         ]);
-        $tags = factory(Tag::class, 2)->create();
+        $tags = Tag::factory()->count(2)->create();
 
         Livewire::test(PostUpdate::class, ['ref' => $post->reference_id])->dump()
             ->set('content', 'New content')
@@ -76,8 +76,8 @@ class PostUpdatingTest extends TestCase
     /** @test */
     public function it_sets_a_publication_date()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->state('draft')->create([
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->draft()->create([
             'content' => 'Original content',
             'title' => 'Original Title',
         ]);
@@ -92,8 +92,8 @@ class PostUpdatingTest extends TestCase
     /** @test */
     public function it_removes_a_publication_date()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->state('published')->create([
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->published()->create([
             'content' => 'Original content',
             'title' => 'Original Title',
         ]);

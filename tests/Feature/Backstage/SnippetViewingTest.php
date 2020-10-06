@@ -16,7 +16,7 @@ class SnippetViewingTest extends TestCase
     /** @test */
     public function guests_cannot_view_snippets()
     {
-        $snippet = factory(Snippet::class)->create();
+        $snippet = Snippet::factory()->create();
 
         Livewire::test(SnippetShow::class, ['ref' => $snippet->reference_id])
             ->assertForbidden();
@@ -25,8 +25,8 @@ class SnippetViewingTest extends TestCase
     /** @test */
     public function users_can_view_snippets()
     {
-        $this->actingAs(factory(User::class)->create());
-        $snippet = factory(Snippet::class)->create();
+        $this->actingAs(User::factory()->create());
+        $snippet = Snippet::factory()->create();
 
         Livewire::test(SnippetShow::class, ['ref' => $snippet->reference_id])
             ->assertSee($snippet->reference_id)

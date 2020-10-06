@@ -5,11 +5,12 @@ namespace App;
 use App\Concerns\ReferenceIds;
 use App\Concerns\UuidAsPrimaryKey;
 use App\Utilities\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use UuidAsPrimaryKey, ReferenceIds;
+    use HasFactory, UuidAsPrimaryKey, ReferenceIds;
 
     /**
      * The table associated with the model.
