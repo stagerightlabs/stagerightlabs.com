@@ -23,8 +23,8 @@ class PostIndexTest extends TestCase
     /** @test */
     public function users_can_view_the_post_management_index()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->create();
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->create();
 
         Livewire::test(PostIndex::class)
             ->assertSee($post->title);

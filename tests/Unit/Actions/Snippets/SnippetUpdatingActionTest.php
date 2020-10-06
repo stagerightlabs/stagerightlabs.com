@@ -14,7 +14,7 @@ class SnippetUpdatingActionTest extends TestCase
     /** @test */
     public function it_updates_snippets()
     {
-        $snippet = factory(Snippet::class)->create([
+        $snippet = Snippet::factory()->create([
             'content' => 'This is some content.',
             'filename' => 'script.sh',
             'language' => 'bash',
@@ -58,7 +58,7 @@ class SnippetUpdatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_snippet_name()
     {
-        $snippet = factory(Snippet::class)->create([
+        $snippet = Snippet::factory()->create([
             'content' => 'This is some content.',
             'name' => 'Test Snippet',
         ]);
@@ -74,7 +74,7 @@ class SnippetUpdatingActionTest extends TestCase
     /** @test */
     public function it_requires_snippet_content()
     {
-        $snippet = factory(Snippet::class)->create([
+        $snippet = Snippet::factory()->create([
             'content' => 'This is some content.',
             'name' => 'Test Snippet',
         ]);

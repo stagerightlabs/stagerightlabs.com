@@ -19,7 +19,7 @@ class VerifyTest extends TestCase
     /** @test */
     public function can_view_verification_page()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
 
@@ -33,7 +33,7 @@ class VerifyTest extends TestCase
     /** @test */
     public function can_resend_verification_email()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         Livewire::actingAs($user);
 
@@ -45,7 +45,7 @@ class VerifyTest extends TestCase
     /** @test */
     public function can_verify()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
 

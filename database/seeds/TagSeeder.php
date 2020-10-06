@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Actions\Tags\TagCreatingAction;
 use Illuminate\Database\Seeder;
 

@@ -23,8 +23,8 @@ class SnippetIndexTest extends TestCase
     /** @test */
     public function users_can_view_snippets()
     {
-        $this->actingAs(factory(User::class)->create());
-        $snippet = factory(Snippet::class)->create();
+        $this->actingAs(User::factory()->create());
+        $snippet = Snippet::factory()->create();
 
         Livewire::test(SnippetIndex::class)
             ->assertSee($snippet->name)

@@ -23,8 +23,8 @@ class TagIndexTest extends TestCase
     /** @test */
     public function users_can_view_the_tag_index()
     {
-        $this->actingAs(factory(User::class)->create());
-        $tag = factory(Tag::class)->create();
+        $this->actingAs(User::factory()->create());
+        $tag = Tag::factory()->create();
 
         Livewire::test(TagIndex::class)
             ->assertSee($tag->name);

@@ -18,8 +18,8 @@ class TagDeletionTest extends TestCase
     /** @test */
     public function users_can_remove_unassigned_tags()
     {
-        $this->actingAs(factory(User::class)->create());
-        $tag = factory(Tag::class)->create();
+        $this->actingAs(User::factory()->create());
+        $tag = Tag::factory()->create();
 
         Livewire::test(TagIndex::class)
             ->call('remove', $tag->reference_id);
@@ -32,9 +32,9 @@ class TagDeletionTest extends TestCase
     /** @test */
     public function users_cannot_delete_tags_assigned_to_posts()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->create();
-        $tag = factory(Tag::class)->create();
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->create();
+        $tag = Tag::factory()->create();
         (new PostUpdatingAction)->execute([
             'content' => $post->content,
             'post' => $post,

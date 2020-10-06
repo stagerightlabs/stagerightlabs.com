@@ -13,7 +13,7 @@ class BlogTest extends TestCase
     /** @test */
     public function the_blog_is_reachable()
     {
-        $post = factory(Post::class)->state('published')->create();
+        $post = Post::factory()->published()->create();
 
         $response = $this->get('/');
 

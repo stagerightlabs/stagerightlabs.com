@@ -24,7 +24,7 @@ class PostCreationTest extends TestCase
     /** @test */
     public function users_can_create_posts()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(PostCreate::class)->dump()
             ->set('content', "This is the new\npost content.")
@@ -43,8 +43,8 @@ class PostCreationTest extends TestCase
     /** @test */
     public function users_can_create_posts_with_tags()
     {
-        $this->actingAs(factory(User::class)->create());
-        $tags = factory(Tag::class, 2)->create();
+        $this->actingAs(User::factory()->create());
+        $tags = Tag::factory()->count(2)->create();
 
         Livewire::test(PostCreate::class)->dump()
             ->set('content', "This is the new\npost content.")
@@ -61,7 +61,7 @@ class PostCreationTest extends TestCase
     /** @test */
     public function it_requires_a_post_title()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(PostCreate::class)->dump()
             ->set('content', "This is the new\npost content.")
@@ -72,7 +72,7 @@ class PostCreationTest extends TestCase
     /** @test */
     public function it_requires_post_content()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(PostCreate::class)->dump()
             ->set('title', 'A New Post')

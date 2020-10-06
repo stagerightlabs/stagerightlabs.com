@@ -15,8 +15,8 @@ class PostTaggingActionTest extends TestCase
     /** @test */
     public function it_syncs_tags_with_posts()
     {
-        $post = factory(Post::class)->create();
-        $tags = factory(Tag::class, 2)->create();
+        $post = Post::factory()->create();
+        $tags = Tag::factory()->count(2)->create();
 
         $tags->each(function ($tag) use ($post) {
             $post->tags->assertMissing($tag);
@@ -44,8 +44,8 @@ class PostTaggingActionTest extends TestCase
     /** @test */
     public function it_accepts_an_array_of_tag_models()
     {
-        $post = factory(Post::class)->create();
-        $tags = factory(Tag::class, 2)->create();
+        $post = Post::factory()->create();
+        $tags = Tag::factory()->count(2)->create();
 
         $tags->each(function ($tag) use ($post) {
             $post->tags->assertMissing($tag);
@@ -65,8 +65,8 @@ class PostTaggingActionTest extends TestCase
     /** @test */
     public function it_accepts_an_array_of_tag_slugs()
     {
-        $post = factory(Post::class)->create();
-        $tags = factory(Tag::class, 2)->create();
+        $post = Post::factory()->create();
+        $tags = Tag::factory()->count(2)->create();
 
         $tags->each(function ($tag) use ($post) {
             $post->tags->assertMissing($tag);
@@ -86,8 +86,8 @@ class PostTaggingActionTest extends TestCase
     /** @test */
     public function it_accepts_a_collection_of_tag_slugs()
     {
-        $post = factory(Post::class)->create();
-        $tags = factory(Tag::class, 2)->create();
+        $post = Post::factory()->create();
+        $tags = Tag::factory()->count(2)->create();
 
         $tags->each(function ($tag) use ($post) {
             $post->tags->assertMissing($tag);
@@ -107,8 +107,8 @@ class PostTaggingActionTest extends TestCase
     /** @test */
     public function it_accepts_a_single_tag_model()
     {
-        $post = factory(Post::class)->create();
-        $tag = factory(Tag::class)->create();
+        $post = Post::factory()->create();
+        $tag = Tag::factory()->create();
 
         $post->tags->assertMissing($tag);
 
@@ -124,8 +124,8 @@ class PostTaggingActionTest extends TestCase
     /** @test */
     public function it_accepts_a_single_tag_slug()
     {
-        $post = factory(Post::class)->create();
-        $tag = factory(Tag::class)->create();
+        $post = Post::factory()->create();
+        $tag = Tag::factory()->create();
 
         $post->tags->assertMissing($tag);
 

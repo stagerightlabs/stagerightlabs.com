@@ -16,8 +16,8 @@ class PostRemovalTest extends TestCase
     /** @test */
     public function users_can_remove_draft_posts()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->state('draft')->create();
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->draft()->create();
 
         Livewire::test(PostShow::class, ['ref' => $post->reference_id])
             ->call('delete');
@@ -30,8 +30,8 @@ class PostRemovalTest extends TestCase
     /** @test */
     public function users_cannot_remove_published_posts()
     {
-        $this->actingAs(factory(User::class)->create());
-        $post = factory(Post::class)->state('published')->create();
+        $this->actingAs(User::factory()->create());
+        $post = Post::factory()->published()->create();
 
         Livewire::test(PostShow::class, ['ref' => $post->reference_id])
             ->call('delete');

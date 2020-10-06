@@ -15,7 +15,7 @@ class SnippetCreationTest extends TestCase
     /** @test */
     public function a_user_can_create_a_snippet()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(SnippetCreate::class)
             ->set('content', "This is two lines\n of content.")
@@ -31,7 +31,7 @@ class SnippetCreationTest extends TestCase
     /** @test */
     public function a_user_can_create_a_snippet_with_meta_data()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(SnippetCreate::class)
             ->set('filename', 'example.sh')
@@ -55,7 +55,7 @@ class SnippetCreationTest extends TestCase
     /** @test */
     public function it_requires_a_snippet_name()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(SnippetCreate::class)
             ->set('content', "This is two lines\n of content.")
@@ -70,7 +70,7 @@ class SnippetCreationTest extends TestCase
     /** @test */
     public function it_requires_snippet_content()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         Livewire::test(SnippetCreate::class)
             ->set('name', 'New Snippet')

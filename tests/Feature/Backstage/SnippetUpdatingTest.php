@@ -16,7 +16,7 @@ class SnippetUpdatingTest extends TestCase
     /** @test */
     public function guests_cannot_edit_snippets()
     {
-        $snippet = factory(Snippet::class)->create();
+        $snippet = Snippet::factory()->create();
 
         Livewire::test(SnippetUpdate::class, ['ref' => $snippet->reference_id])
             ->assertForbidden();
@@ -25,8 +25,8 @@ class SnippetUpdatingTest extends TestCase
     /** @test */
     public function users_can_update_snippets()
     {
-        $this->actingAs(factory(User::class)->create());
-        $snippet = factory(Snippet::class)->create([
+        $this->actingAs(User::factory()->create());
+        $snippet = Snippet::factory()->create([
             'content' => 'some interesting content',
             'name' => 'Test Snippet',
         ]);
@@ -44,8 +44,8 @@ class SnippetUpdatingTest extends TestCase
     /** @test */
     public function users_can_update_snippet_meta_data()
     {
-        $this->actingAs(factory(User::class)->create());
-        $snippet = factory(Snippet::class)->create([
+        $this->actingAs(User::factory()->create());
+        $snippet = Snippet::factory()->create([
             'filename' => 'example.sh',
             'language' => 'bash',
             'content' => 'some interesting content',
@@ -75,8 +75,8 @@ class SnippetUpdatingTest extends TestCase
     /** @test */
     public function it_requires_a_snippet_name()
     {
-        $this->actingAs(factory(User::class)->create());
-        $snippet = factory(Snippet::class)->create();
+        $this->actingAs(User::factory()->create());
+        $snippet = Snippet::factory()->create();
 
         Livewire::test(SnippetUpdate::class, ['ref' => $snippet->reference_id])
             ->set('content', 'Updated snippet content')
@@ -88,8 +88,8 @@ class SnippetUpdatingTest extends TestCase
     /** @test */
     public function it_requires_snippet_content()
     {
-        $this->actingAs(factory(User::class)->create());
-        $snippet = factory(Snippet::class)->create();
+        $this->actingAs(User::factory()->create());
+        $snippet = Snippet::factory()->create();
 
         Livewire::test(SnippetUpdate::class, ['ref' => $snippet->reference_id])
             ->set('content', '')

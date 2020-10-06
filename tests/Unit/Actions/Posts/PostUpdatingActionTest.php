@@ -16,8 +16,8 @@ class PostUpdatingActionTest extends TestCase
     /** @test */
     public function it_updates_posts()
     {
-        $author = factory(User::class)->create();
-        $post = factory(Post::class)->create([
+        $author = User::factory()->create();
+        $post = Post::factory()->create([
             'content' => 'Original Content',
             'description' => 'Original Description',
             'title' => 'Original Title',
@@ -42,20 +42,20 @@ class PostUpdatingActionTest extends TestCase
     /** @test */
     public function it_updates_posts_with_tags()
     {
-        $author = factory(User::class)->create();
-        $post = factory(Post::class)->create([
+        $author = User::factory()->create();
+        $post = Post::factory()->create([
             'content' => 'Original Content',
             'title' => 'Original Title',
             'slug' => 'original-title',
         ]);
-        $tagA = factory(Tag::class)->create([
+        $tagA = Tag::factory()->create([
             'name' => 'Tag A',
         ]);
         $post->tags()->attach($tagA);
-        $tagB = factory(Tag::class)->create([
+        $tagB = Tag::factory()->create([
             'name' => 'Tag B',
         ]);
-        $tagC = factory(Tag::class)->create([
+        $tagC = Tag::factory()->create([
             'name' => 'Tag C',
         ]);
 
@@ -78,7 +78,7 @@ class PostUpdatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_title()
     {
-        $post = factory(Post::class)->create([
+        $post = Post::factory()->create([
             'content' => 'Original Content',
             'title' => 'Original Title',
             'slug' => 'original-title',
@@ -95,7 +95,7 @@ class PostUpdatingActionTest extends TestCase
     /** @test */
     public function it_requires_content()
     {
-        $post = factory(Post::class)->create([
+        $post = Post::factory()->create([
             'content' => 'Original Content',
             'title' => 'Original Title',
             'slug' => 'original-title',
@@ -123,8 +123,8 @@ class PostUpdatingActionTest extends TestCase
     /** @test */
     public function it_publishes_posts()
     {
-        $author = factory(User::class)->create();
-        $post = factory(Post::class)->state('draft')->create([
+        $author = User::factory()->create();
+        $post = Post::factory()->draft()->create([
             'content' => 'Original Content',
             'title' => 'Original Title',
             'slug' => 'original-title',
@@ -145,8 +145,8 @@ class PostUpdatingActionTest extends TestCase
     /** @test */
     public function it_reverts_post_publication()
     {
-        $author = factory(User::class)->create();
-        $post = factory(Post::class)->state('published')->create([
+        $author = User::factory()->create();
+        $post = Post::factory()->published()->create([
             'content' => 'Original Content',
             'title' => 'Original Title',
             'slug' => 'original-title',

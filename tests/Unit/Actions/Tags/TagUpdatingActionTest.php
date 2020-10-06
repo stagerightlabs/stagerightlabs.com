@@ -14,7 +14,7 @@ class TagUpdatingActionTest extends TestCase
     /** @test */
     public function it_updates_a_tag()
     {
-        $tag = factory(Tag::class)->create([
+        $tag = Tag::factory()->create([
             'name' => 'Old Name',
             'slug' => 'old-name',
         ]);
@@ -43,7 +43,7 @@ class TagUpdatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_tag_name()
     {
-        $tag = factory(Tag::class)->create([
+        $tag = Tag::factory()->create([
             'name' => 'Old Name',
             'slug' => 'old-name',
         ]);
