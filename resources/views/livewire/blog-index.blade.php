@@ -30,7 +30,7 @@
       @endforeach
 
       <div class="w-full mt-8">
-        {{ $posts->links() }}
+        {{ $posts->links('pagination-links-compact') }}
       </div>
 
     </div>
