@@ -57,7 +57,7 @@ class PostUpdatingTest extends TestCase
         ]);
         $tags = Tag::factory()->count(2)->create();
 
-        Livewire::test(PostUpdate::class, ['ref' => $post->reference_id])->dump()
+        Livewire::test(PostUpdate::class, ['ref' => $post->reference_id])
             ->set('content', 'New content')
             ->set('tags', $tags->pluck('slug')->toArray())
             ->set('title', 'New Title')

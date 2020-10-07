@@ -33,7 +33,7 @@
         </x-table.tr>
       @endforeach
       <x-slot name="footer">
-        {{ $posts->links() }}
+        {{ $posts->links('pagination-links') }}
       </x-slot>
     </x-table>
   @else

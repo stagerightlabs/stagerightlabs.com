@@ -26,7 +26,7 @@ class PostCreationTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
 
-        Livewire::test(PostCreate::class)->dump()
+        Livewire::test(PostCreate::class)
             ->set('content', "This is the new\npost content.")
             ->set('description', 'This is a post description')
             ->set('title', 'A New Post')
@@ -46,7 +46,7 @@ class PostCreationTest extends TestCase
         $this->actingAs(User::factory()->create());
         $tags = Tag::factory()->count(2)->create();
 
-        Livewire::test(PostCreate::class)->dump()
+        Livewire::test(PostCreate::class)
             ->set('content', "This is the new\npost content.")
             ->set('tags', $tags->pluck('slug')->toArray())
             ->set('title', 'A New Post')
@@ -63,7 +63,7 @@ class PostCreationTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
 
-        Livewire::test(PostCreate::class)->dump()
+        Livewire::test(PostCreate::class)
             ->set('content', "This is the new\npost content.")
             ->call('store')
             ->assertHasErrors('title');
@@ -74,7 +74,7 @@ class PostCreationTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
 
-        Livewire::test(PostCreate::class)->dump()
+        Livewire::test(PostCreate::class)
             ->set('title', 'A New Post')
             ->call('store')
             ->assertHasErrors('content');
