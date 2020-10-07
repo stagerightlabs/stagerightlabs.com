@@ -11,7 +11,6 @@
 ])
 
 <x-button.base
-  class="text-cool-gray-300 bg-cool-gray-500"
   :disabled="$disabled"
   :full="$full"
   :hover="$hover"
@@ -21,4 +20,5 @@
   :type="$type"
   :url="$url"
   :wrapper="$wrapper"
+  {{ $attributes->merge(['class' => 'text-cool-gray-300 bg-cool-gray-500']) }}
 >{{ $slot }}</x-button.base>
