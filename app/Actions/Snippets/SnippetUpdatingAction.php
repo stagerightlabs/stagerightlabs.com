@@ -5,6 +5,7 @@ namespace App\Actions\Snippets;
 use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Reaction;
+use App\Jobs\SnippetRenderingJob;
 use App\Snippet;
 use App\Utilities\Arr;
 
@@ -46,6 +47,8 @@ class SnippetUpdatingAction
         $snippet->url = Arr::get($data, 'url', $snippet->url);
 
         $snippet->save();
+
+        dispatch(new SnippetRenderingJob($snippet));
 
         return new Complete("Snippet '{$snippet->reference_id}' has been updated.", [
             'snippet' => $snippet,

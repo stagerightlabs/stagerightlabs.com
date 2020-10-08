@@ -7,7 +7,12 @@
       <x-button.primary
         url="{{ route('backstage.posts.create') }}"
         icon="heroicon-s-document-add"
+        class="mr-2"
       >Create Post</x-button.primary>
+      <x-button.secondary
+        type="button"
+        wire:click="dispatchBatchRenderingJobs"
+      >Batch Render</x-button.secondary>
     </x-slot>
   </x-heading>
   <x-alert.tray :messages="$messages" class="mb-4" />
