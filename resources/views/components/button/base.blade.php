@@ -7,6 +7,7 @@
   'loading' => false,
   'hover' => '',
   'full' => false,
+  'wrapper' => ''
 ])
 
 @php
@@ -30,15 +31,7 @@
   // Pull out the 'wrapper' attributes
   $wrapper = $attributes->filter(function($v, $k) {
     return $k == 'wrapper';
-  });
-  // Move the $wrapper classes into a proper attribute bag
-  $wrapper = $wrapper->merge(['class' => $attributes->get('wrapper')]);
-  $wrapper->offsetUnset('wrapper');
-
-  // Remove the 'wrapper' classes from the original attribute bag
-  $attributes = $attributes->filter(function($v, $k) {
-    return $k != 'wrapper';
-  });
+  })->merge(['class' => $wrapper]);
 
   // Should the wrapper be set to full width?
   $wrapper = $full ? $wrapper->merge(['class' => 'w-full']) : $wrapper;

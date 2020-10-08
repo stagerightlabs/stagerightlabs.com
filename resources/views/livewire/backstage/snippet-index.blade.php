@@ -7,7 +7,13 @@
       <x-button.primary
         url="{{ route('backstage.snippets.create') }}"
         icon="heroicon-s-document-add"
+        {{-- wrapper="mr-2" --}}
       >Create Snippet</x-button.primary>
+      {{-- <x-button.secondary
+        type="button"
+        icon="heroicon-s-document-add"
+        wire:click="hello"
+      >Hello</x-button.secondary> --}}
     </x-slot>
   </x-heading>
   <x-alert.tray :messages="$messages" class="mb-4" />
