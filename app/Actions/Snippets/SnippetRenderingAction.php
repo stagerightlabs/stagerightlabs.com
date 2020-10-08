@@ -13,6 +13,9 @@ use App\Utilities\Arr;
  *
  * Expected Input:
  *  - 'snippet' (Snippet)
+ *
+ * Optional Input:
+ *  - 'cascade' (bool)
  */
 class SnippetRenderingAction
 {
@@ -39,22 +42,20 @@ class SnippetRenderingAction
         }
 
         $snippet = $data['snippet'];
+        $cascade = Arr::get($data, 'cascade', true);
 
         // Is there content to be rendered?
         if (empty($snippet->content)) {
             return new Failure('Snippet has no content to render.');
         }
 
-        // generate the rendered html
+        // Render the snippet HTML as a string
         $html = $this->render($snippet);
 
-        // Cache handling would occur here...
-
-        // We should re-render the posts that make use of this snippet.
-        $snippet->getPostsThatUseThisSnippet()
-            ->each(function ($post) {
-                PostRenderingJob::dispatch($post);
-            });
+        // Should we also render the posts that use this snippet?
+        if ($cascade) {
+            $this->renderRelatedPosts($snippet);
+        }
 
         // All set
         return new Complete('Snippet has been rendered', [
@@ -134,5 +135,19 @@ class SnippetRenderingAction
     protected function encode($text)
     {
         return htmlspecialchars($text, ENT_QUOTES);
+    }
+
+    /**
+     * Queue rendering jobs for the posts that use this snippet.
+     *
+     * @param Snippet $snippet
+     * @return void
+     */
+    protected function renderRelatedPosts($snippet)
+    {
+        $snippet->getPostsThatUseThisSnippet()
+            ->each(function ($post) {
+                PostRenderingJob::dispatch($post);
+            });
     }
 }

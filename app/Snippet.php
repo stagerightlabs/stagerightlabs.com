@@ -4,6 +4,7 @@ namespace App;
 
 use App\Concerns\ReferenceIds;
 use App\Concerns\UuidAsPrimaryKey;
+use App\Jobs\SnippetRenderingJob;
 use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,25 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 class Snippet extends Model
 {
     use HasFactory, ReferenceIds, UuidAsPrimaryKey;
-
-    /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        // Render the snippet HTML when saving
-        static::saving(function ($snippet) {
-            $action = (new \App\Actions\Snippets\SnippetRenderingAction)->execute([
-                'snippet' => $snippet,
-            ]);
-
-            $snippet->rendered = $action->completed()
-                ? $action->rendered
-                : $snippet->rendered;
-        });
-    }
 
     /**
      * The table associated with the model.

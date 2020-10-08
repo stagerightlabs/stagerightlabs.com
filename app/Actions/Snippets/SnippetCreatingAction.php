@@ -5,6 +5,7 @@ namespace App\Actions\Snippets;
 use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Reaction;
+use App\Jobs\SnippetRenderingJob;
 use App\Snippet;
 use App\Utilities\Arr;
 
@@ -47,6 +48,8 @@ class SnippetCreatingAction
         if (! $snippet) {
             return new Failure('There was an error creating the snippet');
         }
+
+        dispatch(new SnippetRenderingJob($snippet));
 
         return new Complete("Snippet {$snippet->reference_id} created", [
             'snippet' => $snippet,
