@@ -21,7 +21,7 @@
   <x-card class="mb-8" heading="Name: {{ $snippet->name }}">
     <x-description-list class="grid grid-cols-1 col-gap-4 row-gap-8 sm:grid-cols-2 px-4 py-2">
       <x-description class="sm:col-span-1" label="Shortcode">
-        <code>{{ $snippet->shortcode }}</code>
+        <x-shortcode shortcode="{{ $snippet->shortcode }}" />
       </x-description>
       <x-description class="sm:col-span-1" label="Language">{{ $snippet->language ?? 'None'}}</x-description>
       <x-description class="sm:col-span-1" label="Starting Line Number">{{ $snippet->starting_line }}</x-description>
