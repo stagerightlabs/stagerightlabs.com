@@ -3,6 +3,7 @@
 namespace Tests\Unit\Actions\Posts;
 
 use App\Actions\Posts\PostRenderingAction;
+use App\Actions\Snippets\SnippetRenderingAction;
 use App\Post;
 use App\Snippet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -34,9 +35,11 @@ class PostRenderingActionTest extends TestCase
         $snippetA = Snippet::factory()->create([
             'content' => 'this is the first snippet',
         ]);
+        $snippetA = $this->renderSnippet($snippetA);
         $snippetB = Snippet::factory()->create([
             'content' => 'this is the second snippet',
         ]);
+        $snippetB = $this->renderSnippet($snippetB);
 
         $post = Post::factory()->create([
             'content' => "# New Post\n\n {$snippetA->shortcode} \n\n {$snippetB->shortcode}",
@@ -62,5 +65,18 @@ class PostRenderingActionTest extends TestCase
         $action = (new PostRenderingAction)->execute();
 
         $this->assertFalse($action->completed());
+    }
+
+    protected function renderSnippet($snippet)
+    {
+        $action = (new SnippetRenderingAction)->execute([
+            'snippet' => $snippet,
+            'cascade' => false,
+        ]);
+
+        $snippet->rendered = $action->rendered;
+        $snippet->save();
+
+        return $snippet;
     }
 }
