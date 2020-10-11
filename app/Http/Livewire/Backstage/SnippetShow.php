@@ -56,7 +56,7 @@ class SnippetShow extends Component
     {
         $this->authorize('delete', $this->snippet);
 
-        $action = (new SnippetDeletingAction)->execute([
+        $action = SnippetDeletingAction::execute([
             'snippet' => $this->snippet,
         ]);
 

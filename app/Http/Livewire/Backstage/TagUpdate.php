@@ -78,7 +78,7 @@ class TagUpdate extends Component
             'name' => 'required',
         ]);
 
-        $action = (new TagUpdatingAction)->execute([
+        $action = TagUpdatingAction::execute([
             'name' => $this->name,
             'slug' => $this->slug,
             'tag' => $this->tag,

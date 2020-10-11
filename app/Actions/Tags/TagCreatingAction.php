@@ -2,55 +2,46 @@
 
 namespace App\Actions\Tags;
 
-use App\Actions\Complete;
-use App\Actions\Failure;
-use App\Actions\Reaction;
 use App\Tag;
 use App\Utilities\Arr;
 use App\Utilities\Str;
 use Illuminate\Support\Facades\DB;
+use StageRightLabs\Actions\Action;
 
-/**
- * Create a new tag.
- *
- * Expected Input:
- *  - 'name' (string)
- */
-class TagCreatingAction
+class TagCreatingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Tag
      */
-    public function execute($data = [])
+    public $tag;
+
+    /**
+     * Create a new tag.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['name'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
-        }
+        $name = trim($input['name']);
 
-        $name = trim($data['name']);
-
-        $tag = Tag::create([
+        $this->tag = Tag::create([
             'name' => $name,
             'slug' => $this->generateSlug($name),
         ]);
 
-        if (! $tag) {
-            return new Failure("The '{$name}' tag could not be created.");
+        if (! $this->tag) {
+            return $this->fail("The '{$name}' tag could not be created.");
         }
 
-        return new Complete("Tag '' has been created.", [
-            'tag' => $tag,
-        ]);
+        return $this->complete("Tag '' has been created.");
     }
 
     /**
      * Generate a unique slug for the new tag.
      *
-     * @param [type] $name
-     * @return void
+     * @param string $name
+     * @return string
      */
     protected function generateSlug($name)
     {
@@ -67,5 +58,17 @@ class TagCreatingAction
         } while (DB::table('tags')->where('slug', $slug)->exists());
 
         return $slug;
+    }
+
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'name' // string
+        ];
     }
 }

@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.0",
         "league/commonmark": "^1.5",
         "livewire/livewire": "^2.0",
-        "sentry/sentry-laravel": "^2.0"
+        "sentry/sentry-laravel": "^2.0",
+        "stagerightlabs/actions": "dev-main"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

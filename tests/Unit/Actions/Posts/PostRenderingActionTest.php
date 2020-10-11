@@ -21,7 +21,7 @@ class PostRenderingActionTest extends TestCase
             'title' => 'New Post',
         ]);
 
-        $action = (new PostRenderingAction)->execute([
+        $action = PostRenderingAction::execute([
             'post' => $post,
         ]);
 
@@ -46,7 +46,7 @@ class PostRenderingActionTest extends TestCase
             'title' => 'New Post',
         ]);
 
-        $action = (new PostRenderingAction)->execute([
+        $action = PostRenderingAction::execute([
             'post' => $post,
         ]);
 
@@ -62,14 +62,14 @@ class PostRenderingActionTest extends TestCase
     /** @test */
     public function it_requires_a_post()
     {
-        $action = (new PostRenderingAction)->execute();
+        $action = PostRenderingAction::execute();
 
         $this->assertFalse($action->completed());
     }
 
     protected function renderSnippet($snippet)
     {
-        $action = (new SnippetRenderingAction)->execute([
+        $action = SnippetRenderingAction::execute([
             'snippet' => $snippet,
             'cascade' => false,
         ]);

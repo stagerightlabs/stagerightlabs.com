@@ -2,49 +2,54 @@
 
 namespace App\Actions\Users;
 
-use App\Actions\Action;
-use App\Actions\Complete;
-use App\Actions\Failure;
 use App\User;
 use App\Utilities\Arr;
 use Illuminate\Support\Facades\Hash;
+use StageRightLabs\Actions\Action;
 
-/**
- * Create a new user.
- *
- * Expected input:
- *  - 'name' (string)
- *  - 'email' (string)
- *  - 'password' (string)
- */
-class UserAccountCreatingAction implements Action
+class UserAccountCreatingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var User
      */
-    public function execute($data = [])
+    public $user;
+
+    /**
+     * Create a new user account.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['email', 'name', 'password'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
+        if (User::where('email', strtolower($input['email']))->exists()) {
+            return $this->fail('There is already a user account with that email address.');
         }
 
-        if (User::where('email', strtolower($data['email']))->exists()) {
-            return new Failure('There is already a user account with that email address.');
-        }
-
-        $user = User::create([
-            'email' => strtolower(Arr::get($data, 'email')),
-            'name' => Arr::get($data, 'name'),
-            'password' => Hash::make(Arr::get($data, 'password')),
+        $this->user = User::create([
+            'email' => strtolower(Arr::get($input, 'email')),
+            'name' => Arr::get($input, 'name'),
+            'password' => Hash::make(Arr::get($input, 'password')),
         ]);
 
-        if ($user) {
-            return new Complete('User Account Created', ['user' => $user]);
+        if ($this->user) {
+            return $this->complete('User Account Created');
         }
 
-        return new Failure('There was a problem creating the user.');
+        return $this->fail('There was a problem creating the user.');
+    }
+
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'email', // string
+            'name', // string
+            'password', // string
+        ];
     }
 }

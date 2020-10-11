@@ -16,7 +16,7 @@ class SnippetDeletingActionTest extends TestCase
     {
         $snippet = Snippet::factory()->create();
 
-        $action = (new SnippetDeletingAction)->execute([
+        $action = SnippetDeletingAction::execute([
             'snippet' => $snippet,
         ]);
 
@@ -29,7 +29,7 @@ class SnippetDeletingActionTest extends TestCase
     /** @test */
     public function it_requires_a_snippet()
     {
-        $action = (new SnippetDeletingAction)->execute();
+        $action = SnippetDeletingAction::execute();
 
         $this->assertFalse($action->completed());
     }

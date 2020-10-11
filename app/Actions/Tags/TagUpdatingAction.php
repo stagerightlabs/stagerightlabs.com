@@ -2,40 +2,56 @@
 
 namespace App\Actions\Tags;
 
-use App\Actions\Complete;
-use App\Actions\Failure;
-use App\Actions\Reaction;
+use App\Tag;
 use App\Utilities\Arr;
+use StageRightLabs\Actions\Action;
 
-/**
- * Update a tag.
- *
- * Expected Input:
- *  - 'name' (string)
- *  - 'slug' (string)
- *  - 'tag' (Tag)
- */
-class TagUpdatingAction
+class TagUpdatingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Tag
      */
-    public function execute($data = [])
+    public $tag;
+
+    /**
+     * Update a tag.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['name', 'tag'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
-        }
+        $this->tag = $input['tag'];
+        $this->tag->name = $input['name'];
+        $this->tag->slug = Arr::get($input, 'slug', $this->tag->slug);
 
-        $data['tag']->name = $data['name'];
-        $data['tag']->slug = Arr::get($data, 'slug', $data['tag']->slug);
+        $this->tag->save();
 
-        $data['tag']->save();
+        return $this->complete("Tag '{$this->tag->name}' has been updated.");
+    }
 
-        return new Complete("Tag '{$data['tag']->name}' has been updated.", [
-            'tag' => $data['tag'],
-        ]);
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'name', // string
+            'tag', // Tag
+        ];
+    }
+
+    /**
+     * The input keys used in this action that are not required.
+     *
+     * @return array
+     */
+    public function optional()
+    {
+        return [
+            'slug', // string
+        ];
     }
 }

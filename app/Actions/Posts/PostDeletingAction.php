@@ -4,35 +4,45 @@ namespace App\Actions\Posts;
 
 use App\Actions\Complete;
 use App\Actions\Failure;
-use App\Actions\Reaction;
+use App\Post;
 use App\Utilities\Arr;
+use StageRightLabs\Actions\Action;
 
-/**
- * Remove a post from the database.
- *
- * Expected Input:
- *  - 'post' (Post)
- */
-class PostDeletingAction
+class PostDeletingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Post
      */
-    public function execute($data = [])
+    public $post;
+
+    /**
+     * Remove a post from the database.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['post'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
+        $this->post = $input['post'];
+
+        if ($this->post->hasBeenPublished()) {
+            return $this->fail("Post {$this->post->reference_id} has been published and cannot be deleted.");
         }
 
-        if ($data['post']->hasBeenPublished()) {
-            return new Failure("Post {$data['post']->reference_id} has been published and cannot be deleted.");
-        }
+        $this->post->delete();
 
-        $data['post']->delete();
+        return $this->complete("Post {$this->post->reference_id} has been deleted.");
+    }
 
-        return new Complete("Post {$data['post']->reference_id} has been deleted.");
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'post'
+        ];
     }
 }

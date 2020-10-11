@@ -16,7 +16,7 @@ class SnippetRenderingActionTest extends TestCase
             'content' => "This is some content.\n There are two lines.",
         ]);
 
-        $action = (new SnippetRenderingAction)->execute([
+        $action = SnippetRenderingAction::execute([
             'snippet' => $snippet,
         ]);
 

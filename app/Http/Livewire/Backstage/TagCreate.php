@@ -52,7 +52,7 @@ class TagCreate extends Component
             'name' => 'required',
         ]);
 
-        $action = (new TagCreatingAction)->execute([
+        $action = TagCreatingAction::execute([
             'name' => $this->name,
         ]);
 

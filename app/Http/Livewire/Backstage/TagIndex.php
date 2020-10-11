@@ -52,7 +52,7 @@ class TagIndex extends Component
 
         $this->authorize('delete', $tag);
 
-        $action = (new TagDeletingAction)->execute([
+        $action = TagDeletingAction::execute([
             'tag' => $tag,
         ]);
 

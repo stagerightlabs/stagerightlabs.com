@@ -22,7 +22,7 @@ class PostTaggingActionTest extends TestCase
             $post->tags->assertMissing($tag);
         });
 
-        $action = (new PostTaggingAction)->execute([
+        $action = PostTaggingAction::execute([
             'post' => $post,
             'tags' => $tags,
         ]);
@@ -36,7 +36,7 @@ class PostTaggingActionTest extends TestCase
     /** @test */
     public function it_requires_a_post()
     {
-        $action = (new PostTaggingAction)->execute();
+        $action = PostTaggingAction::execute();
 
         $this->assertFalse($action->completed());
     }
@@ -51,7 +51,7 @@ class PostTaggingActionTest extends TestCase
             $post->tags->assertMissing($tag);
         });
 
-        $action = (new PostTaggingAction)->execute([
+        $action = PostTaggingAction::execute([
             'post' => $post,
             'tags' => [$tags[0], $tags[1]],
         ]);
@@ -72,7 +72,7 @@ class PostTaggingActionTest extends TestCase
             $post->tags->assertMissing($tag);
         });
 
-        $action = (new PostTaggingAction)->execute([
+        $action = PostTaggingAction::execute([
             'post' => $post,
             'tags' => [$tags[0]->slug, $tags[1]->slug],
         ]);
@@ -93,7 +93,7 @@ class PostTaggingActionTest extends TestCase
             $post->tags->assertMissing($tag);
         });
 
-        $action = (new PostTaggingAction)->execute([
+        $action = PostTaggingAction::execute([
             'post' => $post,
             'tags' => $tags->pluck('slug'),
         ]);
@@ -112,7 +112,7 @@ class PostTaggingActionTest extends TestCase
 
         $post->tags->assertMissing($tag);
 
-        $action = (new PostTaggingAction)->execute([
+        $action = PostTaggingAction::execute([
             'post' => $post,
             'tags' => $tag,
         ]);
@@ -129,7 +129,7 @@ class PostTaggingActionTest extends TestCase
 
         $post->tags->assertMissing($tag);
 
-        $action = (new PostTaggingAction)->execute([
+        $action = PostTaggingAction::execute([
             'post' => $post,
             'tags' => $tag->slug,
         ]);

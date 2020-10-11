@@ -17,7 +17,7 @@ class PostCreatingActionTest extends TestCase
     {
         $author = User::factory()->create();
 
-        $action = (new PostCreatingAction)->execute([
+        $action = PostCreatingAction::execute([
             'author' => $author,
             'content' => 'Some new content',
             'description' => 'Some description',
@@ -43,7 +43,7 @@ class PostCreatingActionTest extends TestCase
             'name' => 'Tag B',
         ]);
 
-        $action = (new PostCreatingAction)->execute([
+        $action = PostCreatingAction::execute([
             'author' => $author,
             'content' => 'Some new content',
             'tags' => collect([$tagA, $tagB])->pluck('slug')->toArray(),
@@ -58,7 +58,7 @@ class PostCreatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_title()
     {
-        $action = (new PostCreatingAction)->execute([
+        $action = PostCreatingAction::execute([
             'content' => 'Some new content',
         ]);
 
@@ -68,7 +68,7 @@ class PostCreatingActionTest extends TestCase
     /** @test */
     public function it_requires_content()
     {
-        $action = (new PostCreatingAction)->execute([
+        $action = PostCreatingAction::execute([
             'title' => 'A New Post',
         ]);
 

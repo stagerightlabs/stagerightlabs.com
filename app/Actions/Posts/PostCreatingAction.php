@@ -2,65 +2,50 @@
 
 namespace App\Actions\Posts;
 
-use App\Actions\Complete;
-use App\Actions\Failure;
-use App\Actions\Reaction;
 use App\Jobs\PostRenderingJob;
 use App\Post;
 use App\Utilities\Arr;
 use App\Utilities\Str;
 use Illuminate\Support\Facades\DB;
+use StageRightLabs\Actions\Action;
 
-/**
- * Create a new post.
- *
- * Expected Input:
- *  - 'author' (User)
- *  - 'content' (string)
- *  - 'title' (string)
- *
- * Optional Input:
- *  - 'description' (string)
- *  - 'tags' (array)
- */
-class PostCreatingAction
+class PostCreatingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Post
      */
-    public function execute($data = [])
-    {
-        if ($missing = Arr::disclose($data, ['content', 'title'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
-        }
+    public $post;
 
+    /**
+     * Create a new post.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
+    {
         // Create the new post
-        $post = Post::create([
-            'title' => $data['title'],
-            'content' => $data['content'],
-            'description' => Arr::get($data, 'description'),
-            'slug' => $this->generateSlug($data['title']),
-            'author_id' => $data['author']->id,
+        $this->post = Post::create([
+            'title' => $input['title'],
+            'content' => $input['content'],
+            'description' => Arr::get($input, 'description'),
+            'slug' => $this->generateSlug($input['title']),
+            'author_id' => $input['author']->id,
         ]);
 
-        if (! $post) {
-            return new Failure('There was an error creating this new post.');
+        if (! $this->post) {
+            return $this->fail('There was an error creating this new post.');
         }
 
         // Render the markdown into HTML
-        PostRenderingJob::dispatch($post);
+        PostRenderingJob::dispatch($this->post);
 
         // Add Tags to the post
-        if ($tags = Arr::get($data, 'tags', null)) {
-            $this->applyTags($post, $tags);
+        if ($tags = Arr::get($input, 'tags', null)) {
+            $this->applyTags($this->post, $tags);
         }
 
-        return new Complete("Post {$post->reference_id} has been created; it has not been published.", [
-            'post' => $post,
-        ]);
+        return $this->complete("Post {$this->post->reference_id} has been created; it has not been published.");
     }
 
     /**
@@ -94,9 +79,36 @@ class PostCreatingAction
      */
     protected function applyTags($post, $slugs)
     {
-        return (new PostTaggingAction)->execute([
+        return PostTaggingAction::execute([
             'post' => $post,
             'tags' => $slugs,
         ]);
+    }
+
+    /**
+     * The input keys used in this action that are not required.
+     *
+     * @return array
+     */
+    public function optional()
+    {
+        return [
+            'description',
+            'tags'
+        ];
+    }
+
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'author',
+            'content',
+            'title',
+        ];
     }
 }

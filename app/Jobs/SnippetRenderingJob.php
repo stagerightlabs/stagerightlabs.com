@@ -46,7 +46,7 @@ class SnippetRenderingJob implements ShouldQueue
      */
     public function handle()
     {
-        $rendering = (new SnippetRenderingAction)->execute([
+        $rendering = SnippetRenderingAction::execute([
             'snippet' => $this->snippet,
             'cascade' => $this->cascade,
         ]);
