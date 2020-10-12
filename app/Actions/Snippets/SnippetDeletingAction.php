@@ -5,32 +5,41 @@ namespace App\Actions\Snippets;
 use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Reaction;
+use App\Snippet;
 use App\Utilities\Arr;
+use StageRightLabs\Actions\Action;
 
-/**
- * Remove a snippet from the database.
- *
- * Expected Input:
- *  - 'snippet' (Snippet)
- */
-class SnippetDeletingAction
+class SnippetDeletingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Snippet
      */
-    public function execute($data = [])
+    public $snippet;
+
+    /**
+     * Remove a snippet from the database.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['snippet'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
-        }
+        $this->snippet = $input['snippet'];
 
-        $data['snippet']->delete();
+        $this->snippet->delete();
 
-        return new Complete("Snippet '{$data['snippet']->reference_id}' has been removed.", [
-            'snippet' => $data['snippet'],
-        ]);
+        return $this->complete("Snippet '{$this->snippet->reference_id}' has been removed.");
+    }
+
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'snippet', // Snippet
+        ];
     }
 }

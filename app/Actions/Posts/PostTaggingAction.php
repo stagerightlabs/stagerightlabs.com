@@ -5,42 +5,40 @@ namespace App\Actions\Posts;
 use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Reaction;
+use App\Post;
 use App\Tag;
 use App\Utilities\Arr;
 use Illuminate\Database\Eloquent\Collection;
+use StageRightLabs\Actions\Action;
 
-/**
- * Sync tags with a post. Remove tags that are not specified in the tag set and
- * add tags in the tag set that are not already associated with the model.
- *
- * Expected Input:
- *  - 'post' App\Post
- *
- * Optional Input:
- *  - `tags` array|Collection
- */
-class PostTaggingAction
+class PostTaggingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Post
      */
-    public function execute($data = [])
+    public $post;
+
+    /**
+     * @var Collection|Tag
+     */
+    public $tags;
+
+    /**
+     * Sync tags with a post. Remove tags that are not specified in the tag
+     * set and add tags in the tag set that are not already associated.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['post'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
-        }
+        $this->post = $input['post'];
 
-        $tags = $this->normalizeTagsIntoCollection(Arr::get($data, 'tags'));
-        $data['post']->tags()->sync($tags);
-        $data['post']->setRelation('tags', $tags);
+        $this->tags = $this->normalizeTagsIntoCollection(Arr::get($input, 'tags'));
+        $this->post->tags()->sync($this->tags);
+        $this->post->setRelation('tags', $this->tags);
 
-        return new Complete("Post {$data['post']->reference_id} has been tagged.", [
-            'post' => $data['post']->fresh(),
-            'tags' => $tags,
-        ]);
+        return $this->complete("Post {$this->post->reference_id} has been tagged.");
     }
 
     /**
@@ -79,5 +77,29 @@ class PostTaggingAction
         // Ensure we always return an Eloquent collection
         // instead of a support collection.
         return new Collection($tags->all());
+    }
+
+    /**
+     * The input keys used in this action that are not required.
+     *
+     * @return array
+     */
+    public function optional()
+    {
+        return [
+            'tags', // array|Collection
+        ];
+    }
+
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'post', // App\Post
+        ];
     }
 }

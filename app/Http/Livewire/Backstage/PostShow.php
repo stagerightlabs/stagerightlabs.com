@@ -54,7 +54,7 @@ class PostShow extends Component
      */
     public function delete()
     {
-        $action = (new PostDeletingAction)->execute([
+        $action = PostDeletingAction::execute([
             'post' => $this->post,
         ]);
 

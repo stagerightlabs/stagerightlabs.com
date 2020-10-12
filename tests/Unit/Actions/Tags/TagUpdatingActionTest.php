@@ -19,7 +19,7 @@ class TagUpdatingActionTest extends TestCase
             'slug' => 'old-name',
         ]);
 
-        $action = (new TagUpdatingAction)->execute([
+        $action = TagUpdatingAction::execute([
             'tag' => $tag,
             'name' => 'New Name',
         ]);
@@ -33,7 +33,7 @@ class TagUpdatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_tag()
     {
-        $action = (new TagUpdatingAction)->execute([
+        $action = TagUpdatingAction::execute([
             'name' => 'New Name',
         ]);
 
@@ -48,7 +48,7 @@ class TagUpdatingActionTest extends TestCase
             'slug' => 'old-name',
         ]);
 
-        $action = (new TagUpdatingAction)->execute([
+        $action = TagUpdatingAction::execute([
             'tag' => $tag,
         ]);
 

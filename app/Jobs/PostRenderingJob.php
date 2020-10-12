@@ -38,7 +38,7 @@ class PostRenderingJob implements ShouldQueue
      */
     public function handle()
     {
-        $rendering = (new PostRenderingAction)->execute([
+        $rendering = PostRenderingAction::execute([
             'post' => $this->post,
         ]);
 

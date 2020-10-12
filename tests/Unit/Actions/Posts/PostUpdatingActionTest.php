@@ -24,7 +24,7 @@ class PostUpdatingActionTest extends TestCase
             'slug' => 'original-title',
         ]);
 
-        $action = (new PostUpdatingAction)->execute([
+        $action = PostUpdatingAction::execute([
             'author' => $author,
             'content' => 'New Content',
             'description' => 'New Description',
@@ -59,7 +59,7 @@ class PostUpdatingActionTest extends TestCase
             'name' => 'Tag C',
         ]);
 
-        $action = (new PostUpdatingAction)->execute([
+        $action = PostUpdatingAction::execute([
             'author' => $author,
             'content' => 'New Content',
             'post' => $post,
@@ -84,7 +84,7 @@ class PostUpdatingActionTest extends TestCase
             'slug' => 'original-title',
         ]);
 
-        $action = (new PostUpdatingAction)->execute([
+        $action = PostUpdatingAction::execute([
             'content' => 'New Content',
             'post' => $post,
         ]);
@@ -101,7 +101,7 @@ class PostUpdatingActionTest extends TestCase
             'slug' => 'original-title',
         ]);
 
-        $action = (new PostUpdatingAction)->execute([
+        $action = PostUpdatingAction::execute([
             'post' => $post,
             'title' => 'New Title',
         ]);
@@ -112,7 +112,7 @@ class PostUpdatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_post()
     {
-        $action = (new PostUpdatingAction)->execute([
+        $action = PostUpdatingAction::execute([
             'content' => 'New Content',
             'title' => 'New Title',
         ]);
@@ -130,7 +130,7 @@ class PostUpdatingActionTest extends TestCase
             'slug' => 'original-title',
         ]);
 
-        $action = (new PostUpdatingAction)->execute([
+        $action = PostUpdatingAction::execute([
             'author' => $author,
             'content' => 'New Content',
             'post' => $post,
@@ -152,7 +152,7 @@ class PostUpdatingActionTest extends TestCase
             'slug' => 'original-title',
         ]);
 
-        $action = (new PostUpdatingAction)->execute([
+        $action = PostUpdatingAction::execute([
             'author' => $author,
             'content' => 'New Content',
             'post' => $post,

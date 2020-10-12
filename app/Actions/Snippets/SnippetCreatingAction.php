@@ -8,51 +8,66 @@ use App\Actions\Reaction;
 use App\Jobs\SnippetRenderingJob;
 use App\Snippet;
 use App\Utilities\Arr;
+use StageRightLabs\Actions\Action;
 
-/**
- * Create a new Snippet.
- *
- * Expected Input:
- *  - 'content' (string)
- *  - 'name' (string)
- *
- * Optional Input:
- *  - 'filename' (string)
- *  - 'language' (string)
- *  - 'starting_line' (integer)
- *  - 'url' (string)
- */
-class SnippetCreatingAction
+class SnippetCreatingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Snippet
      */
-    public function execute($data = [])
+    public $snippet;
+
+    /**
+     * Create a new snippet.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['name', 'content'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
-        }
-
-        $snippet = Snippet::create([
-            'content' => $data['content'],
-            'filename' => Arr::get($data, 'filename'),
-            'language' => Arr::get($data, 'language'),
-            'name' => $data['name'],
-            'starting_line' => Arr::get($data, 'starting_line', 1),
-            'url' => Arr::get($data, 'url'),
+        $this->snippet = Snippet::create([
+            'content' => $input['content'],
+            'filename' => Arr::get($input, 'filename'),
+            'language' => Arr::get($input, 'language'),
+            'name' => $input['name'],
+            'starting_line' => Arr::get($input, 'starting_line', 1),
+            'url' => Arr::get($input, 'url'),
         ]);
 
-        if (! $snippet) {
-            return new Failure('There was an error creating the snippet');
+        if (! $this->snippet) {
+            return $this->fail('There was an error creating the snippet');
         }
 
-        dispatch(new SnippetRenderingJob($snippet));
+        dispatch(new SnippetRenderingJob($this->snippet));
 
-        return new Complete("Snippet {$snippet->reference_id} created", [
-            'snippet' => $snippet,
-        ]);
+        return $this->complete("Snippet {$this->snippet->reference_id} created");
+    }
+
+    /**
+     * The input keys used in this action that are not required.
+     *
+     * @return array
+     */
+    public function optional()
+    {
+        return [
+            'filename', // string
+            'language', // string
+            'starting_line', // int
+            'url', // string
+        ];
+    }
+
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'content', // string
+            'name', // string
+        ];
     }
 }

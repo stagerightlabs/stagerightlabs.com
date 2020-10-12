@@ -110,7 +110,7 @@ class SnippetUpdate extends Component
             'name' => 'required',
         ]);
 
-        $action = (new SnippetUpdatingAction)->execute([
+        $action = SnippetUpdatingAction::execute([
             'content' => $this->content,
             'filename' => $this->filename,
             'language' => $this->language,

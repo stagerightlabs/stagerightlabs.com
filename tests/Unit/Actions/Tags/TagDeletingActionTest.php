@@ -18,7 +18,7 @@ class TagDeletingActionTest extends TestCase
     {
         $tag = Tag::factory()->create();
 
-        $action = (new TagDeletingAction)->execute([
+        $action = TagDeletingAction::execute([
             'tag' => $tag,
         ]);
 
@@ -33,14 +33,14 @@ class TagDeletingActionTest extends TestCase
     {
         $post = Post::factory()->create();
         $tag = Tag::factory()->create();
-        (new PostUpdatingAction)->execute([
+        PostUpdatingAction::execute([
             'content' => $post->content,
             'post' => $post,
             'tags' => [$tag->slug],
             'title' => $post->title,
         ]);
 
-        $action = (new TagDeletingAction)->execute([
+        $action = TagDeletingAction::execute([
             'tag' => $tag,
         ]);
 
@@ -53,7 +53,7 @@ class TagDeletingActionTest extends TestCase
     /** @test */
     public function it_requires_a_tag()
     {
-        $action = (new TagDeletingAction)->execute();
+        $action = TagDeletingAction::execute();
 
         $this->assertFalse($action->completed());
     }

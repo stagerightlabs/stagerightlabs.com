@@ -23,7 +23,7 @@ class SnippetUpdatingActionTest extends TestCase
             'url' => 'http://www.example.com',
         ]);
 
-        $action = (new SnippetUpdatingAction)->execute([
+        $action = SnippetUpdatingAction::execute([
             'content' => 'Some new content',
             'filename' => 'example.sh',
             'language' => 'shell',
@@ -47,7 +47,7 @@ class SnippetUpdatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_snippet()
     {
-        $action = (new SnippetUpdatingAction)->execute([
+        $action = SnippetUpdatingAction::execute([
             'content' => 'Some new content',
             'name' => 'Revised Name',
         ]);
@@ -63,7 +63,7 @@ class SnippetUpdatingActionTest extends TestCase
             'name' => 'Test Snippet',
         ]);
 
-        $action = (new SnippetUpdatingAction)->execute([
+        $action = SnippetUpdatingAction::execute([
             'content' => 'Some new content',
             'snippet' => $snippet,
         ]);
@@ -79,7 +79,7 @@ class SnippetUpdatingActionTest extends TestCase
             'name' => 'Test Snippet',
         ]);
 
-        $action = (new SnippetUpdatingAction)->execute([
+        $action = SnippetUpdatingAction::execute([
             'name' => 'Test Snippet',
             'snippet' => $snippet,
         ]);

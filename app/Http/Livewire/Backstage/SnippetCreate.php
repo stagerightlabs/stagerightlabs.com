@@ -78,7 +78,7 @@ class SnippetCreate extends Component
 
         $this->authorize('create', Snippet::class);
 
-        $action = (new SnippetCreatingAction)->execute([
+        $action = SnippetCreatingAction::execute([
             'content' => $this->content,
             'filename' => $this->filename,
             'language' => $this->language,

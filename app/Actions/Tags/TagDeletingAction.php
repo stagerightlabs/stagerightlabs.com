@@ -2,41 +2,44 @@
 
 namespace App\Actions\Tags;
 
-use App\Actions\Complete;
-use App\Actions\Failure;
-use App\Actions\Reaction;
-use App\Utilities\Arr;
+use App\Tag;
+use StageRightLabs\Actions\Action;
 
-/**
- * Remove a tag from the database.
- *
- * Expected Input:
- *  - 'tag' (Tag)
- */
-class TagDeletingAction
+class TagDeletingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Tag
      */
-    public function execute($data = [])
+    public $tag;
+
+    /**
+     * Remove a tag from the database.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['tag'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
+        $this->tag = $input['tag'];
+
+        if ($input['tag']->posts()->exists()) {
+            return $this->fail("Tag '{$this->tag->name}' cannot be removed; it is still in use.");
         }
 
-        if ($data['tag']->posts()->exists()) {
-            return new Failure("Tag '{$data['tag']->name}' cannot be removed; it is still in use.", [
-                'tag' => $data['tag'],
-            ]);
-        }
+        $input['tag']->delete();
 
-        $data['tag']->delete();
+        return $this->complete("Tag '{$input['tag']->name}' has been removed.");
+    }
 
-        return new Complete("Tag '{$data['tag']->name}' has been removed.", [
-            'tag' => $data['tag'],
-        ]);
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'tag' // Tag
+        ];
     }
 }

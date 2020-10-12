@@ -116,7 +116,7 @@ class PostUpdate extends Component
             'publishedAt.date_format' => 'Please use the Y-m-d format.',
         ]);
 
-        $action = (new PostUpdatingAction)->execute([
+        $action = PostUpdatingAction::execute([
             'content' => $this->content,
             'description' => $this->description,
             'post' => $this->post,

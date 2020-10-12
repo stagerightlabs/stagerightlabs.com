@@ -5,46 +5,44 @@ namespace App\Actions\Posts;
 use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Actions\Reaction;
+use App\Post;
 use App\Snippet;
 use App\Utilities\Arr;
 use App\Utilities\Str;
 use League\CommonMark\CommonMarkConverter;
+use StageRightLabs\Actions\Action;
 
-/**
- * Convert the contents of a post to html.
- *
- * Expected Input:
- *  - 'post' (Post)
- */
-class PostRenderingAction
+class PostRenderingAction extends Action
 {
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Post
      */
-    public function execute($data = [])
+    public $post;
+
+    /**
+     * @var string
+     */
+    public $rendered;
+
+    /**
+     * Convert the contents of a post to html.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['post'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
+        $this->post = $input['post'];
+
+        if (empty($input['post']->content)) {
+            return $this->fail("Post {$input['post']->reference_id} has no content to render.");
         }
 
-        if (empty($data['post']->content)) {
-            return new Failure("Post {$data['post']->reference_id} has no content to render.", [
-                'post' => $data['post'],
-            ]);
-        }
+        $content = $this->replaceShortcodes($input['post']->content, $input['post']->shortcodes);
 
-        $content = $this->replaceShortcodes($data['post']->content, $data['post']->shortcodes);
+        $this->rendered = (new CommonMarkConverter())->convertToHtml($content);
 
-        $converter = new CommonMarkConverter();
-        $rendered = $converter->convertToHtml($content);
-
-        return new Complete("Post {$data['post']->reference_id} content has been rendered.", [
-            'post' => $data['post'],
-            'rendered' => $rendered,
-        ]);
+        return $this->complete("Post {$input['post']->reference_id} content has been rendered.");
     }
 
     /**
@@ -82,5 +80,17 @@ class PostRenderingAction
             });
 
         return Snippet::whereIn('reference_id', $referenceIds)->get();
+    }
+
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'post'
+        ];
     }
 }

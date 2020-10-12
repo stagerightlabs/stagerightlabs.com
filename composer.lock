@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d9fba215444433ed68a27f3bd39a2a56",
+    "content-hash": "d1e2b6f8dd758f6a4804ba91e938d8f6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3699,6 +3699,54 @@
                 }
             ],
             "time": "2020-10-08T08:30:08+00:00"
+        },
+        {
+            "name": "stagerightlabs/actions",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stagerightlabs/actions.git",
+                "reference": "237d6a462ad514912f24b7d71c6274b6c7e4f5b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stagerightlabs/actions/zipball/237d6a462ad514912f24b7d71c6274b6c7e4f5b1",
+                "reference": "237d6a462ad514912f24b7d71c6274b6c7e4f5b1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "StageRightLabs\\Actions\\Laravel\\LaravelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "StageRightLabs\\Actions\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan C. Durham",
+                    "email": "ryan@stagerightlabs.com",
+                    "homepage": "https://stagerightlabs.com"
+                }
+            ],
+            "description": "Action classes for handling discrete units of business logic.",
+            "time": "2020-10-10T22:34:14+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -9493,7 +9541,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "stagerightlabs/actions": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -84,7 +84,7 @@ class PostCreate extends Component
             'title' => 'required',
         ]);
 
-        $action = (new PostCreatingAction)->execute([
+        $action = PostCreatingAction::execute([
             'author' => auth()->user(),
             'content' => $this->content,
             'description' => $this->description,

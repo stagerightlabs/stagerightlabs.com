@@ -30,7 +30,7 @@ class TagSeeder extends Seeder
             'Webpack',
         ])
             ->each(function ($name) {
-                (new TagCreatingAction)->execute([
+                TagCreatingAction::execute([
                     'name' => $name,
                 ]);
             });

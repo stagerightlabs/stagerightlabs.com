@@ -13,7 +13,7 @@ class UserAccountCreatingActionTest extends TestCase
     /** @test */
     public function it_creates_users()
     {
-        $action = (new UserAccountCreatingAction)->execute([
+        $action = UserAccountCreatingAction::execute([
             'name' => 'Grace Hopper',
             'email' => 'grace@example.com',
             'password' => 'secret',
@@ -29,7 +29,7 @@ class UserAccountCreatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_name()
     {
-        $action = (new UserAccountCreatingAction)->execute([
+        $action = UserAccountCreatingAction::execute([
             'email' => 'grace@example.com',
             'password' => 'secret',
         ]);
@@ -43,7 +43,7 @@ class UserAccountCreatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_email()
     {
-        $action = (new UserAccountCreatingAction)->execute([
+        $action = UserAccountCreatingAction::execute([
             'name' => 'Grace Hopper',
             'password' => 'secret',
         ]);
@@ -57,7 +57,7 @@ class UserAccountCreatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_password()
     {
-        $action = (new UserAccountCreatingAction)->execute([
+        $action = UserAccountCreatingAction::execute([
             'name' => 'Grace Hopper',
             'email' => 'grace@example.com',
         ]);
@@ -71,7 +71,7 @@ class UserAccountCreatingActionTest extends TestCase
     /** @test */
     public function it_converts_email_addresses_to_lowercase()
     {
-        $action = (new UserAccountCreatingAction)->execute([
+        $action = UserAccountCreatingAction::execute([
             'name' => 'Grace Hopper',
             'email' => 'GRACE@EXAMPLE.COM',
             'password' => 'secret',

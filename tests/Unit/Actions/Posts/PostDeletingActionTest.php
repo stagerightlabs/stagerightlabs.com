@@ -16,7 +16,7 @@ class PostDeletingActionTest extends TestCase
     {
         $post = Post::factory()->create();
 
-        $action = (new PostDeletingAction)->execute([
+        $action = PostDeletingAction::execute([
             'post' => $post,
         ]);
 
@@ -29,7 +29,7 @@ class PostDeletingActionTest extends TestCase
     /** @test */
     public function it_requires_a_post()
     {
-        $action = (new PostDeletingAction)->execute();
+        $action = PostDeletingAction::execute();
 
         $this->assertFalse($action->completed());
     }
@@ -39,7 +39,7 @@ class PostDeletingActionTest extends TestCase
     {
         $post = Post::factory()->published()->create();
 
-        $action = (new PostDeletingAction)->execute([
+        $action = PostDeletingAction::execute([
             'post' => $post,
         ]);
 

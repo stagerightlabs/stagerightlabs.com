@@ -13,7 +13,7 @@ class TagCreatingActionTest extends TestCase
     /** @test */
     public function it_creates_tags()
     {
-        $action = (new TagCreatingAction)->execute([
+        $action = TagCreatingAction::execute([
             'name' => 'Post Topic',
         ]);
 
@@ -28,7 +28,7 @@ class TagCreatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_tag_name()
     {
-        $action = (new TagCreatingAction)->execute();
+        $action = TagCreatingAction::execute();
 
         $this->assertFalse($action->completed());
     }

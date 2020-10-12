@@ -35,7 +35,7 @@ class TagDeletionTest extends TestCase
         $this->actingAs(User::factory()->create());
         $post = Post::factory()->create();
         $tag = Tag::factory()->create();
-        (new PostUpdatingAction)->execute([
+        PostUpdatingAction::execute([
             'content' => $post->content,
             'post' => $post,
             'tags' => [$tag->slug],

@@ -35,7 +35,7 @@ class CreateBackstageUser extends Command
             ? 'secret'
             : Str::random(16);
 
-        $action = (new UserAccountCreatingAction)->execute([
+        $action = UserAccountCreatingAction::execute([
             'email' => $email,
             'name' => 'Backstage User',
             'password' => $password,

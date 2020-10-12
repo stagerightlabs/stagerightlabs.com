@@ -17,7 +17,7 @@ class SnippetCreatingActionTest extends TestCase
     {
         Bus::fake();
 
-        $action = (new SnippetCreatingAction)->execute([
+        $action = SnippetCreatingAction::execute([
             'content' => 'This is some content',
             'name' => 'Snippet Name',
         ]);
@@ -38,7 +38,7 @@ class SnippetCreatingActionTest extends TestCase
     {
         Bus::fake();
 
-        $action = (new SnippetCreatingAction)->execute([
+        $action = SnippetCreatingAction::execute([
             'content' => 'This is some content',
             'filename' => 'example.sh',
             'language' => 'bash',
@@ -65,7 +65,7 @@ class SnippetCreatingActionTest extends TestCase
     /** @test */
     public function it_requires_a_snippet_name()
     {
-        $action = (new SnippetCreatingAction)->execute([
+        $action = SnippetCreatingAction::execute([
             'content' => 'This is some content',
         ]);
 
@@ -75,7 +75,7 @@ class SnippetCreatingActionTest extends TestCase
     /** @test */
     public function it_requires_snippet_content()
     {
-        $action = (new SnippetCreatingAction)->execute([
+        $action = SnippetCreatingAction::execute([
             'name' => 'Snippet Name',
         ]);
 

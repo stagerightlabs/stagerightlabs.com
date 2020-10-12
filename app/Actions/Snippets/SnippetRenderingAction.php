@@ -2,22 +2,11 @@
 
 namespace App\Actions\Snippets;
 
-use App\Actions\Complete;
-use App\Actions\Failure;
-use App\Actions\Reaction;
 use App\Jobs\PostRenderingJob;
 use App\Utilities\Arr;
+use StageRightLabs\Actions\Action;
 
-/**
- * Render the content of a snippet as HTML.
- *
- * Expected Input:
- *  - 'snippet' (Snippet)
- *
- * Optional Input:
- *  - 'cascade' (bool)
- */
-class SnippetRenderingAction
+class SnippetRenderingAction extends Action
 {
     const HTML_START = "<div class=\"snippet border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 p-2 font-mono overflow-x-auto relative\"><table><tbody>\n";
     const HTML_END = "</div>\n";
@@ -30,38 +19,39 @@ class SnippetRenderingAction
     const FALLBACK_FILENAME = 'View File';
 
     /**
-     * Execute the action.
-     *
-     * @param array $data
-     * @return Reaction
+     * @var Snippet
      */
-    public function execute($data = [])
+    public $snippet;
+
+    /**
+     * @var string
+     */
+    public $rendered;
+
+    /**
+     * Render the contents of a snippet into HTML.
+     *
+     * @param Action|array $input
+     * @return self
+     */
+    public function handle($input = [])
     {
-        if ($missing = Arr::disclose($data, ['snippet'])) {
-            return new Failure("Missing expected '{$missing[0]}' value.");
-        }
+        $snippet = $input['snippet'];
+        $cascade = Arr::get($input, 'cascade', true);
 
-        $snippet = $data['snippet'];
-        $cascade = Arr::get($data, 'cascade', true);
-
-        // Is there content to be rendered?
+        // Ensure there is content to be rendered.
         if (empty($snippet->content)) {
-            return new Failure('Snippet has no content to render.');
+            return $this->fail('Snippet has no content to render.');
         }
 
-        // Render the snippet HTML as a string
-        $html = $this->render($snippet);
+        $this->rendered = $this->render($snippet);
 
         // Should we also render the posts that use this snippet?
         if ($cascade) {
             $this->renderRelatedPosts($snippet);
         }
 
-        // All set
-        return new Complete('Snippet has been rendered', [
-            'rendered' => $html,
-            'snippet' => $snippet,
-        ]);
+        return $this->complete('Snippet has been rendered');
     }
 
     /**
@@ -149,5 +139,29 @@ class SnippetRenderingAction
             ->each(function ($post) {
                 PostRenderingJob::dispatch($post);
             });
+    }
+
+    /**
+     * The input keys used in this action that are not required.
+     *
+     * @return array
+     */
+    public function optional()
+    {
+        return [
+            'cascade', // bool: Should we also render related posts?
+        ];
+    }
+
+    /**
+     * The input keys required by this action.
+     *
+     * @return array
+     */
+    public function required()
+    {
+        return [
+            'snippet', // Snippet
+        ];
     }
 }
