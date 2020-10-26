@@ -21,7 +21,8 @@ RUN apk add --no-cache autoconf g++ libtool make supervisor \
     libpng-dev \
     libjpeg-turbo \
     libjpeg-turbo-dev \
-    libjpeg
+    libjpeg \
+    git
 
 # install required php extensions
 RUN docker-php-ext-configure gd \
