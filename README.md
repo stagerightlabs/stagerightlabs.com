@@ -88,4 +88,4 @@ Special Thanks:
 
 - [Kirschbaum Development Laravel Test Runner](https://kirschbaumdevelopment.com/insights/laravel-github-actions)
 - [Github Actions](https://docs.github.com/en/free-pro-team@latest/actions)
-- [Favicon Generator](https://favicon.io/favicon-generator/)
+- [SVG Favicon Maker](https://formito.com/tools/favicon)
