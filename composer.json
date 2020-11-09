@@ -20,7 +20,7 @@
         "league/commonmark": "^1.5",
         "livewire/livewire": "^2.0",
         "sentry/sentry-laravel": "^2.0",
-        "stagerightlabs/actions": "dev-main"
+        "stagerightlabs/actions": "^0.00.22"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
