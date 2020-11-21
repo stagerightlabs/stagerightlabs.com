@@ -24,7 +24,7 @@
   </x-heading>
   <x-alert.tray :messages="$messages" class="mb-4" />
   <x-card class="mb-8">
-    <x-description-list class="grid grid-cols-1 col-gap-4 row-gap-8 sm:grid-cols-2">
+    <x-description-list class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
       <x-description class="sm:col-span-1" label="Description">
         {{ $post->description }}
       </x-description>
