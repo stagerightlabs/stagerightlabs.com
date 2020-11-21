@@ -14,6 +14,7 @@
   <x-header.link url="{{ route('home') }}" :mobile="$mobile">Blog</x-header.link>
   <x-header.link url="{{ route('projects.index') }}" :mobile="$mobile">Open Source</x-header.link>
   <x-header.link url="{{ route('decks.index') }}" :mobile="$mobile">Decks</x-header.link>
+  <x-header.link url="{{ route('resume') }}" :mobile="$mobile">Resume</x-header.link>
   <x-header.link url="{{ route('about') }}" :mobile="$mobile">About</x-header.link>
   <x-header.link url="https://github.com/stagerightlabs/" :mobile="$mobile" target="_blank">
     <span class="inline-flex">
