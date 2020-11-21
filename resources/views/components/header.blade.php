@@ -5,7 +5,7 @@
         <div class="flex-shrink-0 flex items-center">
           <a href="/" class="flex items-center">
             <x-logo class="h-12 lg:h-16" />
-            <h1 class="text-4xl text-red-800 ml-4 hidden lg:block">
+            <h1 class="text-4xl text-red-800 ml-4 hidden xl:block">
               Stage Right Labs
             </h1>
           </a>
