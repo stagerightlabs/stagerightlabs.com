@@ -16,7 +16,7 @@
     'class' => 'inline-flex items-center justify-center px-4 py-2 rounded-md
                 border border-transparent
                 text-sm leading-5 font-medium
-                focus:outline-none focus:border-red-700 focus:shadow-outline-red
+                focus:outline-none focus:border-red-700 focus:ring-red
                 transition ease-in-out duration-150 '
   ]);
 

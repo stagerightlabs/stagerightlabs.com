@@ -33,7 +33,7 @@
           wire:model.lazy="remember"
           id="remember"
           type="checkbox"
-          class="form-checkbox w-4 h-4 text-red-800 transition duration-150 ease-in-out bg-cool-gray-700 border border-cool-gray-600"
+          class="w-4 h-4 text-red-800 transition duration-150 ease-in-out bg-cool-gray-700 border border-cool-gray-600 focus:ring-cool-gray-400 focus:border-cool-gray-400 rounded"
         />
         <label for="remember" class="block ml-2 text-sm text-cool-gray-300 leading-5">
           Remember
@@ -43,7 +43,7 @@
       <div class="text-sm leading-5">
         <a
           href="{{ route('password.request') }}"
-          class="font-medium text-red-800 hover:text-red-700 focus:outline-none focus:underline transition ease-in-out duration-150"
+          class="font-medium text-red-700 hover:text-red-600 focus:outline-none focus:underline transition ease-in-out duration-150"
         >
           Forgot your password?
         </a>

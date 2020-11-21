@@ -26,7 +26,7 @@
         @if ($url)
         <a
           href="{{ $url }}"
-          class="whitespace-no-wrap font-bold"
+          class="whitespace-nowrap font-bold"
         >
           @if ($linkText)
             {{ $linkText }}
