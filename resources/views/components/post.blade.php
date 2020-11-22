@@ -1,6 +1,5 @@
 <article class="post">
   <header class="pb-4">
-    <h1 class="text-3xl mb-2">{{ $post->title }}</h1>
     <div class="md:flex md:justify-between md:items-center">
       @if ($post->hasBeenPublished())
       <time
