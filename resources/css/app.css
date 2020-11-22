@@ -130,3 +130,12 @@ article.post .content blockquote {
 article.post .content blockquote p {
     @apply mb-0;
 }
+
+.author p a {
+    @apply underline;
+    text-decoration-color: theme('colors.red.800');
+}
+
+.author p a:hover {
+    @apply text-cool-gray-200;
+}
