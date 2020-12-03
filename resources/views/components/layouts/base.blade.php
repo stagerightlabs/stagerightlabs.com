@@ -43,5 +43,9 @@
     {{ $slot }}
     <script src="{{ url(mix('js/app.js')) }}"></script>
     @livewireScripts
+
+    @env('local')
+      <x-break-points />
+    @endenv
   </body>
 </html>

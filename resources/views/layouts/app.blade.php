@@ -1,6 +1,6 @@
 <x-layouts.base>
-  <x-header class="mb-4" />
-  <div class="container mx-auto p-4">
+  <x-header class="mb-4 lg:mb-8" />
+  <div class="container mx-auto">
 
     @if(session()->has('alerts'))
       <div class="mx-auto mb-4 -mt-4">

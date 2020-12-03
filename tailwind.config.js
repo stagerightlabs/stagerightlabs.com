@@ -19,7 +19,16 @@ module.exports = {
           '800': '#27303f',
           '900': '#1a202e',
         },
-      }
+      },
+      container: {
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '8rem',
+        },
+      },
     },
   },
   variants: {},
