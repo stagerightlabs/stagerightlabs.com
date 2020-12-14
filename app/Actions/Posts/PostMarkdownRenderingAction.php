@@ -12,7 +12,7 @@ use App\Utilities\Str;
 use League\CommonMark\CommonMarkConverter;
 use StageRightLabs\Actions\Action;
 
-class PostRenderingAction extends Action
+class PostMarkdownRenderingAction extends Action
 {
     /**
      * @var Post
@@ -38,9 +38,10 @@ class PostRenderingAction extends Action
             return $this->fail("Post {$input['post']->reference_id} has no content to render.");
         }
 
-        $content = $this->replaceShortcodes($input['post']->content, $input['post']->shortcodes);
-
-        $this->rendered = (new CommonMarkConverter())->convertToHtml($content);
+        $this->rendered = $this->replaceShortcodes(
+            $input['post']->content,
+            $input['post']->shortcodes
+        );
 
         return $this->complete("Post {$input['post']->reference_id} content has been rendered.");
     }
