@@ -2,14 +2,14 @@
 
 namespace Tests\Unit\Actions\Posts;
 
-use App\Actions\Posts\PostRenderingAction;
+use App\Actions\Posts\PostHtmlRenderingAction;
 use App\Actions\Snippets\SnippetRenderingAction;
 use App\Post;
 use App\Snippet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class PostRenderingActionTest extends TestCase
+class PostHtmlRenderingActionTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -21,7 +21,7 @@ class PostRenderingActionTest extends TestCase
             'title' => 'New Post',
         ]);
 
-        $action = PostRenderingAction::execute([
+        $action = PostHtmlRenderingAction::execute([
             'post' => $post,
         ]);
 
@@ -46,7 +46,7 @@ class PostRenderingActionTest extends TestCase
             'title' => 'New Post',
         ]);
 
-        $action = PostRenderingAction::execute([
+        $action = PostHtmlRenderingAction::execute([
             'post' => $post,
         ]);
 
@@ -62,7 +62,7 @@ class PostRenderingActionTest extends TestCase
     /** @test */
     public function it_requires_a_post()
     {
-        $action = PostRenderingAction::execute();
+        $action = PostHtmlRenderingAction::execute();
 
         $this->assertFalse($action->completed());
     }

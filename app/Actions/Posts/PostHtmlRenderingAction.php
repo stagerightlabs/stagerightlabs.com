@@ -12,7 +12,7 @@ use App\Utilities\Str;
 use League\CommonMark\CommonMarkConverter;
 use StageRightLabs\Actions\Action;
 
-class PostRenderingAction extends Action
+class PostHtmlRenderingAction extends Action
 {
     /**
      * @var Post

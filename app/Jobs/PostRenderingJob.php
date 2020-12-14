@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Actions\Posts\PostRenderingAction;
+use App\Actions\Posts\PostHtmlRenderingAction;
 use App\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -38,7 +38,7 @@ class PostRenderingJob implements ShouldQueue
      */
     public function handle()
     {
-        $rendering = PostRenderingAction::execute([
+        $rendering = PostHtmlRenderingAction::execute([
             'post' => $this->post,
         ]);
 
