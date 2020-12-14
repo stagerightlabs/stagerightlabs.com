@@ -38,48 +38,15 @@ class PostHtmlRenderingAction extends Action
             return $this->fail("Post {$input['post']->reference_id} has no content to render.");
         }
 
-        $content = $this->replaceShortcodes($input['post']->content, $input['post']->shortcodes);
+        $markdown = PostMarkdownRenderingAction::execute(['post' => $this->post]);
 
-        $this->rendered = (new CommonMarkConverter())->convertToHtml($content);
+        if ($markdown->failed()) {
+            return $markdown;
+        }
+
+        $this->rendered = (new CommonMarkConverter())->convertToHtml($markdown->rendered);
 
         return $this->complete("Post {$input['post']->reference_id} content has been rendered.");
-    }
-
-    /**
-     * Replace shortcodes with their rendered output.
-     *
-     * @param string $content
-     * @param Collection $shortcodes
-     * @return string
-     */
-    protected function replaceShortcodes($content, $shortcodes)
-    {
-        return $this->fetchSnippets($shortcodes)
-            ->reduce(function ($content, $snippet) {
-                return str_replace(
-                    $snippet->shortcode,
-                    $snippet->rendered,
-                    $content
-                );
-            }, $content ?? '');
-    }
-
-    /**
-     * Fetch snippet content from the database.
-     *
-     * @param Collection $shortcodes
-     * @return Collection
-     */
-    protected function fetchSnippets($shortcodes)
-    {
-        $referenceIds = $shortcodes
-            ->filter(function ($shortcode) {
-                return Str::startsWith($shortcode['code'], 'Snippet ');
-            })->map(function ($shortcode) {
-                return Str::after($shortcode['code'], 'Snippet ');
-            });
-
-        return Snippet::whereIn('reference_id', $referenceIds)->get();
     }
 
     /**
