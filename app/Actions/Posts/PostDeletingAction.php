@@ -2,10 +2,7 @@
 
 namespace App\Actions\Posts;
 
-use App\Actions\Complete;
-use App\Actions\Failure;
 use App\Post;
-use App\Utilities\Arr;
 use StageRightLabs\Actions\Action;
 
 class PostDeletingAction extends Action
@@ -42,7 +39,7 @@ class PostDeletingAction extends Action
     public function required()
     {
         return [
-            'post'
+            'post',
         ];
     }
 }

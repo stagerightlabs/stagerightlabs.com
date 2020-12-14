@@ -1,19 +1,17 @@
 <?php
 
-use App\Http\Livewire\Backstage\ {
-    PostCreate,
-    PostIndex,
-    PostPreview,
-    PostShow,
-    PostUpdate,
-    SnippetCreate,
-    SnippetIndex,
-    SnippetShow,
-    SnippetUpdate,
-    TagCreate,
-    TagIndex,
-    TagUpdate,
-};
+use App\Http\Livewire\Backstage\PostCreate;
+use App\Http\Livewire\Backstage\PostIndex;
+use App\Http\Livewire\Backstage\PostPreview;
+use App\Http\Livewire\Backstage\PostShow;
+use App\Http\Livewire\Backstage\PostUpdate;
+use App\Http\Livewire\Backstage\SnippetCreate;
+use App\Http\Livewire\Backstage\SnippetIndex;
+use App\Http\Livewire\Backstage\SnippetShow;
+use App\Http\Livewire\Backstage\SnippetUpdate;
+use App\Http\Livewire\Backstage\TagCreate;
+use App\Http\Livewire\Backstage\TagIndex;
+use App\Http\Livewire\Backstage\TagUpdate;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -2,7 +2,6 @@
 
 namespace App\Actions\Posts;
 
-use App\Actions\Complete;
 use App\Actions\Failure;
 use App\Jobs\PostRenderingJob;
 use App\Post;

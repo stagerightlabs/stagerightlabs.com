@@ -28,7 +28,7 @@ class SnippetCreatingActionTest extends TestCase
         $this->assertNotNull($action->snippet->reference_id);
         $this->assertEquals('This is some content', $action->snippet->content);
         $this->assertEquals('Snippet Name', $action->snippet->name);
-        Bus::assertDispatched(function(SnippetRenderingJob $job) use ($action) {
+        Bus::assertDispatched(function (SnippetRenderingJob $job) use ($action) {
             return $job->snippet->id === $action->snippet->id;
         });
     }

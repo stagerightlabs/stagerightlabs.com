@@ -43,7 +43,7 @@ class PostIndex extends Component
     public function dispatchBatchRenderingJobs()
     {
         Post::get()
-            ->each(function($post) {
+            ->each(function ($post) {
                 dispatch(new PostRenderingJob($post));
             });
 

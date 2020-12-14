@@ -5,19 +5,15 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\DeckController;
 use App\Http\Controllers\MarkdownController;
 use App\Http\Controllers\SiteMapController;
-use App\Http\Livewire\ {
-    About,
-    BlogIndex,
-    BlogPost,
-    BlogTopic,
-};
-use App\Http\Livewire\Auth\ {
-    Login,
-    Passwords\Confirm,
-    Passwords\Email,
-    Passwords\Reset,
-    Verify,
-};
+use App\Http\Livewire\About;
+use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Auth\Passwords\Confirm;
+use App\Http\Livewire\Auth\Passwords\Email;
+use App\Http\Livewire\Auth\Passwords\Reset;
+use App\Http\Livewire\Auth\Verify;
+use App\Http\Livewire\BlogIndex;
+use App\Http\Livewire\BlogPost;
+use App\Http\Livewire\BlogTopic;
 use Illuminate\Support\Facades\Route;
 
 /*

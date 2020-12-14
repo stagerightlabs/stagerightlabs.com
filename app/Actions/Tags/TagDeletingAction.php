@@ -39,7 +39,7 @@ class TagDeletingAction extends Action
     public function required()
     {
         return [
-            'tag' // Tag
+            'tag', // Tag
         ];
     }
 }

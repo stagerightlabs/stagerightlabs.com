@@ -94,7 +94,7 @@ class PostCreatingAction extends Action
     {
         return [
             'description',
-            'tags'
+            'tags',
         ];
     }
 
