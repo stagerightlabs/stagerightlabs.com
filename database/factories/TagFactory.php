@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Tag;
-use App\Utilities\Arr;
 use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

@@ -3,7 +3,6 @@
 namespace App\Actions\Tags;
 
 use App\Tag;
-use App\Utilities\Arr;
 use App\Utilities\Str;
 use Illuminate\Support\Facades\DB;
 use StageRightLabs\Actions\Action;
@@ -68,7 +67,7 @@ class TagCreatingAction extends Action
     public function required()
     {
         return [
-            'name' // string
+            'name', // string
         ];
     }
 }

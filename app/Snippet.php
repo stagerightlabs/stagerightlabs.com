@@ -4,7 +4,6 @@ namespace App;
 
 use App\Concerns\ReferenceIds;
 use App\Concerns\UuidAsPrimaryKey;
-use App\Jobs\SnippetRenderingJob;
 use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

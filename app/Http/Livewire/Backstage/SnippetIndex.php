@@ -43,7 +43,7 @@ class SnippetIndex extends Component
     public function dispatchBatchRenderingJobs()
     {
         Snippet::get()
-            ->each(function($snippet) {
+            ->each(function ($snippet) {
                 dispatch(new SnippetRenderingJob($snippet, $cascade = false));
             });
 

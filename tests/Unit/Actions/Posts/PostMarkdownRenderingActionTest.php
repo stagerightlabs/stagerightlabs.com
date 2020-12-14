@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Actions\Posts;
 
-use App\Actions\Posts\PostHtmlRenderingAction;
 use App\Actions\Posts\PostMarkdownRenderingAction;
 use App\Actions\Snippets\SnippetRenderingAction;
 use App\Post;

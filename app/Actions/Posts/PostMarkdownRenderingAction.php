@@ -2,14 +2,9 @@
 
 namespace App\Actions\Posts;
 
-use App\Actions\Complete;
-use App\Actions\Failure;
-use App\Actions\Reaction;
 use App\Post;
 use App\Snippet;
-use App\Utilities\Arr;
 use App\Utilities\Str;
-use League\CommonMark\CommonMarkConverter;
 use StageRightLabs\Actions\Action;
 
 class PostMarkdownRenderingAction extends Action
@@ -91,7 +86,7 @@ class PostMarkdownRenderingAction extends Action
     public function required()
     {
         return [
-            'post'
+            'post',
         ];
     }
 }
