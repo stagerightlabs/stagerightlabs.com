@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', BlogIndex::class)->name('home');
+Route::redirect('/blog', '/');
 Route::get('blog/topic/{topic}', BlogTopic::class)->name('blog.topic');
 Route::get('blog/{slug}.md', [MarkdownController::class, 'show'])->name('blog.markdown');
 Route::get('blog/{slug}', BlogPost::class)->name('blog.post');
