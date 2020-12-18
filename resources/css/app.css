@@ -79,15 +79,15 @@ article.post .content h6 {
 }
 
 article.post .content p {
-    @apply mb-4 text-xl;
+    @apply mb-4 text-xl leading-8;
 }
 
 article.post .content pre {
-    @apply w-full bg-cool-gray-600 p-4 rounded mb-4 border border-cool-gray-400 text-sm leading-6;
+    @apply w-full bg-cool-gray-600 p-2 rounded mb-4 border border-cool-gray-400 text-sm leading-6;
 }
 
 article.post .content code {
-    @apply font-mono bg-cool-gray-900 rounded p-1;
+    @apply font-mono bg-cool-gray-900 rounded py-0.5 px-1;
 }
 
 article.post .content pre code {
