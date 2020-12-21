@@ -13,20 +13,27 @@
     @endif
   </x-page-header>
   <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-    <div class="col-span-1 md:col-span-9">
+    <div class="col-span-1 md:col-span-10">
       @foreach ($posts as $post)
-        <x-card class="mb-4">
-          <a href="{{ route('blog.post', $post->slug) }}">
-            <h2 class="text-2xl">{{ $post->title }}</h2>
-            <p class="text-cool-gray-500">
+        <a href="{{ route('blog.post', $post->slug) }}">
+          <x-card class="mb-4">
+            <h2 class="text-2xl mb-4">{{ $post->title }}</h2>
+            <p class="text-cool-gray-400 text-xl mb-6">
               {{ $post->description }}
             </p>
-            <p class="w-full inline-flex items-end justify-end text-red-600">
-              Read More
-              @svg('heroicon-s-chevron-double-right', ['class' => 'h-4 w-4 mb-1'])
-            </p>
-          </a>
-        </x-class>
+            <div class="grid grid-cols-1 sm:grid-cols-2">
+              <p class="grid-cols-1">
+                @foreach($post->tags as $tag)
+                  <x-tag :hover="false">{{ $tag->name }}</x-tag>
+                @endforeach
+              </p>
+              <p class="grid-cols-1 inline-flex items-end justify-end text-red-700 text-lg">
+                Read More
+                @svg('heroicon-s-chevron-double-right', ['class' => 'h-4 w-4 mb-1 ml-1'])
+              </p>
+            </div>
+          </x-card>
+        </a>
       @endforeach
 
       <div class="w-full mt-8">
@@ -34,25 +41,21 @@
       </div>
 
     </div>
-    <div class="col-span-1 md:col-span-3">
-      <x-card heading="Topics">
+    <ul class="col-span-1 md:col-span-2 lg:px-2 mt-4 md:mt-0">
       @foreach ($tags as $tag)
-        <div class="mb-2">
+        <li class="inline-block md:block my-1">
           @if (isset($topic) && $topic->slug == $tag->slug)
-          <a href="{{ route('home') }}">
+          <a href="{{ route('home') }}" class="">
             <x-tag :active="$tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
           </a>
           @else
-          <div class="mb-2">
-            <a href="{{ route('blog.topic', $tag->slug) }}">
-              <x-tag :active="isset($topic) && $tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
-            </a>
-          </div>
+          <a href="{{ route('blog.topic', $tag->slug) }}" class="">
+            <x-tag :active="isset($topic) && $tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
+          </a>
           @endif
-        </div>
+        </li>
       @endforeach
-      </x-card>
-    </div>
+    </ul>
   </div>
 
 </div>

@@ -1,5 +1,6 @@
 @props([
   'active' => false,
+  'hover' => true,
 ])
 
 @php
@@ -8,7 +9,11 @@
   if ($active) {
     $attributes = $attributes->merge(['class' => 'bg-cool-gray-300']);
   } else {
-    $attributes = $attributes->merge(['class' => 'bg-cool-gray-400 hover:bg-cool-gray-300']);
+     $attributes = $attributes->merge(['class' => 'bg-cool-gray-400']);
+  }
+
+  if (!$active && $hover) {
+    $attributes = $attributes->merge(['class' => 'hover:bg-cool-gray-300']);
   }
 @endphp
 
