@@ -79,7 +79,7 @@ article.post .content h6 {
 }
 
 article.post .content p {
-    @apply mb-4 text-xl leading-8;
+    @apply mb-4 text-xl leading-relaxed;
 }
 
 article.post .content pre {
