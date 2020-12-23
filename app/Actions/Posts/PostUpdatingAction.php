@@ -7,6 +7,7 @@ use App\Jobs\PostRenderingJob;
 use App\Post;
 use App\Utilities\Arr;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use StageRightLabs\Actions\Action;
 
 class PostUpdatingAction extends Action
@@ -38,6 +39,7 @@ class PostUpdatingAction extends Action
         // Update Publication Date
         if (Arr::has($input, 'published_at')) {
             $this->post->published_at = $this->resolvePublicationDate($input['published_at']);
+            Cache::forget('rss.posts');
         }
 
         // Save the post

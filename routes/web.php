@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\DeckController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\MarkdownController;
 use App\Http\Controllers\SiteMapController;
 use App\Http\Livewire\About;
@@ -32,16 +33,12 @@ Route::redirect('/blog', '/');
 Route::get('blog/topic/{topic}', BlogTopic::class)->name('blog.topic');
 Route::get('blog/{slug}.md', [MarkdownController::class, 'show'])->name('blog.markdown');
 Route::get('blog/{slug}', BlogPost::class)->name('blog.post');
-
 Route::get('about', About::class)->name('about');
-
 Route::view('decks', 'decks.index')->name('decks.index');
 Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
-
 Route::view('projects', 'projects')->name('projects.index');
-
 Route::view('resume', 'resume')->name('resume');
-
+Route::get('feed', [FeedController::class, 'show'])->name('feed');
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
 
 Route::middleware('guest')->group(function () {

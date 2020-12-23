@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
     @livewireStyles
 
+    <!-- Feed -->
+    <link rel="alternate" type="text/xml" href="{{ route('feed') }}" title="Stage Right Labs">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

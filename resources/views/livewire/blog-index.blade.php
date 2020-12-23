@@ -41,21 +41,31 @@
       </div>
 
     </div>
-    <ul class="col-span-1 md:col-span-2 lg:px-2 mt-4 md:mt-0">
-      @foreach ($tags as $tag)
-        <li class="inline-block md:block my-1">
-          @if (isset($topic) && $topic->slug == $tag->slug)
-          <a href="{{ route('home') }}" class="">
-            <x-tag :active="$tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
-          </a>
-          @else
-          <a href="{{ route('blog.topic', $tag->slug) }}" class="">
-            <x-tag :active="isset($topic) && $tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
-          </a>
-          @endif
-        </li>
-      @endforeach
-    </ul>
+    <div class="col-span-1 md:col-span-2 lg:px-2 mt-4 md:mt-0">
+      <ul>
+        @foreach ($tags as $tag)
+          <li class="inline-block md:block my-1">
+            @if (isset($topic) && $topic->slug == $tag->slug)
+            <a href="{{ route('home') }}" class="">
+              <x-tag :active="$tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
+            </a>
+            @else
+            <a href="{{ route('blog.topic', $tag->slug) }}" class="">
+              <x-tag :active="isset($topic) && $tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
+            </a>
+            @endif
+          </li>
+        @endforeach
+      </ul>
+      <a
+        class="hidden md:flex items-center text-cool-gray-500 mt-2 ml-2"
+        type="text/xml"
+        href="{{ route('feed') }}"
+      >
+        <small>RSS</small>
+        @svg('heroicon-s-rss', ['class' => 'w-4 h-4 ml-1'])
+      </a>
+    </div>
   </div>
 
 </div>
