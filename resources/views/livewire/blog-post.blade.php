@@ -29,11 +29,11 @@
         </p>
       @else
         <p>
-          @svg('heroicon-s-pencil', ['class' => 'h-5 w-5 text-cool-gray-500']) DRAFT
+          @svg('heroicon-s-pencil', ['class' => 'h-5 w-5']) DRAFT
         </p>
       @endif
       <div class="flex justify-end xl:block xl:mt-4 grid-cols-1">
-        <p class="hidden xl:flex items-center mb-2 text-cool-gray-500">
+        <p class="hidden xl:flex items-center mb-2">
           @svg('heroicon-s-tag', ['class' => 'h-5 w-5'])
           Topics
         </p>
