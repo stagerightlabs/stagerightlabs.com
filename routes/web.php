@@ -38,7 +38,7 @@ Route::view('decks', 'decks.index')->name('decks.index');
 Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
 Route::view('projects', 'projects')->name('projects.index');
 Route::view('resume', 'resume')->name('resume');
-Route::get('feed', [FeedController::class, 'show'])->name('rss.feed');
+Route::get('feed', [FeedController::class, 'show'])->name('feed');
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
 
 Route::middleware('guest')->group(function () {

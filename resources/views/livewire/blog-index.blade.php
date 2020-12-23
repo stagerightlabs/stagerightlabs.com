@@ -59,8 +59,8 @@
       </ul>
       <a
         class="hidden md:flex items-center text-cool-gray-500 mt-2 ml-2"
-        type="application/rss+xml"
-        href="{{ route('rss.feed') }}"
+        type="text/xml"
+        href="{{ route('feed') }}"
       >
         <small>RSS</small>
         @svg('heroicon-s-rss', ['class' => 'w-4 h-4 ml-1'])

@@ -19,8 +19,8 @@
     <div class="px-2">
       <a
         class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-        type="application/rss+xml"
-        href="{{ route('rss.feed') }}"
+        type="text/xml"
+        href="{{ route('feed') }}"
       >
       <span class="inline-flex items-center">
         RSS Feed

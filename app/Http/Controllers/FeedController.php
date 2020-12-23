@@ -17,6 +17,6 @@ class FeedController extends Controller
         });
 
         return response()->view('feed', ['posts' => $posts])
-            ->header('Content-Type', 'application/xml');
+            ->header('Content-Type', 'text/xml');
     }
 }
