@@ -1,26 +1,36 @@
 <?=
 '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL
 ?>
-<rss version="2.0">
-  <channel>
-    <title>Stage Right Labs</title>
-    <link>https://stagerightlabs.com</link>
-    <description>Ideas and musings about software and web application development.</description>
-    <language>en</language>
-    <pubDate>{{ now() }}</pubDate>
-    @foreach($posts as $post)
-    <item>
-      <title>
-        <![CDATA[{{ $post->title }}]]>
-      </title>
-      <link>{{ $post->url }}</link>
-      <description>
-        <![CDATA[{!! $post->description !!}]]>
-      </description>
-      <author>Ryan C. Durham</author>
-      <guid>{{ $post->id }}</guid>
-      <pubDate>{{ $post->published_at->toRssString() }}</pubDate>
-    </item>
-    @endforeach
-  </channel>
-</rss>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Stage Right Labs</title>
+  <subtitle>Ideas and musings about software and web application development.</subtitle>
+  <link href="https://stagerightlabs.com/feed" rel="self" />
+  <link href="https://stagerightlabs.com" />
+  <updated>{{ now()->toAtomString() }}</updated>
+
+  <author>
+    <name>Ryan C. Durham</name>
+    <uri>https://stagerightlabs.com</uri>
+  </author>
+
+  <id>https://stagerightlabs.com/</id>
+  <icon>{{ url(asset('img/compact.png')) }}</icon>
+  <rights>© {{ date('T') }} Ryan Durham</rights>
+
+  @foreach($posts as $post)
+  <entry>
+    <title>
+      <![CDATA[{{ $post->title }}]]>
+    </title>
+    <id>tag:stagerightlabs.com,{{ $post->published_at->toDateString() }}:{{ $post->published_at->format('U') }}</id>
+    <updated>{{ $post->published_at->toAtomString() }}</updated>
+    <summary>
+      <![CDATA[{!! $post->description !!}]]>
+    </summary>
+    <content type="html">
+      <![CDATA[{!! $post->rendered !!}]]>
+    </content>
+    <link rel="alternate" href="{{ $post->url }}" />
+  </entry>
+  @endforeach
+</feed>
