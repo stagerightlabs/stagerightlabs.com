@@ -24,28 +24,9 @@
     <x-card class="mb-8 col-span-1 xl:col-span-10">
       <x-post :post="$post" />
     </x-card>
-    <aside class="col-span-1 xl:col-span-2 row-start-1 xl:row-start-auto lg:px-2 text-cool-gray-600 grid grid-cols-2 xl:grid-cols-none gap-4 xl:block">
-      @if($post->hasBeenPublished())
-        <p class="flex items-center grid-cols-1">
-          @svg('heroicon-s-clock', ['class' => 'h-5 w-5'])
-          <time
-            datetime="{{ $post->published_at->toAtomString() }}"
-            class="block ml-1 text-cool-gray-500"
-          >
-            {{ $post->published_at->format('F j, Y') }}
-          </time>
-        </p>
-      @else
-        <p class="flex items-center text-cool-gray-500">
-          @svg('heroicon-s-pencil', ['class' => 'h-5 w-5 mr-1']) DRAFT
-        </p>
-      @endif
-      <div class="flex justify-end xl:block xl:mt-4 grid-cols-1">
-        <p class="hidden xl:flex items-center mb-2">
-          @svg('heroicon-s-tag', ['class' => 'h-5 w-5'])
-          Topics
-        </p>
-        <ul class="">
+    <aside class="col-span-1 xl:col-span-2 row-start-1 xl:row-start-auto lg:px-2 text-cool-gray-600 grid grid-flow-col-dense grid-cols-2 xl:grid-cols-none gap-4 xl:block">
+      <div class="flex justify-end xl:block grid-cols-1 col-start-2">
+        <ul class="mt-1 xl:mt-0">
           @foreach ($post->tags as $tag)
           <li class="inline-block xl:block my-1">
             @if (isset($topic) && $topic->slug == $tag->slug)
@@ -61,6 +42,18 @@
           @endforeach
         </ul>
       </div>
+      <p class="flex items-center grid-cols-1 col-start-1 text-sm xl:mt-2 text-cool-gray-500">
+        @if($post->hasBeenPublished())
+          <time
+            datetime="{{ $post->published_at->toDateString() }}"
+            class="block ml-1"
+          >
+            {{ $post->published_at->format('F j, Y') }}
+          </time>
+        @else
+          <span class="block ml-1">DRAFT</span>
+        @endif
+      </p>
     </aside>
   </div>
   @endif
