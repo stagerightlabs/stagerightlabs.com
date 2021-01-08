@@ -68,3 +68,8 @@ Route::middleware('auth')->group(function () {
     Route::any('logout', LogoutController::class)
         ->name('logout');
 });
+
+// Convert old tag link url to the new format.
+Route::get('tag:{tag}', function($tag) {
+    return redirect()->route('blog.topic', strtolower($tag));
+});
