@@ -42,6 +42,9 @@ Route::redirect(
 // Blog Posts
 Route::get('blog/topic/{topic}', BlogTopic::class)->name('blog.topic');
 Route::get('blog/{slug}.md', [MarkdownController::class, 'show'])->name('blog.markdown');
+Route::get('blog/{slug}.html', function($slug) {
+    return redirect()->route('blog.post', $slug);
+});
 Route::get('blog/{slug}', BlogPost::class)->name('blog.post');
 
 // Static Pages
