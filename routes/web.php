@@ -32,6 +32,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', BlogIndex::class)->name('home');
 Route::redirect('/blog', '/');
 
+// Redirect for problematic historical URL
+Route::redirect(
+    'blog/laravel5-pacakge-development-service-provider',
+    '/blog/laravel-5-package-development-the-service-provider',
+    301
+);
+
 // Blog Posts
 Route::get('blog/topic/{topic}', BlogTopic::class)->name('blog.topic');
 Route::get('blog/{slug}.md', [MarkdownController::class, 'show'])->name('blog.markdown');
@@ -79,6 +86,8 @@ Route::middleware('auth')->group(function () {
 
 // Temporary contact page redirect
 Route::redirect('contact', '/about', 302);
+
+
 
 // Convert old tag link url to the new format.
 Route::get('tag:{tag}', function($tag) {
