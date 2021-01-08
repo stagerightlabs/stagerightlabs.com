@@ -40,6 +40,7 @@ Route::view('projects', 'projects')->name('projects.index');
 Route::view('resume', 'resume')->name('resume');
 Route::get('feed', [FeedController::class, 'show'])->name('feed');
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
+Route::redirect('contact', '/about', 302);
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)->name('login');
