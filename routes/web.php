@@ -47,6 +47,9 @@ Route::get('blog/{slug}', BlogPost::class)->name('blog.post');
 // Static Pages
 Route::get('about', About::class)->name('about');
 Route::view('decks', 'decks.index')->name('decks.index');
+Route::get('decks/{slug}.html', function($slug) {
+    return redirect()->route('decks.show', $slug);
+});
 Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
 Route::view('projects', 'projects')->name('projects.index');
 Route::view('resume', 'resume')->name('resume');
