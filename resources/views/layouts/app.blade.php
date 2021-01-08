@@ -1,5 +1,5 @@
 <x-layouts.base>
-  <x-header class="mb-4 lg:mb-8" />
+  <x-header class="mb-6 lg:mb-12" />
   <div class="container mx-auto">
 
     @if(session()->has('alerts'))
