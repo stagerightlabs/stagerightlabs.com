@@ -28,20 +28,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Home Page
 Route::get('/', BlogIndex::class)->name('home');
 Route::redirect('/blog', '/');
+
+// Blog Posts
 Route::get('blog/topic/{topic}', BlogTopic::class)->name('blog.topic');
 Route::get('blog/{slug}.md', [MarkdownController::class, 'show'])->name('blog.markdown');
 Route::get('blog/{slug}', BlogPost::class)->name('blog.post');
+
+// Static Pages
 Route::get('about', About::class)->name('about');
 Route::view('decks', 'decks.index')->name('decks.index');
 Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
 Route::view('projects', 'projects')->name('projects.index');
 Route::view('resume', 'resume')->name('resume');
+
+// Ancillary Pages
 Route::get('feed', [FeedController::class, 'show'])->name('feed');
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
-Route::redirect('contact', '/about', 302);
 
+// Auth and User Accounts
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)->name('login');
 });
@@ -69,6 +76,9 @@ Route::middleware('auth')->group(function () {
     Route::any('logout', LogoutController::class)
         ->name('logout');
 });
+
+// Temporary contact page redirect
+Route::redirect('contact', '/about', 302);
 
 // Convert old tag link url to the new format.
 Route::get('tag:{tag}', function($tag) {
