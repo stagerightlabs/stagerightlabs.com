@@ -27,6 +27,13 @@ class SnippetUpdate extends Component
     public $filename;
 
     /**
+     * Has this snippet been flagged for public access?
+     *
+     * @var bool
+     */
+    public $isPublic;
+
+    /**
      * The language that should be used for syntax highlighting.
      *
      * @var string
@@ -78,6 +85,7 @@ class SnippetUpdate extends Component
 
         $this->content = $this->snippet->content;
         $this->filename = $this->snippet->filename;
+        $this->isPublic = $this->snippet->is_public;
         $this->language = $this->snippet->language;
         $this->name = $this->snippet->name;
         $this->startingLineNumber = $this->snippet->starting_line;
@@ -113,6 +121,7 @@ class SnippetUpdate extends Component
         $action = SnippetUpdatingAction::execute([
             'content' => $this->content,
             'filename' => $this->filename,
+            'is_public' => $this->isPublic,
             'language' => $this->language,
             'name' => $this->name,
             'snippet' => $this->snippet,

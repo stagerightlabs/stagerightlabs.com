@@ -25,6 +25,7 @@ class SnippetCreatingAction extends Action
         $this->snippet = Snippet::create([
             'content' => $input['content'],
             'filename' => Arr::get($input, 'filename'),
+            'is_public' => Arr::get($input, 'is_public', false),
             'language' => Arr::get($input, 'language'),
             'name' => $input['name'],
             'starting_line' => Arr::get($input, 'starting_line', 1),
@@ -49,6 +50,7 @@ class SnippetCreatingAction extends Action
     {
         return [
             'filename', // string
+            'is_public', // bool
             'language', // string
             'starting_line', // int
             'url', // string
