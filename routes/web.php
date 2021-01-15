@@ -45,12 +45,23 @@ Route::redirect(
 );
 
 // Blog Posts
-Route::get('blog/topic/{topic}', BlogTopic::class)->name('blog.topic');
-Route::get('blog/{slug}.md', [MarkdownController::class, 'show'])->name('blog.markdown');
-Route::get('blog/{slug}.html', function($slug) {
-    return redirect()->route('blog.post', $slug);
+Route::group(['prefix' => 'blog'], function() {
+    // Topics
+    Route::get('topic/{topic}', BlogTopic::class)->name('blog.topic');
+    // A special case to handle historical url redirection
+    Route::get('tag:{tag}', function ($tag) {
+        return redirect()->route('blog.topic', strtolower($tag));
+    });
+    // View a blog post as markdown
+    Route::get('{slug}.md', [MarkdownController::class, 'show'])->name('blog.markdown');
+    // A special case to handle historical url redirection
+    Route::get('{slug}.html', function ($slug) {
+        return redirect()->route('blog.post', $slug);
+    });
+    // View a blog post
+    Route::get('{slug}', BlogPost::class)->name('blog.post');
 });
-Route::get('blog/{slug}', BlogPost::class)->name('blog.post');
+
 
 // Static Pages
 Route::get('about', About::class)->name('about');
@@ -59,11 +70,12 @@ Route::get('decks/{slug}.html', function($slug) {
     return redirect()->route('decks.show', $slug);
 });
 Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
-Route::view('projects', 'projects')->name('projects.index');
+Route::view('projects/{slug?}', 'projects')->name('projects.index');
 Route::view('resume', 'resume')->name('resume');
 
 // Ancillary Pages
 Route::get('feed', [FeedController::class, 'show'])->name('feed');
+Route::redirect('blog.rss', 'feed');
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
 
 // Auth and User Accounts
@@ -102,3 +114,6 @@ Route::redirect('contact', '/about', 302);
 Route::get('tag:{tag}', function($tag) {
     return redirect()->route('blog.topic', strtolower($tag));
 });
+
+// Portfolio page redirect
+Route::redirect('portfolio', 'resume');
