@@ -24,6 +24,21 @@ class SnippetFactory extends Factory
         return [
             'name' => $this->faker->words(3, $asText = true),
             'content' => $this->faker->paragraph(),
+            'is_public' => false,
         ];
+    }
+
+    /**
+     * Indicate that the post has been published.
+     *
+     * @return void
+     */
+    public function public()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_public' => true,
+            ];
+        });
     }
 }

@@ -38,6 +38,7 @@ class SnippetUpdatingActionTest extends TestCase
         $this->assertEquals($snippet->reference_id, $action->snippet->reference_id);
         $this->assertEquals('Some new content', $action->snippet->content);
         $this->assertEquals('example.sh', $action->snippet->filename);
+        $this->assertFalse($snippet->is_public);
         $this->assertEquals('shell', $action->snippet->language);
         $this->assertEquals('Revised Name', $action->snippet->name);
         $this->assertEquals(2, $action->snippet->starting_line);
