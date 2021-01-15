@@ -15,6 +15,7 @@ use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\BlogIndex;
 use App\Http\Livewire\BlogPost;
 use App\Http\Livewire\BlogTopic;
+use App\Http\Livewire\PublicSnippet;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,10 @@ Route::get('blog/{slug}.html', function($slug) {
     return redirect()->route('blog.post', $slug);
 });
 Route::get('blog/{slug}', BlogPost::class)->name('blog.post');
+
+// Snippets
+Route::get('snippets/{ref}', PublicSnippet::class)->name('public.snippet');
+Route::redirect('snippets', '/');
 
 // Static Pages
 Route::get('about', About::class)->name('about');

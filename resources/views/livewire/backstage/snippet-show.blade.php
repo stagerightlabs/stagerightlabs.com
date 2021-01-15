@@ -24,7 +24,7 @@
       :dismissable="false"
       message="This snippet is public."
       :session="false"
-      url=""
+      url="{{ route('public.snippet', $snippet->reference_id) }}"
     />
   @endif
 

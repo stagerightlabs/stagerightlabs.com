@@ -100,7 +100,7 @@ class Post extends Model
     }
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to only include published posts.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
