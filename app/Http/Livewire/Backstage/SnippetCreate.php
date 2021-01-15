@@ -13,11 +13,11 @@ class SnippetCreate extends Component
     use AuthorizesRequests, DisplaysAlerts;
 
     /**
-     * The name of the new snippet.
+     * The content of the snippet.
      *
      * @var string
      */
-    public $name;
+    public $content;
 
     /**
      * The name of the file that contains the snippet.
@@ -27,18 +27,11 @@ class SnippetCreate extends Component
     public $filename;
 
     /**
-     * The url associated with the snippet.
+     * Should this snippet be flagged for public access?
      *
-     * @var string
+     * @var bool
      */
-    public $url;
-
-    /**
-     * The starting point for line numbers.
-     *
-     * @var int
-     */
-    public $startingLineNumber = 1;
+    public $isPublic = false;
 
     /**
      * The language that should be used for syntax highlighting.
@@ -48,11 +41,25 @@ class SnippetCreate extends Component
     public $language;
 
     /**
-     * The content of the snippet.
+     * The name of the new snippet.
      *
      * @var string
      */
-    public $content;
+    public $name;
+
+    /**
+     * The starting point for line numbers.
+     *
+     * @var int
+     */
+    public $startingLineNumber = 1;
+
+    /**
+     * The url associated with the snippet.
+     *
+     * @var string
+     */
+    public $url;
 
     /**
      * Render the component.
@@ -81,6 +88,7 @@ class SnippetCreate extends Component
         $action = SnippetCreatingAction::execute([
             'content' => $this->content,
             'filename' => $this->filename,
+            'is_public' => $this->isPublic,
             'language' => $this->language,
             'name' => $this->name,
             'starting_line' => $this->startingLineNumber,

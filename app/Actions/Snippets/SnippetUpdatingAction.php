@@ -26,6 +26,7 @@ class SnippetUpdatingAction extends Action
 
         $this->snippet->content = $input['content'];
         $this->snippet->filename = Arr::get($input, 'filename', $this->snippet->filename);
+        $this->snippet->is_public = Arr::get($input, 'is_public', false);
         $this->snippet->language = Arr::get($input, 'language', $this->snippet->language);
         $this->snippet->name = $input['name'];
         $this->snippet->starting_line = Arr::get($input, 'starting_line', $this->snippet->starting_line);
@@ -47,6 +48,7 @@ class SnippetUpdatingAction extends Action
     {
         return [
             'filename', // string
+            'is_public', // bool
             'language', // string
             'starting_line', // int
             'url', // string

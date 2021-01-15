@@ -18,6 +18,16 @@
     </x-slot>
   </x-heading>
 
+  @if ($snippet->is_public)
+    <x-alert.info
+      class="mb-4"
+      :dismissable="false"
+      message="This snippet is public."
+      :session="false"
+      url="{{ route('public.snippet', $snippet->reference_id) }}"
+    />
+  @endif
+
   <x-card class="mb-8" heading="Name: {{ $snippet->name }}">
     <x-description-list class="grid grid-cols-1 gab-x-4 gap-y-8 sm:grid-cols-2 px-4 py-2">
       <x-description class="sm:col-span-1" label="Shortcode">
