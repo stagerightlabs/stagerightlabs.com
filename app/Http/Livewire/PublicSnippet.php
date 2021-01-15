@@ -2,15 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\DisplaysAlerts;
 use App\Snippet;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class PublicSnippet extends Component
 {
-    use AuthorizesRequests, DisplaysAlerts;
-
     /**
      * The snippet under inspection.
      *

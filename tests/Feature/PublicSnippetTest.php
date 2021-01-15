@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Post;
 use App\Snippet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

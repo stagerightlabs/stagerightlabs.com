@@ -46,7 +46,7 @@ Route::redirect(
 );
 
 // Blog Posts
-Route::group(['prefix' => 'blog'], function() {
+Route::group(['prefix' => 'blog'], function () {
     // Topics
     Route::get('topic/{topic}', BlogTopic::class)->name('blog.topic');
     // A special case to handle historical url redirection
@@ -63,7 +63,6 @@ Route::group(['prefix' => 'blog'], function() {
     Route::get('{slug}', BlogPost::class)->name('blog.post');
 });
 
-
 // Snippets
 Route::get('snippets/{ref}', PublicSnippet::class)->name('public.snippet');
 Route::redirect('snippets', '/');
@@ -71,7 +70,7 @@ Route::redirect('snippets', '/');
 // Static Pages
 Route::get('about', About::class)->name('about');
 Route::view('decks', 'decks.index')->name('decks.index');
-Route::get('decks/{slug}.html', function($slug) {
+Route::get('decks/{slug}.html', function ($slug) {
     return redirect()->route('decks.show', $slug);
 });
 Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
@@ -116,7 +115,7 @@ Route::middleware('auth')->group(function () {
 Route::redirect('contact', '/about', 302);
 
 // Convert old tag link url to the new format.
-Route::get('tag:{tag}', function($tag) {
+Route::get('tag:{tag}', function ($tag) {
     return redirect()->route('blog.topic', strtolower($tag));
 });
 
