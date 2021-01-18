@@ -34,7 +34,7 @@ class BlogTopic extends Component
         $this->topic = Tag::findBySlug($topic);
 
         if (! $this->topic) {
-            return redirect()->route('blog.index');
+            return redirect()->route('home');
         }
 
         $this->tags = Tag::orderBy('name')->get();
