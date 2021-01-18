@@ -93,8 +93,8 @@ class PostCreatingAction extends Action
     public function optional()
     {
         return [
-            'description',
-            'tags',
+            'description', // string
+            'tags', // array[string]
         ];
     }
 
@@ -106,9 +106,9 @@ class PostCreatingAction extends Action
     public function required()
     {
         return [
-            'author',
-            'content',
-            'title',
+            'author', // App\User
+            'content', // string
+            'title', // string
         ];
     }
 }
