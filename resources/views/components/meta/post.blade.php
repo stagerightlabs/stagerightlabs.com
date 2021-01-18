@@ -14,4 +14,4 @@
       @foreach ($post->tags as $tag)
       <meta property="og:article:tag" content="{{ $tag->name }}">
       @endforeach
-      <link rel=“canonical” href=“{{ $post->url }}” />
+      <link rel="canonical" href="{{ $post->url }}" />
