@@ -1,4 +1,4 @@
-<x-layouts.base>
+<x-base-layout>
   <div class="flex flex-col justify-center min-h-screen py-12 sm:px-6 lg:px-8">
     <div>
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
@@ -16,4 +16,4 @@
       </div>
     </div>
   </div>
-</x-layouts.base>
+</x-base-layout>
