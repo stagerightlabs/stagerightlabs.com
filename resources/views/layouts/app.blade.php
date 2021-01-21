@@ -1,4 +1,4 @@
-<x-layouts.base>
+<x-base-layout>
   <x-header class="mb-6 lg:mb-12" />
   <div class="container mx-auto">
 
@@ -18,4 +18,4 @@
       &copy; {{ date('Y') }} Stage Right Labs
     </footer>
   </div>
-</x-layouts.base>
+</x-base-layout>
