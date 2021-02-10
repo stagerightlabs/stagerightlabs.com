@@ -44,8 +44,8 @@
   </head>
   <body class="bg-repeat bg-gray-900 text-cool-gray-300" style="background-image: url(/img/stressed-linen.png)">
     {{ $slot }}
-    <script src="{{ url(mix('js/app.js')) }}"></script>
     @livewireScripts
+    <script src="{{ url(mix('js/app.js')) }}"></script>
 
     @env('local')
       <x-break-points />
