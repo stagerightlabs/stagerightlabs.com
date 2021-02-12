@@ -34,7 +34,10 @@ jobs:
   phpunit:
     runs-on: ubuntu-latest
     container:
-      image: kirschbaumdevelopment/laravel-test-runner:7.4
+      image: stagerightlabs/php-test-runner:7.4
+
+    env:
+      COMPOSER_VERSION: 2
 
     services:
       postgres:
@@ -48,37 +51,39 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12'
-
-      - name: NPM dependency cache
-        uses: "actions/cache@v2.0.0"
-        with:
-          path: "./node_modules"
-          key: npm-${{ hashFiles('package-lock.json') }}
-
-      - name: Build javascript assets
-        run: |
-          npm ci --quiet --no-progress
-          npm run prod
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Composer dependency cache
-        uses: "actions/cache@v2.0.0"
+        uses: actions/cache@v2
         with:
-          path: "./vendor"
-          key: php-${{ hashFiles('composer.lock') }}
+          path: ./vendor
+          key: composer-${{ hashFiles('composer.lock') }}
 
-      - name: Install php dependencies
-        run: composer install --no-scripts --no-ansi --no-suggest --no-progress
+      - name: Install Composer Dependencies
+        run: composer install --no-scripts --no-ansi --no-progress
 
-      - name: Prepare application
+      - name: Install Node and NPM
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Cache NPM Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: npm-${{ hashFiles('package-lock.json') }}
+
+      - name: Install NPM Dependencies
+        run: npm install --no-progress
+
+      - name: Run NPM Asset Pipeline
+        run: npm run prod
+
+      - name: Prepare Application
         run: |
           cp .env.ci .env
           php artisan key:generate
 
-      - name: Run test suite
+      - name: Run PHP Test suite
         run: ./vendor/bin/phpunit
