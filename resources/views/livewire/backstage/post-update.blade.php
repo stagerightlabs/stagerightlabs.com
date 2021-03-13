@@ -28,7 +28,7 @@
     <x-form.text
       class="col-span-1"
       :error="$errors->first('description')"
-      label="Description"
+      label="Summary"
       type="text"
       wire:model.lazy="description"
       wrapper="mt-4"
