@@ -67,10 +67,13 @@ services:
       - EDITOR=vim
       - POSTGRES_PASSWORD=secret
     volumes:
-      - ./docker/volumes/postgres/data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
   node:
     build:
       context: docker/node
     volumes:
       - ./:/var/www:cached
+
+volumes:
+  postgres_data:
