@@ -33,7 +33,7 @@ class TagCreatingAction extends Action
             return $this->fail("The '{$name}' tag could not be created.");
         }
 
-        return $this->complete("Tag '' has been created.");
+        return $this->complete("Tag '{$name}' has been created.");
     }
 
     /**
