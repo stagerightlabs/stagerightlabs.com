@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\AuthorSeeder;
-use Database\Seeders\PostSeeder;
-use Database\Seeders\TagSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

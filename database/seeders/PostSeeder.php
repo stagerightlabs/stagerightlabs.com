@@ -23,7 +23,7 @@ class PostSeeder extends Seeder
         $author = $this->simulateAuthor($faker);
         $tags = Tag::pluck('slug');
 
-        for ($i=0; $i < 20; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $action = PostCreatingAction::execute([
                 'author' => $author,
                 'content' => $faker->paragraphs(random_int(2, 6), true),

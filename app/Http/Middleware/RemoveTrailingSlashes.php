@@ -8,7 +8,7 @@ class RemoveTrailingSlashes
 {
     /**
      * Remove the trailing slash from the URL, if it is present.
-     * https://www.dwightwatson.com/posts/redirect-trailing-slashes-in-laravel-5
+     * https://www.dwightwatson.com/posts/redirect-trailing-slashes-in-laravel-5.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
