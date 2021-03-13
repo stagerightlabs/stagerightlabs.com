@@ -20,8 +20,9 @@ class PostUpdatingActionTest extends TestCase
         $post = Post::factory()->create([
             'content' => 'Original Content',
             'description' => 'Original Description',
-            'title' => 'Original Title',
             'slug' => 'original-title',
+            'stack_outline' => 'Original stack outline',
+            'title' => 'Original Title',
         ]);
 
         $action = PostUpdatingAction::execute([
@@ -29,6 +30,7 @@ class PostUpdatingActionTest extends TestCase
             'content' => 'New Content',
             'description' => 'New Description',
             'post' => $post,
+            'stack_outline' => 'New stack outline',
             'title' => 'New Title',
         ]);
 
@@ -36,6 +38,7 @@ class PostUpdatingActionTest extends TestCase
         $this->assertEquals('New Content', $action->post->content);
         $this->assertEquals('New Description', $action->post->description);
         $this->assertEquals('original-title', $action->post->slug);
+        $this->assertEquals('New stack outline', $action->post->stack_outline);
         $this->assertEquals('New Title', $action->post->title);
     }
 

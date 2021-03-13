@@ -72,6 +72,15 @@
         wrapper="mt-4"
       />
 
+      <x-form.textarea
+        class="resize-y font-mono"
+        label="Stack Outline"
+        :error="$errors->first('stackOutline')"
+        rows="5"
+        wire:model.lazy="stackOutline"
+        wrapper="mt-4"
+      />
+
       <div class="flex justify-center mt-4">
         <x-button.primary type="submit">Save</x-button.primary>
       </div>

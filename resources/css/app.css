@@ -139,3 +139,11 @@ article.post .content blockquote p {
 .author p a:hover {
     @apply text-cool-gray-200;
 }
+
+.stack-outline ul {
+    @apply mb-4 list-disc list-inside;
+}
+
+.stack-outline ol li, .stack-outline ul li {
+    @apply mb-1;
+}

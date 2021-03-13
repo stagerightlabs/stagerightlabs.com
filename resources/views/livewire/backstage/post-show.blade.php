@@ -43,10 +43,14 @@
         @endif
       </x-description>
       <x-description class="sm:col-span-1" label="URL">{{ $post->url }}</x-description>
-
     </x-description-list>
   </x-card>
   <x-card heading="Content">
     <div class="p-4 whitespace-pre-wrap font-mono">{{ $post->content }}</div>
   </x-card>
+  @if ($post->stack_outline)
+  <x-card heading="Stack Outline" class="mt-8">
+    <div class="p-4 whitespace-pre-wrap font-mono">{{ $post->stack_outline }}</div>
+  </x-card>
+  @endif
 </div>
