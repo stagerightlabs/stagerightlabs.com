@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Actions\Users\UserAccountCreatingAction;
+use App\User;
 use Exception;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +16,10 @@ class AuthorSeeder extends Seeder
      */
     public function run()
     {
+        if (User::where('email', 'ryan@stagerightlabs.com')->exists()) {
+            return;
+        }
+
         $action = UserAccountCreatingAction::execute([
             'email' => 'ryan@stagerightlabs.com',
             'name' => 'Ryan Durham',
