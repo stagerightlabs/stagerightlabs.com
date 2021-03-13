@@ -25,7 +25,7 @@
   <x-alert.tray :messages="$messages" class="mb-4" />
   <x-card class="mb-8">
     <x-description-list class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-      <x-description class="sm:col-span-1" label="Description">
+      <x-description class="sm:col-span-1" label="Summary">
         {{ $post->description }}
       </x-description>
       <x-description class="sm:col-span-1" label="Tags">
@@ -42,7 +42,11 @@
           DRAFT
         @endif
       </x-description>
-      <x-description class="sm:col-span-1" label="URL">{{ $post->url }}</x-description>
+      <x-description class="sm:col-span-1" label="URL">
+        @if ($post->url)
+        <a href="{{ $post->url }}" target="_blank">{{ $post->url }}</a>
+        @endif
+      </x-description>
     </x-description-list>
   </x-card>
   <x-card heading="Content">
