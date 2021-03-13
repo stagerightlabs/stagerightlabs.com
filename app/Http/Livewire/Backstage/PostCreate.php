@@ -35,6 +35,13 @@ class PostCreate extends Component
     public $description;
 
     /**
+     * A description of the tools used in this post.
+     *
+     * @var string
+     */
+    public $stackOutline;
+
+    /**
      * The tags selected for the post to be created.
      *
      * @var array
@@ -88,6 +95,7 @@ class PostCreate extends Component
             'author' => auth()->user(),
             'content' => $this->content,
             'description' => $this->description,
+            'stack_outline' => $this->stackOutline,
             'tags' => $this->tags,
             'title' => $this->title,
         ]);

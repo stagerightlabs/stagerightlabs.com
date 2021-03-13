@@ -28,13 +28,14 @@ class PostUpdatingAction extends Action
         $this->post = $input['post'];
 
         // Update Post Attributes
-        $this->post->content = $input['content'];
-        $this->post->description = Arr::get($input, 'description');
-        $this->post->title = $input['title'];
-        $this->post->slug = Arr::get($input, 'slug', $this->post->slug);
         $this->post->author_id = Arr::has($input, 'author')
             ? $input['author']->id
             : $this->post->author_id;
+        $this->post->content = $input['content'];
+        $this->post->description = Arr::get($input, 'description');
+        $this->post->slug = Arr::get($input, 'slug', $this->post->slug);
+        $this->post->stack_outline = Arr::get($input, 'stack_outline');
+        $this->post->title = $input['title'];
 
         // Update Publication Date
         if (Arr::has($input, 'published_at')) {
@@ -104,9 +105,10 @@ class PostUpdatingAction extends Action
             'author', // User
             'content', // string
             'description', // string
-            'slug', // string
-            'tags', // array
             'published_at', // string: yyyy-mm-dd
+            'slug', // string
+            'stack_outline', // string
+            'tags', // array
         ];
     }
 

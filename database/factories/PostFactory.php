@@ -29,6 +29,7 @@ class PostFactory extends Factory
             'description' => $this->faker->words(6, true),
             'published_at' => null,
             'slug' => Str::slug($this->faker->sentence()),
+            'stack_outline' => $this->faker->optional()->paragraph(),
             'title' => $this->faker->sentence(),
         ];
     }

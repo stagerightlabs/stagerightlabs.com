@@ -29,6 +29,7 @@ class PostCreationTest extends TestCase
         Livewire::test(PostCreate::class)
             ->set('content', "This is the new\npost content.")
             ->set('description', 'This is a post description')
+            ->set('stackOutline', 'This is a stack outline')
             ->set('title', 'A New Post')
             ->call('store');
 
@@ -36,6 +37,7 @@ class PostCreationTest extends TestCase
         $this->assertDatabaseHas('posts', [
             'content' => "This is the new\npost content.",
             'description' => 'This is a post description',
+            'stack_outline' => 'This is a stack outline',
             'title' => 'A New Post',
         ]);
     }

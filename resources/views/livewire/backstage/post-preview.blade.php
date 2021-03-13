@@ -24,6 +24,13 @@
     <x-card class="mb-8 col-span-1 xl:col-span-10">
       <x-post :post="$post" />
     </x-card>
+    @if ($post->stack_outline)
+    <x-card class="mb-8 col-span-1 xl:col-span-10" heading="Tools Referenced In This Post">
+      <div class="my-2 mx-2 stack-outline">
+        <x-markdown>{{ $post->stack_outline }}</x-markdown>
+      </div>
+    </x-card>
+    @endif
     <aside class="col-span-1 xl:col-span-2 row-start-1 xl:row-start-auto lg:px-2 text-cool-gray-600 grid grid-flow-col-dense grid-cols-2 xl:grid-cols-none gap-4 xl:block">
       <div class="flex justify-end xl:block grid-cols-1 col-start-2">
         <ul class="mt-1 xl:mt-0">

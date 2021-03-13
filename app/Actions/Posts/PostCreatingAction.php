@@ -26,11 +26,12 @@ class PostCreatingAction extends Action
     {
         // Create the new post
         $this->post = Post::create([
-            'title' => $input['title'],
+            'author_id' => $input['author']->id,
             'content' => $input['content'],
             'description' => Arr::get($input, 'description'),
             'slug' => $this->generateSlug($input['title']),
-            'author_id' => $input['author']->id,
+            'stack_outline' => Arr::get($input, 'stack_outline'),
+            'title' => $input['title'],
         ]);
 
         if (! $this->post) {
@@ -94,6 +95,7 @@ class PostCreatingAction extends Action
     {
         return [
             'description', // string
+            'stack_outline', // string
             'tags', // array[string]
         ];
     }

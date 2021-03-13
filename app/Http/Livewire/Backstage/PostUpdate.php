@@ -49,6 +49,13 @@ class PostUpdate extends Component
     public $publishedAt;
 
     /**
+     * A description of the tools used in this post.
+     *
+     * @var string
+     */
+    public $stackOutline;
+
+    /**
      * The tags selected for the post to be updated.
      *
      * @var array
@@ -87,6 +94,7 @@ class PostUpdate extends Component
         $this->publishedAt = $this->post->published_at
             ? $this->post->published_at->format('Y-m-d')
             : '';
+        $this->stackOutline = $this->post->stack_outline;
         $this->tags = $this->post->tags->pluck('slug')->toArray();
         $this->title = $this->post->title;
     }
@@ -120,9 +128,10 @@ class PostUpdate extends Component
             'content' => $this->content,
             'description' => $this->description,
             'post' => $this->post,
+            'published_at' => $this->publishedAt,
+            'stack_outline' => $this->stackOutline,
             'tags' => $this->tags,
             'title' => $this->title,
-            'published_at' => $this->publishedAt,
         ]);
 
         if ($action->failed()) {

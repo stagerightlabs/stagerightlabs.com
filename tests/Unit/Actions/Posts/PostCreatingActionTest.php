@@ -21,6 +21,7 @@ class PostCreatingActionTest extends TestCase
             'author' => $author,
             'content' => 'Some new content',
             'description' => 'Some description',
+            'stack_outline' => 'Some stack outline',
             'title' => 'A New Post',
         ]);
 
@@ -28,6 +29,7 @@ class PostCreatingActionTest extends TestCase
         $this->assertEquals('A New Post', $action->post->title);
         $this->assertEquals('a-new-post', $action->post->slug);
         $this->assertEquals('Some description', $action->post->description);
+        $this->assertEquals('Some stack outline', $action->post->stack_outline);
         $this->assertNull($action->post->published_at);
         $this->assertEquals($author->id, $action->post->author_id);
     }
