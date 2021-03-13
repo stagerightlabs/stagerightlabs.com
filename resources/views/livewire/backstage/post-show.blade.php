@@ -42,7 +42,11 @@
           DRAFT
         @endif
       </x-description>
-      <x-description class="sm:col-span-1" label="URL">{{ $post->url }}</x-description>
+      <x-description class="sm:col-span-1" label="URL">
+        @if ($post->url)
+        <a href="{{ $post->url }}" target="_blank">{{ $post->url }}</a>
+        @endif
+      </x-description>
     </x-description-list>
   </x-card>
   <x-card heading="Content">
