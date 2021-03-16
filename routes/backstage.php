@@ -5,6 +5,10 @@ use App\Http\Livewire\Backstage\PostIndex;
 use App\Http\Livewire\Backstage\PostPreview;
 use App\Http\Livewire\Backstage\PostShow;
 use App\Http\Livewire\Backstage\PostUpdate;
+use App\Http\Livewire\Backstage\SeriesCreate;
+use App\Http\Livewire\Backstage\SeriesIndex;
+use App\Http\Livewire\Backstage\SeriesShow;
+use App\Http\Livewire\Backstage\SeriesUpdate;
 use App\Http\Livewire\Backstage\SnippetCreate;
 use App\Http\Livewire\Backstage\SnippetIndex;
 use App\Http\Livewire\Backstage\SnippetShow;
@@ -37,6 +41,12 @@ Route::get('posts/create', PostCreate::class)->name('backstage.posts.create');
 Route::get('posts/{ref}', PostShow::class)->name('backstage.posts.show');
 Route::get('posts/{ref}/edit', PostUpdate::class)->name('backstage.posts.update');
 Route::get('posts/{ref}/preview', PostPreview::class)->name('backstage.posts.preview');
+
+// Series
+Route::get('series', SeriesIndex::class)->name('backstage.series.index');
+Route::get('series/create', SeriesCreate::class)->name('backstage.series.create');
+Route::get('series/{ref}', SeriesShow::class)->name('backstage.series.show');
+Route::get('series/{ref}/edit', SeriesUpdate::class)->name('backstage.series.update');
 
 // Scratch
 Route::view('scratch', 'backstage.scratch');
