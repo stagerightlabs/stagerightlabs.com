@@ -47,7 +47,7 @@ class AddPostToSeriesAction extends Action
             'sort_order' => $currentMaxSortOrder + 1
         ]);
 
-        return $this->complete('Post added to Series');
+        return $this->complete("Post added to series '{$this->series->name}'");
     }
 
     /**

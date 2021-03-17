@@ -20,6 +20,7 @@
   <x-table>
       <x-slot name="th">
         <x-table.th>Title</x-table.th>
+        <x-table.th>Series</x-table.th>
         <x-table.th>Published?</x-table.th>
         <x-table.th>Created</x-table.th>
         <x-table.th></x-table.th>
@@ -27,6 +28,14 @@
       @foreach ($posts as $post)
         <x-table.tr>
           <x-table.td>{{ $post->title }}</x-table.td>
+          <x-table.td>
+            @foreach ($post->series as $series)
+              <a
+                href="{{ route('backstage.series.show', $series->reference_id) }}"
+                title="{{ $series->name }}"
+              >{{ $series->reference_id }}</a>
+            @endforeach
+          </x-table.td>
           <x-table.td>{{ $post->published_at ? $post->published_at->format('Y-m-d') : 'DRAFT' }}</x-table.td>
           <x-table.td>{{ $post->created_at->format('Y-m-d') }}</x-table.td>
           <x-table.td class="text-right">

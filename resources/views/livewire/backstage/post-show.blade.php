@@ -47,6 +47,35 @@
         <a href="{{ $post->url }}" target="_blank">{{ $post->url }}</a>
         @endif
       </x-description>
+      <x-description class="sm:col-span-1" label="Series">
+        @forelse ($post->series as $series)
+          <p class="flex">
+            <a href="{{ route('backstage.series.show', $series->reference_id) }}">{{ $series->name }}</a>
+            <button wire:click="removeSeries('{{ $series->id }}')">
+              @svg('heroicon-o-trash', ['class' => 'ml-1 mr-1 h-5 w-5 flex-shrink-0 text-cool-gray-500'])
+            </button>
+          </p>
+        @empty
+          None
+        @endforelse
+      </x-description>
+      @if ($availableSeries->isNotEmpty())
+      <x-description class="sm:col-span-1" label="Add Series">
+        <form class="flex" wire:submit.prevent="addSeries">
+          <x-form.select wrapper="w-full" wire:model.lazy="seriesIdToAdd">
+            <option></option>
+            @foreach ($availableSeries as $id => $name)
+              <option value="{{ $id }}">{{ $name }}</option>
+            @endforeach
+          </x-form.select>
+          <x-button.secondary
+            icon="heroicon-o-plus-circle"
+            wrapper="ml-2 mt-1"
+            type="submit"
+          >Add</x-button.secondary>
+        </form>
+      </x-description>
+      @endif
     </x-description-list>
   </x-card>
   <x-card heading="Content">
