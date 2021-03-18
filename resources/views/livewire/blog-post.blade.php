@@ -17,13 +17,6 @@
       <x-card class="mb-8">
         <x-post :post="$post" />
       </x-card>
-      @if($post->stack_outline)
-        <x-card class="mb-8 col-span-1 xl:col-span-10" heading="Tools Referenced In This Post">
-          <div class="my-2 mx-2 stack-outline">
-            <x-markdown>{{ $post->stack_outline }}</x-markdown>
-          </div>
-        </x-card>
-      @endif
     </div>
     <aside class="col-span-1 xl:col-span-2 row-start-1 xl:row-start-auto lg:px-2 text-cool-gray-600 grid grid-flow-col-dense grid-cols-2 xl:grid-cols-none gap-4 xl:block">
       <div class="flex justify-end xl:block grid-cols-1 col-start-2">
@@ -57,6 +50,24 @@
       </p>
     </aside>
   </div>
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+    @foreach ($post->series as $series)
+      <x-part-of-a-series
+        class="col-span-1 md:col-span-10"
+        :series="$series"
+        :post="$post"
+      />
+    @endforeach
+  </div>
+  @if($post->stack_outline)
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+    <x-card class="mb-8 col-span-1 xl:col-span-10" heading="Tools Referenced In This Post">
+      <div class="my-2 mx-2 stack-outline">
+        <x-markdown>{{ $post->stack_outline }}</x-markdown>
+      </div>
+    </x-card>
+  </div>
+  @endif
   <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
     <x-author class="col-span-1 md:col-span-10" />
   </div>
