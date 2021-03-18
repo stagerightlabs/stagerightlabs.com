@@ -8,6 +8,8 @@
 
 CHANGED_FILES=$(git diff --cached --name-only --diff-filter=ACM -- '*.php')
 
+echo CHANGED_FILES;
+
 if [ -n "$CHANGED_FILES" ]; then
 
     docker run --rm \
