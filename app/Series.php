@@ -49,4 +49,28 @@ class Series extends Model
             ->withPivot('sort_order')
             ->orderByPivot('sort_order');
     }
+
+    /**
+     * The posts associated with this series that have been published.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function publishedPosts()
+    {
+        return $this->posts()->whereNotNull('posts.published_at');
+    }
+
+    /**
+     * Scope a query to only include series that contain published posts.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeContainingPublishedPosts($query)
+    {
+        return $query->join('post_series', 'post_series.series_id', '=', 'series.id')
+            ->join('posts', 'posts.id', '=', 'post_series.post_id')
+            ->whereNotNull('posts.published_at')
+            ->select('series.*');
+    }
 }

@@ -15,6 +15,8 @@ use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\BlogIndex;
 use App\Http\Livewire\BlogPost;
 use App\Http\Livewire\BlogTopic;
+use App\Http\Livewire\PublicSeriesIndex;
+use App\Http\Livewire\PublicSeriesShow;
 use App\Http\Livewire\PublicSnippet;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +63,12 @@ Route::group(['prefix' => 'blog'], function () {
     });
     // View a blog post
     Route::get('{slug}', BlogPost::class)->name('blog.post');
+});
+
+// Series
+Route::group(['prefix' => 'series'], function () {
+    Route::get('/', PublicSeriesIndex::class)->name('series.index');
+    Route::get('{slug}', PublicSeriesShow::class)->name('series.show');
 });
 
 // Snippets
