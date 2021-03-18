@@ -3,7 +3,6 @@
 namespace App\Actions\Series;
 
 use App\Series;
-use Illuminate\Support\Facades\DB;
 use StageRightLabs\Actions\Action;
 
 /**
@@ -14,11 +13,7 @@ use StageRightLabs\Actions\Action;
  *  - series (Series)
  *
  * Format for the 'order' array:
- *   [
- *     $post->id => 0,
- *     $post->id => 1,
- *     // etc
- *   ]
+ *   [$post->id, $post->id, // etc.. ]
  */
 class ChangeSortOrderAction extends Action
 {
@@ -40,7 +35,8 @@ class ChangeSortOrderAction extends Action
         $this->series = $input['series'];
 
         collect($input['order'])
-            ->each(function($order, $id) {
+            ->values()
+            ->each(function ($id, $order) {
                 $this->series->posts()->updateExistingPivot($id, [
                     'sort_order' => $order,
                 ]);

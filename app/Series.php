@@ -4,7 +4,6 @@ namespace App;
 
 use App\Concerns\ReferenceIds;
 use App\Concerns\UuidAsPrimaryKey;
-use App\Post;
 use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,7 +35,7 @@ class Series extends Model
      */
     public static function generateReferenceId()
     {
-        return 'SR' . Str::safeRandom(6);
+        return 'SR'.Str::safeRandom(6);
     }
 
     /**
@@ -47,6 +46,7 @@ class Series extends Model
     public function posts()
     {
         return $this->belongsToMany(Post::class)
-            ->withPivot('sort_order');
+            ->withPivot('sort_order')
+            ->orderByPivot('sort_order');
     }
 }

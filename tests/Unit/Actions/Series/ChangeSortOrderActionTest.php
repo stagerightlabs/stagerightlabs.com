@@ -18,7 +18,7 @@ class ChangeSortOrderActionTest extends TestCase
     {
         $series = Series::factory()->create();
         Post::factory()->count(3)->create()
-            ->each(function($post) use ($series) {
+            ->each(function ($post) use ($series) {
                 AddPostToSeriesAction::execute([
                     'post' => $post,
                     'series' => $series,
@@ -32,11 +32,7 @@ class ChangeSortOrderActionTest extends TestCase
         $this->assertEquals(2, $originalSortOrder[$postIds[2]]);
 
         $action = ChangeSortOrderAction::execute([
-            'order' => [
-                $posts[0]->id => 2,
-                $posts[2]->id => 1,
-                $posts[1]->id => 0,
-            ],
+            'order' => [$posts[1]->id, $posts[2]->id, $posts[0]->id],
             'series' => $series,
         ]);
 

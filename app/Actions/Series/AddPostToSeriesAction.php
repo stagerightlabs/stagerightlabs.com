@@ -44,7 +44,7 @@ class AddPostToSeriesAction extends Action
             ->max('sort_order') ?? -1;
 
         $this->series->posts()->attach($this->post->id, [
-            'sort_order' => $currentMaxSortOrder + 1
+            'sort_order' => $currentMaxSortOrder + 1,
         ]);
 
         return $this->complete("Post added to series '{$this->series->name}'");

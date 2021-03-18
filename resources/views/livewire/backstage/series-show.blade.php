@@ -35,10 +35,31 @@
   </x-card>
 
   <x-card class="mb-8" heading="Posts">
-    @if($series->posts->isEmpty())
-      <p>There are no posts in this series.</p>
-    @else
-      <p>Posts</p>
-    @endif
+    <div
+      wire:sortable="updatePostOrder"
+      wire:sortable.classes.over="bg-opacity-50"
+      wire:sortable.mirror.constrain
+    >
+      @forelse ($series->posts as $post)
+        <p
+          class="bg-cool-gray-600 rounded mb-4 p-3 flex justify-between"
+          wire:sortable.item="{{ $post->id }}"
+          wire:key="post-{{ $post->id }}"
+        >
+          <span class="text-left flex">
+            <span wire:sortable.handle class="cursor-move">
+              @svg('heroicon-s-hand', ['class' => 'h-5 w-5 text-cool-gray-500 mr-4'])
+            </span>
+            {{ $post->pivot->sort_order }}. {{ $post->title }}
+          </span>
+          <a
+            href="{{ route('backstage.posts.show', $post->reference_id) }}"
+            class="text-red-600 hover:text-red-800"
+          >View</a>
+        </p>
+      @empty
+        <p>There are no posts in this series.</p>
+      @endforelse
+    </div>
   </x-card>
 </div>

@@ -20,7 +20,7 @@ class AddPostToSeriesActionTest extends TestCase
 
         $action = AddPostToSeriesAction::execute([
             'post' => $post,
-            'series' => $series
+            'series' => $series,
         ]);
 
         $this->assertTrue($action->completed());
@@ -41,12 +41,13 @@ class AddPostToSeriesActionTest extends TestCase
 
         $action = AddPostToSeriesAction::execute([
             'post' => $post,
-            'series' => $series
+            'series' => $series,
         ]);
 
         $this->assertTrue($action->completed());
         $action->series->posts()->pluck('id')->assertContains($post->id);
-        $this->assertEquals(2, $action->series->posts()->first()->pivot->sort_order);
+        $this->assertCount(2, $action->series->posts);
+        $this->assertEquals(1, $action->series->posts()->first()->pivot->sort_order);
     }
 
     /** @test */
@@ -55,7 +56,7 @@ class AddPostToSeriesActionTest extends TestCase
         $series = Series::factory()->create();
 
         $action = AddPostToSeriesAction::execute([
-            'series' => $series
+            'series' => $series,
         ]);
 
         $this->assertFalse($action->completed());
