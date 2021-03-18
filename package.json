@@ -10,10 +10,12 @@
         "production": "mix --production"
     },
     "dependencies": {
+        "@shopify/draggable": "^1.0.0-beta.12",
         "@tailwindcss/forms": "^0.2.1",
         "@tailwindcss/typography": "^0.3.1",
         "alpinejs": "^2.8.0",
         "autoprefixer": "^10.2.4",
+        "classlist-polyfill": "^1.2.0",
         "laravel-mix": "^6.0.11",
         "laravel-mix-tailwind": "^0.1.2",
         "postcss": "^8.2.5",
