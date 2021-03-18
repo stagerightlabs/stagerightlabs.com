@@ -29,7 +29,7 @@ class SeriesIndex extends Component
     public function render()
     {
         return view('livewire.backstage.series-index', [
-            'series' => Series::orderByDesc('created_at')->paginate()
+            'series' => Series::orderByDesc('created_at')->paginate(),
         ]);
     }
 }

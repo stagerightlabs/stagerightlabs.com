@@ -7,7 +7,7 @@ use League\CommonMark\CommonMarkConverter;
 
 /**
  * Inspired by the Blade UI Kit
- * https://blade-ui-kit.com/docs/0.x/markdown
+ * https://blade-ui-kit.com/docs/0.x/markdown.
  */
 class Markdown extends Component
 {
