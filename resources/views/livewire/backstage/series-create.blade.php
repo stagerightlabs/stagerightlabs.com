@@ -25,7 +25,7 @@
 
     <x-form.textarea
       class="resize-y font-mono"
-      label="Content"
+      label="Description"
       :error="$errors->first('description')"
       rows="5"
       wire:model.lazy="description"
