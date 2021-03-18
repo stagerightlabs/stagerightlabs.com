@@ -34,7 +34,7 @@
 
     <x-form.textarea
       class="resize-y font-mono"
-      label="Content"
+      label="Description"
       :error="$errors->first('series.description')"
       rows="5"
       wire:model.lazy="series.description"

@@ -5,7 +5,7 @@
 
 @if ($series && $series->publishedPosts->count() > 1)
 <x-card {{ $attributes->merge(['class' => 'mb-8'])}} :heading="$series->name">
-  <p class="text-lg mb-4">{{ $series->name }}</p>
+  <p class="text-lg mb-4">{{ $series->description }}</p>
   <ol class="list-decimal list-inside">
   @foreach ($series->publishedPosts as $link)
     <li class="my-1 text-lg">
