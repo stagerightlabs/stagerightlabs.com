@@ -5,7 +5,6 @@ namespace Tests\Feature\Backstage;
 use App\Http\Livewire\Backstage\SeriesCreate;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 

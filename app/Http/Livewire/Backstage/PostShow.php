@@ -9,7 +9,6 @@ use App\Http\Livewire\DisplaysAlerts;
 use App\Post;
 use App\Series;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class PostShow extends Component
@@ -94,8 +93,9 @@ class PostShow extends Component
      */
     public function addSeries()
     {
-        if (!$series = Series::find($this->seriesIdToAdd)) {
+        if (! $series = Series::find($this->seriesIdToAdd)) {
             $this->alert('Invalid series selected.', 'error');
+
             return;
         }
 
@@ -122,7 +122,7 @@ class PostShow extends Component
      */
     public function removeSeries($series)
     {
-        if (!$series = Series::find($series)) {
+        if (! $series = Series::find($series)) {
             return;
         }
 
