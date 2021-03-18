@@ -147,3 +147,8 @@ article.post .content blockquote p {
 .stack-outline ol li, .stack-outline ul li {
     @apply mb-1;
 }
+
+a.red-underline {
+    @apply underline;
+    text-decoration-color: theme('colors.red.800');
+}

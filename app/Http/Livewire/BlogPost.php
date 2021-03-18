@@ -21,7 +21,7 @@ class BlogPost extends Component
      */
     public function mount($slug)
     {
-        $this->post = Post::with('tags')
+        $this->post = Post::with(['tags', 'series', 'series.publishedPosts'])
             ->published()
             ->where('slug', $slug)
             ->first();

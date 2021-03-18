@@ -4,6 +4,7 @@ namespace App;
 
 use App\Concerns\ReferenceIds;
 use App\Concerns\UuidAsPrimaryKey;
+use App\Series;
 use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -118,5 +119,16 @@ class Post extends Model
     public function getUrlAttribute()
     {
         return route('blog.post', $this->slug);
+    }
+
+    /**
+     * The one, or more, series that this post is associated with.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function series()
+    {
+        return $this->belongsToMany(Series::class)
+            ->withPivot('sort_order');
     }
 }
