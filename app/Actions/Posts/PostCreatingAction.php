@@ -52,6 +52,7 @@ class PostCreatingAction extends Action
     /**
      * Generate a slug for this post; it must be unique.
      *
+     * @param string $title
      * @return string
      */
     protected function generateSlug($title)

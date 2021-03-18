@@ -31,6 +31,9 @@
       <x-description class="sm:col-span-1" label="Description">
         {{ $series->description }}
       </x-description>
+      <x-description class="sm:col-span-1" label="Slug">
+        {{ $series->slug }}
+      </x-description>
     </x-description-list>
   </x-card>
 
@@ -52,10 +55,20 @@
             </span>
             {{ $post->pivot->sort_order }}. {{ $post->title }}
           </span>
-          <a
-            href="{{ route('backstage.posts.show', $post->reference_id) }}"
-            class="text-red-600 hover:text-red-800"
-          >View</a>
+
+          <span>
+            <span class="mr-8">
+              @if($post->published_at)
+                Published {{ $post->published_at->format('Y-m-d') }}
+              @else
+                DRAFT
+              @endif
+            </span>
+            <a
+              href="{{ route('backstage.posts.show', $post->reference_id) }}"
+              class="text-red-600 hover:text-red-800"
+            >View</a>
+          </span>
         </p>
       @empty
         <p>There are no posts in this series.</p>

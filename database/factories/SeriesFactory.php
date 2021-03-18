@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Series;
+use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SeriesFactory extends Factory
@@ -21,8 +22,11 @@ class SeriesFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->words(6, $asText = true);
+
         return [
-            'name' => $this->faker->words(6, $asText = true),
+            'name' => $name,
+            'slug' => Str::slug($name),
         ];
     }
 }

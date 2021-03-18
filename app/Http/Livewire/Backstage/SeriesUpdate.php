@@ -25,8 +25,9 @@ class SeriesUpdate extends Component
      * @var array
      */
     protected $rules = [
-        'series.name' => 'required',
         'series.description' => 'nullable',
+        'series.name' => 'required',
+        'series.slug' => 'required',
     ];
 
     /**
@@ -38,7 +39,7 @@ class SeriesUpdate extends Component
     {
         $this->series = Series::findByReferenceId($ref);
 
-        if (!$this->series) {
+        if (! $this->series) {
             $this->flash('You are trying to edit an invalid series.', 'error');
 
             return redirect()->back();
@@ -71,7 +72,6 @@ class SeriesUpdate extends Component
             'name' => $this->series->name,
             'series' => $this->series,
         ]);
-
 
         if ($action->failed()) {
             $this->alert($action->getMessage(), 'error');

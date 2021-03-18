@@ -17,6 +17,7 @@ class CreateSeriesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('reference_id');
             $table->string('name');
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->timestamps();
         });

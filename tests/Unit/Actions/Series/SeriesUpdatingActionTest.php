@@ -17,17 +17,20 @@ class SeriesUpdatingActionTest extends TestCase
         $series = Series::factory()->create([
             'name' => 'Original Name',
             'description' => 'Original Description',
+            'slug' => 'original-slug',
         ]);
 
         $action = SeriesUpdatingAction::execute([
-            'series' => $series,
-            'name' => 'New name',
             'description' => 'New description',
+            'name' => 'New name',
+            'series' => $series,
+            'slug' => 'new-slug',
         ]);
 
         $this->assertTrue($action->completed());
-        $this->assertEquals($action->series->name, 'New name');
         $this->assertEquals($action->series->description, 'New description');
+        $this->assertEquals($action->series->name, 'New name');
+        $this->assertEquals($action->series->slug, 'new-slug');
     }
 
     /** @test */

@@ -7,7 +7,7 @@ use App\Utilities\Arr;
 use StageRightLabs\Actions\Action;
 
 /**
- * Update a series
+ * Update a series.
  *
  * Required:
  *  - name (string)
@@ -15,6 +15,7 @@ use StageRightLabs\Actions\Action;
  *
  * Optional:
  *  - description (string)
+ *  - slug (string)
  */
 class SeriesUpdatingAction extends Action
 {
@@ -35,8 +36,9 @@ class SeriesUpdatingAction extends Action
     {
         $this->series = $input['series'];
 
-        $this->series->name = $input['name'];
         $this->series->description = Arr::get($input, 'description');
+        $this->series->name = $input['name'];
+        $this->series->slug = Arr::get($input, 'slug', $this->series->slug);
 
         $this->series->save();
 
@@ -65,6 +67,7 @@ class SeriesUpdatingAction extends Action
     {
         return [
             'description', // string
+            'slug', // string
         ];
     }
 }

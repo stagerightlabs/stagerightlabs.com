@@ -28,18 +28,21 @@ class SeriesUpdatingTest extends TestCase
         $this->actingAs(User::factory()->create());
         $series = Series::factory()->create([
             'description' => 'Original description',
-            'name' => 'Original name'
+            'name' => 'Original name',
+            'slug' => 'original-slug',
         ]);
 
         Livewire::test(SeriesUpdate::class, ['ref' => $series->reference_id])
             ->set('series.description', 'New description')
             ->set('series.name', 'New name')
+            ->set('series.slug', 'new-slug')
             ->call('update');
 
         $this->assertDatabaseHas('series', [
             'description' => 'New description',
             'name' => 'New name',
             'reference_id' => $series->reference_id,
+            'slug' => 'new-slug',
         ]);
     }
 
@@ -49,7 +52,7 @@ class SeriesUpdatingTest extends TestCase
         $this->actingAs(User::factory()->create());
         $series = Series::factory()->create([
             'description' => 'Original description',
-            'name' => 'Original name'
+            'name' => 'Original name',
         ]);
 
         Livewire::test(SeriesUpdate::class, ['ref' => $series->reference_id])
@@ -61,6 +64,28 @@ class SeriesUpdatingTest extends TestCase
         $this->assertDatabaseMissing('series', [
             'description' => 'New description',
             'name' => 'New name',
+            'reference_id' => $series->reference_id,
+        ]);
+    }
+
+    /** @test */
+    public function it_requires_a_slug()
+    {
+        $this->actingAs(User::factory()->create());
+        $series = Series::factory()->create([
+            'description' => 'Original description',
+            'name' => 'Original name',
+            'slug' => 'original-slug',
+        ]);
+
+        Livewire::test(SeriesUpdate::class, ['ref' => $series->reference_id])
+            ->set('series.description', 'New description')
+            ->set('series.slug', '')
+            ->call('update')
+            ->assertHasErrors('series.slug');
+
+        $this->assertDatabaseMissing('series', [
+            'description' => 'New description',
             'reference_id' => $series->reference_id,
         ]);
     }

@@ -33,6 +33,7 @@ class SeriesCreatingActionTest extends TestCase
         $this->assertTrue($action->completed());
         $this->assertEquals($action->series->description, 'This is a description');
         $this->assertEquals($action->series->name, 'Test Series');
+        $this->assertEquals($action->series->slug, 'test-series');
         $this->assertNotNull($action->series->reference_id);
     }
 

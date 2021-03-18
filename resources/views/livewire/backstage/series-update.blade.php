@@ -23,6 +23,15 @@
       wire:model.lazy="series.name"
     />
 
+    <x-form.text
+      class="col-span-1"
+      :error="$errors->first('series.slug')"
+      label="Slug"
+      type="text"
+      wire:model.lazy="series.slug"
+      wrapper="mt-4"
+    />
+
     <x-form.textarea
       class="resize-y font-mono"
       label="Content"

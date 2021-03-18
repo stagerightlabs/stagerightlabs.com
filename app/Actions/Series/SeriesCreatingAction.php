@@ -4,6 +4,8 @@ namespace App\Actions\Series;
 
 use App\Series;
 use App\Utilities\Arr;
+use App\Utilities\Str;
+use Illuminate\Support\Facades\DB;
 use StageRightLabs\Actions\Action;
 
 /**
@@ -35,9 +37,33 @@ class SeriesCreatingAction extends Action
         $this->series = Series::create([
             'name' => $input['name'],
             'description' => Arr::get($input, 'description'),
+            'slug' => $this->generateSlug($input['name']),
         ]);
 
         return $this->complete("Created series: '{$this->series->name}'");
+    }
+
+    /**
+     * Generate a slug for this series; it must be unique.
+     *
+     * @param string $name
+     * @return string
+     */
+    protected function generateSlug($name)
+    {
+        $attempts = 1;
+
+        do {
+            $slug = Str::slug($name);
+
+            if ($attempts > 1) {
+                $slug .= "-{$attempts}";
+            }
+
+            $attempts++;
+        } while (DB::table('series')->where('slug', $slug)->exists());
+
+        return $slug;
     }
 
     /**
