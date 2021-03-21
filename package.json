@@ -1,24 +1,28 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+        "build:css": "NODE_ENV=production postcss resources/css/app.css --output public/css/app.css --verbose",
+        "build:js": "esbuild resources/js/app.js --outfile=public/js/app.js --target=es6 --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\"",
+        "build": "npm run build:js && npm run build:css",
+        "local:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css --map --verbose",
+        "local:js": "esbuild resources/js/app.js --outfile=public/js/app.js --target=es6 --bundle --sourcemap",
+        "local": "npm run local:js && npm run local:css",
+        "watch:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css --map --verbose --watch",
+        "watch:js": "NODE_ENV=development esbuild resources/js/app.js --outfile=public/js/app.js --target=es6 --bundle --sourcemap --watch",
+        "watch": "npm run watch:js & npm run watch:css"
     },
     "dependencies": {
         "@shopify/draggable": "^1.0.0-beta.12",
+        "alpinejs": "^2.8.1"
+    },
+    "devDependencies": {
         "@tailwindcss/forms": "^0.2.1",
-        "@tailwindcss/typography": "^0.3.1",
-        "alpinejs": "^2.8.0",
-        "autoprefixer": "^10.2.4",
-        "classlist-polyfill": "^1.2.0",
-        "laravel-mix": "^6.0.11",
-        "laravel-mix-tailwind": "^0.1.2",
-        "postcss": "^8.2.5",
-        "tailwindcss": "^2.0.3"
+        "@tailwindcss/typography": "^0.4.0",
+        "autoprefixer": "^10.2.5",
+        "cssnano": "^4.1.10",
+        "esbuild": "^0.9.4",
+        "postcss": "^8.2.8",
+        "postcss-cli": "^8.3.1",
+        "tailwindcss": "^2.0.4"
     }
 }
