@@ -8,13 +8,13 @@ use StageRightLabs\Actions\Action;
 
 class SnippetRenderingAction extends Action
 {
-    const HTML_START = "<div class=\"snippet border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 p-2 font-mono overflow-x-auto relative\"><table><tbody>\n";
+    const HTML_START = "<div class=\"snippet border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 font-mono relative h-auto\"><div class=\"relative overflow-x-auto p-1\"><table><tbody>\n";
     const HTML_END = "</div>\n";
-    const TABLE_END = "</tbody></table>\n";
+    const TABLE_END = "</tbody></table></div>\n";
     const ROW_START = '<tr><td class="text-cool-gray-500 text-right select-none">';
     const ROW_MIDDLE = '</td><td class="text-cool-gray-300 whitespace-pre px-2 text-sm">';
     const ROW_END = "</td></tr>\n";
-    const FOOTER_START = '<div class="absolute right-2 bottom-1 text-cool-gray-400">';
+    const FOOTER_START = '<div class="p-1 text-right text-cool-gray-300 bg-cool-gray-500">';
     const FOOTER_END = "</div>\n";
     const FALLBACK_FILENAME = 'View File';
 
