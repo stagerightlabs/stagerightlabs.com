@@ -79,11 +79,11 @@ article.post .content h6 {
 }
 
 article.post .content p {
-    @apply mb-4 text-xl leading-relaxed;
+    @apply mb-6 text-xl leading-relaxed;
 }
 
 article.post .content pre {
-    @apply w-full bg-cool-gray-600 p-2 rounded mb-4 border border-cool-gray-400 text-sm leading-6 overflow-auto;
+    @apply w-full bg-cool-gray-600 p-2 rounded mb-6 border border-cool-gray-400 text-sm leading-6 overflow-auto;
 }
 
 article.post .content code {
@@ -112,19 +112,19 @@ article.post .content a:hover {
 }
 
 article.post .content ol {
-    @apply mb-4 ml-4 list-decimal list-inside;
+    @apply mb-6 ml-4 list-decimal list-outside;
 }
 
 article.post .content ul {
-    @apply mb-4 ml-4 list-disc list-inside;
+    @apply mb-6 ml-8 list-disc list-outside;
 }
 
 article.post .content ol li, article.post .content ul li {
-    @apply mb-2 text-xl;
+    @apply mb-6 text-xl;
 }
 
 article.post .content blockquote {
-    @apply mb-4 my-4 py-1 px-4 border-l-8 border-cool-gray-600 text-cool-gray-400;
+    @apply mb-6 my-4 py-1 px-4 border-l-8 border-cool-gray-600 text-cool-gray-400;
 }
 
 article.post .content blockquote p {
@@ -141,7 +141,7 @@ article.post .content blockquote p {
 }
 
 .stack-outline ul {
-    @apply mb-4 list-disc list-inside;
+    @apply mb-6 list-disc list-inside;
 }
 
 .stack-outline ol li, .stack-outline ul li {
