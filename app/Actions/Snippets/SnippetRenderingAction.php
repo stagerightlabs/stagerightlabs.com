@@ -8,7 +8,7 @@ use StageRightLabs\Actions\Action;
 
 class SnippetRenderingAction extends Action
 {
-    const HTML_START = "<div class=\"snippet border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 font-mono relative h-auto\"><div class=\"relative overflow-x-auto p-1\">\n";
+    const HTML_START = "<div class=\"snippet border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-6 font-mono relative h-auto\"><div class=\"relative overflow-x-auto p-1\">\n";
     const HTML_END = "</div>\n";
     const TABLE_START = '<table><tbody>';
     const TABLE_END = "</tbody></table></div>\n";
