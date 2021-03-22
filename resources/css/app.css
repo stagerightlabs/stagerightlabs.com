@@ -83,7 +83,7 @@ article.post .content p {
 }
 
 article.post .content pre {
-    @apply w-full bg-cool-gray-600 p-2 rounded mb-4 border border-cool-gray-400 text-sm leading-6;
+    @apply w-full bg-cool-gray-600 p-2 rounded mb-4 border border-cool-gray-400 text-sm leading-6 overflow-auto;
 }
 
 article.post .content code {
