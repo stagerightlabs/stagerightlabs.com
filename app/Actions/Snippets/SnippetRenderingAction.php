@@ -8,8 +8,9 @@ use StageRightLabs\Actions\Action;
 
 class SnippetRenderingAction extends Action
 {
-    const HTML_START = "<div class=\"snippet border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 font-mono relative h-auto\"><div class=\"relative overflow-x-auto p-1\"><table><tbody>\n";
+    const HTML_START = "<div class=\"snippet border border-cool-gray-400 bg-cool-gray-600 rounded w-full mb-4 font-mono relative h-auto\"><div class=\"relative overflow-x-auto p-1\">\n";
     const HTML_END = "</div>\n";
+    const TABLE_START = '<table><tbody>';
     const TABLE_END = "</tbody></table></div>\n";
     const ROW_START = '<tr><td class="text-cool-gray-500 text-right select-none">';
     const ROW_MIDDLE = '</td><td class="text-cool-gray-300 whitespace-pre px-2 text-sm">';
@@ -64,6 +65,9 @@ class SnippetRenderingAction extends Action
     protected function render($snippet)
     {
         $number = $snippet->starting_line;
+        $opening = "<!-- Snippet {$snippet->reference_id} -->\n"
+            .self::HTML_START
+            .self::TABLE_START;
 
         // Content
         $html = collect(explode("\n", $snippet->content))
@@ -77,7 +81,7 @@ class SnippetRenderingAction extends Action
                 $number++;
 
                 return $carry;
-            }, self::HTML_START).self::TABLE_END;
+            }, $opening).self::TABLE_END;
 
         // Optional Footer
         $html .= $this->footer($snippet->filename, $snippet->url);
