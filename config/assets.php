@@ -8,6 +8,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'version' => env('ASSET_VERSION', null),
+    'version' => env('ASSETS_VERSION', null),
 
 ];
