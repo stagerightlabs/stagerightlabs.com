@@ -53,6 +53,7 @@ class AssetVersioningCommand extends Command
     /**
      * Set the asset version key in the environment file.
      *
+     * @see \Illuminate\Foundation\Console\KeyGenerateCommand::setKeyInEnvironmentFile()
      * @param  string  $key
      * @return bool
      */
@@ -72,6 +73,7 @@ class AssetVersioningCommand extends Command
     /**
      * Write a new environment file with the given key.
      *
+     * @see \Illuminate\Foundation\Console\KeyGenerateCommand::writeNewEnvironmentFileWith()
      * @param  string  $key
      * @return void
      */
@@ -85,8 +87,9 @@ class AssetVersioningCommand extends Command
     }
 
     /**
-     * Get a regex pattern that will match env APP_KEY with any random key.
+     * Get a regex pattern that will match env ASSETS_VERSION with any random key.
      *
+     * @see \Illuminate\Foundation\Console\KeyGenerateCommand::keyReplacementPattern()
      * @return string
      */
     protected function keyReplacementPattern()
