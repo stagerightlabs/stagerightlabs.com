@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="@version('/css/app.css')">
     @livewireStyles
 
     <!-- Feed -->
@@ -45,7 +45,7 @@
   <body class="bg-repeat bg-gray-900 text-cool-gray-300" style="background-image: url(/img/stressed-linen.png)">
     {{ $slot }}
     @livewireScripts
-    <script src="/js/app.js"></script>
+    <script src="@version('/js/app.js')"></script>
     @stack('scripts')
 
     @env('local')
