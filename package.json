@@ -21,7 +21,7 @@
         "tailwindcss": "^2.2"
     },
     "dependencies": {
-        "@shopify/draggable": "^1.0.0-beta.12",
-        "alpinejs": "^3.0.9"
+        "alpinejs": "^3.0.9",
+        "sortablejs": "^1.13.0"
     }
 }
