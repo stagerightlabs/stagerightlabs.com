@@ -1,28 +1,27 @@
 {
     "private": true,
     "scripts": {
-        "build:css": "NODE_ENV=production postcss resources/css/app.css --output public/css/app.css --verbose",
-        "build:js": "esbuild resources/js/app.js --outfile=public/js/app.js --target=es6 --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\"",
-        "build": "npm run build:js && npm run build:css",
-        "local:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css --map --verbose",
+        "local:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css",
         "local:js": "esbuild resources/js/app.js --outfile=public/js/app.js --target=es6 --bundle --sourcemap",
-        "local": "npm run local:js && npm run local:css",
         "watch:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css --map --verbose --watch",
         "watch:js": "NODE_ENV=development esbuild resources/js/app.js --outfile=public/js/app.js --target=es6 --bundle --sourcemap --watch",
-        "watch": "npm run watch:js & npm run watch:css"
-    },
-    "dependencies": {
-        "@shopify/draggable": "^1.0.0-beta.12",
-        "alpinejs": "^2.8.1"
+        "watch": "npm run watch:js & npm run watch:css",
+        "build": "NODE_ENV=production postcss resources/css/app.css --output public/css/app.css --verbose && esbuild resources/js/app.js --outfile=public/js/app.js --bundle --minify --target=es6 --define:process.env.NODE_ENV=\\\"production\\\""
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.2.1",
-        "@tailwindcss/typography": "^0.4.0",
-        "autoprefixer": "^10.2.5",
+        "@tailwindcss/forms": "^0.3",
+        "@tailwindcss/typography": "^0.4",
+        "autoprefixer": "^10.2",
         "cssnano": "^4.1.10",
-        "esbuild": "^0.9.4",
-        "postcss": "^8.2.10",
-        "postcss-cli": "^8.3.1",
-        "tailwindcss": "^2.0.4"
+        "esbuild": "^0.8.54",
+        "postcss": "^8.3.5",
+        "postcss-cli": "^8.3",
+        "postcss-import": "^14.0",
+        "standard": "^16.0",
+        "tailwindcss": "^2.2"
+    },
+    "dependencies": {
+        "alpinejs": "^3.0.9",
+        "sortablejs": "^1.13.0"
     }
 }

@@ -1,62 +1,46 @@
-import 'alpinejs';
-import Sortable from '@shopify/draggable/lib/sortable'
+import Alpine from 'alpinejs'
+import Sortable from 'sortablejs'
 
 // https://inspiredwebdev.com/copy-to-clipboard-with-javascript
-window.copyToClipboard = function(text) {
-  const el = document.createElement('textarea');
-  el.value = text;
-  el.setAttribute('readonly', '');
-  el.style.position = 'absolute';
-  el.style.left = '-9999px';
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand('copy');
-  document.body.removeChild(el);
+window.copyToClipboard = function (text) {
+  const el = document.createElement('textarea')
+  el.value = text
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.left = '-9999px'
+  document.body.appendChild(el)
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
 }
 
-// Custom livewire sortable directive based on https://github.com/livewire/sortable
-// Updated to adjust mirror configuration and add additional classes
-// based on drag state.
-window.livewire.directive('sortable', (el, directive, component) => {
-    // Only fire this handler on the "root" directive.
-    if (directive.modifiers.length > 0) return
+// Sortable directive
+Alpine.directive('sortable', (el, { expression }, { cleanup, evaluate }) => {
+  const exp = evaluate(expression)
 
-    let options = {
-      draggable: '[wire\\:sortable\\.item]',
-      classes: {
-        'draggable:over': ['draggable--over'],
-      }
+  const sortable = Sortable.create(el, {
+    handle: exp.handle ?? null,
+    onEnd () {
+      setTimeout(() => {
+        // Create a payload array that indicates the new sort order
+        const items = []
+        el.querySelectorAll('[x-sortable-id]').forEach((el, index) => {
+          items.push({ order: index + 1, value: el.getAttribute('x-sortable-id') })
+        })
+
+        // Send the change to the server
+        if (exp.end && exp.livewire) {
+          exp.livewire.call(exp.end, items)
+        }
+      }, 1)
     }
+  })
 
-    // Should we constrain the dimensions of the mirror element?
-    if (el.hasAttribute('wire:sortable.mirror.constrain')) {
-        options.mirror = options.mirror || {}
-        options.mirror.constrainDimensions = true
-    }
-
-    // Have any classes been specified for the 'draggable:over' element?
-    if (el.getAttribute('wire:sortable.classes.over')) {
-      options.classes['draggable:over'] = options.classes['draggable:over'].concat(
-        el.getAttribute('wire:sortable.classes.over').split(' ')
-      )
-    }
-
-    // Define the draggable handle if it has been specified
-    if (el.querySelector('[wire\\:sortable\\.handle]')) {
-        options.handle ='[wire\\:sortable\\.handle]'
-    }
-
-    const sortable = new Sortable(el, options);
-
-    sortable.on('sortable:stop', () => {
-        setTimeout(() => {
-            let items = []
-
-            el.querySelectorAll('[wire\\:sortable\\.item]').forEach((el, index) => {
-                items.push({ order: index + 1, value: el.getAttribute('wire:sortable.item')})
-            })
-
-            component.call(directive.method, items)
-        }, 1)
-    })
+  cleanup(() => {
+    sortable.destroy()
+  })
 })
+
+// Initialize Apline.js
+window.Alpine = Alpine
+Alpine.start()

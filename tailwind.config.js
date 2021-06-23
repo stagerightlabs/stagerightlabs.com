@@ -1,24 +1,24 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       },
       colors: {
         'cool-gray': {
-          '50': '#f8fafc',
-          '100': '#f1f5f9',
-          '200': '#e2e8f0',
-          '300': '#cfd8e3',
-          '400': '#97a6ba',
-          '500': '#64748b',
-          '600': '#475569',
-          '700': '#364152',
-          '800': '#27303f',
-          '900': '#1a202e',
-        },
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cfd8e3',
+          400: '#97a6ba',
+          500: '#64748b',
+          600: '#475569',
+          700: '#364152',
+          800: '#27303f',
+          900: '#1a202e'
+        }
       },
       container: {
         padding: {
@@ -26,10 +26,10 @@ module.exports = {
           sm: '2rem',
           lg: '4rem',
           xl: '5rem',
-          '2xl': '8rem',
-        },
-      },
-    },
+          '2xl': '8rem'
+        }
+      }
+    }
   },
   variants: {},
   purge: {
@@ -38,22 +38,17 @@ module.exports = {
       './resources/**/*.html',
       './resources/**/*.js',
       './resources/**/*.jsx',
-      './resources/**/*.ts',
-      './resources/**/*.tsx',
-      './resources/**/*.php',
-      './resources/**/*.vue',
-      './resources/**/*.twig',
+      './resources/**/*.php'
     ],
     options: {
-      defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
-      safelistPatterns: [/-active$/, /-enter$/, /-leave-to$/, /show$/],
-    },
+      safelistPatterns: [/-active$/, /-enter$/, /-leave-to$/, /show$/]
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
+    require('@tailwindcss/typography')
   ],
   experimental: {
-    uniformColorPalette: true,
-  },
-};
+    uniformColorPalette: true
+  }
+}
