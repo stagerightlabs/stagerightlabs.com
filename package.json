@@ -2,11 +2,11 @@
     "private": true,
     "scripts": {
         "local:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css",
-        "local:js": "esbuild resources/js/app.js --outfile=public/js/app.js --target=es6 --bundle --sourcemap",
+        "local:js": "esbuild resources/js/app.js --outfile=public/js/app.js --target=es2018 --bundle --sourcemap",
         "watch:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css --map --verbose --watch",
-        "watch:js": "NODE_ENV=development esbuild resources/js/app.js --outfile=public/js/app.js --target=es6 --bundle --sourcemap --watch",
+        "watch:js": "NODE_ENV=development esbuild resources/js/app.js --outfile=public/js/app.js --target=es2018 --bundle --sourcemap --watch",
         "watch": "npm run watch:js & npm run watch:css",
-        "build": "NODE_ENV=production postcss resources/css/app.css --output public/css/app.css --verbose && esbuild resources/js/app.js --outfile=public/js/app.js --bundle --minify --target=es6 --define:process.env.NODE_ENV=\\\"production\\\""
+        "build": "NODE_ENV=production postcss resources/css/app.css --output public/css/app.css --verbose && esbuild resources/js/app.js --outfile=public/js/app.js --bundle --minify --target=es2018 --define:process.env.NODE_ENV=\\\"production\\\""
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.3.4",
