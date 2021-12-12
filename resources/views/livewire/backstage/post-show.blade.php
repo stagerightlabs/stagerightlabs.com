@@ -52,7 +52,7 @@
           <p class="flex">
             <a href="{{ route('backstage.series.show', $series->reference_id) }}">{{ $series->name }}</a>
             <button wire:click="removeSeries('{{ $series->id }}')">
-              @svg('heroicon-o-trash', ['class' => 'ml-1 mr-1 h-5 w-5 flex-shrink-0 text-cool-gray-500'])
+              @svg('heroicon-o-trash', ['class' => 'ml-1 mr-1 h-5 w-5 shrink-0 text-cool-gray-500'])
             </button>
           </p>
         @empty

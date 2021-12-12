@@ -21,7 +21,7 @@
               {{ $tag->name }}
               <p class="text-cool-gray-400 text-sm">/{{ $tag->slug }}</p>
             </div>
-            <div class="flex-shrink-0 pr-2">
+            <div class="shrink-0 pr-2">
               <a
                 class="w-8 h-8 inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-cool-gray-500 focus:outline-none focus:text-gray-500 focus:bg-gray-100 transition ease-in-out duration-150"
                 href="{{ route('backstage.tags.update', $tag->reference_id) }}"

@@ -7,7 +7,7 @@
     @endunless
 
     <!-- Profile dropdown -->
-    <div class="ml-4 relative flex-shrink-0">
+    <div class="ml-4 relative shrink-0">
       <div>
         <button
           class="flex text-sm rounded-full text-white focus:outline-none focus:shadow-solid transition duration-150 ease-in-out"
@@ -24,11 +24,11 @@
         x-show="profileMenuVisible"
         class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
         x-transition:enter="transition ease-out duration-100"
-        x-transition:enter-start="transform opacity-0 scale-95"
-        x-transition:enter-end="transform opacity-100 scale-100"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
         x-transition:leave="transition ease-in duration-75"
-        x-transition:leave-start="transform opacity-100 scale-100"
-        x-transition:leave-end="transform opacity-0 scale-95"
+        x-transition:leave-start=" opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-95"
         @click.away="profileMenuVisible = false"
         style="display: none"
       >

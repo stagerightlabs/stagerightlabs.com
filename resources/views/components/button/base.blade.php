@@ -61,7 +61,7 @@
   >
   @endif
     @if ($icon)
-      @svg($icon, ['class' => '-ml-1 mr-1 h-5 w-5 flex-shrink-0'])
+      @svg($icon, ['class' => '-ml-1 mr-1 h-5 w-5 shrink-0'])
     @else
       <span class="block h-5" aria-hidden="true"></span>
     @endif

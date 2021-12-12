@@ -1,6 +1,15 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  purge: {
+    content: [
+      './app/**/*.php',
+      './resources/**/*.html',
+      './resources/**/*.js',
+      './resources/**/*.jsx',
+      './resources/**/*.php'
+    ]
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -29,19 +38,6 @@ module.exports = {
           '2xl': '8rem'
         }
       }
-    }
-  },
-  variants: {},
-  purge: {
-    content: [
-      './app/**/*.php',
-      './resources/**/*.html',
-      './resources/**/*.js',
-      './resources/**/*.jsx',
-      './resources/**/*.php'
-    ],
-    options: {
-      safelistPatterns: [/-active$/, /-enter$/, /-leave-to$/, /show$/]
     }
   },
   plugins: [
