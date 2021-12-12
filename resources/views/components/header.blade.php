@@ -2,7 +2,7 @@
   <div class="mx-auto px-2 sm:px-4 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex items-center px-2 lg:px-0">
-        <div class="flex-shrink-0 flex items-center">
+        <div class="shrink-0 flex items-center">
           <a href="/" class="flex items-center">
             <x-logo class="h-12 lg:h-16" />
             <h1 class="text-4xl text-red-800 ml-4 hidden xl:block">

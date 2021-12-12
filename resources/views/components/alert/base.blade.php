@@ -15,7 +15,7 @@
   data-id="message-{{ $id }}"
 >
   <div class="flex">
-    <div class="flex-shrink-0">
+    <div class="shrink-0">
       @if ($icon)
         @svg($icon, ['class' => 'h-5 w-5'])
       @endif
