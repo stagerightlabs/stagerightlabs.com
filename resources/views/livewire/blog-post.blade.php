@@ -7,68 +7,65 @@
 @endsection
 
 <div>
-  <div class="mb-4 w-full">
+  <div class="mb-6 w-full">
     <h2 class="text-3xl leading-9 tracking-wide font-bold text-cool-gray-300 sm:text-4xl sm:leading-10">
       {{ $post->title }}
     </h2>
   </div>
-  <div class="grid grid-cols-1 xl:grid-cols-12 gap-2 xl:gap-4 ">
-    <div class="col-span-1 xl:col-span-10">
-      <x-card class="mb-8">
-        <x-post :post="$post" />
-      </x-card>
-    </div>
-    <aside class="col-span-1 xl:col-span-2 row-start-1 xl:row-start-auto lg:px-2 text-cool-gray-600 grid grid-flow-col-dense grid-cols-2 xl:grid-cols-none gap-4 xl:block">
-      <div class="flex justify-end xl:block grid-cols-1 col-start-2">
-        <ul class="mt-1 xl:mt-0">
-          @foreach ($post->tags as $tag)
-          <li class="inline-block xl:block my-1">
-            @if (isset($topic) && $topic->slug == $tag->slug)
-            <a href="{{ route('home') }}" class="">
-              <x-tag :active="$tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
-            </a>
-            @else
-            <a href="{{ route('blog.topic', $tag->slug) }}" class="">
-              <x-tag :active="isset($topic) && $tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
-            </a>
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-4 mb-2">
+    <div class="col-span-1 text-base text-cool-gray-400 flex items-center">
+      @if($post->hasBeenPublished())
+          <p>
+            Published
+            <time datetime="{{ $post->published_at->toDateString() }}">
+              {{ $post->published_at->format('F j, Y') }}
+            </time>
+            @if ($post->hasBeenUpdatedAfterPublicationDate())
+            &bull; Updated
+            <time datetime="{{ $post->updated_at->toDateString() }}">
+              {{ $post->updated_at->format('F j, Y') }}
+            </time>
             @endif
-          </li>
-          @endforeach
-        </ul>
-      </div>
-      <p class="flex items-center grid-cols-1 col-start-1 text-sm xl:mt-2 text-cool-gray-500">
-        @if($post->hasBeenPublished())
-          <time
-            datetime="{{ $post->published_at->toDateString() }}"
-            class="block ml-1"
-          >
-            {{ $post->published_at->format('F j, Y') }}
-          </time>
+          </p>
         @else
           <span class="block ml-1">DRAFT</span>
         @endif
-      </p>
+    </div>
+    <div class="col-span-1 text-left xl:text-right">
+      @foreach ($post->tags as $tag)
+        @if (isset($topic) && $topic->slug == $tag->slug)
+        <a href="{{ route('home') }}" class="">
+          <x-tag :active="$tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
+        </a>
+        @else
+        <a href="{{ route('blog.topic', $tag->slug) }}" class="">
+          <x-tag :active="isset($topic) && $tag->slug == $topic->slug">{{ $tag->name }}</x-tag>
+        </a>
+        @endif
+      @endforeach
+    </div>
+  </div>
+  @if($post->wasPublishedMoreThanAYearAgo())
+    <aside class="text-center text-cool-gray-400 p-4 mt-4 mb-4 bg-cool-gray-900 rounded-md">
+      Heads up! This article is more than {{ $post->publicationAgeForHumans() }} the content may be out of date.
     </aside>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-    @foreach ($post->series as $series)
-      <x-part-of-a-series
-        class="col-span-1 md:col-span-10"
-        :series="$series"
-        :post="$post"
-      />
-    @endforeach
-  </div>
-  @if($post->stack_outline)
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-    <x-card class="mb-8 col-span-1 xl:col-span-10" heading="Tools Referenced In This Post">
-      <div class="my-2 mx-2 stack-outline">
-        <x-markdown>{{ $post->stack_outline }}</x-markdown>
-      </div>
-    </x-card>
-  </div>
   @endif
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-    <x-author class="col-span-1 md:col-span-10" />
-  </div>
+  <x-card class="mb-8">
+    <x-post :post="$post" />
+  </x-card>
+  @foreach ($post->series as $series)
+    <x-part-of-a-series
+      class="col-span-1 md:col-span-10"
+      :series="$series"
+      :post="$post"
+    />
+  @endforeach
+  @if($post->stack_outline)
+  <x-card class="mb-8 col-span-1 xl:col-span-10" heading="Tools Referenced In This Post">
+    <div class="my-2 mx-2 stack-outline">
+      <x-markdown>{{ $post->stack_outline }}</x-markdown>
+    </div>
+  </x-card>
+  @endif
+  <x-author class="col-span-1 md:col-span-10" />
 </div>

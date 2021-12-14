@@ -15,7 +15,12 @@
     @endisset
 
     <footer class="text-center w-full text-cool-gray-500 mb-4 mt-8">
-      &copy; {{ date('Y') }} Stage Right Labs
+      <p class="mb-2">&copy;{{ date('Y') }} Stage Right Labs</p>
+      <p>
+        <a type="text/xml" href="{{ route('feed') }}" class="flex items-center justify-center" >
+          RSS Feed @svg('heroicon-s-rss', ['class' => 'w-4 h-4 ml-1'])
+        </a>
+      </p>
     </footer>
   </div>
 </x-base-layout>
