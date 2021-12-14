@@ -4,6 +4,7 @@ namespace App;
 
 use App\Concerns\ReferenceIds;
 use App\Concerns\UuidAsPrimaryKey;
+use App\Utilities\Arr;
 use App\Utilities\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -108,6 +109,70 @@ class Post extends Model
     public function scopePublished($query)
     {
         return $query->whereNotNull('published_at');
+    }
+
+    /**
+     * Has this post been updated since it was published?
+     *
+     * @return bool
+     */
+    public function hasBeenUpdatedAfterPublicationDate(): bool
+    {
+        if (is_null($this->published_at)) {
+            return false;
+        }
+
+        return $this->updated_at->lt($this->published_at);
+    }
+
+    /**
+     * Has it been more than a year since this post was published?
+     *
+     * @return bool
+     */
+    public function wasPublishedMoreThanAYearAgo(): bool
+    {
+        if (! $this->published_at) {
+            return false;
+        }
+
+        return $this->published_at->lt(now()->subYear(1));
+    }
+
+    /**
+     * Generate a string that presents the age of the post as a text sentence.
+     *
+     * @return string
+     */
+    public function publicationAgeForHumans()
+    {
+        $yearsOld = $this->published_at->diffInYears(now());
+
+        if ($yearsOld < 1) {
+            return '';
+        }
+
+        if ($yearsOld == 1) {
+            return 'a year old;';
+        }
+
+        $numbers = [
+            2 => 'two',
+            3 => 'three',
+            4 => 'four',
+            5 => 'five',
+            6 => 'six',
+            7 => 'seven',
+            8 => 'eight',
+            9 => 'nine',
+            10 => 'ten',
+            11 => 'eleven',
+            12 => 'twelve',
+            13 => 'thirteen',
+            14 => 'fourteen',
+        ];
+
+        return  Arr::get($numbers, $yearsOld, $yearsOld).' years old;';
     }
 
     /**
