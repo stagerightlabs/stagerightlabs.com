@@ -53,13 +53,6 @@
   <x-card class="mb-8">
     <x-post :post="$post" />
   </x-card>
-  @foreach ($post->series as $series)
-    <x-part-of-a-series
-      class="col-span-1 md:col-span-10"
-      :series="$series"
-      :post="$post"
-    />
-  @endforeach
   @if($post->stack_outline)
   <x-card class="mb-8 col-span-1 xl:col-span-10" heading="Tools Referenced In This Post">
     <div class="my-2 mx-2 stack-outline">
@@ -67,5 +60,12 @@
     </div>
   </x-card>
   @endif
+  @foreach ($post->series as $series)
+    <x-part-of-a-series
+      class="col-span-1 md:col-span-10"
+      :series="$series"
+      :post="$post"
+    />
+  @endforeach
   <x-author class="col-span-1 md:col-span-10" />
 </div>
