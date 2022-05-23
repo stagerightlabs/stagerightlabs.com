@@ -16,7 +16,7 @@
     <div class="col-span-1 md:col-span-10">
       @foreach ($posts as $post)
         <a href="{{ route('blog.post', $post->slug) }}">
-          <x-card class="mb-4">
+          <x-card class="mb-6">
             <h2 class="text-2xl mb-4">{{ $post->title }}</h2>
             <p class="text-cool-gray-400 text-xl mb-6">
               {{ $post->description }}
