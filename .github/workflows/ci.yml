@@ -64,7 +64,7 @@ jobs:
         run: composer install --no-scripts --no-ansi --no-progress
 
       - name: Install Node and NPM
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: 16
           cache: 'npm'
