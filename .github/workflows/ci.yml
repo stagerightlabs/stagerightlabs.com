@@ -67,12 +67,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-
-      - name: Cache NPM Dependencies
-        uses: actions/cache@v2
-        with:
-          path: ./node_modules
-          key: npm-${{ hashFiles('package-lock.json') }}
+          cache: 'npm'
 
       - name: Install NPM Dependencies
         run: npm install --no-progress
