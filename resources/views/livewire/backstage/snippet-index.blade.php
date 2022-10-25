@@ -6,7 +6,7 @@
     <x-slot name="options">
       <x-button.primary
         url="{{ route('backstage.snippets.create') }}"
-        icon="heroicon-s-document-add"
+        icon="heroicon-s-document-plus"
         wrapper="mr-2"
       >Create Snippet</x-button.primary>
       <x-button.secondary

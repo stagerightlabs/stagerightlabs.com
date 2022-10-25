@@ -6,7 +6,7 @@
     <x-slot name="options">
       <x-button.primary
         url="{{ route('backstage.tags.create') }}"
-        icon="heroicon-s-document-add"
+        icon="heroicon-s-document-plus"
       >Create Tag</x-button.primary>
     </x-slot>
   </x-heading>

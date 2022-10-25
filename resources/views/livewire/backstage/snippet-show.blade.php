@@ -13,7 +13,7 @@
       >Edit</x-button.primary>
       <x-button.secondary
         url="{{ route('backstage.snippets.index') }}"
-        icon="heroicon-s-rewind"
+        icon="heroicon-s-backward"
       >Index</x-button.secondary>
     </x-slot>
   </x-heading>

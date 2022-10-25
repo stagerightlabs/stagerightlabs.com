@@ -6,7 +6,7 @@
     <x-slot name="options">
       <x-button.secondary
         url="{{ route('backstage.snippets.show', $snippet->reference_id) }}"
-        icon="heroicon-s-rewind"
+        icon="heroicon-s-backward"
       >Cancel</x-button.secondary>
     </x-slot>
   </x-heading>

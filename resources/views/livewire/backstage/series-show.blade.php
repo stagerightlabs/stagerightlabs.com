@@ -21,7 +21,7 @@
 
       <x-button.secondary
         url="{{ route('backstage.series.index') }}"
-        icon="heroicon-s-rewind"
+        icon="heroicon-s-backward"
       >Index</x-button.secondary>
     </x-slot>
   </x-heading>
@@ -44,7 +44,7 @@
            x-sortable-id="{{ $post->id }}">
           <span class="text-left flex">
             <span class="sortable-handle cursor-move">
-              @svg('heroicon-s-hand', ['class' => 'h-5 w-5 text-cool-gray-500 mr-4'])
+              @svg('heroicon-s-hand-raised', ['class' => 'h-5 w-5 text-cool-gray-500 mr-4'])
             </span>
             {{ $post->pivot->sort_order }}. {{ $post->title }}
           </span>
