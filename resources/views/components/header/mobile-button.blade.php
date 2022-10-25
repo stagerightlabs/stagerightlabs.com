@@ -11,12 +11,12 @@
     @click="mobileMenuVisible = !mobileMenuVisible"
   >
     {{--  Icon when menu is closed. --}}
-    <x-heroicon-s-menu
+    <x-heroicon-s-bars-3
       class="h-6 w-6"
       x-bind:class="{ 'hidden': mobileMenuVisible, 'block': !mobileMenuVisible }"
     />
     {{-- Icon when menu is open. --}}
-    <x-heroicon-s-x
+    <x-heroicon-s-x-mark
       class="hidden h-6 w-6"
       x-bind:class="{ 'hidden': !mobileMenuVisible, 'block': mobileMenuVisible }"
     />

@@ -25,13 +25,13 @@
           url="https://github.com/stagerightlabs/actions/"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on GitHub</x-button.primary>
         <x-button.secondary
           url="https://packagist.org/packages/stagerightlabs/actions"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on Packagist</x-button.secondary>
       </p>
     </x-card>
@@ -48,13 +48,13 @@
           url="https://github.com/stagerightlabs/Centaur"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on GitHub</x-button.primary>
         <x-button.secondary
           url="https://packagist.org/packages/srlabs/centaur"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on Packagist</x-button.secondary>
       </p>
     </x-card>
@@ -70,13 +70,13 @@
           url="https://github.com/stagerightlabs/eloquent-sti"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on GitHub</x-button.primary>
         <x-button.secondary
           url="https://packagist.org/packages/srlabs/eloquent-sti"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on Packagist</x-button.secondary>
       </p>
     </x-card>
@@ -87,7 +87,7 @@
           url="https://github.com/stagerightlabs/piwik-plugin"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on GitHub</x-button.primary>
       </p>
     </x-card>
@@ -104,13 +104,13 @@
           url="https://github.com/stagerightlabs/parley"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on GitHub</x-button.primary>
         <x-button.secondary
           url="https://packagist.org/packages/srlabs/parley"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on Packagist</x-button.secondary>
       </p>
     </x-card>
@@ -127,13 +127,13 @@
           url="https://github.com/rydurham/Sentinel"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on GitHub</x-button.primary>
         <x-button.secondary
           url="https://packagist.org/packages/rydurham/sentinel"
           target="_blank"
           wrapper="my-4"
-          icon="heroicon-o-external-link"
+          icon="heroicon-o-arrow-top-right-on-square"
         >View on Packagist</x-button.secondary>
       </p>
     </x-card>
