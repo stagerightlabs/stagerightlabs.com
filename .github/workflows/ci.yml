@@ -3,38 +3,8 @@ name: CI
 on: [pull_request]
 
 jobs:
-  # format-php:
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         ref: ${{ github.head_ref }}
-
-  #     - name: Validate composer.json and composer.lock
-  #       run: composer validate --strict
-
-  #     - name: Cache dependencies installed with composer
-  #       uses: "actions/cache@v2.0.0"
-  #       with:
-  #         path: "./vendor"
-  #         key: "php-${{ hashFiles('composer.lock') }}"
-
-  #     - name: Install composer dependencies
-  #       run: composer install --no-scripts --no-ansi --no-suggest --no-progress
-
-  #     - name: Run php-cs-fixer
-  #       run: ./vendor/bin/php-cs-fixer fix
-
-  #     - uses: stefanzweifel/git-auto-commit-action@v4
-  #       with:
-  #         commit_message: Apply PHP code formatting
-  #         commit_user_name: CI Formatting Bot
-
   phpunit:
     runs-on: ubuntu-latest
-    container:
-      image: stagerightlabs/php-test-runner:8.1
 
     env:
       COMPOSER_VERSION: 2
@@ -53,6 +23,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: 8.1
+            extensions: dom, curl, libxml, mbstring, bcmath, soap,
+            coverage: none
+
+      - name: Setup problem matchers
+        run: |
+            echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+            echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: Composer dependency cache
         uses: actions/cache@v2
