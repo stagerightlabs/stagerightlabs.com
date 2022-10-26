@@ -25,7 +25,8 @@ class SeriesViewingTest extends TestCase
     /** @test */
     public function users_can_view_posts_backstage()
     {
-        $series = Series::factory()->create(User::factory()->create());
+        $this->actingAs(User::factory()->create());
+        $series = Series::factory()->create();
 
         Livewire::test(SeriesShow::class, ['ref' => $series->reference_id])
             ->assertSee($series->title);
