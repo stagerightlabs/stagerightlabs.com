@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 LABEL maintainer="Ryan Durham <ryan@stagerightlabs.com>"
 
@@ -31,7 +31,6 @@ RUN docker-php-ext-configure gd \
 
 RUN docker-php-ext-install bcmath \
     gd \
-    iconv \
     opcache \
     pdo pdo_pgsql pgsql \
     zip \

@@ -5,6 +5,7 @@ namespace Tests\Feature\Auth\Passwords;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -40,6 +41,7 @@ class EmailTest extends TestCase
     /** @test */
     public function a_user_who_enters_a_valid_email_address_will_get_sent_an_email()
     {
+        Mail::fake();
         $user = User::factory()->create();
 
         Livewire::test(Email::class)

@@ -55,7 +55,7 @@ class ConfirmTest extends TestCase
         Livewire::test(Confirm::class)
             ->set('password', 'not-password')
             ->call('confirm')
-            ->assertHasErrors(['password' => 'password']);
+            ->assertHasErrors(['password' => 'current_password']);
     }
 
     /** @test */

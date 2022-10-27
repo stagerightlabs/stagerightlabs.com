@@ -6,7 +6,7 @@
     <x-slot name="options">
       <x-button.secondary
         url="{{ route('backstage.posts.show',$post->reference_id) }}"
-        icon="heroicon-s-rewind"
+        icon="heroicon-s-backward"
       >Back to Post</x-button.secondary>
     </x-slot>
   </x-heading>

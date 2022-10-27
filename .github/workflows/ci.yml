@@ -3,56 +3,42 @@ name: CI
 on: [pull_request]
 
 jobs:
-  # format-php:
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         ref: ${{ github.head_ref }}
-
-  #     - name: Validate composer.json and composer.lock
-  #       run: composer validate --strict
-
-  #     - name: Cache dependencies installed with composer
-  #       uses: "actions/cache@v2.0.0"
-  #       with:
-  #         path: "./vendor"
-  #         key: "php-${{ hashFiles('composer.lock') }}"
-
-  #     - name: Install composer dependencies
-  #       run: composer install --no-scripts --no-ansi --no-suggest --no-progress
-
-  #     - name: Run php-cs-fixer
-  #       run: ./vendor/bin/php-cs-fixer fix
-
-  #     - uses: stefanzweifel/git-auto-commit-action@v4
-  #       with:
-  #         commit_message: Apply PHP code formatting
-  #         commit_user_name: CI Formatting Bot
-
   phpunit:
     runs-on: ubuntu-latest
-    container:
-      image: stagerightlabs/php-test-runner:7.4
 
     env:
       COMPOSER_VERSION: 2
 
     services:
       postgres:
-        image: postgres:12
+        image: postgres:14
         env:
           POSTGRES_USER: stagerightlabs
           POSTGRES_PASSWORD: secret
           POSTGRES_DB: stagerightlabs_test
         ports:
         - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: 8.1
+            extensions: dom, curl, libxml, mbstring, bcmath, soap,
+            coverage: none
+
+      - name: Setup problem matchers
+        run: |
+            echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+            echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: Composer dependency cache
         uses: actions/cache@v2
@@ -64,15 +50,11 @@ jobs:
         run: composer install --no-scripts --no-ansi --no-progress
 
       - name: Install Node and NPM
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 12
-
-      - name: Cache NPM Dependencies
-        uses: actions/cache@v2
-        with:
-          path: ./node_modules
-          key: npm-${{ hashFiles('package-lock.json') }}
+          node-version: 16
+          check-latest: true
+          cache: 'npm'
 
       - name: Install NPM Dependencies
         run: npm install --no-progress

@@ -6,7 +6,7 @@
     <x-slot name="options">
       <x-button.secondary
         url="{{ route('backstage.tags.index') }}"
-        icon="heroicon-s-rewind"
+        icon="heroicon-s-backward"
       >Cancel</x-button.primary>
     </x-slot>
   </x-heading>

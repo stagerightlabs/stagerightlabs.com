@@ -6,7 +6,7 @@
     <x-slot name="options">
       <x-button.primary
         url="{{ route('backstage.series.create') }}"
-        icon="heroicon-s-document-add"
+        icon="heroicon-s-document-plus"
         class="mr-2"
       >Create Series</x-button.primary>
     </x-slot>

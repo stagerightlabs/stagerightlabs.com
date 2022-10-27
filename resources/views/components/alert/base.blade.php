@@ -49,7 +49,7 @@
             @click="open = false"
           @endif
         >
-          @svg('heroicon-s-x', ['class' => 'h-5 w-5 fill-current'])
+          @svg('heroicon-s-x-mark', ['class' => 'h-5 w-5 fill-current'])
         </button>
       </div>
     </div>

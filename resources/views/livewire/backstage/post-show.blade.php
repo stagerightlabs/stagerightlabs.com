@@ -18,7 +18,7 @@
       >Preview</x-button.secondary>
       <x-button.secondary
         url="{{ route('backstage.posts.index') }}"
-        icon="heroicon-s-rewind"
+        icon="heroicon-s-backward"
       >Index</x-button.secondary>
     </x-slot>
   </x-heading>
