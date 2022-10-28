@@ -28,7 +28,7 @@
       <a href="{{ route('decks.show', ['single-table-inheritance']) }}">
         <li class="col-span-1 flex flex-col text-center bg-cool-gray-700 hover:bg-cool-gray-600 rounded-lg shadow">
           <div class="flex-1 flex flex-col p-8">
-            @svg('heroicon-s-database', ['class' => 'w-32 h-32 mx-auto'])
+            @svg('heroicon-s-circle-stack', ['class' => 'w-32 h-32 mx-auto'])
             <h3 class="mt-6 text-cool-gray-300 text-sm leading-5 font-medium">Single Table Inheritance</h3>
             <dl class="mt-1 grow flex flex-col justify-between">
               <dt class="sr-only">Description</dt>
