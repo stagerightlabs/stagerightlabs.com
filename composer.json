@@ -13,12 +13,12 @@
         "doctrine/dbal": "^3.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.3",
+        "honeybadger-io/honeybadger-laravel": "^3.14",
         "laravel/framework": "^9.0",
         "laravel/telescope": "^4.4",
         "laravel/tinker": "^2.7",
         "league/commonmark": "^2.0.2",
         "livewire/livewire": "^2.0",
-        "sentry/sentry-laravel": "^2.0",
         "stagerightlabs/actions": "^0.00.30",
         "symfony/http-client": "^6.1",
         "symfony/mailgun-mailer": "^6.1"
