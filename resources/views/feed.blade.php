@@ -15,7 +15,14 @@
 
   <id>https://stagerightlabs.com/</id>
   <icon>{{ url(asset('img/compact.png')) }}</icon>
-  <rights>© {{ date('T') }} Ryan Durham</rights>
+  <logo>{{ url(asset('img/compact.png')) }}</logo>
+  <rights>©{{ date('Y') }} Ryan C. Durham</rights>
+
+  <image>
+    <link>https://stagerightlabs.com/</link>
+    <title><![CDATA[Stage Right Labs]]></title>
+    <url>{{ url(asset('img/compact.png')) }}</url>
+  </image>
 
   @foreach($posts as $post)
   <entry>
