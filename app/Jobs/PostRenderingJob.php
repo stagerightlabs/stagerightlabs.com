@@ -44,8 +44,10 @@ class PostRenderingJob implements ShouldQueue
 
         if ($rendering->completed()) {
             $this->post->rendered = $rendering->rendered;
+            $this->post->simple = $rendering->simple;
         } else {
             $this->post->rendered = '';
+            $this->post->simple = $rendering->simple;
         }
 
         $this->post->save();

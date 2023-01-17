@@ -35,7 +35,7 @@
       <![CDATA[{!! $post->description !!}]]>
     </summary>
     <content type="html">
-      <![CDATA[{!! $post->rendered !!}]]>
+      <![CDATA[{!! $post->simple !!}]]>
     </content>
     <link rel="alternate" href="{{ $post->url }}" />
   </entry>

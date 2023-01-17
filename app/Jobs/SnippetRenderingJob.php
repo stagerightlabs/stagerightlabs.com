@@ -53,8 +53,10 @@ class SnippetRenderingJob implements ShouldQueue
 
         if ($rendering->completed()) {
             $this->snippet->rendered = $rendering->rendered;
+            $this->snippet->markdown = $rendering->markdown;
         } else {
             $this->snippet->rendered = '';
+            $this->snippet->markdown = '';
         }
 
         $this->snippet->save();

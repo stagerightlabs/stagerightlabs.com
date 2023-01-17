@@ -19,6 +19,11 @@ class PostHtmlRenderingAction extends Action
     public $rendered;
 
     /**
+     * @var string
+     */
+    public $simple;
+
+    /**
      * Convert the contents of a post to html.
      *
      * @param Action|array $input
@@ -32,13 +37,15 @@ class PostHtmlRenderingAction extends Action
             return $this->fail("Post {$input['post']->reference_id} has no content to render.");
         }
 
-        $markdown = PostMarkdownRenderingAction::execute(['post' => $this->post]);
+        $markdown = new CommonMarkConverter();
 
-        if ($markdown->failed()) {
-            return $markdown;
+        // Render the post as HTML; both a 'full' version and a 'simple' version
+        $content = PostMarkdownRenderingAction::execute(['post' => $this->post]);
+        if ($content->failed()) {
+            return $content;
         }
-
-        $this->rendered = (new CommonMarkConverter())->convertToHtml($markdown->rendered);
+        $this->rendered = $markdown->convert($content->rendered);
+        $this->simple = $markdown->convert($content->simple);
 
         return $this->complete("Post {$input['post']->reference_id} content has been rendered.");
     }

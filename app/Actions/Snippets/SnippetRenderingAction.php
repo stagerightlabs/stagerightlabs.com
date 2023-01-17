@@ -30,6 +30,11 @@ class SnippetRenderingAction extends Action
     public $rendered;
 
     /**
+     * @var string
+     */
+    public $markdown;
+
+    /**
      * Render the contents of a snippet into HTML.
      *
      * @param Action|array $input
@@ -45,7 +50,8 @@ class SnippetRenderingAction extends Action
             return $this->fail('Snippet has no content to render.');
         }
 
-        $this->rendered = $this->render($snippet);
+        $this->rendered = $this->renderHtml($snippet);
+        $this->markdown = $this->renderMarkdown($snippet);
 
         // Should we also render the posts that use this snippet?
         if ($cascade) {
@@ -62,26 +68,26 @@ class SnippetRenderingAction extends Action
      * @param Snippet $snippet
      * @return string
      */
-    protected function render($snippet)
+    protected function renderHtml($snippet)
     {
         $number = $snippet->starting_line;
         $opening = "<!-- Snippet {$snippet->reference_id} -->\n"
-            .self::HTML_START
-            .self::TABLE_START;
+            . self::HTML_START
+            . self::TABLE_START;
 
         // Content
         $html = collect(explode("\n", $snippet->content))
             ->reduce(function ($carry, $row) use (&$number) {
                 $carry = $carry .= self::ROW_START
-                    .$number
-                    .self::ROW_MIDDLE
-                    .$this->encode($row)
-                    .self::ROW_END;
+                    . $number
+                    . self::ROW_MIDDLE
+                    . $this->encode($row)
+                    . self::ROW_END;
 
                 $number++;
 
                 return $carry;
-            }, $opening).self::TABLE_END;
+            }, $opening) . self::TABLE_END;
 
         // Optional Footer
         $html .= $this->footer($snippet->filename, $snippet->url);
@@ -99,7 +105,7 @@ class SnippetRenderingAction extends Action
      */
     protected function footer($filename = null, $url = null)
     {
-        if (! $filename && ! $url) {
+        if (!$filename && !$url) {
             return '';
         }
 
@@ -143,6 +149,19 @@ class SnippetRenderingAction extends Action
             ->each(function ($post) {
                 PostRenderingJob::dispatch($post);
             });
+    }
+
+    /**
+     * Render the snippet as a markdown string.
+     *
+     * @param Snippet $snippet
+     * @return string
+     */
+    protected function renderMarkdown($snippet): string
+    {
+        return "```{$snippet->language}\n"
+            . $this->encode($snippet->content)
+            . "\n```";
     }
 
     /**
