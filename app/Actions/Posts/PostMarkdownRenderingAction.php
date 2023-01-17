@@ -20,6 +20,11 @@ class PostMarkdownRenderingAction extends Action
     public $rendered;
 
     /**
+     * @var string
+     */
+    public $simple;
+
+    /**
      * Convert the contents of a post to html.
      *
      * @param Action|array $input
@@ -33,9 +38,15 @@ class PostMarkdownRenderingAction extends Action
             return $this->fail("Post {$input['post']->reference_id} has no content to render.");
         }
 
-        $this->rendered = $this->replaceShortcodes(
+        $this->rendered = $this->replaceShortCodes(
             $input['post']->content,
             $input['post']->shortcodes
+        );
+
+        $this->simple = $this->replaceShortCodes(
+            $input['post']->content,
+            $input['post']->shortcodes,
+            $useSimpleMarkdown = true
         );
 
         return $this->complete("Post {$input['post']->reference_id} content has been rendered.");
@@ -45,34 +56,35 @@ class PostMarkdownRenderingAction extends Action
      * Replace shortcodes with their rendered output.
      *
      * @param string $content
-     * @param Collection $shortcodes
+     * @param Collection $shortCodes
+     * @param bool $useSimpleMarkdown
      * @return string
      */
-    protected function replaceShortcodes($content, $shortcodes)
+    protected function replaceShortCodes($content, $shortCodes, $useSimpleMarkdown = false)
     {
-        return $this->fetchSnippets($shortcodes)
-            ->reduce(function ($content, $snippet) {
-                return str_replace(
-                    $snippet->shortcode,
-                    $snippet->rendered,
-                    $content
-                );
+        return $this->fetchSnippets($shortCodes)
+            ->reduce(function ($content, $snippet) use ($useSimpleMarkdown) {
+                $replace = $useSimpleMarkdown
+                    ? $snippet->markdown
+                    : $snippet->rendered;
+
+                return str_replace($snippet->shortcode, $replace, $content);
             }, $content ?? '');
     }
 
     /**
      * Fetch snippet content from the database.
      *
-     * @param Collection $shortcodes
+     * @param Collection $shortCodes
      * @return Collection
      */
-    protected function fetchSnippets($shortcodes)
+    protected function fetchSnippets($shortCodes)
     {
-        $referenceIds = $shortcodes
-            ->filter(function ($shortcode) {
-                return Str::startsWith($shortcode['code'], 'Snippet ');
-            })->map(function ($shortcode) {
-                return Str::after($shortcode['code'], 'Snippet ');
+        $referenceIds = $shortCodes
+            ->filter(function ($shortCode) {
+                return Str::startsWith($shortCode['code'], 'Snippet ');
+            })->map(function ($shortCode) {
+                return Str::after($shortCode['code'], 'Snippet ');
             });
 
         return Snippet::whereIn('reference_id', $referenceIds)->get();
