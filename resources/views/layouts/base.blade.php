@@ -38,7 +38,7 @@
     <!-- Umami -->
     <script async defer
       data-website-id="55bf85af-d593-4ee1-aede-d3a887b4a1d5"
-      src="https://umami.stagerightlabs.com/umami.js"
+      src="https://umami.stagerightlabs.com/script.js"
       data-do-not-track="true"
     ></script>
   </head>
