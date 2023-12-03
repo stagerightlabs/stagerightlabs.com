@@ -6,7 +6,7 @@
   <x-page-header>Ryan C. Durham - Resume</x-page-header>
   <x-card heading="Summary" class="mb-8 text-xl">
     <p>
-      Full stack developer with 10+ years experience in building and maintaining websites; 5 years experience with a large-scale enterprise application. Draws on a background in project management with a focus on communication. Enjoys staying current with industry trends and learning about new technologies.
+      Full stack developer with 15+ years experience in building and maintaining websites; 10 years experience with large-scale enterprise applications. Draws on a background in project management with a focus on communication. Enjoys staying current with industry trends and learning about new technologies.
     </p>
   </x-card>
   <x-card heading="Skills" class="mb-8">
@@ -16,7 +16,7 @@
           Server Side
         </dt>
         <dd class="mt-1 text-xl leading-5 text-cool-gray-300">
-          PHP, Laravel, WordPress, Elixir
+          PHP, Laravel, Symfony
         </dd>
       </div>
       <div class="sm:col-span-1">
@@ -47,18 +47,26 @@
   </x-card>
   <x-card heading="Experience" class="mb-8 text-xl">
     <p class="mb-4">
+      <strong class="text-xl">Firebrand Technologies</strong><br />
+      Senior Software Engineer: 2021 - Present<br />
+    </p>
+    <ul class="mb-6 list-disc list-outside px-8">
+      <li>Lead developer for the <a href="https://www.eloquenceonalert.com/">Eloquence On Alert</a> service</li>
+      <li>Created a high volume intake queue for processing ONIX files</li>
+    </ul>
+    <p class="mb-4">
       <strong class="text-xl">Phylos</strong><br />
-      Senior Engineer: 2019 – Present <br />
+      Senior Engineer: 2019 – 2021 <br />
       Software Engineer: 2016 – 2019 <br />
       Contractor: 2014 - 2016
     </p>
     <ul class="mb-6 list-disc list-outside px-8">
-      <li>Designed, built and currently maintains an enterprise scale PHP application that manages sales, LIMS laboratory workflows, delivery of customer results and financial reporting. Over 350,000 customer samples processed to date.</li>
-      <li>Serves as a liaison between engineering, the wet lab and quality assurance.</li>
+      <li>Designed, built and managed an enterprise scale PHP application that handles sales, LIMS laboratory workflows, delivery of customer results and financial reporting. Over 350,000+ customer samples processed to date.</li>
+      <li>Served as a liaison between engineering, the wet lab and quality assurance.</li>
       <li>Implemented full-text search for a public facing strain database using PostgreSQL.</li>
       <li>Built an API for genotype data reporting in Elixir.</li>
       <li>Manages AWS infrastructure for deployments and hosting.</li>
-      <li>Oversaw a production database conversion from MySQL to PostgreSQL.
+      <li>Oversaw a production database conversion from MySQL to PostgreSQL.</li>
     </ul>
     <p class="mb-4">
       <strong class="text-xl">Stage Right Labs, LLC</strong><br />
