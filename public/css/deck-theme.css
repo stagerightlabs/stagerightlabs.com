@@ -7,7 +7,7 @@
  */
 
 body {
-    background: url('/img/decks/halftone.png') repeat;
+    background: url("/img/decks/halftone.png") repeat;
     font-family: sans-serif;
 }
 
@@ -103,11 +103,11 @@ body {
 .reveal a:not(.image) {
     color: #9b2c2c;
     text-decoration: none;
-    -webkit-transition: color .15s ease;
-    -moz-transition: color .15s ease;
-    -ms-transition: color .15s ease;
-    -o-transition: color .15s ease;
-    transition: color .15s ease;
+    -webkit-transition: color 0.15s ease;
+    -moz-transition: color 0.15s ease;
+    -ms-transition: color 0.15s ease;
+    -o-transition: color 0.15s ease;
+    transition: color 0.15s ease;
 }
 
 .reveal a:not(.image):hover {
@@ -147,13 +147,16 @@ body {
     border: 0;
 }
 
+.reveal .mb-4 {
+    margin-bottom: 1rem;
+}
+
 .about_me img {
     vertical-align: middle;
 }
 
 table.side-by-side {
     width: 100%;
-
 }
 
 table.side-by-side td {

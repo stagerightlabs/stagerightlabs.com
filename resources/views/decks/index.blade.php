@@ -102,6 +102,27 @@
           </div>
         </li>
       </a>
+      <a href="{{ route('decks.show', ['hypermedia']) }}">
+        <li class="col-span-1 flex flex-col text-center bg-cool-gray-700 hover:bg-cool-gray-600 rounded-lg shadow">
+          <div class="flex-1 flex flex-col p-8">
+            <svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" class="fill-current w-32 h-32 mx-auto">
+              <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+              <g class="layer">
+               <text  font-family="Monospace" font-size="343" font-weight="bold"  stroke-width="0" text-anchor="middle" x="323" xml:space="preserve" y="330.39">&lt;/&gt;</text>
+              </g>
+             </svg>
+            <h3 class="mt-6 text-cool-gray-300 text-sm leading-5 font-medium">HTMX and Hypermedia</h3>
+            <dl class="mt-1 grow flex flex-col justify-between">
+              <dt class="sr-only">Description</dt>
+              <dd class="sr-only text-cool-gray-400 text-sm leading-5">A discussion of Hypermedia as an alternative to JavaScript</dd>
+              <dt class="sr-only">Year</dt>
+              <dd class="mt-3">
+                <x-tag>2024</x-tag>
+              </dd>
+            </dl>
+          </div>
+        </li>
+      </a>
     </ul>
   </x-card>
 @endsection
