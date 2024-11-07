@@ -6,7 +6,7 @@
 # Set environment variables for local development
 export APP_PORT=${APP_PORT:-80}
 
-COMPOSE="docker-compose"
+COMPOSE="docker compose"
 
 # If we pass any arguments...
 if [ $# -gt 0 ];then
