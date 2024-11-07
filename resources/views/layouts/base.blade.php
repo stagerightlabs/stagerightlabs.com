@@ -25,10 +25,6 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="@version('/css/app.css')">
-    @livewireStyles
-
     <!-- Feed -->
     <link rel="alternate" type="text/xml" href="{{ route('feed') }}" title="Stage Right Labs">
 
@@ -41,6 +37,8 @@
       src="https://umami.stagerightlabs.com/script.js"
       data-do-not-track="true"
     ></script>
+    @livewireStyles
+    @vite('resources/css/app.css')
   </head>
   <body class="bg-repeat bg-gray-900 text-cool-gray-300" style="background-image: url(/img/stressed-linen.png)">
     {{ $slot }}
@@ -51,5 +49,6 @@
     @env('local')
       <x-break-points />
     @endenv
+    @vite('resources/js/app.js')
   </body>
 </html>

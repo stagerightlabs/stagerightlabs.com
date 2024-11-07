@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18
 
 LABEL authors="Ryan Durham <ryan@stagerightlabs.com>"
 

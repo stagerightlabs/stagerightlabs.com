@@ -1,19 +1,15 @@
-version: '3'
-
 services:
-
   nginx:
     build:
       context: docker/nginx
     # command: ['nginx-debug']
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     volumes:
       - ./:/var/www:cached
     depends_on:
       - fpm
-      - postgres
     networks:
       default:
         aliases:
@@ -22,8 +18,6 @@ services:
   fpm:
     build:
       context: docker/fpm
-    depends_on:
-      - postgres
     command: php-fpm
     expose:
       - "9000"
@@ -33,36 +27,34 @@ services:
   cli:
     build:
       context: docker/cli
-    depends_on:
-      - postgres
     user: www-data
     command: ["sleep", "9223372036854775807"]
     volumes:
       - ./:/var/www:cached
 
-  queue:
-    build:
-      context: docker/cli
-    depends_on:
-      - postgres
-    volumes:
-      - ./:/var/www:cached
-    command: ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+  # queue:
+  #   build:
+  #     context: docker/cli
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - ./:/var/www:cached
+  #   command: ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 
-  schedule:
-    build:
-      context: docker/cli
-    depends_on:
-      - postgres
-    volumes:
-      - ./:/var/www:cached
-    command: ["/usr/sbin/crond", "-f", "-d", "0"]
+  # schedule:
+  #   build:
+  #     context: docker/cli
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - ./:/var/www:cached
+  #   command: ["/usr/sbin/crond", "-f", "-d", "0"]
 
   postgres:
     build:
       context: docker/postgres
     ports:
-      - '54320:5432'
+      - "54320:5432"
     environment:
       - EDITOR=vim
       - POSTGRES_PASSWORD=secret
@@ -74,6 +66,15 @@ services:
       context: docker/node
     volumes:
       - ./:/var/www:cached
+
+  vite:
+    build:
+      context: docker/node
+    volumes:
+      - ./:/var/www:cached
+    ports:
+      - "5173:5173"
+    command: ["npm", "run", "dev"]
 
 volumes:
   postgres_data:

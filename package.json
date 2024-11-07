@@ -1,24 +1,20 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
-        "local:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css",
-        "local:js": "esbuild resources/js/app.js --outfile=public/js/app.js --target=es2018 --bundle --sourcemap",
-        "watch:css": "NODE_ENV=development postcss resources/css/app.css --output public/css/app.css --map --verbose --watch",
-        "watch:js": "NODE_ENV=development esbuild resources/js/app.js --outfile=public/js/app.js --target=es2018 --bundle --sourcemap --watch",
-        "watch": "npm run watch:js & npm run watch:css",
-        "build": "NODE_ENV=production postcss resources/css/app.css --output public/css/app.css --verbose && esbuild resources/js/app.js --outfile=public/js/app.js --bundle --minify --target=es2018 --define:process.env.NODE_ENV=\\\"production\\\""
+        "build": "vite build",
+        "dev": "vite"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.4.0",
         "@tailwindcss/typography": "^0.5.0",
-        "autoprefixer": "^10.4.0",
-        "cssnano": "^5.1.13",
-        "esbuild": "^0.8.54",
-        "postcss": "^8.4.31",
-        "postcss-cli": "^8.3",
-        "postcss-import": "^14.0",
-        "standard": "^16.0.4",
-        "tailwindcss": "^3.0.1"
+        "autoprefixer": "^10.4.20",
+        "axios": "^1.7.4",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^1.0",
+        "postcss": "^8.4.47",
+        "tailwindcss": "^3.4.13",
+        "vite": "^5.0"
     },
     "dependencies": {
         "alpinejs": "^3.7.0",

@@ -1,8 +1,8 @@
 // postcss.config.js
-module.exports = (ctx) => ({
+export default {
   plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-    cssnano: ctx.env === 'production' ? {} : false,
+      tailwindcss: {},
+      autoprefixer: {},
+      cssnano: process.env.NODE_ENV === 'production' ? {} : false,
   },
-})
+};
