@@ -12,7 +12,7 @@
 
 @php
   $id = $id ?? \App\Utilities\Str::kebab($label) . '-input';
-  $attributes = $attributes->merge(['class' => 'rounded-md block w-full transition duration-150 ease-in-out sm:leading-5 bg-cool-gray-700 border border-cool-gray-600 focus:ring-cool-gray-400 focus:border-cool-gray-400']);
+  $attributes = $attributes->merge(['class' => 'rounded-md block w-full transition duration-150 ease-in-out sm:leading-5 bg-zinc-700 border border-zinc-600 focus:ring-zinc-400 focus:border-zinc-400']);
 
   if ($error) {
     $attributes = $attributes->merge(['class' => 'pr-10 border-red-700 text-red-700 placeholder-red-300 focus:border-red-700 focus:ring-red']);
@@ -36,7 +36,7 @@
 
 <div {{ $wrapper }}>
   @if ($label)
-    <label for="{{ $id }}" class="block text-sm font-medium leading-5 text-cool-gray-300">
+    <label for="{{ $id }}" class="block text-sm font-medium leading-5 text-zinc-300">
       {{ $label }}
     </label>
   @endif

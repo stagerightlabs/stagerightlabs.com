@@ -12,34 +12,34 @@
   <x-card heading="Skills" class="mb-8">
     <dl class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-8">
       <div class="sm:col-span-1">
-        <dt class="text-lg leading-5 font-medium text-cool-gray-400">
+        <dt class="text-lg leading-5 font-medium text-zinc-400">
           Server Side
         </dt>
-        <dd class="mt-1 text-xl leading-5 text-cool-gray-300">
+        <dd class="mt-1 text-xl leading-5 text-zinc-300">
           PHP, Laravel, Symfony
         </dd>
       </div>
       <div class="sm:col-span-1">
-        <dt class="text-lg leading-5 font-medium text-cool-gray-400">
+        <dt class="text-lg leading-5 font-medium text-zinc-400">
           Client Side
         </dt>
-        <dd class="mt-1 text-xl leading-5 text-cool-gray-300">
+        <dd class="mt-1 text-xl leading-5 text-zinc-300">
           Javascript, Vue.js, CSS / Sass
         </dd>
       </div>
       <div class="sm:col-span-1">
-        <dt class="text-lg leading-5 font-medium text-cool-gray-400">
+        <dt class="text-lg leading-5 font-medium text-zinc-400">
           Databases
         </dt>
-        <dd class="mt-1 text-xl leading-5 text-cool-gray-300">
+        <dd class="mt-1 text-xl leading-5 text-zinc-300">
           PostgreSQL, MySQL
         </dd>
       </div>
       <div class="sm:col-span-1">
-        <dt class="text-lg leading-5 font-medium text-cool-gray-400">
+        <dt class="text-lg leading-5 font-medium text-zinc-400">
           Operations
         </dt>
-        <dd class="mt-1 text-xl leading-5 text-cool-gray-300">
+        <dd class="mt-1 text-xl leading-5 text-zinc-300">
           Docker, AWS
         </dd>
       </div>

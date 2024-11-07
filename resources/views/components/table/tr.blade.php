@@ -2,7 +2,7 @@
 
 @php
   if ($hover) {
-    $attributes = $attributes->merge(['class' => 'hover:bg-cool-gray-500']);
+    $attributes = $attributes->merge(['class' => 'hover:bg-zinc-500']);
   }
 @endphp
 

@@ -15,7 +15,7 @@
         <a href="{{ route('blog.post', $post->slug) }}">
           <x-card class="mb-4">
             <h2 class="text-2xl mb-4">{{ $post->title }}</h2>
-            <p class="text-cool-gray-400 text-xl mb-6">
+            <p class="text-zinc-400 text-xl mb-6">
               {{ $post->description }}
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2">

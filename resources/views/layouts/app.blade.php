@@ -14,7 +14,7 @@
       {{ $slot }}
     @endisset
 
-    <footer class="text-center w-full text-cool-gray-500 mb-4 mt-8">
+    <footer class="text-center w-full text-zinc-500 mb-4 mt-8">
       <p class="mb-2">&copy;{{ date('Y') }} Stage Right Labs</p>
       <p>
         <a type="text/xml" href="{{ route('feed') }}" class="flex items-center justify-center" >

@@ -40,7 +40,7 @@
     @livewireStyles
     @vite('resources/css/app.css')
   </head>
-  <body class="bg-repeat bg-gray-900 text-cool-gray-300" style="background-image: url(/img/stressed-linen.png)">
+  <body class="bg-repeat bg-zinc-900 text-zinc-300">
     {{ $slot }}
     @livewireScripts
     <script src="@version('/js/app.js')"></script>

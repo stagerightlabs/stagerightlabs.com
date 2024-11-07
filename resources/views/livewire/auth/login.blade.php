@@ -33,9 +33,9 @@
           wire:model.lazy="remember"
           id="remember"
           type="checkbox"
-          class="w-4 h-4 text-red-800 transition duration-150 ease-in-out bg-cool-gray-700 border border-cool-gray-600 focus:ring-cool-gray-400 focus:border-cool-gray-400 rounded"
+          class="w-4 h-4 text-red-800 transition duration-150 ease-in-out bg-zinc-700 border border-zinc-600 focus:ring-zinc-400 focus:border-zinc-400 rounded"
         />
-        <label for="remember" class="block ml-2 text-sm text-cool-gray-300 leading-5">
+        <label for="remember" class="block ml-2 text-sm text-zinc-300 leading-5">
           Remember
         </label>
       </div>

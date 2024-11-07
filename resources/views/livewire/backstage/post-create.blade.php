@@ -50,7 +50,7 @@
       wrapper="mt-4"
     />
 
-    <label class="block text-sm font-medium leading-5 text-cool-gray-300 mt-4">
+    <label class="block text-sm font-medium leading-5 text-zinc-300 mt-4">
       Tags
     </label>
     <div class="w-full grid grid-cols-1 sm:grid-cols-4 gap-4 p-4">
@@ -59,7 +59,7 @@
           <input
             id="permissions.{{ $slug }}"
             type="checkbox"
-            class="rounded h-4 w-4 text-red-800 transition duration-150 ease-in-out bg-cool-gray-600 border-cool-gray-500 focus:ring-cool-gray-400 focus:border-cool-gray-400"
+            class="rounded h-4 w-4 text-red-800 transition duration-150 ease-in-out bg-zinc-600 border-zinc-500 focus:ring-zinc-400 focus:border-zinc-400"
             wire:model="tags"
             name="tags[]"
             value="{{ $slug }}"
@@ -67,7 +67,7 @@
           <label for="permissions.{{ $slug }}">{{ $label }}</label>
         </div>
       @empty
-        <p class="text-cool-gray-500">There are no tags.</p>
+        <p class="text-zinc-500">There are no tags.</p>
       @endforelse
     </div>
 

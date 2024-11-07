@@ -14,7 +14,7 @@
         <a href="{{ route('series.show', $s->slug) }}">
           <x-card class="mb-4">
             <h2 class="text-2xl mb-4">{{ $s->name }}</h2>
-            <p class="text-cool-gray-400 text-xl mb-6">
+            <p class="text-zinc-400 text-xl mb-6">
               {{ $s->description }}
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2">

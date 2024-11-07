@@ -8,12 +8,12 @@
 
 <div>
   <div class="mb-6 w-full">
-    <h2 class="text-3xl leading-9 tracking-wide font-bold text-cool-gray-300 sm:text-4xl sm:leading-10">
+    <h2 class="text-3xl leading-9 tracking-wide font-bold text-zinc-300 sm:text-4xl sm:leading-10">
       {{ $post->title }}
     </h2>
   </div>
   <div class="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-4 mb-2">
-    <div class="col-span-1 text-base text-cool-gray-400 flex items-center">
+    <div class="col-span-1 text-base text-zinc-400 flex items-center">
       @if($post->hasBeenPublished())
           <p>
             Published
@@ -46,7 +46,7 @@
     </div>
   </div>
   @if($post->wasPublishedMoreThanAYearAgo())
-    <aside class="text-center text-cool-gray-400 p-4 mt-4 mb-4 bg-cool-gray-900 rounded-md">
+    <aside class="text-center text-zinc-400 p-4 mt-4 mb-4 bg-zinc-900 rounded-md">
       Heads up! This article is more than {{ $post->publicationAgeForHumans() }} the content may be out of date.
     </aside>
   @endif

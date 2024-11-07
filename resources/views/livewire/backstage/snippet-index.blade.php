@@ -38,7 +38,7 @@
         </x-table.tr>
       @endforeach
       <x-slot name="footer">
-        <div class="bg-cool-gray-900">
+        <div class="bg-zinc-900">
           {{ $snippets->links('pagination-links') }}
         </div>
       </x-slot>

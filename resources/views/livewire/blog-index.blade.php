@@ -18,7 +18,7 @@
         <a href="{{ route('blog.post', $post->slug) }}">
           <x-card class="mb-6">
             <h2 class="text-2xl mb-4">{{ $post->title }}</h2>
-            <p class="text-cool-gray-400 text-xl mb-6">
+            <p class="text-zinc-400 text-xl mb-6">
               {{ $post->description }}
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2">
@@ -42,7 +42,7 @@
 
     </div>
     <div class="col-span-1 md:col-span-2 lg:px-2 mt-4 md:mt-0">
-      <p class="text-cool-gray-500 text-2xl tracking-wide mb-4">Topics</p>
+      <p class="text-zinc-500 text-2xl tracking-wide mb-4">Topics</p>
       <ul>
         @foreach ($tags as $tag)
           <li class="inline-block md:block my-2">

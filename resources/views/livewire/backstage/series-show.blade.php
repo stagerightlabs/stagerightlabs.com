@@ -40,11 +40,11 @@
   <x-card class="mb-8" heading="Posts">
     <div x-data x-sortable="{ end: 'updatePostOrder', handle: '.sortable-handle', livewire: $wire }">
       @forelse ($series->posts as $post)
-        <p class="bg-cool-gray-600 rounded mb-4 p-3 flex justify-between"
+        <p class="bg-zinc-600 rounded mb-4 p-3 flex justify-between"
            x-sortable-id="{{ $post->id }}">
           <span class="text-left flex">
             <span class="sortable-handle cursor-move">
-              @svg('heroicon-s-hand-raised', ['class' => 'h-5 w-5 text-cool-gray-500 mr-4'])
+              @svg('heroicon-s-hand-raised', ['class' => 'h-5 w-5 text-zinc-500 mr-4'])
             </span>
             {{ $post->pivot->sort_order }}. {{ $post->title }}
           </span>

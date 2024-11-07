@@ -54,7 +54,7 @@
             <input
               id="public"
               type="checkbox"
-              class="rounded h-4 w-4 text-red-800 transition duration-150 ease-in-out bg-cool-gray-600 border-cool-gray-500 focus:ring-cool-gray-400 focus:border-cool-gray-400"
+              class="rounded h-4 w-4 text-red-800 transition duration-150 ease-in-out bg-zinc-600 border-zinc-500 focus:ring-zinc-400 focus:border-zinc-400"
               wire:model="isPublic"
               name="public"
               value="true"

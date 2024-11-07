@@ -15,7 +15,7 @@
   >{{ $shortcode }}</code>
   <span
     x-show="copied"
-    class="text-cool-gray-500"
+    class="text-zinc-500"
     x-transition:enter="transition ease-out duration-75"
     x-transition:enter-start="opacity-0 scale-90"
     x-transition:enter-end="opacity-100 scale-100"
