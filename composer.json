@@ -10,23 +10,18 @@
     "require": {
         "php": "^8.0.2",
         "blade-ui-kit/blade-heroicons": "^2.0",
-        "doctrine/dbal": "^3.2",
-        "guzzlehttp/guzzle": "^7.3",
-        "honeybadger-io/honeybadger-laravel": "^3.14",
-        "laravel/framework": "^10.0",
+        "honeybadger-io/honeybadger-laravel": "^4.3",
+        "laravel/framework": "^11.0",
         "laravel/tinker": "^2.7",
         "league/commonmark": "^2.0.2",
-        "livewire/livewire": "^2.0",
-        "stagerightlabs/actions": "^0.00.30",
-        "symfony/http-client": "^6.1",
-        "symfony/mailgun-mailer": "^6.1"
+        "livewire/livewire": "^3.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.2",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^7.0",
+        "nunomaduro/collision": "^8.1",
         "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "^2.0"
     },
