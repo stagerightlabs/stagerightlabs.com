@@ -13,8 +13,7 @@
         "honeybadger-io/honeybadger-laravel": "^4.3",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.7",
-        "league/commonmark": "^2.0.2",
-        "livewire/livewire": "^3.4"
+        "league/commonmark": "^2.0.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
