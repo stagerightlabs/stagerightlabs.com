@@ -10,12 +10,10 @@
     "require": {
         "php": "^8.0.2",
         "blade-ui-kit/blade-heroicons": "^2.0",
-        "doctrine/dbal": "^3.1",
-        "fruitcake/laravel-cors": "^2.0",
+        "doctrine/dbal": "^3.2",
         "guzzlehttp/guzzle": "^7.3",
         "honeybadger-io/honeybadger-laravel": "^3.14",
-        "laravel/framework": "^9.0",
-        "laravel/telescope": "^4.4",
+        "laravel/framework": "^10.0",
         "laravel/tinker": "^2.7",
         "league/commonmark": "^2.0.2",
         "livewire/livewire": "^2.0",
@@ -28,9 +26,9 @@
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.2",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0",
+        "spatie/laravel-ignition": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -54,7 +52,7 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
