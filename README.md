@@ -79,7 +79,6 @@ We are also making use of these additional tools:
 - [Tailwind UI](tailwindui.com/)
 - [Heroicons](https://heroicons.com/)
 - [Blade UI Kit Heroicons Package](https://blade-ui-kit.com/blade-icons)
-- [Laravel Telescope](https://laravel.com/docs/8.x/telescope)
 - [Commonmark For PHP](https://commonmark.thephpleague.com/)
 
 ## Credits
