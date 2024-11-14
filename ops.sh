@@ -16,7 +16,7 @@ if [ $# -gt 0 ];then
     if [ "$1" == "art" ]; then
         shift 1
         $COMPOSE exec \
-            cli \
+            php \
             php artisan "$@"
 
     # If "composer" is used, pass-thru to "composer"
@@ -24,7 +24,7 @@ if [ $# -gt 0 ];then
     elif [ "$1" == "composer" ]; then
         shift 1
         $COMPOSE exec \
-            cli \
+            php \
             composer "$@"
 
     # If "test" is used, run unit tests,
@@ -32,7 +32,7 @@ if [ $# -gt 0 ];then
     elif [ "$1" == "test" ]; then
         shift 1
         $COMPOSE exec \
-            cli \
+            php \
             ./vendor/bin/phpunit "$@"
 
     # If "npm" is used, run npm

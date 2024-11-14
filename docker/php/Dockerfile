@@ -2,6 +2,7 @@ FROM php:8.3-alpine
 
 LABEL maintainer="Ryan Durham <ryan@stagerightlabs.com>"
 
+# Set up a www-data user with UID 1000 and GID 1000
 ARG NAME=www-data
 ENV NAME ${NAME}
 RUN deluser www-data && \
@@ -13,6 +14,12 @@ RUN apk add --no-cache git libzip-dev
 
 # Install PHP Extensions
 RUN docker-php-ext-install zip
+
+# Increase the default memory limit
+RUN echo 'memory_limit = 1096M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
+
+# Install Composer globally
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Add Composer to the PATH
 ENV PATH="$PATH:/usr/local/bin:/home/${NAME}/.composer/vendor/bin"
