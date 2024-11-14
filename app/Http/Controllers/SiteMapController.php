@@ -8,16 +8,16 @@ class SiteMapController extends Controller
 {
     public function index()
     {
-        $expiration = now()->addDay(1);
+        // $expiration = now()->addDay(1);
 
-        $posts = cache()->remember('sitemap.posts', $expiration, function () {
-            return Post::whereNotNull('published_at')
-                ->orderBy('published_at')
-                ->get();
-        });
+        // $posts = cache()->remember('sitemap.posts', $expiration, function () {
+        //     return Post::whereNotNull('published_at')
+        //         ->orderBy('published_at')
+        //         ->get();
+        // });
 
-        return response()
-            ->view('sitemap', ['posts' => $posts])
-            ->header('Content-Type', 'text/xml');
+        // return response()
+        //     ->view('sitemap', ['posts' => $posts])
+        //     ->header('Content-Type', 'text/xml');
     }
 }

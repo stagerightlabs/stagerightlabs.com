@@ -9,13 +9,13 @@ class FeedController extends Controller
 {
     public function show()
     {
-        $posts = Cache::remember('rss.posts', now()->addHours(24), function () {
-            return Post::published()
-                ->orderByDesc('published_at')
-                ->get();
-        });
+        // $posts = Cache::remember('rss.posts', now()->addHours(24), function () {
+        //     return Post::published()
+        //         ->orderByDesc('published_at')
+        //         ->get();
+        // });
 
-        return response()->view('feed', ['posts' => $posts])
-            ->header('Content-Type', 'text/xml');
+        // return response()->view('feed', ['posts' => $posts])
+        //     ->header('Content-Type', 'text/xml');
     }
 }

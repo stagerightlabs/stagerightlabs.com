@@ -8,10 +8,10 @@ class DeckController extends Controller
 {
     public function show($slug)
     {
-        if (View::exists("decks.{$slug}")) {
-            return view("decks.{$slug}");
-        }
+        // if (View::exists("decks.{$slug}")) {
+        //     return view("decks.{$slug}");
+        // }
 
-        abort(404);
+        // abort(404);
     }
 }
