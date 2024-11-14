@@ -1,80 +1,8 @@
 services:
-  nginx:
+  php:
     build:
-      context: docker/nginx
-    # command: ['nginx-debug']
+      context: docker/php
+    volumes:
+      - ./:/var/www/:cached
     ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./:/var/www:cached
-    depends_on:
-      - fpm
-    networks:
-      default:
-        aliases:
-          - stagerightlabs.test
-
-  fpm:
-    build:
-      context: docker/fpm
-    command: php-fpm
-    expose:
-      - "9000"
-    volumes:
-      - ./:/var/www:cached
-
-  cli:
-    build:
-      context: docker/cli
-    user: www-data
-    command: ["sleep", "9223372036854775807"]
-    volumes:
-      - ./:/var/www:cached
-
-  # queue:
-  #   build:
-  #     context: docker/cli
-  #   depends_on:
-  #     - postgres
-  #   volumes:
-  #     - ./:/var/www:cached
-  #   command: ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-
-  # schedule:
-  #   build:
-  #     context: docker/cli
-  #   depends_on:
-  #     - postgres
-  #   volumes:
-  #     - ./:/var/www:cached
-  #   command: ["/usr/sbin/crond", "-f", "-d", "0"]
-
-  postgres:
-    build:
-      context: docker/postgres
-    ports:
-      - "54320:5432"
-    environment:
-      - EDITOR=vim
-      - POSTGRES_PASSWORD=secret
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  node:
-    build:
-      context: docker/node
-    volumes:
-      - ./:/var/www:cached
-
-  vite:
-    build:
-      context: docker/node
-    volumes:
-      - ./:/var/www:cached
-    ports:
-      - "5173:5173"
-    command: ["npm", "run", "dev"]
-
-volumes:
-  postgres_data:
+      - 80:8000
