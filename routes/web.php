@@ -23,7 +23,6 @@ Route::get('/', function () {
     return 'Hello Laravel';
 });
 
-
 // // Home Page
 // // Route::get('/', BlogIndex::class)->name('home');
 // Route::redirect('/blog', '/');
