@@ -26,10 +26,7 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <!-- Feed -->
-    <link rel="alternate" type="text/xml" href="{{ route('feed') }}" title="Stage Right Labs">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="alternate" type="text/xml" href="#" title="Stage Right Labs">
 
     <!-- Umami -->
     <script async defer
@@ -37,12 +34,11 @@
       src="https://umami.stagerightlabs.com/script.js"
       data-do-not-track="true"
     ></script>
-    @livewireStyles
     @vite('resources/css/app.css')
   </head>
   <body class="bg-repeat bg-zinc-900 text-zinc-300">
-    {{ $slot }}
-    @livewireScripts
+    {{ $content }}
+
     <script src="@version('/js/app.js')"></script>
     @stack('scripts')
 
