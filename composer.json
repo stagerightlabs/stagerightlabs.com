@@ -60,6 +60,7 @@
             "@php artisan key:generate --ansi"
         ],
         "format": "pint",
-        "phpstan": "./vendor/bin/phpstan analyse"
+        "phpstan": "./vendor/bin/phpstan analyse",
+        "test": "vendor/bin/phpunit"
     }
 }
