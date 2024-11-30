@@ -37,7 +37,7 @@
     @vite('resources/css/app.css')
   </head>
   <body class="bg-repeat bg-zinc-900 text-zinc-300">
-    {{ $content }}
+    @yield('content')
 
     <script src="@version('/js/app.js')"></script>
     @stack('scripts')
