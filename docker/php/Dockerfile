@@ -10,7 +10,8 @@ RUN deluser www-data && \
     chown -R ${NAME}:${NAME} /home/${NAME}
 
 # needed packages
-RUN apk add --no-cache git libzip-dev
+RUN apk add --no-cache --virtual build-deps autoconf g++ libtool make linux-headers && \
+    apk add --no-cache git libzip-dev
 
 # Install PHP Extensions
 RUN docker-php-ext-install zip
@@ -26,6 +27,13 @@ ENV PATH="$PATH:/usr/local/bin:/home/${NAME}/.composer/vendor/bin"
 
 # Ensure ~/.composer belongs to user
 RUN mkdir /home/${NAME}/.composer && chown -R ${NAME}:${NAME} /home/${NAME}
+
+# Install XDebug extension for code coverage support
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+COPY xdebug.ini /usr/local/etc/php/conf.d
+
+# Clean up apk dependencies
+RUN apk del build-deps
 
 # Set the active user
 USER ${NAME}
