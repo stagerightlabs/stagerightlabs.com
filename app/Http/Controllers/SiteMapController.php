@@ -8,7 +8,7 @@ use App\Post;
 
 class SiteMapController extends Controller
 {
-    public function index()
+    public function index(): string
     {
         // $expiration = now()->addDay(1);
 
@@ -21,5 +21,6 @@ class SiteMapController extends Controller
         // return response()
         //     ->view('sitemap', ['posts' => $posts])
         //     ->header('Content-Type', 'text/xml');
+        return '';
     }
 }

@@ -17,7 +17,7 @@ final class ParseFrontMatter
         $content = preg_split('/[\n]*[-]{3}[\n]/', $document->content, 3, PREG_SPLIT_NO_EMPTY);
 
         // If no front matter was found we will return early
-        if (count($content) == 1) {
+        if ($content === false || count($content) == 1) {
             return $document;
         }
 

@@ -14,19 +14,24 @@ use SplFileInfo;
 class Publish extends Command
 {
     protected $signature = 'publish';
-    protected $description = 'Render the site content into HTML';
+    protected $description = 'Render the site content as HTML';
     protected string $template;
     protected string $destination;
 
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): int
     {
         $this->writeBlog();
+
+        return Command::SUCCESS;
     }
 
-    protected function writeBlog()
+    /**
+     * Convert blog post markdown to HTML
+     */
+    protected function writeBlog(): void
     {
         // Read content files
         $this->template = 'blog.show';
@@ -59,6 +64,7 @@ class Publish extends Command
 
     /**
      * Create an HTML page from a document.
+     * @param array<string, string[]> $series
      */
     protected function publish(Document $document, array $series = []): void
     {
@@ -74,6 +80,9 @@ class Publish extends Command
 
     /**
      * Extract series details from ac collection of documents.
+     *
+     * @param Collection<int, Document> $documents
+     * @return array<string, array<string, string>>
      */
     protected function series(Collection $documents): array
     {
@@ -91,7 +100,7 @@ class Publish extends Command
     /**
      * Extract index details from a document.
      *
-     * @return array<string, string|int>
+     * @return array<string, string|int|null>
      */
     protected function index(Document $document): array
     {

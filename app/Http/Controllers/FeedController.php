@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cache;
 
 class FeedController extends Controller
 {
-    public function show()
+    public function show(): string
     {
         // $posts = Cache::remember('rss.posts', now()->addHours(24), function () {
         //     return Post::published()
@@ -19,5 +19,7 @@ class FeedController extends Controller
 
         // return response()->view('feed', ['posts' => $posts])
         //     ->header('Content-Type', 'text/xml');
+
+        return '';
     }
 }

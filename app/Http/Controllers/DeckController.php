@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\View;
 
 class DeckController extends Controller
 {
-    public function show($slug)
+    public function show(string $slug): string
     {
         // if (View::exists("decks.{$slug}")) {
         //     return view("decks.{$slug}");
         // }
 
         // abort(404);
+
+        return '';
     }
 }

@@ -33,6 +33,13 @@ class DocumentTest extends TestCase
     public function it_rejects_invalid_paths()
     {
         $this->expectException(\Exception::class);
-        Document::open(__DIR__.'/../simple.md');
+        @Document::open(__DIR__.'/../simple.md');
+    }
+
+    #[Test]
+    public function it_generates_slugs()
+    {
+        $document = new Document('', 'The title');
+        $this->assertEquals('the-title', $document->slug());
     }
 }

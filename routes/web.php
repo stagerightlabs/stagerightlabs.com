@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DeckController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\MarkdownController;
@@ -24,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return 'Hello Laravel';
 });
+
+Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 // // Home Page
 // // Route::get('/', BlogIndex::class)->name('home');

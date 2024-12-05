@@ -12,7 +12,7 @@ final class Index
     /**
      * @var Collection<int, \StdClass>
      */
-    protected Collection $posts;
+    public Collection $posts;
 
     /**
      * @param array<int, \StdClass> $posts
@@ -36,6 +36,8 @@ final class Index
 
     /**
      * Return a subset of documents as a paginator instance.
+     *
+     * @return LengthAwarePaginator<\StdClass>
      */
     public function paginate(string $route, int $page = 1, int $size = 15): LengthAwarePaginator
     {
