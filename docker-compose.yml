@@ -6,3 +6,11 @@ services:
       - ./:/var/www/:cached
     ports:
       - 80:8000
+
+  node:
+    build:
+      context: docker/node
+    volumes:
+      - ./:/var/www:cached
+    ports:
+      - 5173:5173

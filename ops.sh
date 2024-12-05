@@ -30,11 +30,11 @@ if [ $# -gt 0 ];then
             composer "$@"
 
     # Run NPM
-    elif [ "$1" == "npm" ]; then
+    elif [ "$1" == "yarn" ]; then
         shift 1
         $COMPOSE run --rm \
             node \
-            npm "$@"
+            yarn "$@"
 
     # Else, pass through to docker compose
     else

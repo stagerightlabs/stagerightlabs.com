@@ -1,8 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import fs from 'fs';
-
-const host = 'stagerightlabs.test';
 
 export default defineConfig({
     plugins: [
@@ -12,7 +9,8 @@ export default defineConfig({
         }),
     ],
     server: {
-      host: true,
-      hmr: { host }
+      hmr: {
+        host: 'localhost',
+      }
     }
 });

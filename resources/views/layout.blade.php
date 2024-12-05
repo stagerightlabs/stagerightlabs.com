@@ -29,19 +29,16 @@
     <link rel="alternate" type="text/xml" href="#" title="Stage Right Labs">
 
     <!-- Umami -->
-    <script async defer
+    {{-- <script async defer
       data-website-id="55bf85af-d593-4ee1-aede-d3a887b4a1d5"
       src="https://umami.stagerightlabs.com/script.js"
       data-do-not-track="true"
-    ></script>
+    ></script> --}}
     @vite('resources/css/app.css')
   </head>
   <body class="bg-repeat bg-zinc-900 text-zinc-300">
     @yield('content')
-
-    <script src="@version('/js/app.js')"></script>
     @stack('scripts')
-
     @env('local')
       <x-break-points />
     @endenv
