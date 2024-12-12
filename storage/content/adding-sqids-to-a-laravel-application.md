@@ -9,7 +9,7 @@ tags:
 
 When constructing a URL for a model resource in a standard Laravel application there are really only two options for unique identifiers: model Ids and slugs. UUIDs are also a possibility but they require some extra configuration so I don't consider them a 'standard' option. Model Ids are convenient but you might not want to expose primary keys to your users, for myriad reasons. It is often the case that slugs are not feasible for certain types of model. Our best bet then is to somehow obfuscate model Ids for the sake of generating resource URLs. This will make it much less obvious how many users are in our database, or how many invoices we have sent.  Obfuscation like this is possible but requires a bit of work to integrate with a Laravel application.
 
-For a long time, the best option was a library called [Hashids](https://packagist.org/packages/hashids/hashids), which also has a [Laravel bridge package](https://packagist.org/packages/vinkla/hashids) created by Vincent Klaiber. Recently, however the Hashids project announced the launch of a new tool called [Sqids)(https://sqids.org); the spiritual successor to Hashids. This is more than just a rebranding: the underlying algorithm has been simplified and is now Identical across all platforms. A [PHP implementation](https://github.com/sqids/sqids-php) was recently released, created by Ivan Akimov and Vincent Klaiber.
+For a long time, the best option was a library called [Hashids](https://packagist.org/packages/hashids/hashids), which also has a [Laravel bridge package](https://packagist.org/packages/vinkla/hashids) created by Vincent Klaiber. Recently, however the Hashids project announced the launch of a new tool called [Sqids](https://sqids.org); the spiritual successor to Hashids. This is more than just a rebranding: the underlying algorithm has been simplified and is now Identical across all platforms. A [PHP implementation](https://github.com/sqids/sqids-php) was recently released, created by Ivan Akimov and Vincent Klaiber.
 
 Let's take a look at how we can integrate Sqids with a Laravel application. Our goal will be to allow this integration to be completely transparent with our usage of the framework.
 
@@ -150,7 +150,7 @@ Now when we call `$model->sqid` we will get the appropriate sqid version of the 
 
 The last piece of the puzzle is [route model binding](https://laravel.com/docs/10.x/routing#route-model-binding). Can we get Laravel to translate sqids into models for us automatically when handling routes? Let's give it a shot.
 
-# Route Model Binding
+## Route Model Binding
 
 We will add two additional methods to our `HasSqid` trait:
 
