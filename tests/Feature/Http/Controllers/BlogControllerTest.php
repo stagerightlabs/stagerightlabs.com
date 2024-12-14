@@ -12,7 +12,7 @@ class BlogControllerTest extends TestCase
     #[Test]
     public function it_throws_a_404_on_unknown_slugs()
     {
-        $response = $this->get(route('blog.show', 'unknown-slug'));
+        $response = $this->get(route('article', 'unknown-slug'));
 
         $response->assertStatus(404);
     }

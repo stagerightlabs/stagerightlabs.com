@@ -3,6 +3,6 @@
 declare(strict_types=1);
 
 return [
-    App\Providers\AppServiceProvider::class,
-    App\Providers\CommonMarkProvider::class,
+    App\AppServiceProvider::class,
+    Blog\Librarian\LibrarianServiceProvider::class
 ];
