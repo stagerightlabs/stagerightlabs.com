@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Auth\EmailVerificationController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DeckController;
 use App\Http\Controllers\FeedController;
-use App\Http\Controllers\MarkdownController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\SiteMapController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,16 +21,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'Hello Laravel';
-});
+Route::get('/', HomeController::class)->name('home');
+Route::redirect('/blog', '/');
+Route::get('blog/{slug}', ArticleController::class)->name('article');
+Route::get('about', PageController::class)->name('about');
+Route::get('decks', PageController::class)->name('decks');
+Route::get('resume', PageController::class)->name('resume');
+Route::get('projects', PageController::class)->name('projects');
+Route::get('decks', PageController::class)->name('decks.index');
+Route::get('decks/{slug}', DeckController::class)->name('decks.show');
 
-Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
-
-// // Home Page
-// // Route::get('/', BlogIndex::class)->name('home');
-// Route::redirect('/blog', '/');
+// // Ancillary Pages
+// Route::get('feed', [FeedController::class, 'show'])->name('feed');
+// Route::redirect('blog.rss', 'feed');
+// Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
 
 // // Redirect for problematic historical URLs
 // Route::redirect(
@@ -44,86 +47,3 @@ Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 //     '/blog/laravel-5-package-development-the-service-provider',
 //     302
 // );
-
-// // Blog Posts
-// Route::group(['prefix' => 'blog'], function () {
-//     // Topics
-//     // Route::get('topic/{topic}', BlogTopic::class)->name('blog.topic');
-//     // A special case to handle historical url redirection
-//     Route::get('tag:{tag}', function ($tag) {
-//         return redirect()->route('blog.topic', strtolower($tag));
-//     });
-//     // View a blog post as markdown
-//     Route::get('{slug}.md', [MarkdownController::class, 'show'])->name('blog.markdown');
-//     // A special case to handle historical url redirection
-//     Route::get('{slug}.html', function ($slug) {
-//         return redirect()->route('blog.post', $slug);
-//     });
-//     // View a blog post
-//     // Route::get('{slug}', BlogPost::class)->name('blog.post');
-// });
-
-// // Series
-// Route::group(['prefix' => 'series'], function () {
-//     // Route::get('/', PublicSeriesIndex::class)->name('series.index');
-//     // Route::get('{slug}', PublicSeriesShow::class)->name('series.show');
-// });
-
-// // Snippets
-// // Route::get('snippets/{ref}', PublicSnippet::class)->name('public.snippet');
-// Route::redirect('snippets', '/');
-
-// // Static Pages
-// // Route::get('about', About::class)->name('about');
-// Route::view('decks', 'decks.index')->name('decks.index');
-// Route::get('decks/{slug}.html', function ($slug) {
-//     return redirect()->route('decks.show', $slug);
-// });
-// Route::get('decks/{slug}', [DeckController::class, 'show'])->name('decks.show');
-// Route::view('projects/{slug?}', 'projects')->name('projects.index');
-// Route::view('resume', 'resume')->name('resume');
-
-// // Ancillary Pages
-// Route::get('feed', [FeedController::class, 'show'])->name('feed');
-// Route::redirect('blog.rss', 'feed');
-// Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
-
-// // Auth and User Accounts
-// Route::middleware('guest')->group(function () {
-//     // Route::get('login', Login::class)->name('login');
-// });
-
-// // Route::get('password/reset', Email::class)
-// //     ->name('password.request');
-
-// // Route::get('password/reset/{token}', Reset::class)
-// //     ->name('password.reset');
-
-// // Route::middleware('auth')->group(function () {
-// //     Route::get('email/verify', Verify::class)
-// //         ->middleware('throttle:6,1')
-// //         ->name('verification.notice');
-
-// //     Route::get('password/confirm', Confirm::class)
-// //         ->name('password.confirm');
-// // });
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
-//         ->middleware('signed')
-//         ->name('verification.verify');
-
-//     Route::any('logout', LogoutController::class)
-//         ->name('logout');
-// });
-
-// // Temporary contact page redirect
-// Route::redirect('contact', '/about', 302);
-
-// // Convert old tag link url to the new format.
-// Route::get('tag:{tag}', function ($tag) {
-//     return redirect()->route('blog.topic', strtolower($tag));
-// });
-
-// // Portfolio page redirect
-// Route::redirect('portfolio', 'resume');
