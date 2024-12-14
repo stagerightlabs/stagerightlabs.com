@@ -1,4 +1,4 @@
-@extends('layouts.deck')
+@extends('deck')
 
 @section('title', 'Single Table Inheritance')
 

@@ -1,0 +1,9 @@
+@import "night-owl.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.heading-permalink {
+    @apply inline-block mr-2 no-underline;
+}
