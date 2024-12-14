@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Transformers;
+namespace Blog\Transformers;
 
-use App\Models\Document;
+use Blog\Documents\Document;
+use Blog\Support\Arr;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
@@ -30,23 +32,22 @@ final class ParseFrontMatter
             return $document;
         }
 
-        $title = array_key_exists('title', $yaml) ? $yaml['title'] : null;
-        $summary = array_key_exists('summary', $yaml) ? $yaml['summary'] : null;
+        // Instantiate a date instance if necessary
         $date = array_key_exists('date', $yaml)
             ? new \DateTimeImmutable("@{$yaml['date']}", new \DateTimeZone('UTC'))
             : null;
-        $series = array_key_exists('series', $yaml) ? $yaml['series'] : null;
-        $episode = array_key_exists('episode', $yaml) ? $yaml['episode'] : null;
-        $tags = array_key_exists('tags', $yaml) ? $yaml['tags'] : [];
 
         return new Document(
-            $content[1],
-            $title,
-            $summary,
-            $date,
-            $series,
-            $episode,
-            $tags,
+            content: $content[1],
+            path: $document->path,
+            title: Str::apa(Arr::string($yaml, 'title')),
+            slug: Arr::string($yaml, 'slug', Str::slug(Arr::string($yaml, 'title'))),
+            summary: Arr::string($yaml, 'summary'),
+            date: $date,
+            series: Arr::string($yaml, 'series'),
+            episode: Arr::integer($yaml, 'episode'),
+            tags: Arr::array($yaml, 'tags') ?? [],
+            template: Arr::string($yaml, 'template', 'article')
         );
     }
 }

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Models;
+namespace Tests\Domain\Models;
 
-use App\Models\Document;
-use App\Transformers\MarkdownConverter;
+use Blog\Documents\Document;
+use Blog\Transformers\MarkdownConverter;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -34,12 +34,5 @@ class DocumentTest extends TestCase
     {
         $this->expectException(\Exception::class);
         @Document::open(__DIR__.'/../simple.md');
-    }
-
-    #[Test]
-    public function it_generates_slugs()
-    {
-        $document = new Document('', 'The title');
-        $this->assertEquals('the-title', $document->slug());
     }
 }

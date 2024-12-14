@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Transformers;
+namespace Tests\Domain\Transformers;
 
-use App\Models\Document;
-use App\Transformers\ParseFrontMatter;
+use Blog\Documents\Document;
+use Blog\Transformers\ParseFrontMatter;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\Log;
 use PHPUnit\Framework\Attributes\Test;
@@ -16,7 +16,7 @@ class ParseFrontMatterTest extends TestCase
     #[Test]
     public function it_can_read_front_matter()
     {
-        $document = Document::open(__DIR__.'/../../../tests/stubs/folder/chapter1.md')
+        $document = Document::open(__DIR__.'/../../../tests/stubs/folder/chapter-1.md')
             ->pipe(new ParseFrontMatter());
 
         $this->assertEquals('Story of the Door', $document->title);

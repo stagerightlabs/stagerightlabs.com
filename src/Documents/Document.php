@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
-
-use Illuminate\Support\Str;
+namespace Blog\Documents;
 
 /**
  * A value object representing a text document.
@@ -17,12 +15,15 @@ final class Document
      */
     public function __construct(
         public readonly string $content,
+        public readonly string $path = '',
         public readonly ?string $title = null,
+        public readonly ?string $slug = null,
         public readonly ?string $summary = null,
         public readonly ?\DateTimeImmutable $date = null,
         public readonly ?string $series = null,
         public readonly ?int $episode = null,
         public readonly array $tags = [],
+        public readonly string $template = 'article'
     ) {
     }
 
@@ -39,18 +40,10 @@ final class Document
      */
     public static function open(string $path): static
     {
-        if (! $content = file_get_contents($path)) {
-            throw new \Exception('Could not read file contents');
+        if (! $content = @file_get_contents($path)) {
+            throw new \Exception("Could not read file contents: '{$path}'");
         }
 
-        return new static($content);
-    }
-
-    /**
-     * Generate a slug for this post.
-     */
-    public function slug(): ?string
-    {
-        return $this->title ? Str::slug($this->title) : null;
+        return new static($content, $path);
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace Blog\Documents;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -17,9 +17,45 @@ final class Index
     /**
      * @param array<int, \StdClass> $posts
      */
-    public function __construct(array $posts)
+    public function __construct(array $posts = [])
     {
         $this->posts = collect($posts);
+    }
+
+    /**
+     * Is the posts collection empty?
+     */
+    public function isEmpty(): bool
+    {
+        return $this->posts->isEmpty();
+    }
+
+    /**
+     * Retrieve data by slug if present.
+     */
+    public function get(string $slug): ?\StdClass
+    {
+        return $this->posts
+            ->filter(fn ($post) => $post->slug == $slug)
+            ->first();
+    }
+
+    /**
+     * Retrieve a summary of all known series.
+     *
+     * @return array<string, array<int, array<string, string>>>
+     */
+    public function series(): array
+    {
+        return $this->posts->reduce(function (array $carry, \StdClass $post) {
+            if (property_exists($post, 'series') && $post->slug) {
+                $carry[$post->series][$post->episode] = [
+                    'title' => $post->title,
+                    'link' => route('article', $post->slug)
+                ];
+            }
+            return $carry;
+        }, []);
     }
 
     /**
