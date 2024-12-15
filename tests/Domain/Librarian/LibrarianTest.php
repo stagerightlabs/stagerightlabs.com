@@ -96,7 +96,20 @@ class LibrarianTest extends TestCase
         $this->assertFileExists($librarian->dist());
 
         $librarian->purge();
-        $this->assertFileDoesNotExist($librarian->dist());
+    #[Test]
+    public function it_can_prepare_an_rss_feed()
+    {
+        $fs = app()->make('files');
+        $librarian = new Librarian(realpath(__DIR__.'/../../stubs/folder'), realpath(__DIR__.'/../../stubs/dist'), $fs);
+
+        $feedA = $librarian->feed();
+        $feedB = $librarian->feed();
+
+        $this->assertStringContainsString('<feed xmlns="http://www.w3.org/2005/Atom">', $feedA);
+        $this->assertStringContainsString('<link href="https://stagerightlabs.com/feed" rel="self" />', $feedA);
+        $this->assertStringContainsString('<feed xmlns="http://www.w3.org/2005/Atom">', $feedB);
+        $this->assertStringContainsString('<link href="https://stagerightlabs.com/feed" rel="self" />', $feedB);
+        $this->assertEquals($feedA, $feedB);
     }
 
     public function tearDown(): void

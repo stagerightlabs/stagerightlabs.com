@@ -81,18 +81,8 @@ final class Librarian
      */
     public function reindex(): Index
     {
-        // Read the available documents from the source directory
-        $documents = collect($this->fs->files($this->source))
-            // Only consider markdown files
-            ->filter(fn ($info) => Str::endsWith($info->getBasename(), '.md'))
-            // Hydrate the file contents into Document classes
-            ->map(function (SplFileInfo $file) {
-                return Document::open($file->getRealPath())
-                    ->pipe(new \Blog\Transformers\ParseFrontMatter());
-            });
-
         // Generate an index from the documents
-        $index = $documents->map(function (Document $document) {
+        $index = $this->documents()->map(function (Document $document) {
             return [
                 'title' => $document->title,
                 'slug' => $document->slug,
@@ -110,6 +100,54 @@ final class Librarian
         // Deserialize and return
         /** @phpstan-ignore argument.type */
         return new Index(json_decode(file_get_contents("{$this->dist}/blog.json")));
+    }
+
+    /**
+     * Return XML for an ATOM feed.
+     *
+     * @return string
+     */
+    public function feed(): string
+    {
+        if ($content = @file_get_contents("{$this->dist}/feed.xml")) {
+            return $content;
+        }
+
+        // Fetch the qualified posts
+        $posts = $this->documents()
+            // Only consider documents with publication dates
+            ->filter(fn ($document) => $document->date)
+            // Sort the posts by date descending
+            ->sort(fn ($a, $b) => $b->date <=> $a->date)
+            // Convert the document markdown to HTML
+            ->map(function (Document $document) {
+                return $document->pipe(new \Blog\Transformers\MarkdownConverter());
+            });
+
+        // Render the posts as XML
+        $content = view('feed', ['documents' => $posts])->render();
+
+        // Write the feed XML to disk
+        file_put_contents("{$this->dist}/feed.xml", $content);
+
+        return $content;
+    }
+
+    /**
+     * Return a collection of available documents.
+     *
+     * @return Collection<array-key,Document>
+     */
+    public function documents(): Collection
+    {
+        return collect($this->fs->files($this->source))
+            // Only consider markdown files
+            ->filter(fn ($info) => Str::endsWith($info->getBasename(), '.md'))
+            // Hydrate the file contents into Document classes
+            ->map(function (SplFileInfo $file) {
+                return Document::open($file->getRealPath())
+                    ->pipe(new \Blog\Transformers\ParseFrontMatter());
+            });
     }
 
     /**

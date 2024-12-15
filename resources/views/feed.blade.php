@@ -24,20 +24,20 @@
     <url>{{ url(asset('img/compact.png')) }}</url>
   </image>
 
-  @foreach($posts as $post)
+  @foreach($documents as $document)
   <entry>
     <title>
-      <![CDATA[{{ $post->title }}]]>
+      <![CDATA[{{ $document->title }}]]>
     </title>
-    <id>tag:stagerightlabs.com,{{ $post->published_at->toDateString() }}:{{ $post->published_at->format('U') }}</id>
-    <updated>{{ $post->published_at->toAtomString() }}</updated>
+    <id>tag:stagerightlabs.com,{{ $document->date->format('Y-m-d\\TH:i:sO') }}:{{ $document->date->format('U') }}</id>
+    <updated>{{ $document->date->format('Y-m-d\\TH:i:sP') }}</updated>
     <summary>
-      <![CDATA[{!! $post->description !!}]]>
+      <![CDATA[{!! $document->summary !!}]]>
     </summary>
     <content type="html">
-      <![CDATA[{!! $post->simple !!}]]>
+      <![CDATA[{!! $document->content !!}]]>
     </content>
-    <link rel="alternate" href="{{ $post->url }}" />
+    <link rel="alternate" href="{{ route('article', $document->slug) }}" />
   </entry>
   @endforeach
 </feed>

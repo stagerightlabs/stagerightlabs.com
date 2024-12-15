@@ -30,10 +30,13 @@ Route::get('resume', PageController::class)->name('resume');
 Route::get('projects', PageController::class)->name('projects');
 Route::get('decks', PageController::class)->name('decks.index');
 Route::get('decks/{slug}', DeckController::class)->name('decks.show');
+Route::redirect('blog.rss', 'feed');
+Route::get('feed', FeedController::class)->name('feed');
+
 
 // // Ancillary Pages
-// Route::get('feed', [FeedController::class, 'show'])->name('feed');
-// Route::redirect('blog.rss', 'feed');
+//
+//
 // Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
 
 // // Redirect for problematic historical URLs

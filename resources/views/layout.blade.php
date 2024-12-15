@@ -83,7 +83,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
         {{-- https://lucide.dev/icons/rss --}}
-        <a href="#" class="group flex gap-x-3 rounded-md w-1/3 p-2 text-sm/6 font-semibold text-zinc-600 hover:bg-zinc-500 hover:text-red-800">
+        <a href="{{ route('feed') }}" class="group flex gap-x-3 rounded-md w-1/3 p-2 text-sm/6 font-semibold text-zinc-600 hover:bg-zinc-500 hover:text-red-800">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rss"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
         </a>
       </div>
