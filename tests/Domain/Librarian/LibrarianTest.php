@@ -83,7 +83,7 @@ class LibrarianTest extends TestCase
         $fs = app()->make('files');
         $librarian = new Librarian(realpath(__DIR__.'/../../stubs/folder'), realpath(__DIR__.'/../../stubs/dist'), $fs);
 
-        $this->assertEquals(realpath(__DIR__.'/../../stubs/dist'), $librarian->dist());
+        $this->assertEquals(realpath(__DIR__.'/../../stubs/dist'), $librarian->distPath());
     }
 
     #[Test]
@@ -93,9 +93,12 @@ class LibrarianTest extends TestCase
         $librarian = new Librarian(realpath(__DIR__.'/../../stubs/folder'), realpath(__DIR__.'/../../stubs/dist'), $fs);
 
         $librarian->prepare('story-of-the-door');
-        $this->assertFileExists($librarian->dist());
+        $this->assertFileExists($librarian->distPath());
 
         $librarian->purge();
+        $this->assertFileDoesNotExist($librarian->distPath());
+    }
+
     #[Test]
     public function it_can_prepare_an_rss_feed()
     {

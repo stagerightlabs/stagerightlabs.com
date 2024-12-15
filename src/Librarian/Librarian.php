@@ -7,6 +7,7 @@ namespace Blog\Librarian;
 use Blog\Documents\Document;
 use Blog\Documents\Index;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use SplFileInfo;
 
@@ -155,15 +156,13 @@ final class Librarian
      *
      * @return string
      */
-    public function dist(): string
+    public function distPath(): string
     {
         return $this->dist;
     }
 
     /**
      * Remove all cached HTML.
-     *
-     * @return string
      */
     public function purge(): bool
     {
