@@ -7,7 +7,7 @@ parameters:
         - app/
         - src/
 
-    # Level 9 is the highest level
+    # Level 10 is the highest level
     level: 8
 
 #    ignoreErrors:
