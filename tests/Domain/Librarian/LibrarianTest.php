@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Domain\Models;
+namespace Tests\Domain\Models\Librarian;
 
 use Blog\Documents\Index;
 use Blog\Librarian\Librarian;
