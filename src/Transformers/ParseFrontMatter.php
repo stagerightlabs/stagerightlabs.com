@@ -32,7 +32,9 @@ final class ParseFrontMatter
             return $document;
         }
 
-        // Instantiate a date instance if necessary
+        // Prepare front matter data for inclusion
+        $title = Arr::string($yaml, 'title') ?? '';
+        $template = Arr::string($yaml, 'template') ?? 'article';
         $date = array_key_exists('date', $yaml)
             ? new \DateTimeImmutable("@{$yaml['date']}", new \DateTimeZone('UTC'))
             : null;
@@ -40,14 +42,14 @@ final class ParseFrontMatter
         return new Document(
             content: $content[1],
             path: $document->path,
-            title: Str::apa(Arr::string($yaml, 'title')),
-            slug: Arr::string($yaml, 'slug', Str::slug(Arr::string($yaml, 'title'))),
+            title: Str::apa($title),
+            slug: Arr::string($yaml, 'slug', Str::slug($title)),
             summary: Arr::string($yaml, 'summary'),
             date: $date,
             series: Arr::string($yaml, 'series'),
             episode: Arr::integer($yaml, 'episode'),
             tags: Arr::array($yaml, 'tags') ?? [],
-            template: Arr::string($yaml, 'template', 'article')
+            template: $template,
         );
     }
 }

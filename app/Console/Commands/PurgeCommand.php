@@ -26,7 +26,7 @@ class PurgeCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(Librarian $librarian)
+    public function handle(Librarian $librarian): int
     {
         if ($librarian->purge()) {
             $this->info("Removed cached content from {$librarian->distPath()}");
