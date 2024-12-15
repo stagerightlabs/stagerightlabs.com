@@ -29,7 +29,7 @@ class PurgeCommand extends Command
     public function handle(Librarian $librarian): int
     {
         if ($librarian->purge()) {
-            $this->info("Removed cached content from {$librarian->distPath()}");
+            $this->components->info("Removed cached content from {$librarian->distPath()}");
             return self::SUCCESS;
         }
 
