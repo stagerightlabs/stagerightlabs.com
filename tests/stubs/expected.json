@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Story of the Door",
+        "slug": "story-of-the-door",
+        "summary": "A chapter from the book \"Dr. Jekyll and Mr. Hyde\" by Robert Louis Stephenson",
+        "date": "2024-01-01",
+        "series": "Dr. Jekyll and Mr. Hyde",
+        "episode": 1,
+        "source": "/var/www/tests/stubs/folder/chapter-1.md"
+    },
+    {
+        "title": "Search for Mr. Hyde",
+        "slug": "search-for-mr-hyde",
+        "summary": "A chapter from the book \"Dr. Jekyll and Mr. Hyde\" by Robert Louis Stephenson",
+        "date": "2024-02-01",
+        "series": "Dr. Jekyll and Mr. Hyde",
+        "episode": 2,
+        "source": "/var/www/tests/stubs/folder/chapter-2.md"
+    },
+    {
+        "title": null,
+        "slug": null,
+        "summary": null,
+        "date": null,
+        "series": null,
+        "episode": null,
+        "source": "/var/www/tests/stubs/folder/simple.md"
+    }
+]

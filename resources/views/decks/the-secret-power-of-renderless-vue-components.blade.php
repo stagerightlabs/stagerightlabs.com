@@ -1,4 +1,4 @@
-@extends('layouts.deck')
+@extends('deck')
 
 @section('title', 'The Secret Power of Renderless Vue Components')
 

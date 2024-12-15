@@ -10,10 +10,10 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
 >
-@foreach($posts as $post)
+@foreach($documents as $document)
   <url>
-    <loc>{{ $post->url }}</loc>
-    <lastmod>{{ $post->updated_at->format('Y-m-d') }}</lastmod>
+    <loc>{{ route('article', $document->slug) }}</loc>
+    <lastmod>{{ $document->date->format('Y-m-d') }}</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 @endforeach
@@ -23,7 +23,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
     'single-table-inheritance',
     'the-secret-power-of-renderless-vue-components',
     'tailwind-css',
-    'intro-to-docker'
+    'intro-to-docker',
+    'hypermedia'
   ];
 @endphp
 @foreach($decks as $slug)
@@ -33,9 +34,12 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
   </url>
 @endforeach
 <url>
-  <loc>{{ route('decks.index') }}</loc>
+  <loc>{{ route('decks') }}</loc>
 </url>
 <url>
-  <loc>{{ route('projects.index') }}</loc>
+  <loc>{{ route('projects') }}</loc>
+</url>
+<url>
+  <loc>{{ route('about') }}</loc>
 </url>
 </urlset>

@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
 LABEL authors="Ryan Durham <ryan@stagerightlabs.com>"
 
@@ -6,4 +6,4 @@ USER node
 
 WORKDIR /var/www
 
-CMD [ "npm", "run", "watch" ]
+CMD [ "yarn", "dev" ]

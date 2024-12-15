@@ -1,0 +1,13 @@
+{
+    "preset": "psr12",
+    "rules": {
+        "declare_strict_types": true,
+        "align_multiline_comment": true,
+        "array_indentation": true,
+        "array_syntax": true,
+        "blank_line_after_namespace": true,
+        "blank_line_after_opening_tag": true,
+        "concat_space": true,
+        "explicit_string_variable": true
+    }
+}

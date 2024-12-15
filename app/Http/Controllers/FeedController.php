@@ -1,21 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Post;
-use Illuminate\Support\Facades\Cache;
+use Blog\Librarian\Librarian;
+use Illuminate\Http\Response;
 
 class FeedController extends Controller
 {
-    public function show()
+    public function __invoke(Librarian $librarian): Response
     {
-        $posts = Cache::remember('rss.posts', now()->addHours(24), function () {
-            return Post::published()
-                ->orderByDesc('published_at')
-                ->get();
-        });
+        $feed = $librarian->feed();
 
-        return response()->view('feed', ['posts' => $posts])
-            ->header('Content-Type', 'text/xml');
+        // Ensure there are entries
+        if (empty($feed)) {
+            abort(404);
+        }
+
+        return response($feed)->header('Content-Type', 'text/xml');
     }
 }

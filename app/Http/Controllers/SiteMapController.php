@@ -1,23 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Post;
+use Blog\Librarian\Librarian;
+use Illuminate\Http\Response;
 
 class SiteMapController extends Controller
 {
-    public function index()
+    public function __invoke(Librarian $librarian): Response
     {
-        $expiration = now()->addDay(1);
+        $sitemap = $librarian->siteMap();
 
-        $posts = cache()->remember('sitemap.posts', $expiration, function () {
-            return Post::whereNotNull('published_at')
-                ->orderBy('published_at')
-                ->get();
-        });
+        // Ensure there are entries
+        if (empty($sitemap)) {
+            abort(404);
+        }
 
-        return response()
-            ->view('sitemap', ['posts' => $posts])
-            ->header('Content-Type', 'text/xml');
+        return response($sitemap)->header('Content-Type', 'text/xml');
     }
 }

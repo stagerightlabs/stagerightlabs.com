@@ -3,47 +3,40 @@
 # Heavily borrowed from Cris Fidao and the "Shipping Docker" course
 # https://serversforhackers.com/shipping-docker
 
-# Set environment variables for local development
-export APP_PORT=${APP_PORT:-80}
-
-COMPOSE="docker-compose"
+COMPOSE="docker compose"
 
 # If we pass any arguments...
 if [ $# -gt 0 ];then
 
-    # If "art" is used, pass-thru to "artisan"
-    # inside a new container
+    # Run the artisan console
     if [ "$1" == "art" ]; then
         shift 1
         $COMPOSE exec \
-            cli \
+            php \
             php artisan "$@"
 
-    # If "composer" is used, pass-thru to "composer"
-    # inside a new container
+    # Run the artisan console
+    elif [ "$1" == "artisan" ]; then
+        shift 1
+        $COMPOSE exec \
+            php \
+            php artisan "$@"
+
+    # Run Composer
     elif [ "$1" == "composer" ]; then
         shift 1
         $COMPOSE exec \
-            cli \
+            php \
             composer "$@"
 
-    # If "test" is used, run unit tests,
-    # pass-thru any extra arguments to php-unit
-    elif [ "$1" == "test" ]; then
-        shift 1
-        $COMPOSE exec \
-            cli \
-            ./vendor/bin/phpunit "$@"
-
-    # If "npm" is used, run npm
-    # from our node container
-    elif [ "$1" == "npm" ]; then
+    # Run NPM
+    elif [ "$1" == "yarn" ]; then
         shift 1
         $COMPOSE run --rm \
             node \
-            npm "$@"
+            yarn "$@"
 
-    # Else, pass-thru args to docker-compose
+    # Else, pass through to docker compose
     else
         $COMPOSE "$@"
     fi
