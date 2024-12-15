@@ -114,22 +114,31 @@ final class Librarian
             return $content;
         }
 
-        // Fetch the qualified posts
-        $posts = $this->documents()
-            // Only consider documents with publication dates
-            ->filter(fn ($document) => $document->date)
-            // Sort the posts by date descending
-            ->sort(fn ($a, $b) => $b->date <=> $a->date)
-            // Convert the document markdown to HTML
-            ->map(function (Document $document) {
-                return $document->pipe(new \Blog\Transformers\MarkdownConverter());
-            });
-
         // Render the posts as XML
-        $content = view('feed', ['documents' => $posts])->render();
+        $content = view('feed', ['documents' => $this->published()])->render();
 
         // Write the feed XML to disk
         file_put_contents("{$this->dist}/feed.xml", $content);
+
+        return $content;
+    }
+
+    /**
+     * Return XML for an ATOM feed.
+     *
+     * @return string
+     */
+    public function siteMap(): string
+    {
+        if ($content = @file_get_contents("{$this->dist}/sitemap.xml")) {
+            return $content;
+        }
+
+        // Render the posts as XML
+        $content = view('feed', ['documents' => $this->published()])->render();
+
+        // Write the feed XML to disk
+        file_put_contents("{$this->dist}/sitemap.xml", $content);
 
         return $content;
     }
@@ -148,6 +157,24 @@ final class Librarian
             ->map(function (SplFileInfo $file) {
                 return Document::open($file->getRealPath())
                     ->pipe(new \Blog\Transformers\ParseFrontMatter());
+            });
+    }
+
+    /**
+     * Retrieve all posts that have a publication date.
+     *
+     * @return Collection<array-key,Document>
+     */
+    public function published()
+    {
+        return $this->documents()
+            // Only consider documents with publication dates
+            ->filter(fn ($document) => !is_null($document->date))
+            // Sort the posts by date descending
+            ->sort(fn ($a, $b) => $b->date <=> $a->date)
+            // Convert the document markdown to HTML
+            ->map(function (Document $document) {
+                return $document->pipe(new \Blog\Transformers\MarkdownConverter());
             });
     }
 

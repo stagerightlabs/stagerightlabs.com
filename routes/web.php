@@ -32,12 +32,7 @@ Route::get('decks', PageController::class)->name('decks.index');
 Route::get('decks/{slug}', DeckController::class)->name('decks.show');
 Route::redirect('blog.rss', 'feed');
 Route::get('feed', FeedController::class)->name('feed');
-
-
-// // Ancillary Pages
-//
-//
-// Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
+Route::get('sitemap.xml', SiteMapController::class)->name('sitemap');
 
 // // Redirect for problematic historical URLs
 // Route::redirect(
