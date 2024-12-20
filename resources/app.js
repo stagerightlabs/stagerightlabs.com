@@ -1,4 +1,4 @@
-import Alpine from 'alpinejs'
+import Alpine from '@alpinejs/csp'
 
 // https://inspiredwebdev.com/copy-to-clipboard-with-javascript
 window.copyToClipboard = function (text) {

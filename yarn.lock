@@ -7,6 +7,13 @@
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
+"@alpinejs/csp@^3.14.7":
+  version "3.14.7"
+  resolved "https://registry.yarnpkg.com/@alpinejs/csp/-/csp-3.14.7.tgz#94dd672915618ff2c128f81b32dc6e0b84ed0c0c"
+  integrity sha512-9f3a9FLl9a7Kont2zkMgMAHmi0APO7uk1EiqZGKy2jMExQhJZirCHGuw4wq4NDZJ5p6HAGOuzg6nPWR1DrLzdQ==
+  dependencies:
+    "@vue/reactivity" "~3.1.1"
+
 "@esbuild/aix-ppc64@0.24.0":
   version "0.24.0"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.24.0.tgz#b57697945b50e99007b4c2521507dc613d4a648c"
