@@ -321,13 +321,6 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.1.5.tgz#74ee3aad995d0a3996a6bb9533d4d280514ede03"
   integrity sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==
 
-alpinejs@^3.14.6:
-  version "3.14.6"
-  resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-3.14.6.tgz#3eb54aeccfed91a7d91a4eb7fa35f03bedd65743"
-  integrity sha512-8Abdd6u8oVurOChPqWCHS2Lr3C9g4+zb/kL1vNPykK/2dVkb3giTcpQ1wykzzWmX7wbTvWLnHX3I3CPPnnAMCA==
-  dependencies:
-    "@vue/reactivity" "~3.1.1"
-
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
