@@ -36,7 +36,7 @@ class SetSecurityHeaders
         // https://scotthelme.co.uk/content-security-policy-an-introduction/
         $response->headers->set(
             'Content-Security-Policy',
-            "default-src 'none'; script-src 'self' https://umami.stagerightlabs.com",
+            "default-src 'none'; img-src 'self'; style-src 'self'; script-src 'self' https://umami.stagerightlabs.com; connect-src https://umami.stagerightlabs.com",
             $replace = true,
         );
 
