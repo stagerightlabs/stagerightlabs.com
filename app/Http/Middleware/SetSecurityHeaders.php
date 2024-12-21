@@ -38,7 +38,7 @@ class SetSecurityHeaders
         // https://scotthelme.co.uk/content-security-policy-an-introduction/
         $response->headers->set(
             'Content-Security-Policy',
-            "script-src: 'nonce-".Vite::cspNonce()."' 'strict-dynamic'",
+            "default-src 'self'; script-src: 'nonce-".Vite::cspNonce()."' 'strict-dynamic'",
             $replace = true,
         );
 
