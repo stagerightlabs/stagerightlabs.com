@@ -36,7 +36,7 @@ class SetSecurityHeaders
         // https://scotthelme.co.uk/content-security-policy-an-introduction/
         $response->headers->set(
             'Content-Security-Policy',
-            "default-src 'none'; img-src 'self'; style-src 'self'; script-src 'self' https://umami.stagerightlabs.com; connect-src https://umami.stagerightlabs.com",
+            "default-src 'self'; script-src https://umami.stagerightlabs.com; connect-src https://umami.stagerightlabs.com",
             $replace = true,
         );
 
@@ -52,7 +52,7 @@ class SetSecurityHeaders
         // https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/
         $response->headers->set(
             'Permissions-Policy',
-            "geolocation: 'none'; midi: 'none'; notifications: 'self'; push: 'none'; sync-hxr: 'self'; microphone: 'none'; camera: 'none'; magnetometer: 'none'; gyroscope: 'none'; speaker: 'none'; vibrate: 'none'; fullscreen: 'self'; payment: 'none';",
+            "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()",
             $replace = true,
         );
 

@@ -25,10 +25,9 @@
     <link rel="alternate" type="text/xml" href="#" title="Stage Right Labs">
 
     <!-- Umami -->
-    <script async deferg
+    <script async defer
       data-website-id="55bf85af-d593-4ee1-aede-d3a887b4a1d5"
       src="https://umami.stagerightlabs.com/script.js"
-      data-do-not-track="true"
     ></script>
     @vite('resources/app.css')
   </head>
@@ -56,7 +55,6 @@
       <nav class="flex flex-1 flex-col mt-8 lg:mt-0 p-2 mb-4" aria-label="Sidebar">
         <ul role="list" class="space-y-1 text-xl">
           <li>
-            <!-- Current: "bg-zinc-50 text-red-600", Default: "text-zinc-700 hover:text-red-600 hover:bg-zinc-50" -->
             <a href="{{ route('home') }}" class="group flex gap-x-3 rounded-md p-2 pl-3 font-semibold {{ Route::is('home') || Route::is('article') ? 'text-red-800 bg-zinc-400 dark:bg-zinc-300' : 'text-zinc-600 hover:bg-zinc-400 hover:text-red-800' }}">Articles</a>
           </li>
           <li>
