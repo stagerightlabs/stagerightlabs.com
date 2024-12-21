@@ -10,6 +10,8 @@
       <title>{{ config('app.name') }}</title>
     @endif
 
+    @vite('resources/app.css')
+
     @hasSection('og')
       <!-- Open Graph -->
       @yield('og')
@@ -29,7 +31,6 @@
       data-website-id="55bf85af-d593-4ee1-aede-d3a887b4a1d5"
       src="https://umami.stagerightlabs.com/script.js"
     ></script>
-    @vite('resources/app.css')
   </head>
   <body class="bg-zinc-50 text-zinc-600 dark:bg-zinc-900 dark:text-zinc-200 xl:flex justify-between container mx-auto relative">
     <main class="xl:pr-8 py-8 2xl:max-w-screen-lg xl:max-w-screen-md">
