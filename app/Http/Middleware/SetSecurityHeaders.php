@@ -6,6 +6,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Vite;
 use Symfony\Component\HttpFoundation\Response;
 
 class SetSecurityHeaders
@@ -17,6 +18,7 @@ class SetSecurityHeaders
      */
     public function handle(Request $request, Closure $next): Response
     {
+        Vite::useCspNonce();
         $response = $next($request);
 
         // We will only apply these headers in production
@@ -36,7 +38,7 @@ class SetSecurityHeaders
         // https://scotthelme.co.uk/content-security-policy-an-introduction/
         $response->headers->set(
             'Content-Security-Policy',
-            "default-src 'self'; script-src 'self' https://umami.stagerightlabs.com; connect-src https://umami.stagerightlabs.com",
+            "default-src 'self'; script-src 'self' https://umami.stagerightlabs.com 'nonce-".Vite::cspNonce()."' connect-src https://umami.stagerightlabs.com",
             $replace = true,
         );
 
