@@ -28,6 +28,7 @@
 
     <!-- Umami -->
     <script async defer
+      nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}"
       data-website-id="55bf85af-d593-4ee1-aede-d3a887b4a1d5"
       src="https://umami.stagerightlabs.com/script.js"
     ></script>
