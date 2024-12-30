@@ -34,7 +34,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
   </url>
 @endforeach
 <url>
-  <loc>{{ route('decks') }}</loc>
+  <loc>{{ route('decks.index') }}</loc>
 </url>
 <url>
   <loc>{{ route('projects') }}</loc>

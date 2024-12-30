@@ -135,7 +135,7 @@ final class Librarian
         }
 
         // Render the posts as XML
-        $content = view('feed', ['documents' => $this->published()])->render();
+        $content = view('sitemap', ['documents' => $this->published()])->render();
 
         // Write the feed XML to disk
         file_put_contents("{$this->dist}/sitemap.xml", $content);
