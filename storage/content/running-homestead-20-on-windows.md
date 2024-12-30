@@ -7,7 +7,6 @@ tags:
     - Vagrant
 ---
 
-
 Using [Vagrant](https://www.vagrantup.com/) has opened up a whole new world of possibilities for me, and adding Laravel's [Homestead](http://laravel.com/docs/4.2/homestead) into the mix has only made my life easier. Now that Homestead 2.0 has been released, I have been eager to make the upgrade.
 
 Here are two excellent primers on the changes to be found in Homestead 2.0:

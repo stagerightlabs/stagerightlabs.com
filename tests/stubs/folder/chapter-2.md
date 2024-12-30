@@ -70,7 +70,6 @@ friends that Henry Jekyll has?"
 "I wish the friends were younger," chuckled Dr. Lanyon. "But I
 suppose we are. And what of that? I see little of him now."
 
-
 "Indeed?" said Utterson. "I thought you had a bond of common
 interest."
 
@@ -224,7 +223,6 @@ not think you would have lied."
 
 "Come," said Mr. Utterson, "that is not fitting language."
 
-
 The other snarled aloud into a savage laugh; and the next moment,
 with extraordinary quickness, he had unlocked the door and
 disappeared into the house.
@@ -293,7 +291,6 @@ man, Poole," resumed the other musingly.
 him."
 
 "I do not think I ever met Mr. Hyde?" asked Utterson.
-
 
 "O, dear no, sir. He never dines here," replied the butler. "Indeed
 we see very little of

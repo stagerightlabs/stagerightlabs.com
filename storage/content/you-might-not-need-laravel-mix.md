@@ -60,11 +60,11 @@ Before we can run the CLI build tool we have to define a configuration file that
 
 ```js
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  }
-}
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+    },
+};
 ```
 
 Here we are registering two plugins: Tailwind and Autoprefixer. These will need to be installed via NPM before you can use them in your asset pipeline. There are [many plugins](https://www.postcss.parts/) available in the PostCSS ecosystem; the possibilities are endless.
@@ -83,12 +83,12 @@ To compress our styles in production we will use cssnano, which is a PostCSS plu
 
 ```js
 module.exports = (ctx) => ({
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-    cssnano: ctx.env === 'production' ? {} : false,
-  },
-})
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+        cssnano: ctx.env === "production" ? {} : false,
+    },
+});
 ```
 
 This tells PostCSS to only use the cssnano plugin when the `NODE_ENV` environment variable is set to 'production'. To generate our production build we can modify our build command like so:
@@ -164,4 +164,4 @@ Notes:
 
 ## Asset Versioning
 
-The final step in setting up our asset pipeline will be implementing asset versioning for browser cache busting.  This, however, will be [a topic for a separate post](https://stagerightlabs.com/blog/asset-versioning-in-laravel).
+The final step in setting up our asset pipeline will be implementing asset versioning for browser cache busting. This, however, will be [a topic for a separate post](https://stagerightlabs.com/blog/asset-versioning-in-laravel).

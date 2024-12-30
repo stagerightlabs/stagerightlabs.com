@@ -208,12 +208,12 @@ In the second method, we are essentially forwarding the content of the message t
 ```html
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8">
-</head>
-<body>
-{!! $body !!}
-</body>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        {!! $body !!}
+    </body>
 </html>
 ```
 

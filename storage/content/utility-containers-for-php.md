@@ -36,7 +36,7 @@ php8.3() {
 You can name the function whatever you would like. Let's run down the parameters:
 
 1. `docker run -it --rm`: This tells docker that you want to run a container with an interactive shell and then automatically shut it down when the command is finsished.
-2. `-u 1000`: This sets the user id for the container session. If your host machine is running linux this will allow you to avoid problems with permissions on files created in the image.  The number should match your user id on the host machine. On Ubuntu the default user is UID 1000.
+2. `-u 1000`: This sets the user id for the container session. If your host machine is running linux this will allow you to avoid problems with permissions on files created in the image. The number should match your user id on the host machine. On Ubuntu the default user is UID 1000.
 3. `-e COMPOSER_HOME=/home/www-data/.config/composer`: This sets an environment variable in the container that tells Composer to use a custom home folder; in this case the UID user, aka "www-data" in this image. This ensures that all of Composer's cache files will be owned by the UID 1000 user to avoid more file permissions issues.
 4. `-v $(pwd):/var/www`: This mounts the current working director on the host machine as a volume in Docker at the `/var/www` location.
 5. `-w /var/www`: This sets `/var/www` as the current working directory for the container.

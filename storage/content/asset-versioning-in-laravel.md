@@ -7,13 +7,13 @@ tags:
     - Laravel
 ---
 
-Laravel Mix provides an asset versioning tool that allows us to ensure that browsers are always pulling in the latest version of our compiled assets. How can we implement cache busting [if we are not using Laravel  Mix](https://stagerightlabs.com/blog/you-might-not-need-laravel-mix)? Here is a strategy that I have found useful.
+Laravel Mix provides an asset versioning tool that allows us to ensure that browsers are always pulling in the latest version of our compiled assets. How can we implement cache busting [if we are not using Laravel Mix](https://stagerightlabs.com/blog/you-might-not-need-laravel-mix)? Here is a strategy that I have found useful.
 
 The key to forcing browsers to update their asset cache is to change the name of the file that is being referenced. Laravel Mix does this by implementing asset fingerprinting; a unique file name is generated for each asset each time you run your mix scripts (in production) and the `mix()` helper method looks up the appropriate name via a `mix-manifest.json` file that is stored in your public path.
 
-We can accomplish something similar by appending a query string parameter to our asset URLs.  To do that we will set up a config value to keep track of our asset version and then use that value as a query parameter when calling our asset files.
+We can accomplish something similar by appending a query string parameter to our asset URLs. To do that we will set up a config value to keep track of our asset version and then use that value as a query parameter when calling our asset files.
 
-To implement this we will first create an `assets.php` config file in our `config/` directory.  This config file will have one value, called "version":
+To implement this we will first create an `assets.php` config file in our `config/` directory. This config file will have one value, called "version":
 
 ## Generating an Asset Version ID
 
@@ -25,7 +25,7 @@ return [
 ];
 ```
 
-Notice that we are referencing a new`ASSETS_VERSION` environment variable.  Add this key to your `.env` file.  We will set up an artisan command to update the value of the `ASSETS_VERSION` variable for us when needed.  We can crib the functionality for this tool from the `key:generate` command, which performs a very similar task.
+Notice that we are referencing a new`ASSETS_VERSION` environment variable. Add this key to your `.env` file. We will set up an artisan command to update the value of the `ASSETS_VERSION` variable for us when needed. We can crib the functionality for this tool from the `key:generate` command, which performs a very similar task.
 
 ```php
 <?php
@@ -136,7 +136,7 @@ Blade::directive('version', function($path) {
 });
 ```
 
-This blade directive accepts a partial path to an asset.  It uses the `asset()` url helper to generate a full URL to the asset, then appends our version ID to the url as a query string. If no version is found the query parameter will be omitted.
+This blade directive accepts a partial path to an asset. It uses the `asset()` url helper to generate a full URL to the asset, then appends our version ID to the url as a query string. If no version is found the query parameter will be omitted.
 
 We will now need to update our layout files to use this directive when loading assets:
 

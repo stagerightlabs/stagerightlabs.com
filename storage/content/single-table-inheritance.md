@@ -24,17 +24,14 @@ Initially we decided to tackle this by using a 'status' column on the record tab
         <?php if ($record->status == 'new') ?>
         <a href="...">Cancel</a>
         <a href="...">Assign to Nurse</a>
-        <?php endif; ?>
-        <?php if ($record->status == 'acquired') ?>
+        <?php endif; ?> <?php if ($record->status == 'acquired') ?>
         <a href="...">Prepare Summary</a>
         <a href="...">View PDFs</a>
-        <?php endif; ?>
-        <?php if ($record->status == 'summarized') ?>
+        <?php endif; ?> <?php if ($record->status == 'summarized') ?>
         <a href="...">Review Summary</a>
         <a href="...">Approve</a>
         <a href="...">Reject</a>
-        <?php endif; ?>
-        <?php if ($record->status == 'approved') ?>
+        <?php endif; ?> <?php if ($record->status == 'approved') ?>
         <a href="...">View</a>
         <a href="...">Process Payment</a>
         <?php endif; ?>
@@ -208,12 +205,8 @@ We can set up some convenience functions behind the scenes that convert the acti
 ```html
 <?php foreach($records as $record) ?>
 <tr>
-    <td>
-        <?php echo $record->referenceNum; ?>
-    </td>
-    <td>
-        <?php echo $record->getActions('client'); ?>
-    </td>
+    <td><?php echo $record->referenceNum; ?></td>
+    <td><?php echo $record->getActions('client'); ?></td>
 </tr>
 <?php endforeach; ?>
 ```

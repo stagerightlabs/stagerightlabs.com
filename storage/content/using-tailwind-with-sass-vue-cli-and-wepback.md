@@ -36,7 +36,7 @@ We also need to update the `.postcssrc.js` file to have Post CSS trigger the tai
 
 ```js
 module.exports = {
-  plugins: [require("tailwindcss")("tailwind.js"), require("autoprefixer")()]
+    plugins: [require("tailwindcss")("tailwind.js"), require("autoprefixer")()],
 };
 ```
 
@@ -54,7 +54,7 @@ Next, locate the "style" section in the `App.vue` file and replace it with this:
 
 ```html
 <style lang="sass">
-  @import "./assets/scss/app.scss"
+    @import "./assets/scss/app.scss"
 </style>
 ```
 
@@ -68,10 +68,10 @@ To verify that everything is working, try updating your app.scss file to look li
 @tailwind preflight;
 
 #app {
-  @apply .text-center .text-grey-darker .mt-8;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    @apply .text-center .text-grey-darker .mt-8;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @tailwind utilities;

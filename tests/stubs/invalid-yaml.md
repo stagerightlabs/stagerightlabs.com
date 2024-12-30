@@ -1,6 +1,6 @@
 ---
 - !text |
-  first line
+    first line
 ---
 
 # This post has invalid front matter
