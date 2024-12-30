@@ -48,9 +48,18 @@ class ParseFrontMatterTest extends TestCase
     #[Test]
     public function it_can_parse_front_matter_with_no_date()
     {
-        $document = Document::open(__DIR__.'/../../../tests/stubs/no_date.md')
+        $document = Document::open(__DIR__.'/../../../tests/stubs/no-date.md')
             ->pipe(new ParseFrontMatter());
 
         $this->assertNull($document->date);
+    }
+
+    #[Test]
+    public function it_can_ignores_specified_values_when_converting_to_title_case()
+    {
+        $document = Document::open(__DIR__.'/../../../tests/stubs/title-case.md')
+            ->pipe(new ParseFrontMatter());
+
+        $this->assertEquals('PHP', $document->title);
     }
 }

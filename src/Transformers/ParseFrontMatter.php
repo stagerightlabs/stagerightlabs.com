@@ -35,14 +35,14 @@ final class ParseFrontMatter
         // Prepare front matter data for inclusion
         $title = Arr::string($yaml, 'title') ?? '';
         $template = Arr::string($yaml, 'template') ?? 'article';
-        $date = array_key_exists('date', $yaml)
+        $date = array_key_exists('date', $yaml) && $yaml['date']
             ? new \DateTimeImmutable("@{$yaml['date']}", new \DateTimeZone('UTC'))
             : null;
 
         return new Document(
             content: $content[1],
             path: $document->path,
-            title: Str::apa($title),
+            title: $this->titleCase($title),
             slug: Arr::string($yaml, 'slug', Str::slug($title)),
             summary: Arr::string($yaml, 'summary'),
             date: $date,
@@ -51,5 +51,19 @@ final class ParseFrontMatter
             tags: Arr::array($yaml, 'tags') ?? [],
             template: $template,
         );
+    }
+
+    /**
+     * Convert a string to title case with some additional finesse.
+     *
+     * @param string $title
+     * @return string
+     */
+    protected function titleCase(string $title): string
+    {
+        return Str::of($title)->apa()->replace(
+            ['Php'],
+            ['PHP']
+        )->toString();
     }
 }
