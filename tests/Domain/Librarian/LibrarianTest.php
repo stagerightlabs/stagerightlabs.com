@@ -115,6 +115,27 @@ class LibrarianTest extends TestCase
         $this->assertEquals($feedA, $feedB);
     }
 
+    #[Test]
+    public function it_can_prepare_a_sitemap_feed()
+    {
+        $fs = app()->make('files');
+        $librarian = new Librarian(realpath(__DIR__.'/../../stubs/folder'), realpath(__DIR__.'/../../stubs/dist'), $fs);
+
+        $feedA = $librarian->siteMap();
+        $feedB = $librarian->siteMap();
+
+        $this->assertStringContainsString('<?xml version="1.0" encoding="UTF-8"?>', $feedA);
+        $this->assertStringContainsString('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"', $feedA);
+        $this->assertStringContainsString('<loc>http://stagerightlabs.test/blog/search-for-mr-hyde</loc>', $feedA);
+        $this->assertStringContainsString('<lastmod>2024-02-01</lastmod>', $feedB);
+        $this->assertStringContainsString('<changefreq>monthly</changefreq>', $feedB);
+        $this->assertEquals($feedA, $feedB);
+    }
+
+
+
+
+
     public function tearDown(): void
     {
         // Clean up the stubs/dist folder
