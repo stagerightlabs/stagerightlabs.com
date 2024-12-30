@@ -1,8 +1,8 @@
 ---
 title: Utility Containers for PHP
 date: 2024-12-28
-summary: Leverage bash functions and docker containers to allow for quick access to tools like PHP and node without installing them locally.
-tags: PHP
+summary: Leverage bash functions and docker containers to allow quick access to tools like PHP and Node without installing them locally.
+tags: PHP, Docker
 ---
 
 I have found that after using Docker for a while the idea of installing programming libraries directly on my development machine undesirable; my preference is to use Docker for everything I can and keep the host machine as clean as possible. However, there are still times when having quick access to node or to PHP can be handy, and when those tools are not installed I feel friction in my productivity flow.
@@ -13,9 +13,9 @@ As an added bonus, this technique let's me easily access different versions of P
 
 ## Docker Container
 
-First you will need an image containing the tool you want to run. If you are feeling adventurous you could build this yourself, or you could use one of the many images availably publicly on [hub.docker.com](hub.docker.com). For PHP I reccomend finding an image that has Composer already installed, as well as some of the more commonly used extensions such as BCMath and Zip. The [Kirschbaum Development Group](https://kirschbaumdevelopment.com/) [maintains a PHP image](https://hub.docker.com/r/kirschbaumdevelopment/laravel-test-runner) for use in continuous integration tools; this could be an ideal jumping off point for you.
+First you will need an image containing the tool you want to run. If you are feeling adventurous you could build this yourself, or you could use one of the many images availably publicly on [hub.docker.com](hub.docker.com). For PHP I reccomend finding an image that has Composer already installed, as well as some of the more commonly used extensions such as BCMath and Zip. The [Kirschbaum Development Group](https://kirschbaumdevelopment.com/) maintains a [PHP image](https://hub.docker.com/r/kirschbaumdevelopment/laravel-test-runner) for use in continuous integration tools; this could be an ideal jumping off point for you.
 
-One of the great benefits of Docker is its flexibilty. I started out using the Kirschbaum image but eventually needed to make my own modifications to the image. I have published [my own verison of a "test runner" image](https://hub.docker.com/r/stagerightlabs/php-test-runner).  These image variants are customized for my particular needs; you can extend existing images or build your own as needed.
+One of the great benefits of Docker is its flexibilty. I started out with the Kirschbaum image but eventually needed to make my own modifications. I have published [my own verison](https://hub.docker.com/r/stagerightlabs/php-test-runner) of a "test runner" image. These image variants are customized for my particular needs; you can extend existing images or build your own as needed.
 
 ## Bash Function
 
