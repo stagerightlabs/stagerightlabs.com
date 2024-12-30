@@ -81,15 +81,15 @@ location / {
 }
 ```
 
-Here we are configuring our proxy and then using the `proxy_pass http://site` line to forward requests to our upstream server on port 4000.  Replace "site" with whatever name you used for your upstream service.
+Here we are configuring our proxy and then using the `proxy_pass http://site` line to forward requests to our upstream server on port 4000. Replace "site" with whatever name you used for your upstream service.
 
-As of the time of this writing we need to enforce the use of HTTP1.1 to allow websocket negotiations to work in the way that Elixir and Phoenix expect them to.  Most of the proxy configuration listed here is used for that purpose.
+As of the time of this writing we need to enforce the use of HTTP1.1 to allow websocket negotiations to work in the way that Elixir and Phoenix expect them to. Most of the proxy configuration listed here is used for that purpose.
 
-With those changes in place you can save the script and restart nginx.  Now, on to the deployment script.
+With those changes in place you can save the script and restart nginx. Now, on to the deployment script.
 
 ## The Deployment Script
 
-A deployment script outlines the actions that Forge will perform whenever you request a site deployment.  The default deployment script generated for new sites is geared towards PHP applications.  Delete everything that is there and replace it with this:
+A deployment script outlines the actions that Forge will perform whenever you request a site deployment. The default deployment script generated for new sites is geared towards PHP applications. Delete everything that is there and replace it with this:
 
 ```sh
 cd /home/forge/www.example.com
@@ -142,7 +142,8 @@ Let's break it down into chunks:
 cd /home/forge/www.example.com
 git pull origin main
 ```
-First we move into the project's root directory and pull in the latest version of the code with git.  Make sure you specify whichever repo branch you are using for deployments here.  I am using "main".
+
+First we move into the project's root directory and pull in the latest version of the code with git. Make sure you specify whichever repo branch you are using for deployments here. I am using "main".
 
 ```
 if ! [ -x "$(command -v mix)" ]; then
@@ -151,7 +152,7 @@ if ! [ -x "$(command -v mix)" ]; then
 fi
 ```
 
-We won't be able to get very far if we can't use the `mix` tool provided by Elixir.  Here we are checking to make sure it is available. If it isn't then it is likely that something went wrong when we installed Elixir on the server.
+We won't be able to get very far if we can't use the `mix` tool provided by Elixir. Here we are checking to make sure it is available. If it isn't then it is likely that something went wrong when we installed Elixir on the server.
 
 ```
 if ! [ -d /home/forge/rcd_logs ]; then
@@ -159,14 +160,14 @@ if ! [ -d /home/forge/rcd_logs ]; then
 fi
 ```
 
-We are going to use a separate directory for storing our application logs.  Here we are making sure that the directory exists.  If it doesn't we will create it.
+We are going to use a separate directory for storing our application logs. Here we are making sure that the directory exists. If it doesn't we will create it.
 
 ```
 mix local.hex --force
 mix local.rebar --force
 ```
 
-We will need both `hex` and `rebar` to manage our Elixir dependencies and build our release.  Here we are checking to make sure they are available to us.
+We will need both `hex` and `rebar` to manage our Elixir dependencies and build our release. Here we are checking to make sure they are available to us.
 
 ```
 mix deps.get --only prod
@@ -181,30 +182,32 @@ npm install --no-save --prefix ./apps/site_web/assets
 npm run deploy --prefix ./apps/site_web/assets
 MIX_ENV=prod mix phx.digest /home/forge/www.example.com/apps/site_web/priv/static
 ```
+
 Now we are compiling our front end assets. You will need to update the `prefix` value to point to your own asset directory. The `phx.digest` command prepares our static assets for use with our release binary.
 
 ```
 # MIX_ENV=prod mix ecto.migrate
 ```
-If you want to automatically run new database migrations you can uncomment this line.  I tend to prefer to run migrations manually, but the choice is yours.
+
+If you want to automatically run new database migrations you can uncomment this line. I tend to prefer to run migrations manually, but the choice is yours.
 
 ```
 MIX_ENV=prod mix release production --overwrite
 ```
 
-This is where we build our new release binary.  The `--overwrite` flag tells Elixir to replace the currently tagged release rather than creating a new one with a new version number.  You may decide that you want to keep your old releases and tag a new build version for each release; this will require that you update your release configuration in the application for each deployment.
+This is where we build our new release binary. The `--overwrite` flag tells Elixir to replace the currently tagged release rather than creating a new one with a new version number. You may decide that you want to keep your old releases and tag a new build version for each release; this will require that you update your release configuration in the application for each deployment.
 
 ```
 _build/prod/rel/production/bin/production stop
 ```
 
-If we have an existing release running this command will stop it.  If there is no existing release this command will error, but that doesn't matter for our purposes.
+If we have an existing release running this command will stop it. If there is no existing release this command will error, but that doesn't matter for our purposes.
 
 ```
 RELEASE_TMP=/home/forge/rcd_logs _build/prod/rel/production/bin/production daemon
 ```
 
-Here we start up a new daemon process with the newly built binary.  Note that we are setting an environment variable that tells the binary where to put its log files - this is the same folder path we created earlier.
+Here we start up a new daemon process with the newly built binary. Note that we are setting an environment variable that tells the binary where to put its log files - this is the same folder path we created earlier.
 
 The exact path to the binary will depend on your release configuration.
 
@@ -216,12 +219,12 @@ I like to include the newly started process ID in the deployment log; this is op
 
 ## Conclusion
 
-With this deployment script in place you can now use Forge to automatically build and deploy Elixir application releases on-demand.  How neat is that? Forge is a remarkable tool.
+With this deployment script in place you can now use Forge to automatically build and deploy Elixir application releases on-demand. How neat is that? Forge is a remarkable tool.
 
 ## NB
 
 There are a couple things to keep in mind:
 
 - If you restart the server your application process will not automatically restart; you will have to connect via SSH and start the process manually.
-- This deployment script is not perfect. Occasionally it will build the release but not successfully start the daemon process.  When that happens I start the process by connecting to the server via SSH and running the commands manually.
-- I have [set up a gist](https://gist.github.com/rydurham/41904723ab07d8d60fa8295ee6f64822) for this deployment script.  Feel free to leave a comment if you have any ideas for improvement.
+- This deployment script is not perfect. Occasionally it will build the release but not successfully start the daemon process. When that happens I start the process by connecting to the server via SSH and running the commands manually.
+- I have [set up a gist](https://gist.github.com/rydurham/41904723ab07d8d60fa8295ee6f64822) for this deployment script. Feel free to leave a comment if you have any ideas for improvement.

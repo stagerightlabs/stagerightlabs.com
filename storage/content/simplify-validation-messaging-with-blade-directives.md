@@ -13,9 +13,16 @@ As you may know, the form data validation provided by Laravel is very powerful a
 
 ```html
 <div class="form-group">
-  <label for="input-title">Title</label>
-  <input type="text" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" id="input-title">
-  {!! $errors->has('subtitle') ? $errors->first('subtitle', '<div class="invalid-feedback">:message</div>') : '' !!}
+    <label for="input-title">Title</label>
+    <input
+        type="text"
+        name="title"
+        class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"
+        id="input-title"
+    />
+    {!! $errors->has('subtitle') ? $errors->first('subtitle', '
+    <div class="invalid-feedback">:message</div>
+    ') : '' !!}
 </div>
 ```
 
@@ -42,7 +49,12 @@ This allows us to simplify our input like so:
 ```html
 <div class="form-group">
     <label for="input-title">Title</label>
-    <input type="text" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" id="input-title" >
+    <input
+        type="text"
+        name="title"
+        class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"
+        id="input-title"
+    />
     @error('title')
 </div>
 ```
@@ -74,7 +86,12 @@ It would be nice to set this up as a blade directive as well but because we want
 ```html
 <div class="form-group">
     <label for="input-title">Title</label>
-    <input type="text" name="title" class="form-control {{ hasError('title')  }}" id="input-title" >
+    <input
+        type="text"
+        name="title"
+        class="form-control {{ hasError('title')  }}"
+        id="input-title"
+    />
     @error('title')
 </div>
 ```

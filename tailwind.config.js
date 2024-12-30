@@ -3,7 +3,7 @@ export default {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
-    "./storage/content/*"
+    "./storage/content/*",
   ],
   theme: {
     extend: {},
@@ -12,10 +12,8 @@ export default {
       center: true,
 
       // or have default horizontal padding
-      padding: '1rem',
-    }
+      padding: "1rem",
+    },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [require("@tailwindcss/typography")],
+};

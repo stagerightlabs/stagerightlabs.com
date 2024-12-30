@@ -1,4 +1,5 @@
-pre, code {
+pre,
+code {
     color: #d6deeb;
     background-color: #011627;
 }
@@ -8,7 +9,7 @@ pre, code {
 }
 
 .hl-property {
-    color: #82AAFF;
+    color: #82aaff;
 }
 
 .hl-attribute {
@@ -20,7 +21,7 @@ pre, code {
 }
 
 .hl-generic {
-    color: #82AAFF;
+    color: #82aaff;
 }
 
 .hl-value {
@@ -32,7 +33,7 @@ pre, code {
 }
 
 .hl-number {
-    color: #F78C6C;
+    color: #f78c6c;
 }
 
 .hl-variable {
@@ -58,13 +59,13 @@ pre, code {
 .hl-addition {
     display: inline-block;
     min-width: 100%;
-    background-color: #00FF0022;
+    background-color: #00ff0022;
 }
 
 .hl-deletion {
     display: inline-block;
     min-width: 100%;
-    background-color: #FF000011;
+    background-color: #ff000011;
 }
 
 .hl-gutter {
@@ -77,11 +78,11 @@ pre, code {
 }
 
 .hl-gutter-addition {
-    background-color: #34A853;
+    background-color: #34a853;
     color: #fff;
 }
 
 .hl-gutter-deletion {
-    background-color: #EA4334;
+    background-color: #ea4334;
     color: #fff;
 }

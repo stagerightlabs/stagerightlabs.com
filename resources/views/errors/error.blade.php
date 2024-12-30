@@ -1,12 +1,14 @@
-@extends('layout')
+@extends("layout")
 
-@section('title')
-  @yield('code')
+@section("title")
+  @yield("code")
 @endsection
 
-@section('content')
-<div class="xl:absolute h-96 xl:h-screen xl:inset-0 xl:w-2/3 flex flex-col justify-center items-center">
-  <h1 class="text-8xl mb-4">@yield('code')</h1>
-  <p class="text-4xl">@yield('message')</p>
-</div>
+@section("content")
+  <div
+    class="flex h-96 flex-col items-center justify-center xl:absolute xl:inset-0 xl:h-screen xl:w-2/3"
+  >
+    <h1 class="mb-4 text-8xl">@yield("code")</h1>
+    <p class="text-4xl">@yield("message")</p>
+  </div>
 @endsection

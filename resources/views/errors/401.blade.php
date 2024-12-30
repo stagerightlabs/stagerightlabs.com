@@ -1,5 +1,5 @@
-@extends('errors.error')
+@extends("errors.error")
 
-@section('title', __('Unauthorized'))
-@section('code', '401')
-@section('message', __('Unauthorized'))
+@section("title", __("Unauthorized"))
+@section("code", "401")
+@section("message", __("Unauthorized"))

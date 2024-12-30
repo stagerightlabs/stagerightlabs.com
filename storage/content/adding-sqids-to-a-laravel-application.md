@@ -7,7 +7,7 @@ tags:
     - PHP
 ---
 
-When constructing a URL for a model resource in a standard Laravel application there are really only two options for unique identifiers: model Ids and slugs. UUIDs are also a possibility but they require some extra configuration so I don't consider them a 'standard' option. Model Ids are convenient but you might not want to expose primary keys to your users, for myriad reasons. It is often the case that slugs are not feasible for certain types of model. Our best bet then is to somehow obfuscate model Ids for the sake of generating resource URLs. This will make it much less obvious how many users are in our database, or how many invoices we have sent.  Obfuscation like this is possible but requires a bit of work to integrate with a Laravel application.
+When constructing a URL for a model resource in a standard Laravel application there are really only two options for unique identifiers: model Ids and slugs. UUIDs are also a possibility but they require some extra configuration so I don't consider them a 'standard' option. Model Ids are convenient but you might not want to expose primary keys to your users, for myriad reasons. It is often the case that slugs are not feasible for certain types of model. Our best bet then is to somehow obfuscate model Ids for the sake of generating resource URLs. This will make it much less obvious how many users are in our database, or how many invoices we have sent. Obfuscation like this is possible but requires a bit of work to integrate with a Laravel application.
 
 For a long time, the best option was a library called [Hashids](https://packagist.org/packages/hashids/hashids), which also has a [Laravel bridge package](https://packagist.org/packages/vinkla/hashids) created by Vincent Klaiber. Recently, however the Hashids project announced the launch of a new tool called [Sqids](https://sqids.org); the spiritual successor to Hashids. This is more than just a rebranding: the underlying algorithm has been simplified and is now Identical across all platforms. A [PHP implementation](https://github.com/sqids/sqids-php) was recently released, created by Ivan Akimov and Vincent Klaiber.
 
@@ -67,7 +67,7 @@ One nice benefit of Sqids over Hashids is that there is no need for a salt value
 // 'UkLWZg'
 ```
 
-NB: This is a *minimum* length, not a specific length.
+NB: This is a _minimum_ length, not a specific length.
 
 Additionally, the default "alphabet" of characters used for generating sqid strings contains uppercase and lowercase letters together. I would prefer to use only lowercase letters so I don't have to be concerned about handling case-sensitive URLs.
 
