@@ -19,9 +19,7 @@ class MarkdownConverterTest extends TestCase
 
         $expected = <<<TXT
         <ul class="table-of-contents">
-        <li>
-        <a href="#this-is-a-simple-example">This is a simple example</a>
-        </li>
+        <li><a href="#this-is-a-simple-example">This is a simple example</a></li>
         </ul>
         <h1><a id="this-is-a-simple-example" href="#this-is-a-simple-example" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>This is a simple example</h1>
         <p>This is a paragraph</p>
