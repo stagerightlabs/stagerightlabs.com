@@ -14,7 +14,7 @@
       @else
         <a
           href="{{ $paginator->previousPageUrl() }}"
-          class="relative inline-flex items-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-medium leading-5 text-zinc-700 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-500 focus:border-blue-300 focus:outline-none focus:ring active:bg-zinc-100 active:text-zinc-700 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-300 dark:focus:border-blue-700 dark:active:bg-zinc-700 dark:active:text-zinc-300"
+          class="relative inline-flex items-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-medium leading-5 text-zinc-700 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-500 focus:border-blue-300 focus:outline-hidden focus:ring-3 active:bg-zinc-100 active:text-zinc-700 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-300 dark:focus:border-blue-700 dark:active:bg-zinc-700 dark:active:text-zinc-300"
         >
           {!! __("pagination.previous") !!}
         </a>
@@ -23,7 +23,7 @@
       @if ($paginator->hasMorePages())
         <a
           href="{{ $paginator->nextPageUrl() }}"
-          class="relative ml-3 inline-flex items-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-medium leading-5 text-zinc-700 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-500 focus:border-blue-300 focus:outline-none focus:ring active:bg-zinc-100 active:text-zinc-700 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-300 dark:focus:border-blue-700 dark:active:bg-zinc-700 dark:active:text-zinc-300"
+          class="relative ml-3 inline-flex items-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-medium leading-5 text-zinc-700 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-500 focus:border-blue-300 focus:outline-hidden focus:ring-3 active:bg-zinc-100 active:text-zinc-700 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-300 dark:focus:border-blue-700 dark:active:bg-zinc-700 dark:active:text-zinc-300"
         >
           {!! __("pagination.next") !!}
         </a>
@@ -55,7 +55,7 @@
 
       <div>
         <span
-          class="relative z-0 inline-flex rounded-md shadow-sm rtl:flex-row-reverse"
+          class="relative z-0 inline-flex rounded-md shadow-xs rtl:flex-row-reverse"
         >
           {{-- Previous Page Link --}}
 
@@ -81,7 +81,7 @@
             <a
               href="{{ $paginator->previousPageUrl() }}"
               rel="prev"
-              class="relative inline-flex items-center rounded-l-md border border-zinc-300 bg-white px-2 py-2 text-sm font-medium leading-5 text-zinc-500 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-400 focus:z-10 focus:border-blue-300 focus:outline-none focus:ring active:bg-zinc-100 active:text-zinc-500 dark:border-zinc-600 dark:bg-zinc-800 dark:focus:border-blue-800 dark:active:bg-zinc-700"
+              class="relative inline-flex items-center rounded-l-md border border-zinc-300 bg-white px-2 py-2 text-sm font-medium leading-5 text-zinc-500 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-400 focus:z-10 focus:border-blue-300 focus:outline-hidden focus:ring-3 active:bg-zinc-100 active:text-zinc-500 dark:border-zinc-600 dark:bg-zinc-800 dark:focus:border-blue-800 dark:active:bg-zinc-700"
               aria-label="{{ __("pagination.previous") }}"
             >
               <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
@@ -121,7 +121,7 @@
                 @else
                   <a
                     href="{{ $url }}"
-                    class="relative -ml-px inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-medium leading-5 text-zinc-700 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-500 focus:z-10 focus:border-blue-300 focus:outline-none focus:ring active:bg-zinc-100 active:text-zinc-700 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-300 dark:focus:border-blue-800 dark:active:bg-zinc-700"
+                    class="relative -ml-px inline-flex items-center border border-zinc-300 bg-white px-4 py-2 text-sm font-medium leading-5 text-zinc-700 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-500 focus:z-10 focus:border-blue-300 focus:outline-hidden focus:ring-3 active:bg-zinc-100 active:text-zinc-700 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-300 dark:focus:border-blue-800 dark:active:bg-zinc-700"
                     aria-label="{{ __("Go to page :page", ["page" => $page]) }}"
                   >
                     {{ $page }}
@@ -137,7 +137,7 @@
             <a
               href="{{ $paginator->nextPageUrl() }}"
               rel="next"
-              class="relative -ml-px inline-flex items-center rounded-r-md border border-zinc-300 bg-white px-2 py-2 text-sm font-medium leading-5 text-zinc-500 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-400 focus:z-10 focus:border-blue-300 focus:outline-none focus:ring active:bg-zinc-100 active:text-zinc-500 dark:border-zinc-600 dark:bg-zinc-800 dark:focus:border-blue-800 dark:active:bg-zinc-700"
+              class="relative -ml-px inline-flex items-center rounded-r-md border border-zinc-300 bg-white px-2 py-2 text-sm font-medium leading-5 text-zinc-500 ring-zinc-300 transition duration-150 ease-in-out hover:text-zinc-400 focus:z-10 focus:border-blue-300 focus:outline-hidden focus:ring-3 active:bg-zinc-100 active:text-zinc-500 dark:border-zinc-600 dark:bg-zinc-800 dark:focus:border-blue-800 dark:active:bg-zinc-700"
               aria-label="{{ __("pagination.next") }}"
             >
               <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">

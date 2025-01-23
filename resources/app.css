@@ -1,8 +1,15 @@
-@import "night-owl.css";
+@import "./night-owl.css" layer(base);
+@source "../views/";
+@source "../../storage/content";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@utility container {
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+@plugin "@tailwindcss/typography";
 
 .heading-permalink {
     @apply mr-2 inline-block no-underline;

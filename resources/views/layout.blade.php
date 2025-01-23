@@ -50,9 +50,11 @@
     ></script>
   </head>
   <body
-    class="container relative mx-auto justify-between bg-zinc-50 text-zinc-600 xl:flex dark:bg-zinc-900 dark:text-zinc-200"
+    class="relative container mx-auto justify-between bg-zinc-50 text-zinc-600 xl:flex dark:bg-zinc-900 dark:text-zinc-200"
   >
-    <main class="py-8 xl:max-w-screen-md xl:pr-8 2xl:max-w-screen-lg">
+    <main
+      class="py-8 xl:max-w-(--breakpoint-md) xl:pr-8 2xl:max-w-(--breakpoint-lg)"
+    >
       @yield("content")
     </main>
     <aside class="lg:mx-auto lg:w-96 xl:mx-0">
@@ -84,7 +86,7 @@
       </svg>
       <h2 class="pb-4 text-center text-3xl">Stage Right Labs</h2>
       <nav
-        class="mb-4 mt-8 flex flex-1 flex-col p-2 lg:mt-0"
+        class="mt-8 mb-4 flex flex-1 flex-col p-2 lg:mt-0"
         aria-label="Sidebar"
       >
         <ul role="list" class="space-y-1 text-xl">
