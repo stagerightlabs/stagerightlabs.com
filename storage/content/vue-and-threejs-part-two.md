@@ -93,7 +93,7 @@ Now that the mutation is in place, let's add it to our Control Panel:
 ```html
 <p class="flex items-center">
     <button
-        class="bg-grey-light mx-auto cursor-pointer p-2 shadow"
+        class="bg-grey-light mx-auto cursor-pointer p-2 shadow-sm"
         @click="resetCameraPosition"
     >
         Reset Camera
