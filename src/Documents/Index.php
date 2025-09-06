@@ -36,7 +36,7 @@ final class Index
     public function get(string $slug): ?\StdClass
     {
         return $this->posts
-            ->filter(fn ($post) => $post->slug == $slug)
+            ->filter(fn($post) => $post->slug == $slug)
             ->first();
     }
 
@@ -64,8 +64,8 @@ final class Index
     public function orderByDate(): self
     {
         $this->posts = $this->posts
-            ->filter(fn ($post) => $post->date)
-            ->sort(fn ($a, $b) => $b->date <=> $a->date);
+            ->filter(fn($post) => $post->date)
+            ->sort(fn($a, $b) => $b->date <=> $a->date);
 
         return $this;
     }
@@ -73,7 +73,7 @@ final class Index
     /**
      * Return a subset of documents as a paginator instance.
      *
-     * @return LengthAwarePaginator<\StdClass>
+     * @return LengthAwarePaginator<int, \StdClass>
      */
     public function paginate(string $route, int $page = 1, int $size = 15): LengthAwarePaginator
     {

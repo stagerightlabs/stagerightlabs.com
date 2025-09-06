@@ -10,7 +10,7 @@
     "require": {
         "php": "^8.0.2",
         "honeybadger-io/honeybadger-laravel": "^4.3",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.0",
         "league/commonmark": "^2.0.2",
         "symfony/yaml": "^7.1",
         "tempest/highlight": "^2.11"
@@ -18,11 +18,11 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
         "fakerphp/faker": "^1.9.1",
-        "larastan/larastan": "^2.0",
+        "larastan/larastan": "^3.0",
         "laravel/pint": "^1.2",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.1",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^11.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "config": {

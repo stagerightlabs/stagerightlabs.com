@@ -14,8 +14,11 @@ class DeckController extends Controller
      */
     public function __invoke(string $slug): ViewResponse
     {
-        if (View::exists("decks.{$slug}")) {
-            return view("decks.{$slug}");
+        /** @var view-string $view */
+        $view = "decks.{$slug}";
+
+        if (View::exists($view)) {
+            return view($view);
         }
 
         abort(404);

@@ -44,7 +44,7 @@ final class Arr
      * @param array<mixed>|null $default
      * @return array<mixed>|null
      */
-    public static function array($target, $key, array $default = null): ?array
+    public static function array($target, $key, ?array $default = null): ?array
     {
         $value = data_get($target, $key, $default);
 
