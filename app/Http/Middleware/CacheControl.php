@@ -19,9 +19,10 @@ class CacheControl
     {
         $response = $next($request);
 
-        if ($response instanceof Response) {
+        /** @phpstan-ignore instanceof.alwaysTrue */
+        if ($response instanceof Response && $response->getContent()) {
             $response->headers->set('Cache-Control', 'public, max-age=7200');
-            $response->headers->set('ETag', md5($response->getContent()));
+            $response->headers->set('ETag', \md5($response->getContent()));
         }
 
         return $response;

@@ -1,4 +1,4 @@
-FROM php:8.3-alpine
+FROM php:8.4-alpine
 
 LABEL maintainer="Ryan Durham <ryan@stagerightlabs.com>"
 

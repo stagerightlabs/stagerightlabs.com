@@ -20,6 +20,18 @@ class LibrarianTest extends TestCase
         }
     }
 
+    public function tearDown(): void
+    {
+        parent::tearDown();
+
+        // Clean up the stubs/dist folder
+        foreach (glob(__DIR__.'/../../stubs/dist/*') as $file) {
+            if (is_file($file)) {
+                unlink($file);
+            }
+        }
+    }
+
     #[Test]
     public function it_can_generate_an_index()
     {
@@ -130,19 +142,5 @@ class LibrarianTest extends TestCase
         $this->assertStringContainsString('<lastmod>2024-02-01</lastmod>', $feedB);
         $this->assertStringContainsString('<changefreq>monthly</changefreq>', $feedB);
         $this->assertEquals($feedA, $feedB);
-    }
-
-
-
-
-
-    public function tearDown(): void
-    {
-        // Clean up the stubs/dist folder
-        foreach (glob(__DIR__.'/../../stubs/dist/*') as $file) {
-            if (is_file($file)) {
-                unlink($file);
-            }
-        }
     }
 }

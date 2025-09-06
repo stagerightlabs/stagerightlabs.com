@@ -6,6 +6,8 @@ namespace Blog\Documents;
 
 /**
  * A value object representing a text document.
+ *
+ * @property view-string $template
  */
 final class Document
 {
