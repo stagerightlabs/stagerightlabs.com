@@ -1,13 +1,13 @@
 ---
 title: Automating Wayfinder Without Vite
 date: 2025-09-06
-summary: There are times when you might want to run Laravel Wayfinder automatially without using Vite or node. Let's take a look at one way to set that up.
+summary: There are times when you might want to run Laravel Wayfinder automatially without using Vite or Node. Let's take a look at one way to set that up.
 tags:
     - laravel
     - php
 ---
 
-When I am working with Laravel and PHP locally I prefer to use a [docker environment](https://stagerightlabs.com/blog/starting-a-fresh-laravel-application) that runs node and PHP in separate containers. This proved to be a bit challenging with the recent release of [Laravel Wayfinder](https://github.com/laravel/wayfinder), a tool for communicating route definitions between the front-end and the back-end of your application.  The new starter kits now ship with a [vite plugin](https://github.com/laravel/vite-plugin-wayfinder) that watches your controller and route files and runs Wayfinder automatically whenever it detects changes to those files. 
+When I am working with Laravel and PHP locally I prefer to use a [docker environment](https://stagerightlabs.com/blog/starting-a-fresh-laravel-application) that runs Node and PHP in separate containers. This proved to be a bit challenging with the recent release of [Laravel Wayfinder](https://github.com/laravel/wayfinder), a tool for communicating route definitions between the front-end and the back-end of your application.  The new starter kits now ship with a [vite plugin](https://github.com/laravel/vite-plugin-wayfinder) that watches your controller and route files and runs Wayfinder automatically whenever it detects changes to those files. 
 
 This strategy works very well and is a fantastic convenience for many local development environments. In my situation, however, my local vite process does not have the ability to trigger php commands due to the separation of concerns in my docker setup.  Fortunately, all is not lost. We can still have the convenience of automated TypeScript route defintions while keeping our container processes separate.  To accomplish this we will set up a script in PHP that will poll for changes to our controllers and route files and then call Wayfinder automatically when they are found. 
 
