@@ -36,7 +36,7 @@ final class Index
     public function get(string $slug): ?\StdClass
     {
         return $this->posts
-            ->filter(fn($post) => $post->slug == $slug)
+            ->filter(fn ($post) => $post->slug == $slug)
             ->first();
     }
 
@@ -64,10 +64,24 @@ final class Index
     public function orderByDate(): self
     {
         $this->posts = $this->posts
-            ->filter(fn($post) => $post->date)
-            ->sort(fn($a, $b) => $b->date <=> $a->date);
+            ->filter(fn ($post) => $post->date)
+            ->sort(fn ($a, $b) => $b->date <=> $a->date);
 
         return $this;
+    }
+
+    /**
+     * Return the underlying collection.
+     *
+     * @return Collection<int, \StdClass>|\StdClass|null
+     */
+    public function posts(int|null $key = null): Collection|\StdClass|null
+    {
+        if ($key !== null) {
+            return $this->posts->get($key);
+        }
+
+        return $this->posts;
     }
 
     /**

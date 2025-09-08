@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -24,7 +26,7 @@ class MakeArticleCommand extends Command implements PromptsForMissingInput
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): int
     {
         $slug = $this->argument('slug');
 
@@ -36,14 +38,20 @@ class MakeArticleCommand extends Command implements PromptsForMissingInput
 
         if (file_exists($path)) {
             $this->error("Article {$slug} already exits");
-            return;
+            return Command::FAILURE;
         }
 
         $stream = fopen($path, 'w');
+        if (!$stream) {
+            $this->error('There was a problem creating a file resource for that path');
+            return Command::FAILURE;
+        }
+
         fwrite($stream, $this->template());
 
         fclose($stream);
         $this->info("Created {$path}");
+        return Command::SUCCESS;
     }
 
     /**
