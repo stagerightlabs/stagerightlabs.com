@@ -41,7 +41,11 @@ class LibrarianTest extends TestCase
 
         $index = $librarian->reindex();
 
-        $this->assertEquals($expected, $index->posts->toArray());
+        $this->assertEquals('2024-01-01', $index->posts()[0]->date);
+        $this->assertEquals('Dr. Jekyll and Mr. Hyde', $index->posts()[0]->series);
+        $this->assertEquals(1, $index->posts()[0]->episode);
+        $this->assertStringEndsWith('tests/stubs/folder/chapter-1.md', $index->posts(0)->source);
+        $this->assertCount(3, $index->posts());
     }
 
     #[Test]
