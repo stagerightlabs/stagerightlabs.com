@@ -40,14 +40,14 @@
     <!-- Feed -->
     <link rel="alternate" type="text/xml" href="#" title="Stage Right Labs" />
 
-    <!-- Umami -->
-    <script
-      async
-      defer
-      nonce="{{ \Illuminate\Support\Facades\Vite::cspNonce() }}"
-      data-website-id="55bf85af-d593-4ee1-aede-d3a887b4a1d5"
-      src="https://umami.stagerightlabs.com/script.js"
-    ></script>
+    <!-- Seline Analytics -->
+    @env("production")
+      <script
+        async
+        src="https://cdn.seline.com/seline.js"
+        data-token="20642c0446a7fe3"
+      ></script>
+    @endenv
   </head>
   <body
     class="relative container mx-auto justify-between bg-zinc-50 text-zinc-600 xl:flex dark:bg-zinc-900 dark:text-zinc-200"
