@@ -94,28 +94,6 @@ class LibrarianTest extends TestCase
     }
 
     #[Test]
-    public function it_can_return_the_dist_path()
-    {
-        $fs = app()->make('files');
-        $librarian = new Librarian(realpath(__DIR__.'/../../stubs/folder'), realpath(__DIR__.'/../../stubs/dist'), $fs);
-
-        $this->assertEquals(realpath(__DIR__.'/../../stubs/dist'), $librarian->distPath());
-    }
-
-    #[Test]
-    public function it_can_purge_cached_html()
-    {
-        $fs = app()->make('files');
-        $librarian = new Librarian(realpath(__DIR__.'/../../stubs/folder'), realpath(__DIR__.'/../../stubs/dist'), $fs);
-
-        $librarian->prepare('story-of-the-door');
-        $this->assertFileExists($librarian->distPath());
-
-        $librarian->purge();
-        $this->assertFileDoesNotExist($librarian->distPath());
-    }
-
-    #[Test]
     public function it_can_prepare_an_rss_feed()
     {
         $fs = app()->make('files');

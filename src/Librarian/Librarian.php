@@ -72,8 +72,8 @@ final class Librarian
     public function reindex(): Index
     {
         // Generate an index from the documents
-        $index = $this->documents()->map(function (Document $document) {
-            return [
+        $index = $this->documents()->map(function (Document $document): object {
+            return (object) [
                 'title' => $document->title,
                 'slug' => $document->slug,
                 'summary' => $document->summary,
