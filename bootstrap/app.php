@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Middleware\CacheControl;
 use App\Http\Middleware\SetSecurityHeaders;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -16,7 +15,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web(append: [SetSecurityHeaders::class]);
-        $middleware->web(append: [CacheControl::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->reportable(static function (Throwable $e) {

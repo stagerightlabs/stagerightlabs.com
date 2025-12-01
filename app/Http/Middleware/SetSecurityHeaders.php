@@ -58,6 +58,36 @@ class SetSecurityHeaders
             $replace = true,
         );
 
+        // Cache Control Headers for Cloudflare
+        // Use s-maxage for CDN caching (Cloudflare) and max-age for browser caching
+        // Uniform 1-day cache for all blog content
+        if ($response instanceof Response && $response->getContent()) {
+            $content = $response->getContent();
+            $etag = md5($content);
+
+            // Check if client sent If-None-Match header and ETags match
+            $ifNoneMatch = $request->header('If-None-Match');
+            if ($ifNoneMatch && trim($ifNoneMatch, '"') === $etag) {
+                // Return 304 Not Modified without body
+                return response('', 304)
+                    ->withHeaders([
+                        'Cache-Control' => 'public, max-age=86400, s-maxage=86400',
+                        'ETag' => "\"{$etag}\"",
+                    ]);
+            }
+
+            $response->headers->set(
+                'Cache-Control',
+                'public, max-age=86400, s-maxage=86400',
+                $replace = true
+            );
+            $response->headers->set(
+                'ETag',
+                "\"{$etag}\"",
+                $replace = true
+            );
+        }
+
         return $response;
     }
 }

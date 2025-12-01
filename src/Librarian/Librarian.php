@@ -24,14 +24,10 @@ final class Librarian
     }
 
     /**
-     * Retrieve a prepared document if available, otherwise have it prepared.
+     * Retrieve a prepared document.
      */
     public function fetch(string $slug): ?string
     {
-        if ($content = @file_get_contents("{$this->dist}/{$slug}")) {
-            return $content;
-        }
-
         return $this->prepare($slug);
     }
 
@@ -59,9 +55,6 @@ final class Librarian
             'series' => $index->series()
         ])->render();
 
-        // Cache the HTML on disk
-        $this->fs->put("{$this->dist}/{$slug}", $content);
-
         return $content;
     }
 
@@ -70,15 +63,11 @@ final class Librarian
      */
     public function index(): Index
     {
-        if (!$content = @file_get_contents("{$this->dist}/blog.json")) {
-            return $this->reindex();
-        }
-
-        return new Index(json_decode($content));
+        return $this->reindex();
     }
 
     /**
-     * Generate an index of available documents and write it to disk.
+     * Generate an index of available documents.
      */
     public function reindex(): Index
     {
@@ -95,12 +84,9 @@ final class Librarian
             ];
         });
 
-        // Write the index to disk
-        file_put_contents("{$this->dist}/blog.json", json_encode($index));
-
         // Deserialize and return
         /** @phpstan-ignore argument.type */
-        return new Index(json_decode(file_get_contents("{$this->dist}/blog.json")));
+        return new Index($index->values()->toArray());
     }
 
     /**
@@ -110,37 +96,19 @@ final class Librarian
      */
     public function feed(): string
     {
-        if ($content = @file_get_contents("{$this->dist}/feed.xml")) {
-            return $content;
-        }
-
         // Render the posts as XML
-        $content = view('feed', ['documents' => $this->published()])->render();
-
-        // Write the feed XML to disk
-        file_put_contents("{$this->dist}/feed.xml", $content);
-
-        return $content;
+        return view('feed', ['documents' => $this->published()])->render();
     }
 
     /**
-     * Return XML for an ATOM feed.
+     * Return XML for a sitemap.
      *
      * @return string
      */
     public function siteMap(): string
     {
-        if ($content = @file_get_contents("{$this->dist}/sitemap.xml")) {
-            return $content;
-        }
-
         // Render the posts as XML
-        $content = view('sitemap', ['documents' => $this->published()])->render();
-
-        // Write the feed XML to disk
-        file_put_contents("{$this->dist}/sitemap.xml", $content);
-
-        return $content;
+        return view('sitemap', ['documents' => $this->published()])->render();
     }
 
     /**
@@ -178,21 +146,4 @@ final class Librarian
             });
     }
 
-    /**
-     * Retrieve the distribution folder path.
-     *
-     * @return string
-     */
-    public function distPath(): string
-    {
-        return $this->dist;
-    }
-
-    /**
-     * Remove all cached HTML.
-     */
-    public function purge(): bool
-    {
-        return $this->fs->deleteDirectory($this->dist);
-    }
 }
