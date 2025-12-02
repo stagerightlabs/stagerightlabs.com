@@ -73,7 +73,7 @@
     </div>
     <script src="{{ url(asset("js/reveal.js")) }}"></script>
 
-    <script>
+    <script nonce="{{ Vite::cspNonce() }}">
       Reveal.initialize({
         controls: true,
         history: true,
