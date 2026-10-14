@@ -23,8 +23,8 @@ $ docker-compose run php composer install
 3. Install the NPM dependencies and build the frontend assets:
 
 ```
-$ docker-compose run node yarn
-$ docker-compose run node yarn dev
+$ docker-compose run node pnpm install
+$ docker-compose run node pnpm dev
 ```
 
 4. Create your `.env` file:

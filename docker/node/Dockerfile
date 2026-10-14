@@ -1,9 +1,11 @@
-FROM node:18-alpine
+FROM node:22-alpine
 
 LABEL authors="Ryan Durham <ryan@stagerightlabs.com>"
+
+RUN npm install -g pnpm@12.11.2
 
 USER node
 
 WORKDIR /var/www
 
-CMD [ "yarn", "dev" ]
+CMD [ "pnpm", "dev" ]

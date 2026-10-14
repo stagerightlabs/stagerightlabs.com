@@ -13,16 +13,17 @@ PHP runs only inside Docker (there is no host `php`). Use the `./ops.sh` wrapper
 - `./ops.sh up -d` / `./ops.sh` (ps) — compose passthrough; the site is served at http://stagerightlabs.test
 - `./ops.sh art <command>` — artisan (e.g. `./ops.sh art make:article my-slug`, `./ops.sh art purge`)
 - `./ops.sh composer <args>` — composer in the `php` container
-- `./ops.sh yarn <args>` — yarn in the `node` container (`yarn dev`, `yarn build`, `yarn format`)
+- `./ops.sh pnpm <args>` — pnpm in the `node` container (`pnpm dev`, `pnpm build`, `pnpm format`)
 - `./ops.sh exec php vendor/bin/phpunit` — all tests (CI runs it with `--exclude-group skip`)
 - `./ops.sh exec php vendor/bin/phpunit --filter it_can_read_front_matter` or pass a file path — single test
 - `./ops.sh exec php vendor/bin/pint` — PHP formatting (CI runs this; `declare(strict_types=1)` is enforced)
 - `./ops.sh exec php vendor/bin/phpstan analyse` — static analysis (larastan, level 8, over `app/` and `src/`)
 
 Keep command output small:
+
 - Pipe test/lint output through `| tail -15` (or `grep -E 'FAIL|Error|OK'`), and run a single file or `--filter` rather than the full suite when iterating.
 - phpunit writes an HTML coverage report on every run (`.coverage/`); ignore it and don't read it.
-- Never dump `composer.lock`, `yarn.lock` or `vendor/`; for lock changes use `git diff --stat` or grep for specific `"version"` lines.
+- Never dump `composer.lock`, `pnpm-lock.yaml` or `vendor/`; for lock changes use `git diff --stat` or grep for specific `"version"` lines.
 - Use `./ops.sh exec -T php ...` for non-interactive commands, and prefer `--no-ansi`/`-q` flags on composer and artisan.
 
 Tests are split into `Domain` (unit-style tests of `src/`) and `Feature` suites. Fixtures live in `tests/stubs/`.
