@@ -111,15 +111,7 @@
               href="{{ route("decks.index") }}"
               class="{{ Route::is("decks.index") ? "bg-zinc-400 text-red-800 dark:bg-zinc-300" : "text-zinc-600 hover:bg-zinc-400 hover:text-red-800" }} group flex gap-x-3 rounded-md p-2 pl-3 font-semibold"
             >
-              Decks
-            </a>
-          </li>
-          <li>
-            <a
-              href="{{ route("resume") }}"
-              class="{{ Route::is("resume") ? "bg-zinc-400 text-red-800 dark:bg-zinc-300" : "text-zinc-600 hover:bg-zinc-400 hover:text-red-800" }} group flex gap-x-3 rounded-md p-2 pl-3 font-semibold"
-            >
-              Resume
+              Presentation Decks
             </a>
           </li>
           <li>
