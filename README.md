@@ -23,9 +23,11 @@ $ docker-compose run php composer install
 3. Install the NPM dependencies and build the frontend assets:
 
 ```
-$ docker-compose run node yarn
-$ docker-compose run node yarn dev
+$ docker-compose run node pnpm install
+$ docker-compose run node pnpm build
 ```
+
+The node image provides Node 22 and pnpm 12. To run the Vite dev server with hot reloading, use `docker-compose run --service-ports node pnpm dev`.
 
 4. Create your `.env` file:
 
@@ -44,6 +46,8 @@ $ docker-compose run php php artisan key:generate
 ```
 $ docker-compose up -d
 ```
+
+The `ops.sh` script wraps these commands for day-to-day use, e.g. `./ops.sh art <command>`, `./ops.sh composer <args>` and `./ops.sh pnpm <args>`.
 
 You should now be able to view the site in your browser by going to http://stagerightlabs.test. You are now off to the races!
 

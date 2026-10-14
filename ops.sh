@@ -29,12 +29,12 @@ if [ $# -gt 0 ];then
             php \
             composer "$@"
 
-    # Run NPM
-    elif [ "$1" == "yarn" ]; then
+    # Run pnpm
+    elif [ "$1" == "pnpm" ]; then
         shift 1
         $COMPOSE run --rm \
             node \
-            yarn "$@"
+            pnpm "$@"
 
     # Else, pass through to docker compose
     else

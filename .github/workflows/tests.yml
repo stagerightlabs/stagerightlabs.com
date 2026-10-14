@@ -25,14 +25,17 @@ jobs:
           tools: composer:v2
           coverage: xdebug
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'yarn'
+          cache: pnpm
 
       - name: Install Node Dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Install Composer Dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
@@ -44,7 +47,7 @@ jobs:
         run: php artisan key:generate
 
       - name: Build Assets
-        run: yarn build
+        run: pnpm build
 
       - name: Tests
         run: ./vendor/bin/phpunit --exclude-group skip
