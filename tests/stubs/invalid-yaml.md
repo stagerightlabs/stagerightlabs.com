@@ -1,6 +1,6 @@
 ---
-- !text |
-    first line
+title: [unclosed
+series: "bad
 ---
 
 # This post has invalid front matter
